@@ -46,6 +46,7 @@ public class V_EditarClase extends JFrame {
 	 */
 	public V_EditarClase() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		setResizable(false);
 		setBounds(200, 200, 550, 350);
 		contentPane = new JPanel();
