@@ -46,6 +46,7 @@ public class V_AniadirClase extends JFrame {
 	 */
 	public V_AniadirClase() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		setBounds(200, 200, 550, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
