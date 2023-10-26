@@ -134,7 +134,7 @@ public class VentanaInicioSesion {
 		
 		JLabel lblNewLabel = new JLabel("");
 		panel_5.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon(VentanaInicioSesion.class.getResource("/DeustoDeporteG21/src/Fotos/ImagenInicioSesion.jpg")));
+		lblNewLabel.setIcon(new ImageIcon("/DeustoDeporteG21/src/Fotos/ImagenInicioSesion.jpg"));
 		
 		JPanel panel_6 = new JPanel();
 		panel_2.add(panel_6, BorderLayout.EAST);
