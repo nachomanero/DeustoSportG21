@@ -17,6 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 public class V_AniadirClase extends JFrame {
 
@@ -45,18 +47,21 @@ public class V_AniadirClase extends JFrame {
 	 * Create the frame.
 	 */
 	public V_AniadirClase() {
+		setBackground(new Color(102, 153, 153));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setResizable(false);
 		
 		setBounds(200, 200, 550, 350);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(102, 153, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(236, 243, 244));
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 65));
 		
@@ -66,10 +71,12 @@ public class V_AniadirClase extends JFrame {
 		panel_Labels.setLayout(new BoxLayout(panel_Labels, BoxLayout.Y_AXIS));
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(236, 243, 244));
 		panel_Labels.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("Tipo de clase: ");
+		lblNewLabel_1.setBackground(new Color(236, 243, 244));
 		panel_2.add(lblNewLabel_1);
 		
 		JComboBox comboBox = new JComboBox();
@@ -77,6 +84,7 @@ public class V_AniadirClase extends JFrame {
 		panel_2.add(comboBox, BorderLayout.EAST);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(236, 243, 244));
 		panel_Labels.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
@@ -89,6 +97,7 @@ public class V_AniadirClase extends JFrame {
 		textField.setColumns(10);
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(new Color(236, 243, 244));
 		panel_Labels.add(panel_4);
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
@@ -101,6 +110,7 @@ public class V_AniadirClase extends JFrame {
 		textField_1.setColumns(10);
 		
 		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(new Color(236, 243, 244));
 		panel_Labels.add(panel_5);
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
@@ -112,6 +122,7 @@ public class V_AniadirClase extends JFrame {
 		textField_2.setColumns(10);
 		
 		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(new Color(236, 243, 244));
 		panel_Labels.add(panel_6);
 		panel_6.setLayout(new BorderLayout(0, 0));
 		
@@ -122,6 +133,7 @@ public class V_AniadirClase extends JFrame {
 		panel_6.add(spinner, BorderLayout.EAST);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(236, 243, 244));
 		contentPane.add(panel_1, BorderLayout.NORTH);
 		
 		JLabel lblNewLabel = new JLabel("DATOS DE LA CLASE");
@@ -129,6 +141,7 @@ public class V_AniadirClase extends JFrame {
 		panel_1.add(lblNewLabel);
 		
 		JPanel panel_7 = new JPanel();
+		panel_7.setBackground(new Color(236, 243, 244));
 		contentPane.add(panel_7, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("CREAR CLASE");
