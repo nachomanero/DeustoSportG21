@@ -108,7 +108,7 @@ public class VentanaPrincipal {
 		panel_7.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JLabel lblFoto = new JLabel("");
-		lblFoto.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/Fotos/Logo.png")));
+		lblFoto.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/DeustoDeporteG21/src/Fotos/Logo.png")));
 		panel_7.add(lblFoto);
 		
 		JLabel lblTextoSubFoto = new JLabel("Inicia sesion o unete a nosotros!");
