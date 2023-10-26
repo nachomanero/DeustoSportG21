@@ -46,7 +46,10 @@ public class V_AniadirClase extends JFrame {
 	 */
 	public V_AniadirClase() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		
+		setResizable(false);
+		
+		setBounds(200, 200, 550, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -55,7 +58,7 @@ public class V_AniadirClase extends JFrame {
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 20));
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 65));
 		
 		JPanel panel_Labels = new JPanel();
 		panel_Labels.setBounds(new Rectangle(0, 0, 100000, 0));
