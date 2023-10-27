@@ -49,6 +49,7 @@ public class V_EditarClase extends JFrame {
 		
 		setResizable(false);
 		setBounds(200, 200, 550, 350);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
