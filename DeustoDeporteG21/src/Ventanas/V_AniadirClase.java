@@ -54,6 +54,7 @@ public class V_AniadirClase extends JFrame {
 		
 		
 		setBounds(200, 200, 550, 350);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(102, 153, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
