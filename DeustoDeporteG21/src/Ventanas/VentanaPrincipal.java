@@ -50,7 +50,7 @@ public class VentanaPrincipal {
 		frame.setBounds(200, 200, 550, 350);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		frame.setLocation(500, 250);
+		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 
 
