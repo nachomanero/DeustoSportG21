@@ -52,6 +52,7 @@ public class V_AniadirClase extends JFrame {
 		
 		setResizable(false);
 		
+		
 		setBounds(200, 200, 550, 350);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(102, 153, 153));
