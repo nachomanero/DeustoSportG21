@@ -1,5 +1,5 @@
 package Ventanas;
 
-public class prueba {
+public class Menu {
 
 }
