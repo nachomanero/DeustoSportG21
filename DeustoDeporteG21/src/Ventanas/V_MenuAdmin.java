@@ -42,6 +42,7 @@ public class V_MenuAdmin extends JFrame {
 		setBounds(new Rectangle(200, 200, 550, 350));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(200, 200, 550, 350);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
