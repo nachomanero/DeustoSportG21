@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -18,6 +20,7 @@ import java.awt.FlowLayout;
 public class VentanaPrincipal {
 
 	private JFrame frame;
+	
 
 	/**
 	 * Launch the application.
@@ -40,6 +43,7 @@ public class VentanaPrincipal {
 	 */
 	public VentanaPrincipal() {
 		initialize();
+		
 	}
 
 	/**
@@ -48,7 +52,7 @@ public class VentanaPrincipal {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(200, 200, 550, 350);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
@@ -121,6 +125,43 @@ public class VentanaPrincipal {
 		JLabel lblTextoSubFoto = new JLabel("Inicia sesion o unete a nosotros!");
 		lblTextoSubFoto.setFont(new Font("Arial", Font.BOLD, 15));
 		panel_7.add(lblTextoSubFoto);
+		
+		btnCrearUsuario.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Registro completado correctamente","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+                frame.dispose();
+
+                VentanaRegistro ventanaRegistro = new VentanaRegistro();
+                ventanaRegistro.mostrarVentana();
+				
+			}
+		});
+		
+		btnIniciarSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
+				frame.dispose();
+
+                VentanaInicioSesion ventanaInicioSesion = new VentanaInicioSesion();
+                ventanaInicioSesion.mostrarVentana();
+			}
+		});
+		
+		btnSalida.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Gracias por usar DeustoSport"," ",JOptionPane.INFORMATION_MESSAGE);
+				frame.dispose();
+			}
+		});
 	}
+	public void mostrarVentana() {
+        frame.setVisible(true);
+    }
 
 }

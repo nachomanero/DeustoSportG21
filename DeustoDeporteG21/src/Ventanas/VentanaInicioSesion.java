@@ -153,5 +153,9 @@ public class VentanaInicioSesion {
 		panel_7.setBackground(new Color(102, 153, 153));
 		panel_2.add(panel_7, BorderLayout.CENTER);
 	}
+	
+	public void mostrarVentana() {
+        frame.setVisible(true);
+    }
 
 }

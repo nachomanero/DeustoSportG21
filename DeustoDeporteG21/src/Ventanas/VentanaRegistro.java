@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -12,6 +13,9 @@ import javax.swing.JPasswordField;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -61,7 +65,7 @@ public class VentanaRegistro {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(200, 200, 550, 350);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.setResizable(true);
 		frame.setLocationRelativeTo(null);;
 		frame.setResizable(false);
@@ -158,5 +162,42 @@ public class VentanaRegistro {
 		lblNewLabel_4.setIcon(new ImageIcon("Fotos/FotoRegistro.jpg"));
 		lblNewLabel_4.setBounds(231, 0, 305, 251);
 		panel.add(lblNewLabel_4);
+		
+		btnAceptar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
+				frame.dispose();
+				
+			}
+		});
+		
+		btnSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Gracias por usar DeustoSport"," ",JOptionPane.INFORMATION_MESSAGE);
+				frame.dispose();
+				
+			}
+		});
+		
+		btnRetroceder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				frame.dispose();
+
+                VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+                ventanaPrincipal.mostrarVentana();
+			}
+		});
 	}
+	public void mostrarVentana() {
+        frame.setVisible(true);
+    }
+	
+	
 }
