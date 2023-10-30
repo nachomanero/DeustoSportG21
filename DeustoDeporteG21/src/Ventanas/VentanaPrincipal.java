@@ -59,6 +59,7 @@ public class VentanaPrincipal {
 		panelTitulo.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(104, 221, 169));
 		panelTitulo.add(panel, BorderLayout.NORTH);
 		
 		JLabel lblDeustoSport = new JLabel("DEUSTO SPORT");
@@ -66,12 +67,15 @@ public class VentanaPrincipal {
 		panel.add(lblDeustoSport);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(104, 221, 169));
 		panelTitulo.add(panel_1, BorderLayout.WEST);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(104, 221, 169));
 		panelTitulo.add(panel_2, BorderLayout.SOUTH);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(104, 221, 169));
 		panelTitulo.add(panel_3, BorderLayout.EAST);
 		
 		JPanel panel_4 = new JPanel();
@@ -79,6 +83,7 @@ public class VentanaPrincipal {
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(new Color(104, 221, 169));
 		panel_4.add(panel_5, BorderLayout.SOUTH);
 		
 		JButton btnIniciarSesion = new JButton("Iniciar Sesion");
@@ -97,6 +102,7 @@ public class VentanaPrincipal {
 		panel_5.add(btnSalida);
 		
 		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(new Color(104, 221, 169));
 		panel_4.add(panel_6, BorderLayout.NORTH);
 		
 		JLabel lblSubtitulo = new JLabel("Todos los deportes, estan en Deusto Sport");
@@ -104,6 +110,7 @@ public class VentanaPrincipal {
 		panel_6.add(lblSubtitulo);
 		
 		JPanel panel_7 = new JPanel();
+		panel_7.setBackground(new Color(104, 221, 169));
 		panel_4.add(panel_7, BorderLayout.CENTER);
 		panel_7.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		

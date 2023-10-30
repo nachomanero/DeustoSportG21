@@ -68,6 +68,7 @@ public class VentanaRegistro {
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		panel_1 = new JPanel();
+		panel_1.setBackground(new Color(104, 221, 169));
 		frame.getContentPane().add(panel_1, BorderLayout.NORTH);
 		
 		lblTitulo = new JLabel("Bienvenido! Registrese aqui");
@@ -75,6 +76,7 @@ public class VentanaRegistro {
 		panel_1.add(lblTitulo);
 		
 		panel_3 = new JPanel();
+		panel_3.setBackground(new Color(104, 221, 169));
 		frame.getContentPane().add(panel_3, BorderLayout.SOUTH);
 		
 		btnAceptar = new JButton("Aceptar");
@@ -93,6 +95,7 @@ public class VentanaRegistro {
 		panel_3.add(btnSalir);
 		
 		panel = new JPanel();
+		panel.setBackground(new Color(104, 221, 169));
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
