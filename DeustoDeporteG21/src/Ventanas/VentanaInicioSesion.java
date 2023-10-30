@@ -57,7 +57,7 @@ public class VentanaInicioSesion {
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		frame.setLocation(500, 250);
 		JPanel panelSur = new JPanel();
-		panelSur.setBackground(new Color(104, 221, 169));
+		panelSur.setBackground(new Color(102, 153, 153));
 		frame.getContentPane().add(panelSur, BorderLayout.SOUTH);
 		frame.setResizable(false);
 		JButton btnRetroceder = new JButton("Retroceder");
@@ -71,11 +71,11 @@ public class VentanaInicioSesion {
 		panelSur.add(btnAcceder);
 		
 		JPanel panelOeste = new JPanel();
-		panelOeste.setBackground(new Color(104, 221, 169));
+		panelOeste.setBackground(new Color(102, 153, 153));
 		frame.getContentPane().add(panelOeste, BorderLayout.WEST);
 		
 		JPanel panelNorte = new JPanel();
-		panelNorte.setBackground(new Color(104, 221, 169));
+		panelNorte.setBackground(new Color(102, 153, 153));
 		frame.getContentPane().add(panelNorte, BorderLayout.NORTH);
 		
 		JLabel lblTitulo = new JLabel("Inicio Sesion");
@@ -83,7 +83,7 @@ public class VentanaInicioSesion {
 		panelNorte.add(lblTitulo);
 		
 		JPanel panelEste = new JPanel();
-		panelEste.setBackground(new Color(104, 221, 169));
+		panelEste.setBackground(new Color(102, 153, 153));
 		frame.getContentPane().add(panelEste, BorderLayout.EAST);
 		
 		JPanel panelCentro = new JPanel();
@@ -91,7 +91,7 @@ public class VentanaInicioSesion {
 		panelCentro.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelCentroSur = new JPanel();
-		panelCentroSur.setBackground(new Color(104, 221, 169));
+		panelCentroSur.setBackground(new Color(102, 153, 153));
 		panelCentro.add(panelCentroSur, BorderLayout.SOUTH);
 		panelCentroSur.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -110,7 +110,7 @@ public class VentanaInicioSesion {
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(104, 221, 169));
+		panel_1.setBackground(new Color(102, 153, 153));
 		panel.add(panel_1, BorderLayout.SOUTH);
 		
 		JLabel lblCorreo = new JLabel("Correo:");
@@ -127,18 +127,18 @@ public class VentanaInicioSesion {
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(104, 221, 169));
+		panel_3.setBackground(new Color(102, 153, 153));
 		panel_2.add(panel_3, BorderLayout.WEST);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(104, 221, 169));
+		panel_4.setBackground(new Color(102, 153, 153));
 		panel_2.add(panel_4, BorderLayout.NORTH);
 		
 		JLabel lblNewLabel_1 = new JLabel("Bienvenido al Inicio de sesion de DeustoSport!");
 		panel_4.add(lblNewLabel_1);
 		
 		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(new Color(104, 221, 169));
+		panel_5.setBackground(new Color(102, 153, 153));
 		panel_2.add(panel_5, BorderLayout.SOUTH);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -146,11 +146,11 @@ public class VentanaInicioSesion {
 		lblNewLabel.setIcon(new ImageIcon("Fotos/ImagenInicioSesion.jpg"));
 		
 		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(new Color(104, 221, 169));
+		panel_6.setBackground(new Color(102, 153, 153));
 		panel_2.add(panel_6, BorderLayout.EAST);
 		
 		JPanel panel_7 = new JPanel();
-		panel_7.setBackground(new Color(104, 221, 169));
+		panel_7.setBackground(new Color(102, 153, 153));
 		panel_2.add(panel_7, BorderLayout.CENTER);
 	}
 

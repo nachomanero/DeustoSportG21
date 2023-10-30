@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import java.awt.Font;
@@ -63,9 +64,13 @@ public class V_AniadirClase extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(236, 243, 244));
+		panel.setBackground(new Color(102, 153, 153));
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 65));
+		
+		JLabel lblFoto = new JLabel("");
+		lblFoto.setIcon(new ImageIcon("Fotos/FotoClases2.jpg"));
+		panel.add(lblFoto);
 		
 		JPanel panel_Labels = new JPanel();
 		panel_Labels.setBounds(new Rectangle(0, 0, 100000, 0));
@@ -73,12 +78,12 @@ public class V_AniadirClase extends JFrame {
 		panel_Labels.setLayout(new BoxLayout(panel_Labels, BoxLayout.Y_AXIS));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(236, 243, 244));
+		panel_2.setBackground(new Color(102, 153, 153));
 		panel_Labels.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("Tipo de clase: ");
-		lblNewLabel_1.setBackground(new Color(236, 243, 244));
+		lblNewLabel_1.setBackground(new Color(0,0,0));
 		panel_2.add(lblNewLabel_1);
 		
 		JComboBox comboBox = new JComboBox();
@@ -86,7 +91,7 @@ public class V_AniadirClase extends JFrame {
 		panel_2.add(comboBox, BorderLayout.EAST);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(236, 243, 244));
+		panel_3.setBackground(new Color(102, 153, 153));
 		panel_Labels.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
@@ -99,7 +104,7 @@ public class V_AniadirClase extends JFrame {
 		textField.setColumns(10);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(236, 243, 244));
+		panel_4.setBackground(new Color(102, 153, 153));
 		panel_Labels.add(panel_4);
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
@@ -112,7 +117,7 @@ public class V_AniadirClase extends JFrame {
 		textField_1.setColumns(10);
 		
 		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(new Color(236, 243, 244));
+		panel_5.setBackground(new Color(102, 153, 153));
 		panel_Labels.add(panel_5);
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
@@ -124,7 +129,7 @@ public class V_AniadirClase extends JFrame {
 		textField_2.setColumns(10);
 		
 		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(new Color(236, 243, 244));
+		panel_6.setBackground(new Color(102, 153, 153));
 		panel_Labels.add(panel_6);
 		panel_6.setLayout(new BorderLayout(0, 0));
 		
@@ -135,7 +140,7 @@ public class V_AniadirClase extends JFrame {
 		panel_6.add(spinner, BorderLayout.EAST);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(236, 243, 244));
+		panel_1.setBackground(new Color(102, 153, 153));
 		contentPane.add(panel_1, BorderLayout.NORTH);
 		
 		JLabel lblNewLabel = new JLabel("DATOS DE LA CLASE");
@@ -143,11 +148,23 @@ public class V_AniadirClase extends JFrame {
 		panel_1.add(lblNewLabel);
 		
 		JPanel panel_7 = new JPanel();
-		panel_7.setBackground(new Color(236, 243, 244));
+		panel_7.setBackground(new Color(102, 153, 153));
 		contentPane.add(panel_7, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("CREAR CLASE");
-		panel_7.add(btnNewButton);
+		JButton btnCrearClase = new JButton("Crear Clase");
+		btnCrearClase.setBackground(new Color(192, 192, 192));
+		btnCrearClase.setFont(new Font("Arial", Font.BOLD, 13));
+		panel_7.add(btnCrearClase);
+		
+		JButton btnRetroceder = new JButton("Retroceder");
+		btnRetroceder.setBackground(new Color(192, 192, 192));
+		btnRetroceder.setFont(new Font("Arial", Font.BOLD, 13));
+		panel_7.add(btnRetroceder);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.setBackground(new Color(192, 192, 192));
+		btnSalir.setFont(new Font("Arial", Font.BOLD, 13));
+		panel_7.add(btnSalir);
 	}
 
 }
