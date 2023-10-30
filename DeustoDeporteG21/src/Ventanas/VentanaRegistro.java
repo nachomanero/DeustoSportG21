@@ -167,8 +167,10 @@ public class VentanaRegistro {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Registro completado correctamente","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
+				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+                ventanaPrincipal.mostrarVentana();
 				
 			}
 		});

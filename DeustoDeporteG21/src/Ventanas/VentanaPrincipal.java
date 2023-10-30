@@ -130,7 +130,7 @@ public class VentanaPrincipal {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Registro completado correctamente","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+				
                 frame.dispose();
 
                 VentanaRegistro ventanaRegistro = new VentanaRegistro();
@@ -143,7 +143,7 @@ public class VentanaPrincipal {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
+				
 				frame.dispose();
 
                 VentanaInicioSesion ventanaInicioSesion = new VentanaInicioSesion();

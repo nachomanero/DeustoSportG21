@@ -5,9 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -152,6 +156,28 @@ public class VentanaInicioSesion {
 		JPanel panel_7 = new JPanel();
 		panel_7.setBackground(new Color(102, 153, 153));
 		panel_2.add(panel_7, BorderLayout.CENTER);
+		
+		btnAcceder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
+				frame.dispose();
+				
+			}
+		});
+		
+		btnRetroceder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+
+                VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+                ventanaPrincipal.mostrarVentana();
+				
+			}
+		});
 	}
 	
 	public void mostrarVentana() {
