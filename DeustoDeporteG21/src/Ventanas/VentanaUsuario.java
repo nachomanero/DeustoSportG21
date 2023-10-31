@@ -12,10 +12,15 @@ import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
 
 public class VentanaUsuario extends JFrame {
@@ -95,6 +100,20 @@ public class VentanaUsuario extends JFrame {
 		JButton btnMiAgenda = new JButton("Mi agenda");
 		btnMiAgenda.setFont(new Font("Arial", Font.BOLD, 13));
 		panelBoton1.add(btnMiAgenda);
+		
+		btnMiAgenda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaAgenda ventanaAgenda = new VentanaAgenda();
+				ventanaAgenda.setVisible(true);
+			
+			
+			}
+		});
+		
+		
+		
 		
 		JPanel panelBoton2 = new JPanel();
 		panelBotones.add(panelBoton2);
