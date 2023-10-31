@@ -169,8 +169,9 @@ public class VentanaRegistro {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Registro completado correctamente","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
+				
 				VentanaUsuario ventanaUsuario = new VentanaUsuario();
-				ventanaUsuario.mostrarVentana();
+				ventanaUsuario.setVisible(true);
 				
 			}
 		});
