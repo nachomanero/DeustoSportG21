@@ -48,9 +48,11 @@ public class VentanaAgenda extends JFrame {
 		contentPane = new JPanel();
 		
 		contentPane.setLayout(new BorderLayout(0, 0));
+		setBounds(200, 200, 550, 350);
 		contentPane.setBackground(new Color(102, 153, 153));
 		
-		
+		setLocationRelativeTo(null);
+		//setResizable(false);
 		
 		JPanel panelCentro = new JPanel();
 		panelCentro.setBackground(new Color(102, 153, 153));
@@ -151,10 +153,6 @@ public class VentanaAgenda extends JFrame {
 		
 	}
 	
-	public void mostrarVentana(){
-		setVisible(true);
-	}
 	
-
 
 }

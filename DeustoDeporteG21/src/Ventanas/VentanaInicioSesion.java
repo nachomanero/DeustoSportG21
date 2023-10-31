@@ -166,8 +166,8 @@ public class VentanaInicioSesion {
 				JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
 				VentanaAgenda ventanaAgenda = new VentanaAgenda();
-				ventanaAgenda.mostrarVentana();
-				 
+				ventanaAgenda.setVisible(true);
+			
 			}
 		});
 		
