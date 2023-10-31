@@ -66,6 +66,12 @@ public class VentanaEdicionActividades {
                 JOptionPane.showMessageDialog(null, "Por favor, seleccione una actividad antes de editar.");
             }
         });
+        
+        
+
+        mainPanel.add(scrollPane, BorderLayout.CENTER);
+        mainPanel.add(rightPanel, BorderLayout.EAST);
+        
         selectActivityButton.setPreferredSize(new Dimension(100, 40));
         selectActivityButton.setEnabled(false);
 
@@ -151,6 +157,6 @@ public class VentanaEdicionActividades {
             }
         }
     }
-
+   
 
 }
