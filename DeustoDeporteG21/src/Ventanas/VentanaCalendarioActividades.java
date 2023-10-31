@@ -71,10 +71,33 @@ public class VentanaCalendarioActividades extends JFrame{
             }
         });
 
+        JButton salirButton = new JButton("Salir");
+        salirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	frame.dispose();
+                VentanaUsuario ventanaUsuario = new VentanaUsuario();
+                ventanaUsuario.setVisible(true);
+            }
+        });
+
+        selectActivityButton.setPreferredSize(new Dimension(150, 40));
+        salirButton.setPreferredSize(new Dimension(150, 40));
+
+        bottomPanel.add(selectActivityButton);
+        bottomPanel.add(salirButton);
+
+        // Utiliza BoxLayout para organizar los botones horizontalmente
+        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
+        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        
+        
+
         selectActivityButton.setPreferredSize(new Dimension(150, 40));
         selectActivityButton.setEnabled(false);
         bottomPanel.add(selectActivityButton);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        
 
         dateChooser.getDateEditor().addPropertyChangeListener("date", new PropertyChangeListener() {
             @Override
@@ -156,8 +179,7 @@ public class VentanaCalendarioActividades extends JFrame{
         getContentPane().setVisible(true);
     }
    
-
-  
+    
    
  
 }
