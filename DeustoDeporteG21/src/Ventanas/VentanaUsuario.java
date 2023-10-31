@@ -129,7 +129,7 @@ public class VentanaUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			
 				VentanaCalendarioActividades calendarioActividades= new VentanaCalendarioActividades();
-				calendarioActividades.setVisible(true);
+				calendarioActividades.mostrarVentana();
 			
 			
 			}

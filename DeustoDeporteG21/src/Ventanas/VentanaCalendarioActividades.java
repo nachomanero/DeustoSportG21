@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VentanaCalendarioActividades {
+public class VentanaCalendarioActividades extends JFrame{
     private JDateChooser dateChooser;
     private JPanel eventPanel;
     private Map<Date, String> events;
@@ -90,7 +90,8 @@ public class VentanaCalendarioActividades {
         });
 
         frame.setLocationRelativeTo(null);
-        //frame.setVisible(true);
+        frame.setVisible(true);
+ 
     }
 
     private void showEventsForSelectedDate() {
@@ -150,9 +151,13 @@ public class VentanaCalendarioActividades {
             }
         }
     }
-
-   /* public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new VentanaCalendarioActividades());
+    
+    public void mostrarVentana() {
+        getContentPane().setVisible(true);
     }
- */
+   
+
+  
+   
+ 
 }
