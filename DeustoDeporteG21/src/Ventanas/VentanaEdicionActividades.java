@@ -152,8 +152,5 @@ public class VentanaEdicionActividades {
         }
     }
 
- /*  public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new VentanaEdicionActividades());
-    }
-   */
+
 }

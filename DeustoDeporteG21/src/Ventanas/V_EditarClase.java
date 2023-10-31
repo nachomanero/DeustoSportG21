@@ -27,26 +27,7 @@ public class V_EditarClase extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					V_EditarClase frame = new V_EditarClase();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public V_EditarClase() {
 		setBackground(new Color(102, 153, 153));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

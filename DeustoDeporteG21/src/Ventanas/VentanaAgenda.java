@@ -22,27 +22,7 @@ public class VentanaAgenda extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaAgenda frame = new VentanaAgenda();
-					frame.setBounds(200, 200, 550, 350);
-					frame.setTitle("Agenda");
-					frame.setLocation(500, 250);
-					frame.setResizable(false);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public VentanaAgenda() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();

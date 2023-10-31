@@ -28,26 +28,7 @@ public class V_AniadirClase extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					V_AniadirClase frame = new V_AniadirClase();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public V_AniadirClase() {
 		setBackground(new Color(102, 153, 153));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

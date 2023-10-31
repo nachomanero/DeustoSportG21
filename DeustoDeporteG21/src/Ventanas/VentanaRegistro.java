@@ -36,26 +36,9 @@ public class VentanaRegistro {
 	private JTextField textFieldNombre;
 	private JLabel lblNewLabel_4;
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaRegistro window = new VentanaRegistro();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
-	/**
-	 * Create the application.
-	 */
+	
 	public VentanaRegistro() {
 		initialize();
 	}

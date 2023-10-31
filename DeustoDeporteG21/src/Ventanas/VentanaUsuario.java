@@ -27,23 +27,8 @@ public class VentanaUsuario extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaUsuario frame = new VentanaUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	*/
+	
+
 	
 	public VentanaUsuario() {
 		
@@ -142,6 +127,7 @@ public class VentanaUsuario extends JFrame {
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(e -> System.exit(0));
 		panelSur.add(btnSalir);
+		
 		
 		
 	}

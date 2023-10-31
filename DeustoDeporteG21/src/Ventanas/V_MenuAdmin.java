@@ -18,26 +18,7 @@ public class V_MenuAdmin extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					V_MenuAdmin frame = new V_MenuAdmin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public V_MenuAdmin() {
 		setBackground(new Color(102, 153, 153));
 		
