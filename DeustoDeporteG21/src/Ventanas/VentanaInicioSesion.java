@@ -1,7 +1,6 @@
 package Ventanas;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -166,6 +165,7 @@ public class VentanaInicioSesion {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
+				 
 				
 				
 			}

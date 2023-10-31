@@ -38,11 +38,8 @@ public class VentanaUsuario extends JFrame {
 			}
 		});
 	}
-	/*
-
-	/**
-	 * Create the frame.
-	 */
+	*/
+	
 	public VentanaUsuario() {
 		
 		setResizable(false);
