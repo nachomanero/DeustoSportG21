@@ -165,9 +165,9 @@ public class VentanaInicioSesion {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
 				frame.dispose();
+				VentanaAgenda ventanaAgenda = new VentanaAgenda();
+				ventanaAgenda.mostrarVentana();
 				 
-				
-				
 			}
 		});
 		
@@ -180,7 +180,6 @@ public class VentanaInicioSesion {
 
                 VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
                 ventanaPrincipal.mostrarVentana();
-				
 			}
 		});
 	}

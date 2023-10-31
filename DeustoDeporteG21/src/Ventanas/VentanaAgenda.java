@@ -146,6 +146,13 @@ public class VentanaAgenda extends JFrame {
 		lblAgenda_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAgenda_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panelNorte.add(lblAgenda_1);
+		
+		
+		
+	}
+	
+	public void mostrarVentana(){
+		setVisible(true);
 	}
 	
 
