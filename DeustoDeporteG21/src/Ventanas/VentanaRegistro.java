@@ -168,18 +168,18 @@ public class VentanaRegistro {
 
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        // Obtener los valores de los campos de entrada
+		        
 		        String nombre = textFieldNombre.getText();
 		        String apellido = textFieldApellido.getText();
 		        String dni = textFieldDNI.getText();
 		        String correo = textFieldCorreo.getText();
 		        String contrasenia = new String(textFieldContrasenia.getPassword());
 
-		        // Verificar si alguno de los campos está vacío
+		        
 		        if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty() || correo.isEmpty() || contrasenia.isEmpty()) {
 		            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.", "Error de Registro", JOptionPane.ERROR_MESSAGE);
 		        } else {
-		            // Realizar el registro si todos los campos están completos
+		            
 		            JOptionPane.showMessageDialog(null, "Registro completado correctamente", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);
 		            frame.dispose();
 
