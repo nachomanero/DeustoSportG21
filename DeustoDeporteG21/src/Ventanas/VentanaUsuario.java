@@ -112,6 +112,8 @@ public class VentanaUsuario extends JFrame {
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(e -> System.exit(0));
 		panelSur.add(btnSalir);
+		
+		
 	}
 
 }
