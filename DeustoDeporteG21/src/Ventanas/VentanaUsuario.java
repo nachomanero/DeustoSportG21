@@ -123,6 +123,18 @@ public class VentanaUsuario extends JFrame {
 		btnFutClases.setFont(new Font("Arial", Font.BOLD, 13));
 		panelBoton2.add(btnFutClases);
 		
+		btnFutClases.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				VentanaCalendarioActividades calendarioActividades= new VentanaCalendarioActividades();
+				calendarioActividades.setVisible(true);
+			
+			
+			}
+		});
+		
 		JPanel panelSur = new JPanel();
 		contentPane.add(panelSur, BorderLayout.SOUTH);
 		panelSur.setBackground(new Color(102, 153, 153));

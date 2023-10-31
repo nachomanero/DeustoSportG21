@@ -90,7 +90,7 @@ public class VentanaCalendarioActividades {
         });
 
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        //frame.setVisible(true);
     }
 
     private void showEventsForSelectedDate() {
