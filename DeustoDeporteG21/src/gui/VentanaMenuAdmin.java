@@ -1,4 +1,4 @@
-package Ventanas;
+package gui;
 
 import java.awt.EventQueue;
 
@@ -14,12 +14,12 @@ import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.awt.Color;
 
-public class V_MenuAdmin extends JFrame {
+public class VentanaMenuAdmin extends JFrame {
 
 	private JPanel contentPane;
 
 
-	public V_MenuAdmin() {
+	public VentanaMenuAdmin() {
 		setBackground(new Color(102, 153, 153));
 		
 		setResizable(false);

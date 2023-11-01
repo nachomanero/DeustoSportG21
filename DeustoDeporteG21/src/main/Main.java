@@ -1,6 +1,8 @@
-package Ventanas;
+package main;
 
 import java.awt.EventQueue;
+
+import gui.VentanaPrincipal;
 
 public class Main {
 	

@@ -1,4 +1,4 @@
-package Ventanas;
+package gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -120,7 +120,7 @@ public class VentanaPrincipal {
 		panel_7.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JLabel lblFoto = new JLabel("");
-		lblFoto.setIcon(new ImageIcon("Fotos/Logo.png"));
+		lblFoto.setIcon(new ImageIcon("resources/images/Logo.png"));
 		panel_7.add(lblFoto);
 		
 		JLabel lblTextoSubFoto = new JLabel("Inicia sesion o unete a nosotros!");

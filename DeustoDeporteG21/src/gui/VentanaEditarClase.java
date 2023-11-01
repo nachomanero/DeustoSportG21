@@ -1,4 +1,4 @@
-package Ventanas;
+package gui;
 
 import java.awt.EventQueue;
 
@@ -18,24 +18,21 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
-import java.awt.SystemColor;
 import java.awt.Color;
 
-public class V_AniadirClase extends JFrame {
+public class VentanaEditarClase extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 
-
-	public V_AniadirClase() {
+	
+	public VentanaEditarClase() {
 		setBackground(new Color(102, 153, 153));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setResizable(false);
-		
-		
 		setBounds(200, 200, 550, 350);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
@@ -51,7 +48,7 @@ public class V_AniadirClase extends JFrame {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 65));
 		
 		JLabel lblFoto = new JLabel("");
-		lblFoto.setIcon(new ImageIcon("Fotos/FotoClases2.jpg"));
+		lblFoto.setIcon(new ImageIcon("Fotos/FotoClases.jpg"));
 		panel.add(lblFoto);
 		
 		JPanel panel_Labels = new JPanel();
@@ -60,12 +57,11 @@ public class V_AniadirClase extends JFrame {
 		panel_Labels.setLayout(new BoxLayout(panel_Labels, BoxLayout.Y_AXIS));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(102, 153, 153));
 		panel_Labels.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("Tipo de clase: ");
-		lblNewLabel_1.setBackground(new Color(0,0,0));
+		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_2.add(lblNewLabel_1);
 		
 		JComboBox comboBox = new JComboBox();
@@ -73,11 +69,11 @@ public class V_AniadirClase extends JFrame {
 		panel_2.add(comboBox, BorderLayout.EAST);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(102, 153, 153));
 		panel_Labels.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("Fecha: ");
+		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_3.add(lblNewLabel_2, BorderLayout.WEST);
 		
 		textField = new JTextField();
@@ -86,11 +82,11 @@ public class V_AniadirClase extends JFrame {
 		textField.setColumns(10);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(102, 153, 153));
 		panel_Labels.add(panel_4);
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_3 = new JLabel("Hora: ");
+		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_4.add(lblNewLabel_3, BorderLayout.WEST);
 		
 		textField_1 = new JTextField();
@@ -99,11 +95,11 @@ public class V_AniadirClase extends JFrame {
 		textField_1.setColumns(10);
 		
 		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(new Color(102, 153, 153));
 		panel_Labels.add(panel_5);
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_4 = new JLabel("Lugar: ");
+		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_5.add(lblNewLabel_4, BorderLayout.WEST);
 		
 		textField_2 = new JTextField();
@@ -111,11 +107,11 @@ public class V_AniadirClase extends JFrame {
 		textField_2.setColumns(10);
 		
 		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(new Color(102, 153, 153));
 		panel_Labels.add(panel_6);
 		panel_6.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_5 = new JLabel("Capacidad: ");
+		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_6.add(lblNewLabel_5, BorderLayout.WEST);
 		
 		JSpinner spinner = new JSpinner();
@@ -133,10 +129,10 @@ public class V_AniadirClase extends JFrame {
 		panel_7.setBackground(new Color(102, 153, 153));
 		contentPane.add(panel_7, BorderLayout.SOUTH);
 		
-		JButton btnCrearClase = new JButton("Crear Clase");
-		btnCrearClase.setBackground(new Color(192, 192, 192));
-		btnCrearClase.setFont(new Font("Arial", Font.BOLD, 13));
-		panel_7.add(btnCrearClase);
+		JButton btnNewButton = new JButton("Editar Clase");
+		btnNewButton.setBackground(new Color(192, 192, 192));
+		btnNewButton.setFont(new Font("Arial", Font.BOLD, 13));
+		panel_7.add(btnNewButton);
 		
 		JButton btnRetroceder = new JButton("Retroceder");
 		btnRetroceder.setBackground(new Color(192, 192, 192));

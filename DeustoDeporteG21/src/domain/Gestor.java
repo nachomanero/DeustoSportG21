@@ -1,4 +1,4 @@
-package Modelo;
+package domain;
 
 public class Gestor {
 
