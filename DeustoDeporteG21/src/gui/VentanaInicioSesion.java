@@ -127,7 +127,7 @@ public class VentanaInicioSesion {
 		
 		JLabel lblNewLabel = new JLabel("");
 		panel_5.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon("Fotos/ImagenInicioSesion.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("resources/images/ImagenInicioSesion.jpg"));
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(new Color(102, 153, 153));

@@ -143,7 +143,7 @@ public class VentanaRegistro {
 		textFieldNombre.setColumns(10);
 		
 		lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("Fotos/FotoRegistro.jpg"));
+		lblNewLabel_4.setIcon(new ImageIcon("resources/images/FotoRegistro.jpg"));
 		lblNewLabel_4.setBounds(231, 0, 305, 251);
 		panel.add(lblNewLabel_4);
 		

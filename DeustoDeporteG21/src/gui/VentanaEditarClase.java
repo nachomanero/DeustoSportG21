@@ -48,7 +48,7 @@ public class VentanaEditarClase extends JFrame {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 65));
 		
 		JLabel lblFoto = new JLabel("");
-		lblFoto.setIcon(new ImageIcon("Fotos/FotoClases.jpg"));
+		lblFoto.setIcon(new ImageIcon("resources/images/FotoClases.jpg"));
 		panel.add(lblFoto);
 		
 		JPanel panel_Labels = new JPanel();
