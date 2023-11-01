@@ -63,11 +63,11 @@ public class VentanaUsuario extends JFrame {
 		
 		JLabel lblFoto1 = new JLabel("");
 		lblFoto1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblFoto1.setIcon(new ImageIcon("Fotos/Agenda.png"));
+		lblFoto1.setIcon(new ImageIcon("resources/images/Agenda.png"));
 		
 		JLabel lblFoto2 = new JLabel("");
 		lblFoto2.setHorizontalAlignment(SwingConstants.LEFT);
-		lblFoto2.setIcon(new ImageIcon("Fotos/FuturasClases.png"));
+		lblFoto2.setIcon(new ImageIcon("resources/images/FuturasClases.png"));
 		panelFotos.add(lblFoto1);
 		panelFotos.add(lblFoto2);		
 		
