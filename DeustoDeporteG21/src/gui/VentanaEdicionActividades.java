@@ -160,6 +160,8 @@ public class VentanaEdicionActividades extends JFrame{
 
                 if (selectedActivity != null) {
                     JOptionPane.showMessageDialog(null, "Has seleccionado la actividad para editar: " + selectedActivity);
+                    VentanaEditarClase ventanaEditar = new VentanaEditarClase();
+                    ventanaEditar.mostrarVentana();
                 }
             }
         }
