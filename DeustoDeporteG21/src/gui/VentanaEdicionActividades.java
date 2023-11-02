@@ -182,6 +182,7 @@ public class VentanaEdicionActividades {
         exitButton.setPreferredSize(new Dimension(100, 40));
     }
    
+	
   
 
 }
