@@ -17,6 +17,7 @@ public class VentanaEdicionActividades {
     private boolean dateSelected = false;
     private boolean activitySelected = false;
     private JButton selectActivityButton;
+    private JButton exitButton;
 
     public VentanaEdicionActividades() {
         JFrame frame = new JFrame("EDICIÓN ACTIVIDADES");
@@ -91,6 +92,12 @@ public class VentanaEdicionActividades {
                 dateSelected = false;
             }
         });
+        
+        
+        setupExitButton();
+        gbc.gridx = 0;
+        gbc.gridy = 1; 
+        rightPanel.add(exitButton, gbc);
 
         frame.getContentPane().add(mainPanel);
         frame.setLocationRelativeTo(null);
@@ -157,6 +164,29 @@ public class VentanaEdicionActividades {
             }
         }
     }
+    
+    private void setupExitButton() {
+        exitButton = new JButton("Salir");
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(exitButton);
+                    thisFrame.dispose();
+                    VentanaUsuario ventanaUsuario = new VentanaUsuario();
+                    ventanaUsuario.setVisible(true);
+                }
+            }
+        });
+        exitButton.setPreferredSize(new Dimension(100, 40));
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new VentanaEdicionActividades(); // Crea una instancia de tu ventana principal
+        });
+    }
+    
    
 
 }
