@@ -4,20 +4,31 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.FlowLayout;
 
 public class VentanaAgenda extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private DefaultListModel<String> activityListModel = new DefaultListModel<>();
+	private JList<String> activityList = new JList<>(activityListModel);
 
 	/**
 	 * Launch the application.
@@ -53,6 +64,8 @@ public class VentanaAgenda extends JFrame {
 		panelCentro.add(panelClase);
 		panelClase.setLayout(new BorderLayout(0, 0));
 		panelClase.setBorder(new TitledBorder("")); // La clase seleccionada como titulo
+		panelClase.setVisible(false);
+	
 		
 
 		JPanel panelInfo = new JPanel();
@@ -129,7 +142,31 @@ public class VentanaAgenda extends JFrame {
 		lblAgenda_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panelNorte.add(lblAgenda_1);
 		
+		JPanel panelSur = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panelSur.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		contentPane.add(panelSur, BorderLayout.SOUTH);
 		
+		JButton btnNewButton = new JButton("Anterior");
+		panelSur.add(btnNewButton);
+		
+		activityList.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if(!e.getValueIsAdjusting()) {
+					int selectedIndex = activityList.getSelectedIndex();
+					if(selectedIndex != -1) {
+						String selectedActivity = activityListModel.getElementAt(selectedIndex);
+						mostrarDatosActividad(selectedActivity, panelClase);
+					} else {
+						panelClase.removeAll();
+					}
+				}
+			}
+		});
+		
+	}
+	private void mostrarDatosActividad(String selectedActivity, JPanel panelClase) {
 		
 	}
 	
