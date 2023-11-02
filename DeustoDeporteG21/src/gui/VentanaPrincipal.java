@@ -16,6 +16,9 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.FlowLayout;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class VentanaPrincipal {
 
@@ -106,7 +109,8 @@ public class VentanaPrincipal {
 		btnSalida.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_5.add(btnSalida);
 		
-		JPanel panel_6 = new JPanel();
+        
+        JPanel panel_6 = new JPanel();
 		panel_6.setBackground(new Color(102, 153, 153));
 		panel_4.add(panel_6, BorderLayout.NORTH);
 		
