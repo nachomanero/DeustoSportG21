@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -18,6 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 public class VentanaUsuario extends JFrame {
 
@@ -86,6 +88,8 @@ public class VentanaUsuario extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnMiAgenda);
+                thisFrame.dispose();
 				VentanaAgenda ventanaAgenda = new VentanaAgenda();
 				ventanaAgenda.setVisible(true);
 			
@@ -111,6 +115,8 @@ public class VentanaUsuario extends JFrame {
 			
 				VentanaCalendarioActividades calendarioActividades= new VentanaCalendarioActividades();
 				calendarioActividades.mostrarVentana();
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnFutClases);
+                thisFrame.dispose();
 			
 			
 			}
@@ -121,9 +127,16 @@ public class VentanaUsuario extends JFrame {
 		panelSur.setBackground(new Color(102, 153, 153));
 		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.addActionListener(e -> System.exit(0));
 		panelSur.add(btnSalir);
 		
+		btnSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Gracias por usar DeustoSport"," ",JOptionPane.INFORMATION_MESSAGE);
+				System.exit(0);
+			}
+		});
 		
 		
 	}
