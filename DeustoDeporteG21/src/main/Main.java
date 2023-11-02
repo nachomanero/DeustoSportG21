@@ -12,6 +12,7 @@ public class Main {
             public void run() {
                 try {
                     //VentanaPrincipal window = new VentanaPrincipal();
+                	
                     VentanaMenuAdmin window = new VentanaMenuAdmin();
                     window.mostrarVentana();
                 } catch (Exception e) {

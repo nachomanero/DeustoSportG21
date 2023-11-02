@@ -33,6 +33,8 @@ public class VentanaAniadirClase extends JFrame {
 		setBackground(new Color(102, 153, 153));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		setVisible(true);
+		
 		setResizable(false);
 		
 		
@@ -49,10 +51,6 @@ public class VentanaAniadirClase extends JFrame {
 		panel.setBackground(new Color(102, 153, 153));
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 65));
-		
-		JLabel lblFoto = new JLabel("");
-		lblFoto.setIcon(new ImageIcon("resources/images/FotoClases2.jpg"));
-		panel.add(lblFoto);
 		
 		JPanel panel_Labels = new JPanel();
 		panel_Labels.setBounds(new Rectangle(0, 0, 100000, 0));
@@ -148,5 +146,9 @@ public class VentanaAniadirClase extends JFrame {
 		btnSalir.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_7.add(btnSalir);
 	}
+	
+	public void mostrarVentana() {
+        getContentPane().setVisible(true);
+    }
 
 }

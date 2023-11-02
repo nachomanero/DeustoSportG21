@@ -1,15 +1,13 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -24,6 +22,7 @@ public class VentanaMenuAdmin extends JFrame {
 	public VentanaMenuAdmin() {
 		setBackground(new Color(102, 153, 153));
 		
+		setVisible(true);
 		setResizable(false);
 		setBounds(new Rectangle(200, 200, 550, 350));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,6 +81,11 @@ public class VentanaMenuAdmin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
+                thisFrame.dispose();
+                
+                VentanaAniadirClase vent = new VentanaAniadirClase();
+                vent.mostrarVentana();
 				
 			}
 		});
@@ -91,6 +95,9 @@ public class VentanaMenuAdmin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
+                thisFrame.dispose();
+			
 				VentanaEdicionActividades vent = new VentanaEdicionActividades();
 				vent.mostrarVentana();
 			}
@@ -102,6 +109,7 @@ public class VentanaMenuAdmin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
+				
 			}
 		});
 	}
@@ -109,6 +117,7 @@ public class VentanaMenuAdmin extends JFrame {
 	public void mostrarVentana() {
         getContentPane().setVisible(true);
     }
+	
 
 
 }
