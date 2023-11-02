@@ -147,8 +147,8 @@ public class VentanaAgenda extends JFrame {
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		contentPane.add(panelSur, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("Anterior");
-		panelSur.add(btnNewButton);
+		JButton btnAnterior = new JButton("Anterior");
+		panelSur.add(btnAnterior);
 		
 		activityList.addListSelectionListener(new ListSelectionListener() {
 			@Override
