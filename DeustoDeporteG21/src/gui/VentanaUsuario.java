@@ -32,7 +32,7 @@ public class VentanaUsuario extends JFrame {
 		
 		setResizable(false);
 		setBounds(new Rectangle(200, 200, 550, 350));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(200, 200, 550, 350);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
@@ -133,8 +133,11 @@ public class VentanaUsuario extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Gracias por usar DeustoSport"," ",JOptionPane.INFORMATION_MESSAGE);
-				System.exit(0);
+				int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
+                    thisFrame.dispose();
+                }
 			}
 		});
 		

@@ -10,11 +10,16 @@ import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import java.awt.Component;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.JSpinner;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
@@ -30,7 +35,8 @@ public class VentanaEditarClase extends JFrame {
 	
 	public VentanaEditarClase() {
 		setBackground(new Color(102, 153, 153));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setVisible(true);
 		
 		setResizable(false);
 		setBounds(200, 200, 550, 350);
@@ -129,10 +135,10 @@ public class VentanaEditarClase extends JFrame {
 		panel_7.setBackground(new Color(102, 153, 153));
 		contentPane.add(panel_7, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("Editar Clase");
-		btnNewButton.setBackground(new Color(192, 192, 192));
-		btnNewButton.setFont(new Font("Arial", Font.BOLD, 13));
-		panel_7.add(btnNewButton);
+		JButton btnEditarClase = new JButton("Editar Clase");
+		btnEditarClase.setBackground(new Color(192, 192, 192));
+		btnEditarClase.setFont(new Font("Arial", Font.BOLD, 13));
+		panel_7.add(btnEditarClase);
 		
 		JButton btnRetroceder = new JButton("Retroceder");
 		btnRetroceder.setBackground(new Color(192, 192, 192));
@@ -143,6 +149,52 @@ public class VentanaEditarClase extends JFrame {
 		btnSalir.setBackground(new Color(192, 192, 192));
 		btnSalir.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_7.add(btnSalir);
+		
+		
+		btnRetroceder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnRetroceder);
+                thisFrame.dispose();
+			
+				VentanaMenuAdmin vent = new VentanaMenuAdmin();
+				vent.mostrarVentana();
+				
+			}
+		});
+		
+		btnSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
+                    thisFrame.dispose();
+                }
+			}
+		});
+		
+		btnEditarClase.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JOptionPane.showMessageDialog(null, "Clase modificada correctamente","EDICION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnEditarClase);
+                thisFrame.dispose();
+			
+				VentanaMenuAdmin vent = new VentanaMenuAdmin();
+				vent.mostrarVentana();
+				
+			}
+		});
 	}
+	public void mostrarVentana() {
+        getContentPane().setVisible(true);
+    }
 
 }

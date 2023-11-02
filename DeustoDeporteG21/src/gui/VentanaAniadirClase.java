@@ -10,15 +10,19 @@ import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import java.awt.Component;
 import java.awt.Rectangle;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.JSpinner;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class VentanaAniadirClase extends JFrame {
@@ -31,7 +35,7 @@ public class VentanaAniadirClase extends JFrame {
 
 	public VentanaAniadirClase() {
 		setBackground(new Color(102, 153, 153));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
 		setVisible(true);
 		
@@ -145,10 +149,53 @@ public class VentanaAniadirClase extends JFrame {
 		btnSalir.setBackground(new Color(192, 192, 192));
 		btnSalir.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_7.add(btnSalir);
+		
+		
+		btnSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
+                    thisFrame.dispose();
+                }     
+			}
+		});
+		
+		btnRetroceder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnRetroceder);
+                thisFrame.dispose();
+			
+				VentanaMenuAdmin vent = new VentanaMenuAdmin();
+				vent.mostrarVentana();
+			}
+		});
+		
+		btnCrearClase.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JOptionPane.showMessageDialog(null, "Clase creada correctamente","CREACION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnCrearClase);
+                thisFrame.dispose();
+			
+				VentanaMenuAdmin vent = new VentanaMenuAdmin();
+				vent.mostrarVentana();
+			}
+		});
 	}
 	
 	public void mostrarVentana() {
         getContentPane().setVisible(true);
     }
+	
+	
 
 }

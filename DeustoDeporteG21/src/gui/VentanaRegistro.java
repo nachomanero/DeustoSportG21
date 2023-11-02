@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -178,8 +180,11 @@ public class VentanaRegistro {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Gracias por usar DeustoSport"," ",JOptionPane.INFORMATION_MESSAGE);
-				frame.dispose();
+				int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
+                    thisFrame.dispose();
+                }
 				
 			}
 		});

@@ -7,6 +7,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
@@ -25,7 +27,7 @@ public class VentanaMenuAdmin extends JFrame {
 		setVisible(true);
 		setResizable(false);
 		setBounds(new Rectangle(200, 200, 550, 350));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(200, 200, 550, 350);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
@@ -98,7 +100,7 @@ public class VentanaMenuAdmin extends JFrame {
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
                 thisFrame.dispose();
 			
-				VentanaEdicionActividades vent = new VentanaEdicionActividades();
+				VentanaEditarClase vent = new VentanaEditarClase();
 				vent.mostrarVentana();
 			}
 		});
@@ -108,9 +110,13 @@ public class VentanaMenuAdmin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
+                    thisFrame.dispose();
 				
 				
-			}
+			}}
 		});
 	}
 	
