@@ -176,8 +176,8 @@ public class VentanaEdicionActividades extends JFrame{
                 if (result == JOptionPane.YES_OPTION) {
                 	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(exitButton);
                     thisFrame.dispose();
-                    VentanaUsuario ventanaUsuario = new VentanaUsuario();
-                    ventanaUsuario.setVisible(true);
+                    VentanaMenuAdmin vent = new VentanaMenuAdmin();
+                    vent.setVisible(true);
                 }
             }
         });
