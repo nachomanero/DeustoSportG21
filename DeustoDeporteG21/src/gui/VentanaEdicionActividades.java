@@ -181,12 +181,7 @@ public class VentanaEdicionActividades {
         });
         exitButton.setPreferredSize(new Dimension(100, 40));
     }
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new VentanaEdicionActividades(); // Crea una instancia de tu ventana principal
-        });
-    }
-    
    
+  
 
 }
