@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VentanaEdicionActividades {
+public class VentanaEdicionActividades extends JFrame{
     private JDateChooser dateChooser;
     private JPanel eventPanel;
     private Map<Date, String> events;
@@ -180,6 +180,9 @@ public class VentanaEdicionActividades {
             }
         });
         exitButton.setPreferredSize(new Dimension(100, 40));
+    }
+    public void mostrarVentana() {
+        getContentPane().setVisible(true);
     }
    
   

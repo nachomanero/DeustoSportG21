@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class VentanaMenuAdmin extends JFrame {
@@ -74,6 +76,39 @@ public class VentanaMenuAdmin extends JFrame {
 		btnSalir.setBackground(new Color(192, 192, 192));
 		btnSalir.setFont(new Font("Arial", Font.BOLD, 13));
 		panelSur.add(btnSalir);
+		
+		btnAniadirClase.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		btnModClase.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaEdicionActividades vent = new VentanaEdicionActividades();
+				vent.mostrarVentana();
+			}
+		});
+		
+		btnSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
+	
+	public void mostrarVentana() {
+        getContentPane().setVisible(true);
+    }
+
 
 }
