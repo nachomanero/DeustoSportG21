@@ -1,23 +1,17 @@
 package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.TitledBorder;
@@ -150,12 +144,12 @@ public class VentanaAgenda extends JFrame {
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		contentPane.add(panelSur, BorderLayout.SOUTH);
 		
-		JButton btnAnterior = new JButton("Anterior");
-		panelSur.add(btnAnterior);
-		btnAnterior.addActionListener(new ActionListener() {
+		JButton btnSalir = new JButton("Salir");
+		panelSur.add(btnSalir);
+		btnSalir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnAnterior);
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
                 thisFrame.dispose();
 				VentanaUsuario ventanaUsuario = new VentanaUsuario();
 				ventanaUsuario.setVisible(true);
