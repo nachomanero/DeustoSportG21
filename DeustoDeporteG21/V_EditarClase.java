@@ -1,4 +1,4 @@
-package gui;
+package Ventanas;
 
 import java.awt.EventQueue;
 
@@ -10,22 +10,17 @@ import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import java.awt.Component;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.JSpinner;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
 import java.awt.Color;
 
-public class VentanaEditarClase extends JFrame {
+public class V_EditarClase extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -33,10 +28,9 @@ public class VentanaEditarClase extends JFrame {
 	private JTextField textField_2;
 
 	
-	public VentanaEditarClase() {
+	public V_EditarClase() {
 		setBackground(new Color(102, 153, 153));
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setResizable(false);
 		setBounds(200, 200, 550, 350);
@@ -54,7 +48,7 @@ public class VentanaEditarClase extends JFrame {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 65));
 		
 		JLabel lblFoto = new JLabel("");
-		lblFoto.setIcon(new ImageIcon("resources/images/FotoClases.jpg"));
+		lblFoto.setIcon(new ImageIcon("Fotos/FotoClases.jpg"));
 		panel.add(lblFoto);
 		
 		JPanel panel_Labels = new JPanel();
@@ -149,52 +143,6 @@ public class VentanaEditarClase extends JFrame {
 		btnSalir.setBackground(new Color(192, 192, 192));
 		btnSalir.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_7.add(btnSalir);
-		
-		
-		btnRetroceder.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnRetroceder);
-                thisFrame.dispose();
-			
-				VentanaMenuAdmin vent = new VentanaMenuAdmin();
-				vent.mostrarVentana();
-				
-			}
-		});
-		
-		btnSalir.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
-                if (result == JOptionPane.YES_OPTION) {
-                	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
-                    thisFrame.dispose();
-                }
-			}
-		});
-		
-		btnEditarClase.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				JOptionPane.showMessageDialog(null, "Clase modificada correctamente","EDICION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
-				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnEditarClase);
-                thisFrame.dispose();
-			
-				VentanaMenuAdmin vent = new VentanaMenuAdmin();
-				vent.mostrarVentana();
-				
-			}
-		});
 	}
-	public void mostrarVentana() {
-        getContentPane().setVisible(true);
-    }
 
 }

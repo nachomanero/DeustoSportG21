@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.ImageIcon;
 import java.awt.FlowLayout;
 import javax.swing.JMenu;
@@ -160,8 +161,11 @@ public class VentanaPrincipal {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Gracias por usar DeustoSport"," ",JOptionPane.INFORMATION_MESSAGE);
-				frame.dispose();
+				int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalida);
+                    thisFrame.dispose();
+                }
 			}
 		});
 	}

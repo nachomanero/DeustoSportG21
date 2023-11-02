@@ -2,6 +2,7 @@ package main;
 
 import java.awt.EventQueue;
 
+import gui.VentanaMenuAdmin;
 import gui.VentanaPrincipal;
 
 public class Main {
@@ -11,6 +12,8 @@ public class Main {
             public void run() {
                 try {
                     VentanaPrincipal window = new VentanaPrincipal();
+                	
+                    //VentanaMenuAdmin window = new VentanaMenuAdmin();
                     window.mostrarVentana();
                 } catch (Exception e) {
                     e.printStackTrace();

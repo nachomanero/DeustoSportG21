@@ -1,17 +1,19 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
-import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class VentanaMenuAdmin extends JFrame {
@@ -22,9 +24,10 @@ public class VentanaMenuAdmin extends JFrame {
 	public VentanaMenuAdmin() {
 		setBackground(new Color(102, 153, 153));
 		
+		setVisible(true);
 		setResizable(false);
 		setBounds(new Rectangle(200, 200, 550, 350));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(200, 200, 550, 350);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
@@ -74,6 +77,53 @@ public class VentanaMenuAdmin extends JFrame {
 		btnSalir.setBackground(new Color(192, 192, 192));
 		btnSalir.setFont(new Font("Arial", Font.BOLD, 13));
 		panelSur.add(btnSalir);
+		
+		btnAniadirClase.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
+                thisFrame.dispose();
+                
+                VentanaAniadirClase vent = new VentanaAniadirClase();
+                vent.mostrarVentana();
+				
+			}
+		});
+		
+		btnModClase.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
+                thisFrame.dispose();
+			
+				VentanaEditarClase vent = new VentanaEditarClase();
+				vent.mostrarVentana();
+			}
+		});
+		
+		btnSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
+                    thisFrame.dispose();
+				
+				
+			}}
+		});
 	}
+	
+	public void mostrarVentana() {
+        getContentPane().setVisible(true);
+    }
+	
+
 
 }
