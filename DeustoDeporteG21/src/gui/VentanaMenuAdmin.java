@@ -100,7 +100,7 @@ public class VentanaMenuAdmin extends JFrame {
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
                 thisFrame.dispose();
 			
-				VentanaEditarClase vent = new VentanaEditarClase();
+				VentanaEdicionActividades vent = new VentanaEdicionActividades();
 				vent.mostrarVentana();
 			}
 		});
