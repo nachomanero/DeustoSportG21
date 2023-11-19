@@ -42,9 +42,7 @@ public class VentanaCalendarioActividades extends JFrame {
         dateChooser.setPreferredSize(new Dimension(150, dateChooser.getPreferredSize().height));
         topPanel.add(dateChooser);
 
-        // Eliminar el botón "Mostrar actividades disponibles"
-        // JButton showEventsButton = new JButton("Mostrar actividades disponibles");
-        // topPanel.add(showEventsButton);
+       
 
         eventPanel = new JPanel();
         eventPanel.setLayout(new BoxLayout(eventPanel, BoxLayout.Y_AXIS));
@@ -82,7 +80,7 @@ public class VentanaCalendarioActividades extends JFrame {
         bottomPanel.add(selectActivityButton);
         bottomPanel.add(salirButton);
 
-        // Utiliza BoxLayout para organizar los botones horizontalmente
+       
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 
@@ -95,13 +93,9 @@ public class VentanaCalendarioActividades extends JFrame {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if (dateChooser.getDate() != null) {
-                    // Comentar la siguiente línea para permitir la selección directa de actividades
-                    // selectActivityButton.setEnabled(true);
                     dateSelected = true;
                     showEventsForSelectedDate();
                 } else {
-                    // Comentar la siguiente línea para permitir la selección directa de actividades
-                    // selectActivityButton.setEnabled(false);
                     dateSelected = false;
                 }
             }
@@ -172,6 +166,17 @@ public class VentanaCalendarioActividades extends JFrame {
     public void mostrarVentana() {
         getContentPane().setVisible(true);
     }
+    
+    /*
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new VentanaCalendarioActividades();
+            }
+        });
+    }
+    */
     
    
    

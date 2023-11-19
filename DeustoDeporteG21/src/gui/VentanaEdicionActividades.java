@@ -1,21 +1,19 @@
 package gui;
-import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public class VentanaEdicionActividades extends JFrame{
-    private JDateChooser dateChooser;
-    private JPanel eventPanel;
-    private Map<Date, String> events;
-    private boolean dateSelected = false;
-    private boolean activitySelected = false;
+public class VentanaEdicionActividades extends JFrame {
+    private JTextField actividadTextField;
+    private JList<String> actividadesList;
+    private DefaultListModel<String> actividadesListModel;
+    private List<String> actividades;
     private JButton selectActivityButton;
     private JButton exitButton;
 
@@ -25,54 +23,50 @@ public class VentanaEdicionActividades extends JFrame{
         frame.setSize(800, 400);
         frame.setResizable(false);
 
-        events = new HashMap<>();
+       // actividades = obtenerListaActividades(); // Obtener la lista de actividades (puedes personalizar esto según tus necesidades)
 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        JLabel selectDateLabel = new JLabel("Seleccionar fecha:");
-        topPanel.add(selectDateLabel);
+        JLabel actividadLabel = new JLabel("Filtrar por tipo de actividad:");
+        topPanel.add(actividadLabel);
 
-        dateChooser = new JDateChooser();
-        dateChooser.setDateFormatString("yyyy-MM-dd");
-        dateChooser.setPreferredSize(new Dimension(150, dateChooser.getPreferredSize().height));
-        topPanel.add(dateChooser);
+        actividadTextField = new JTextField(15);
+        actividadTextField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateActividadesList();
+            }
 
-        JButton showEventsButton = new JButton("Mostrar actividades disponibles para editar");
-        showEventsButton.addActionListener(e -> {
-            if (dateSelected) {
-                showEventsForSelectedDate();
-            } else {
-                JOptionPane.showMessageDialog(null, "Por favor, seleccione una fecha antes para poder editarla.");
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateActividadesList();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateActividadesList();
             }
         });
-        topPanel.add(showEventsButton);
+        topPanel.add(actividadTextField);
 
         mainPanel.add(topPanel, BorderLayout.NORTH);
 
-        eventPanel = new JPanel();
-        eventPanel.setLayout(new BoxLayout(eventPanel, BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(eventPanel);
+        actividadesListModel = new DefaultListModel<>();
+        actividadesList = new JList<>(actividadesListModel);
+        JScrollPane scrollPane = new JScrollPane(actividadesList);
 
         JPanel rightPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
 
         selectActivityButton = new JButton("Editar");
-        selectActivityButton.addActionListener(e -> {
-            if (activitySelected) {
-                selectActivity();
-            } else {
-                JOptionPane.showMessageDialog(null, "Por favor, seleccione una actividad antes de editar.");
-            }
-        });
-        
-        
+        selectActivityButton.addActionListener(e -> selectActivity());
 
         mainPanel.add(scrollPane, BorderLayout.CENTER);
         mainPanel.add(rightPanel, BorderLayout.EAST);
-        
+
         selectActivityButton.setPreferredSize(new Dimension(100, 40));
         selectActivityButton.setEnabled(false);
 
@@ -82,21 +76,9 @@ public class VentanaEdicionActividades extends JFrame{
         gbc.anchor = GridBagConstraints.CENTER;
         rightPanel.add(selectActivityButton, gbc);
 
-        mainPanel.add(scrollPane, BorderLayout.CENTER);
-        mainPanel.add(rightPanel, BorderLayout.EAST);
-
-        dateChooser.getDateEditor().addPropertyChangeListener("date", evt -> {
-            if (dateChooser.getDate() != null) {
-                dateSelected = true;
-            } else {
-                dateSelected = false;
-            }
-        });
-        
-        
         setupExitButton();
         gbc.gridx = 0;
-        gbc.gridy = 1; 
+        gbc.gridy = 1;
         rightPanel.add(exitButton, gbc);
 
         frame.getContentPane().add(mainPanel);
@@ -104,69 +86,42 @@ public class VentanaEdicionActividades extends JFrame{
         frame.setVisible(true);
     }
 
-    private void showEventsForSelectedDate() {
-        if (!dateSelected) {
-            JOptionPane.showMessageDialog(null, "Por favor, seleccione una fecha antes de mostrar actividades.");
-            return;
+    private void updateActividadesList() {
+        actividadesListModel.clear();
+
+        String typeToFilter = actividadTextField.getText().trim().toLowerCase();
+
+        for (String actividad : actividades) {
+            if (actividad.toLowerCase().contains(typeToFilter) || typeToFilter.isEmpty()) {
+                actividadesListModel.addElement(actividad);
+            }
         }
 
-        Date selectedDate = dateChooser.getDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String selectedDateString = sdf.format(selectedDate);
-
-        String eventsForDate = events.get(selectedDate);
-        eventPanel.removeAll();
-
-        if (eventsForDate != null) {
-            JTextArea textArea = new JTextArea(eventsForDate);
-            textArea.setWrapStyleWord(true);
-            textArea.setLineWrap(true);
-            textArea.setOpaque(false);
-            textArea.setEditable(false);
-            eventPanel.add(new JScrollPane(textArea));
-            activitySelected = true;
-        } else {
-            JTextArea textArea = new JTextArea("No hay actividades para esta fecha.");
-            textArea.setWrapStyleWord(true);
-            textArea.setLineWrap(true);
-            textArea.setOpaque(false);
-            textArea.setEditable(false);
-            eventPanel.add(new JScrollPane(textArea));
-            activitySelected = false;
-        }
-
-        eventPanel.revalidate();
-        eventPanel.repaint();
-        selectActivityButton.setEnabled(activitySelected);
+        boolean actividadesDisponibles = !actividadesListModel.isEmpty();
+        selectActivityButton.setEnabled(actividadesDisponibles);
     }
 
     private void selectActivity() {
-        if (activitySelected) {
-            Date selectedDate = dateChooser.getDate();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String selectedDateString = sdf.format(selectedDate);
+        if (!actividadesListModel.isEmpty()) {
+            String[] activityOptions = new String[actividadesListModel.size()];
+            actividadesListModel.copyInto(activityOptions);
 
-            String eventsForDate = events.get(selectedDate);
+            String selectedActivity = (String) JOptionPane.showInputDialog(null,
+                    "Selecciona una actividad:",
+                    "Actividades disponibles",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    activityOptions,
+                    activityOptions[0]);
 
-            if (eventsForDate != null) {
-                String[] activityOptions = eventsForDate.split("\n");
-                String selectedActivity = (String) JOptionPane.showInputDialog(null,
-                        "Selecciona una actividad:",
-                        "Actividades disponibles para " + selectedDateString,
-                        JOptionPane.QUESTION_MESSAGE,
-                        null,
-                        activityOptions,
-                        activityOptions[0]);
-
-                if (selectedActivity != null) {
-                    JOptionPane.showMessageDialog(null, "Has seleccionado la actividad para editar: " + selectedActivity);
-                    VentanaEditarClase ventanaEditar = new VentanaEditarClase();
-                    ventanaEditar.mostrarVentana();
-                }
+            if (selectedActivity != null) {
+                JOptionPane.showMessageDialog(null, "Has seleccionado la actividad para editar: " + selectedActivity);
+                VentanaEditarClase ventanaEditar = new VentanaEditarClase();
+                ventanaEditar.mostrarVentana();
             }
         }
     }
-    
+
     private void setupExitButton() {
         exitButton = new JButton("Salir");
         exitButton.addActionListener(new ActionListener() {
@@ -174,7 +129,7 @@ public class VentanaEdicionActividades extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
                 if (result == JOptionPane.YES_OPTION) {
-                	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(exitButton);
+                    JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(exitButton);
                     thisFrame.dispose();
                     VentanaMenuAdmin vent = new VentanaMenuAdmin();
                     vent.setVisible(true);
@@ -183,11 +138,33 @@ public class VentanaEdicionActividades extends JFrame{
         });
         exitButton.setPreferredSize(new Dimension(100, 40));
     }
+
+    /*
+    private List<String> obtenerListaActividades() {
+        
+        List<String> listaActividades = new ArrayList<>();
+        listaActividades.add("Yoga");
+        listaActividades.add("Pilates");
+        listaActividades.add("Spinning");
+        return listaActividades;
+    }
+    */
+
     public void mostrarVentana() {
         getContentPane().setVisible(true);
     }
    
-	
-  
+
+   /* public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new VentanaEdicionActividades();
+            }
+        });
+    }
+    */
 
 }
+
+
