@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VentanaCalendarioActividades extends JFrame{
+public class VentanaCalendarioActividades extends JFrame {
     private JDateChooser dateChooser;
     private JPanel eventPanel;
     private Map<Date, String> events;
@@ -42,14 +42,9 @@ public class VentanaCalendarioActividades extends JFrame{
         dateChooser.setPreferredSize(new Dimension(150, dateChooser.getPreferredSize().height));
         topPanel.add(dateChooser);
 
-        JButton showEventsButton = new JButton("Mostrar actividades disponibles");
-        showEventsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showEventsForSelectedDate();
-            }
-        });
-        topPanel.add(showEventsButton);
+        // Eliminar el botón "Mostrar actividades disponibles"
+        // JButton showEventsButton = new JButton("Mostrar actividades disponibles");
+        // topPanel.add(showEventsButton);
 
         eventPanel = new JPanel();
         eventPanel.setLayout(new BoxLayout(eventPanel, BoxLayout.Y_AXIS));
@@ -75,7 +70,7 @@ public class VentanaCalendarioActividades extends JFrame{
         salirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	frame.dispose();
+                frame.dispose();
                 VentanaUsuario ventanaUsuario = new VentanaUsuario();
                 ventanaUsuario.setVisible(true);
             }
@@ -90,23 +85,23 @@ public class VentanaCalendarioActividades extends JFrame{
         // Utiliza BoxLayout para organizar los botones horizontalmente
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
-        
-        
 
         selectActivityButton.setPreferredSize(new Dimension(150, 40));
         selectActivityButton.setEnabled(false);
         bottomPanel.add(selectActivityButton);
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
-        
 
         dateChooser.getDateEditor().addPropertyChangeListener("date", new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if (dateChooser.getDate() != null) {
-                    selectActivityButton.setEnabled(true);
+                    // Comentar la siguiente línea para permitir la selección directa de actividades
+                    // selectActivityButton.setEnabled(true);
                     dateSelected = true;
+                    showEventsForSelectedDate();
                 } else {
-                    selectActivityButton.setEnabled(false);
+                    // Comentar la siguiente línea para permitir la selección directa de actividades
+                    // selectActivityButton.setEnabled(false);
                     dateSelected = false;
                 }
             }
@@ -114,7 +109,6 @@ public class VentanaCalendarioActividades extends JFrame{
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
- 
     }
 
     private void showEventsForSelectedDate() {
@@ -174,12 +168,11 @@ public class VentanaCalendarioActividades extends JFrame{
             }
         }
     }
-    
+
     public void mostrarVentana() {
         getContentPane().setVisible(true);
     }
-   
     
    
- 
+   
 }
