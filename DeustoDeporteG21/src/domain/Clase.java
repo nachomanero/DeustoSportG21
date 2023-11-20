@@ -3,16 +3,18 @@ package domain;
 public class Clase {
 
     // Atributos de la clase Clase
-    private int IDClase;
-    private String hora;
-    private Actividad actividad;
-    private Fecha fecha;
+    protected int IDClase;
+    protected String hora;
+    protected Actividad actividad;
+    protected Fecha fecha;
+    protected Sala sala;
     // Constructor
-    public Clase(int IDClase, String hora, Actividad actividad, Fecha fecha) {
+    public Clase(int IDClase, String hora, Actividad actividad, Fecha fecha, Sala sala) {
         this.IDClase = IDClase;
         this.hora = hora;
         this.actividad = actividad;
         this.fecha = fecha;
+        this.sala=sala;
     }
     // Métodos getter y setter 
 
@@ -43,7 +45,13 @@ public class Clase {
     public Fecha getFecha() {
         return fecha;
     }
-
+    
+    public Sala getSala() {
+    	return sala;
+    }
+    public void setSala(Sala sala) {
+    	this.sala=sala;
+    }
     public void setFecha(Fecha fecha) {
         this.fecha = fecha;
     }
