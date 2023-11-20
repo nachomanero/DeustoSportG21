@@ -75,7 +75,7 @@ public class Usuario {
 				+ ", correoElectronico=" + correoElectronico + ", contrasena=" + contrasena + "]";
 	}
 
-	public void Usuario(final String dni, final String nombre, final String apellido, final String direccion, final String correoElectronico,
+	public void usuario(final String dni, final String nombre, final String apellido, final String direccion, final String correoElectronico,
 			final String contrasena) {
 		this.dni = dni;
 		this.nombre = nombre;

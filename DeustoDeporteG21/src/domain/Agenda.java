@@ -39,8 +39,7 @@ public class Agenda {
 	public Agenda() {
 		super();
 	}
-	public Agenda(Clase iDClase, Actividad iDActividad, Sala iDSala, domain.Usuario usuario) {
-		super();
+	public void agenda(Clase iDClase, Actividad iDActividad, Sala iDSala, domain.Usuario usuario) {
 		IDClase = iDClase;
 		IDActividad = iDActividad;
 		IDSala = iDSala;

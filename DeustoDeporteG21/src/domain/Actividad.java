@@ -46,7 +46,11 @@ public class Actividad {
 		return "Actividad [IDActividad=" + IDActividad + ", TipoActividad=" + TipoActividad + ", plazas=" + plazas
 				+ "]";
 	}
-    
-    
+
+	public void actividad(int iDActividad, domain.TipoActividad tipoActividad, int plazas) {
+		IDActividad = iDActividad;
+		TipoActividad = tipoActividad;
+		this.plazas = plazas;
+	}
 }
 

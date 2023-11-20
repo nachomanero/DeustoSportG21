@@ -44,7 +44,7 @@ public class Sala {
 		return "Sala [IDSala=" + IDSala + ", nombre=" + nombre + ", capacidad=" + capacidad + "]";
 	}
 
-	public void Sala(int iDSala, String nombre, int capacidad) {
+	public  void sala(int iDSala, String nombre, int capacidad) {
 		IDSala = iDSala;
 		this.nombre = nombre;
 		this.capacidad = capacidad;
