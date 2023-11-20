@@ -4,11 +4,11 @@ public class Actividad {
 
     // Atributos de la clase Actividad
     protected int IDActividad;
-    protected String TipoActividad;
+    protected TipoActividad TipoActividad;
     protected int plazas;
 
     // Constructor
-    public Actividad(int IDActividad, String TipoActividad, int plazas) {
+    public Actividad(int IDActividad, domain.TipoActividad TipoActividad, int plazas) {
         this.IDActividad = IDActividad;
         this.TipoActividad = TipoActividad;
         this.plazas = plazas;
@@ -24,11 +24,11 @@ public class Actividad {
         this.IDActividad = IDActividad;
     }
 
-    public String getTipoActividad() {
+    public TipoActividad getTipoActividad() {
         return TipoActividad;
     }
 
-    public void setTipoActividad(String TipoActividad) {
+    public void setTipoActividad(TipoActividad TipoActividad) {
         this.TipoActividad = TipoActividad;
     }
 
