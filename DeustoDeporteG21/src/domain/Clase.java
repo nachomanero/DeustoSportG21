@@ -55,4 +55,18 @@ public class Clase {
     public void setFecha(Fecha fecha) {
         this.fecha = fecha;
     }
+
+	@Override
+	public String toString() {
+		return "Clase [IDClase=" + IDClase + ", hora=" + hora + ", actividad=" + actividad + ", fecha=" + fecha
+				+ ", sala=" + sala + "]";
+	}
+	public void clase(int iDClase, String hora, Actividad actividad, Fecha fecha, Sala sala) {
+		IDClase = iDClase;
+		this.hora = hora;
+		this.actividad = actividad;
+		this.fecha = fecha;
+		this.sala = sala;
+	}
+    
 }

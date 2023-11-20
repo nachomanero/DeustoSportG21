@@ -68,4 +68,21 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
+	@Override
+	public String toString() {
+		return "Usuario [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
+				+ ", correoElectronico=" + correoElectronico + ", contrasena=" + contrasena + "]";
+	}
+
+	public void Usuario(final String dni, final String nombre, final String apellido, final String direccion, final String correoElectronico,
+			final String contrasena) {
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.direccion = direccion;
+		this.correoElectronico = correoElectronico;
+		this.contrasena = contrasena;
+	}
+    
 }

@@ -2,7 +2,9 @@ package domain;
 
 public class Actividad {
 
-    // Atributos de la clase Actividad
+
+
+	// Atributos de la clase Actividad
     protected int IDActividad;
     protected TipoActividad TipoActividad;
     protected int plazas;
@@ -39,5 +41,12 @@ public class Actividad {
     public void setPlazas(int plazas) {
         this.plazas = plazas;
     }
+    @Override
+	public String toString() {
+		return "Actividad [IDActividad=" + IDActividad + ", TipoActividad=" + TipoActividad + ", plazas=" + plazas
+				+ "]";
+	}
+    
+    
 }
 
