@@ -84,5 +84,10 @@ public class Usuario {
 		this.correoElectronico = correoElectronico;
 		this.contrasena = contrasena;
 	}
+
+	public Usuario() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
     
 }

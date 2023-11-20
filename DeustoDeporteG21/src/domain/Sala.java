@@ -49,6 +49,11 @@ public class Sala {
 		this.nombre = nombre;
 		this.capacidad = capacidad;
 	}
+
+	public Sala() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
     
     
 }

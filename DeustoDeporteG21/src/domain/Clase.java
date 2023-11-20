@@ -68,5 +68,10 @@ public class Clase {
 		this.fecha = fecha;
 		this.sala = sala;
 	}
+
+	public Clase() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
     
 }

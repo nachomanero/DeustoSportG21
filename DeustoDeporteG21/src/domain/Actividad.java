@@ -1,9 +1,6 @@
 package domain;
 
 public class Actividad {
-
-
-
 	// Atributos de la clase Actividad
     protected int IDActividad;
     protected TipoActividad TipoActividad;
@@ -51,6 +48,10 @@ public class Actividad {
 		IDActividad = iDActividad;
 		TipoActividad = tipoActividad;
 		this.plazas = plazas;
+	}
+
+	public Actividad() {
+		super();
 	}
 }
 

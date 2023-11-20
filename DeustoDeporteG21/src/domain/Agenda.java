@@ -45,4 +45,5 @@ public class Agenda {
 		IDSala = iDSala;
 		Usuario = usuario;
 	}
+	
 }
