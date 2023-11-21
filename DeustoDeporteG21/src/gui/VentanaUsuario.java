@@ -17,6 +17,8 @@ import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -59,68 +61,78 @@ public class VentanaUsuario extends JFrame {
 		panelCentro.add(panelFotos, BorderLayout.CENTER);
 		panelFotos.setBackground(new Color(102, 153, 153));
 		
-		JLabel lblFoto1 = new JLabel("");
-		lblFoto1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblFoto1.setIcon(new ImageIcon("resources/images/Agenda.png"));
+		JLabel agenda = new JLabel("");
+		agenda.setHorizontalAlignment(SwingConstants.RIGHT);
+		agenda.setIcon(new ImageIcon("resources/images/Agenda.png"));
+		agenda.setToolTipText("Mi Agenda");
 		
-		JLabel lblFoto2 = new JLabel("");
-		lblFoto2.setHorizontalAlignment(SwingConstants.LEFT);
-		lblFoto2.setIcon(new ImageIcon("resources/images/FuturasClases.png"));
-		panelFotos.add(lblFoto1);
-		panelFotos.add(lblFoto2);		
+		JLabel clases = new JLabel("");
+		clases.setHorizontalAlignment(SwingConstants.LEFT);
+		clases.setIcon(new ImageIcon("resources/images/FuturasClases.png"));
+		clases.setToolTipText("Futuras clases");
+		panelFotos.add(agenda);
+		panelFotos.add(clases);	
 		
-		JPanel panelBotones = new JPanel();
-		panelCentro.add(panelBotones, BorderLayout.SOUTH);
-		panelBotones.setBackground(new Color(102, 153, 153));
 		
-		JPanel panelBoton1 = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) panelBoton1.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.LEFT);
-		flowLayout_1.setHgap(30);
-		panelBotones.add(panelBoton1);
-		panelBoton1.setBackground(new Color(102, 153, 153));
-		
-		JButton btnMiAgenda = new JButton("Mi agenda");
-		btnMiAgenda.setFont(new Font("Arial", Font.BOLD, 13));
-		panelBoton1.add(btnMiAgenda);
-		
-		btnMiAgenda.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnMiAgenda);
+        agenda.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(agenda);
                 thisFrame.dispose();
 				VentanaAgenda ventanaAgenda = new VentanaAgenda();
 				ventanaAgenda.setVisible(true);
-			
-			
-			}
-		});
-		
-		
-		
-		
-		JPanel panelBoton2 = new JPanel();
-		panelBotones.add(panelBoton2);
-		panelBoton2.setBackground(new Color(102, 153, 153));
-		
-		JButton btnFutClases = new JButton("Futuras clases");
-		btnFutClases.setFont(new Font("Arial", Font.BOLD, 13));
-		panelBoton2.add(btnFutClases);
-		
-		btnFutClases.addActionListener(new ActionListener() {
-			
+            }
+
 			@Override
-			public void actionPerformed(ActionEvent e) {
-			
-				VentanaCalendarioActividades calendarioActividades= new VentanaCalendarioActividades();
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
+
+        
+        clases.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	VentanaCalendarioActividades calendarioActividades= new VentanaCalendarioActividades();
 				calendarioActividades.mostrarVentana();
-				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnFutClases);
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(clases);
                 thisFrame.dispose();
 			
-			
-			}
-		});
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {}
+
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+
+		
 		
 		JPanel panelSur = new JPanel();
 		contentPane.add(panelSur, BorderLayout.SOUTH);
@@ -143,7 +155,11 @@ public class VentanaUsuario extends JFrame {
 		
 		
 	}
-	
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new VentanaUsuario().setVisible(true);
+        });
+    }
 	
     
 
