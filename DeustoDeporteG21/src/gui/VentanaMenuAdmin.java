@@ -1,6 +1,8 @@
 package gui;
 
 import javax.swing.JFrame;
+import io.FicheroLogger;
+
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
@@ -15,10 +17,12 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
-
+import java.util.logging.Logger;
+import java.util.logging.Level;
 public class VentanaMenuAdmin extends JFrame {
 
 	private JPanel contentPane;
+    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
 
 	public VentanaMenuAdmin() {
@@ -88,6 +92,7 @@ public class VentanaMenuAdmin extends JFrame {
                 
                 VentanaAniadirClase vent = new VentanaAniadirClase();
                 vent.mostrarVentana();
+                LOGGER.log(Level.INFO,"El admin ha accedido al apartado de anñadir clase.");
 				
 			}
 		});
@@ -102,6 +107,7 @@ public class VentanaMenuAdmin extends JFrame {
 			
 				VentanaEdicionActividades vent = new VentanaEdicionActividades();
 				vent.mostrarVentana();
+				LOGGER.log(Level.INFO,"Se va a acceder a editar una clase.");
 			}
 		});
 		
@@ -114,8 +120,7 @@ public class VentanaMenuAdmin extends JFrame {
                 if (result == JOptionPane.YES_OPTION) {
                 	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
                     thisFrame.dispose();
-				
-				
+                    LOGGER.log(Level.INFO,"Se procede a salir"+ result);
 			}}
 		});
 	}

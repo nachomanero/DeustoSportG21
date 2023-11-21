@@ -1,6 +1,8 @@
 package gui;
 
 import javax.swing.JFrame;
+
+
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
@@ -22,12 +24,13 @@ import java.awt.event.MouseListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
-
+import io.FicheroLogger;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 public class VentanaUsuario extends JFrame {
 
 	private JPanel contentPane;
-
-	
+    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
 	
 	public VentanaUsuario() {
@@ -81,6 +84,8 @@ public class VentanaUsuario extends JFrame {
                 thisFrame.dispose();
 				VentanaAgenda ventanaAgenda = new VentanaAgenda();
 				ventanaAgenda.setVisible(true);
+                LOGGER.log(Level.INFO, "VIsualizacion de la agenda del Usuario");
+
             }
 
 			@Override
@@ -116,6 +121,8 @@ public class VentanaUsuario extends JFrame {
 				calendarioActividades.mostrarVentana();
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(clases);
                 thisFrame.dispose();
+                LOGGER.log(Level.INFO, "Se esta mostrando el calendario de Actividades");
+
 			
             }
 
@@ -149,6 +156,10 @@ public class VentanaUsuario extends JFrame {
                 if (result == JOptionPane.YES_OPTION) {
                 	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
                     thisFrame.dispose();
+                    LOGGER.log(Level.INFO, "El usuario ha salido."+result);
+
+                }else {
+                	LOGGER.log(Level.WARNING,"Salida de la aplicacion fallida"+result);
                 }
 			}
 		});

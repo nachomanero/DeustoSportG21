@@ -19,9 +19,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import java.awt.FlowLayout;
-
+import io.FicheroLogger;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 public class VentanaAgenda extends JFrame {
-
+    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private DefaultListModel<String> activityListModel = new DefaultListModel<>();
@@ -166,8 +168,10 @@ public class VentanaAgenda extends JFrame {
 					if(selectedIndex != -1) {
 						String selectedActivity = activityListModel.getElementAt(selectedIndex);
 						mostrarDatosActividad(selectedActivity, panelClase);
+						LOGGER.log(Level.INFO,"Se ha seleccionada una actividad correctamente"+ selectedActivity);
 					} else {
 						panelClase.removeAll();
+						LOGGER.log(Level.WARNING,"Se han borrado las clases.");
 					}
 				}
 			}

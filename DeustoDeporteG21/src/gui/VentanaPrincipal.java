@@ -1,12 +1,14 @@
 package gui;
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import io.FicheroLogger;
 
 import java.awt.Font;
 import javax.swing.JButton;
@@ -28,7 +30,8 @@ import java.awt.FlowLayout;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
+import java.util.logging.Logger;
+import java.util.logging.Level;
 public class VentanaPrincipal {
 
 	private JFrame frame;

@@ -3,6 +3,7 @@ package gui;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,11 +18,12 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import io.FicheroLogger;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-
+import java.util.logging.Logger;
+import java.util.logging.Level;
 public class VentanaRegistro {
 
 	private JFrame frame;
@@ -38,7 +40,8 @@ public class VentanaRegistro {
 	private JTextField textFieldNombre;
 	private JLabel lblNewLabel_4;
 
-	
+    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
+
 
 	
 	public VentanaRegistro() {
@@ -163,10 +166,13 @@ public class VentanaRegistro {
 		        
 		        if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty() || correo.isEmpty() || contrasenia.isEmpty()) {
 		            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.", "Error de Registro", JOptionPane.ERROR_MESSAGE);
+	                LOGGER.log(Level.WARNING, "Se ha intentado registrar un usuario sin tener todos los campos de datos completados.");
 		        } else {
 		            
 		            JOptionPane.showMessageDialog(null, "Registro completado correctamente", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);
 		            frame.dispose();
+	                LOGGER.log(Level.INFO, "Se ha registrado al nuevo usuario correctamente.");
+
 
 		            VentanaPrincipal vent = new VentanaPrincipal();
 		            vent.mostrarVentana();
@@ -184,6 +190,9 @@ public class VentanaRegistro {
                 if (result == JOptionPane.YES_OPTION) {
                 	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
                     thisFrame.dispose();
+                    LOGGER.log(Level.INFO, "El usuario ha salido.");
+                }else {
+                	LOGGER.log(Level.WARNING,"Intento de salida fallido.");
                 }
 				
 			}
@@ -198,6 +207,7 @@ public class VentanaRegistro {
 
                 VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
                 ventanaPrincipal.mostrarVentana();
+                LOGGER.log(Level.INFO,"Se ha accedido a la ventana principal.");
 			}
 		});
 	}

@@ -24,13 +24,18 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
+
+import io.FicheroLogger;
 public class VentanaAniadirClase extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
 
 	public VentanaAniadirClase() {
@@ -160,7 +165,10 @@ public class VentanaAniadirClase extends JFrame {
                 if (result == JOptionPane.YES_OPTION) {
                 	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
                     thisFrame.dispose();
-                }     
+                    LOGGER.log(Level.INFO, "El usuario ha salido."+result);
+                }else {
+                	LOGGER.log(Level.WARNING,"Salida de la aplicacion fallida"+result);
+                }
 			}
 		});
 		
@@ -185,9 +193,10 @@ public class VentanaAniadirClase extends JFrame {
 				JOptionPane.showMessageDialog(null, "Clase creada correctamente","CREACION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnCrearClase);
                 thisFrame.dispose();
-			
 				VentanaMenuAdmin vent = new VentanaMenuAdmin();
 				vent.mostrarVentana();
+                LOGGER.log(Level.INFO, "Se ha creado una sesion correctamente");
+
 			}
 		});
 	}

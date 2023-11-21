@@ -24,6 +24,11 @@ import javax.swing.JSpinner;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
+
+import io.FicheroLogger;
 
 public class VentanaEditarClase extends JFrame {
 
@@ -31,7 +36,7 @@ public class VentanaEditarClase extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-
+    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 	
 	public VentanaEditarClase() {
 		setBackground(new Color(102, 153, 153));
@@ -174,6 +179,7 @@ public class VentanaEditarClase extends JFrame {
                 if (result == JOptionPane.YES_OPTION) {
                 	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
                     thisFrame.dispose();
+                    LOGGER.log(Level.INFO,"Se ha salido de la aplicacion."+result);
                 }
 			}
 		});
@@ -189,7 +195,7 @@ public class VentanaEditarClase extends JFrame {
 			
 				VentanaMenuAdmin vent = new VentanaMenuAdmin();
 				vent.mostrarVentana();
-				
+				LOGGER.log(Level.INFO,"Se ha modificadp una clase satisfactoriamente.");
 			}
 		});
 	}

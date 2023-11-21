@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -17,16 +18,19 @@ import java.awt.Color;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import io.FicheroLogger;
 
 import java.awt.FlowLayout;
 import javax.swing.ImageIcon;
-
+import java.util.logging.Logger;
+import java.util.logging.Level;
 public class VentanaInicioSesion {
 
 	JFrame frame;
 	private JPasswordField txtContrasenia;
 	private JTextField textFieldCorreo;
-
+    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
+	
 	public VentanaInicioSesion() {
 		initialize();
 	}
@@ -147,8 +151,7 @@ public class VentanaInicioSesion {
 				frame.dispose();
 				VentanaUsuario ventanaUsuario = new VentanaUsuario();
 				ventanaUsuario.setVisible(true);
-			
-			
+				LOGGER.log(Level.INFO,"Se ha accedido al inicio de sesion.");
 			}
 		});
 		
@@ -161,6 +164,7 @@ public class VentanaInicioSesion {
 
                 VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
                 ventanaPrincipal.mostrarVentana();
+                LOGGER.log(Level.INFO,"Se esta mostrando la ventana principal.");
 			}
 		});
 	}

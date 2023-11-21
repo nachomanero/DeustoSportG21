@@ -99,6 +99,9 @@ public class VentanaEdicionActividades extends JFrame {
         for (String actividad : actividades) {
             if (actividad.toLowerCase().contains(typeToFilter) || typeToFilter.isEmpty()) {
                 actividadesListModel.addElement(actividad);
+                LOGGER.log(Level.INFO,"Se ha añadido una actividad correctamente"+ actividad);
+            }else {
+            	LOGGER.log(Level.WARNING,"Ha ocurrido un error al añadir la actividad"+actividad);
             }
         }
 
