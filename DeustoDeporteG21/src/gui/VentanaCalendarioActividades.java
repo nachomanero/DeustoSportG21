@@ -12,6 +12,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
+
+import io.FicheroLogger;
 
 public class VentanaCalendarioActividades extends JFrame {
     private JDateChooser dateChooser;
@@ -19,6 +24,8 @@ public class VentanaCalendarioActividades extends JFrame {
     private Map<Date, String> events;
     private boolean dateSelected = false;
     private boolean activitySelected = false;
+    
+    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
     public VentanaCalendarioActividades() {
         JFrame frame = new JFrame("HORARIO DE ACTIVIDADES");
@@ -60,6 +67,7 @@ public class VentanaCalendarioActividades extends JFrame {
                     selectActivity();
                 } else {
                     JOptionPane.showMessageDialog(null, "Por favor, selecciona una actividad antes de apuntarte.");
+                    LOGGER.log(Level.WARNING, "Intento de apuntarse sin seleccionar una actividad.");
                 }
             }
         });
@@ -159,6 +167,7 @@ public class VentanaCalendarioActividades extends JFrame {
 
             if (selectedActivity != null) {
                 JOptionPane.showMessageDialog(null, "Has seleccionado la actividad: " + selectedActivity);
+                LOGGER.log(Level.INFO, "Actividad seleccionada" + selectedActivity);
             }
         }
     }
@@ -177,6 +186,7 @@ public class VentanaCalendarioActividades extends JFrame {
         });
     }
     */
+    
     
    
    

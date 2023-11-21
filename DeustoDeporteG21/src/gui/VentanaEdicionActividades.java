@@ -3,11 +3,16 @@ package gui;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
+import io.FicheroLogger;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class VentanaEdicionActividades extends JFrame {
     private JTextField actividadTextField;
@@ -16,6 +21,7 @@ public class VentanaEdicionActividades extends JFrame {
     private List<String> actividades;
     private JButton selectActivityButton;
     private JButton exitButton;
+    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
     public VentanaEdicionActividades() {
         JFrame frame = new JFrame("EDICIÓN ACTIVIDADES");
@@ -23,8 +29,7 @@ public class VentanaEdicionActividades extends JFrame {
         frame.setSize(800, 400);
         frame.setResizable(false);
 
-       // actividades = obtenerListaActividades(); // Obtener la lista de actividades (puedes personalizar esto según tus necesidades)
-
+        actividades = obtenerListaActividades(); 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -116,6 +121,7 @@ public class VentanaEdicionActividades extends JFrame {
 
             if (selectedActivity != null) {
                 JOptionPane.showMessageDialog(null, "Has seleccionado la actividad para editar: " + selectedActivity);
+                LOGGER.log(Level.INFO, "Actividad seleccionada para editar: " + selectedActivity);
                 VentanaEditarClase ventanaEditar = new VentanaEditarClase();
                 ventanaEditar.mostrarVentana();
             }
@@ -139,7 +145,7 @@ public class VentanaEdicionActividades extends JFrame {
         exitButton.setPreferredSize(new Dimension(100, 40));
     }
 
-    /*
+    
     private List<String> obtenerListaActividades() {
         
         List<String> listaActividades = new ArrayList<>();
@@ -148,22 +154,24 @@ public class VentanaEdicionActividades extends JFrame {
         listaActividades.add("Spinning");
         return listaActividades;
     }
-    */
+    
 
     public void mostrarVentana() {
         getContentPane().setVisible(true);
     }
    
 
-   /* public static void main(String[] args) {
+   public static void main(String[] args) {
+	   FicheroLogger ficheroLogger = new FicheroLogger();
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new VentanaEdicionActividades();
             }
         });
+        FicheroLogger.cerrarFileHandler();
     }
-    */
+    
 
 }
 

@@ -1,4 +1,4 @@
-package domain;
+package io;
 
 public class Gestor {
 
