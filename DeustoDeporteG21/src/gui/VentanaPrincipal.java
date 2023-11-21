@@ -13,11 +13,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.text.AbstractDocument.Content;
+
+import io.FicheroLogger;
+
 import javax.swing.ImageIcon;
 import java.awt.FlowLayout;
 import javax.swing.JMenu;
@@ -28,6 +33,8 @@ public class VentanaPrincipal {
 
 	private JFrame frame;
 	private JPanel contentPane;
+	private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
+
 	
 
 	/**
@@ -153,7 +160,7 @@ public class VentanaPrincipal {
 
 		        
 		        if (ctrlPressed && e.getKeyCode() == KeyEvent.VK_SPACE) {
-		            
+		        	LOGGER.log(Level.INFO, "CTRL + SPACE pressed");
 		            VentanaMenuAdmin ventanaMenuAdmin = new VentanaMenuAdmin();
 		            ventanaMenuAdmin.mostrarVentana();
 		        }
@@ -195,6 +202,7 @@ public class VentanaPrincipal {
 
                 VentanaInicioSesion ventanaInicioSesion = new VentanaInicioSesion();
                 ventanaInicioSesion.mostrarVentana();
+                LOGGER.log(Level.INFO, "botón inicio sesión pressed");
 			}
 		});
 		
@@ -209,6 +217,7 @@ public class VentanaPrincipal {
                 }
 			}
 		});
+		LOGGER.log(Level.INFO, "botón salida pressed");
 	}
 	public void mostrarVentana() {
         frame.setVisible(true);

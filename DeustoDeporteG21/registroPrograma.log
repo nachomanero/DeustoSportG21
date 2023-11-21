@@ -1,2 +1,4 @@
 Nov 21, 2023 10:37:41 AM gui.VentanaEdicionActividades selectActivity
 INFO: Actividad seleccionada para editar: Pilates
+Nov 21, 2023 11:27:11 AM gui.VentanaPrincipal$1 keyPressed
+INFO: CTRL + space pressed
