@@ -161,6 +161,7 @@ public class VentanaEdicionActividades extends JFrame {
     }
    
 
+    /*
    public static void main(String[] args) {
 	   FicheroLogger ficheroLogger = new FicheroLogger();
         SwingUtilities.invokeLater(new Runnable() {
@@ -171,6 +172,7 @@ public class VentanaEdicionActividades extends JFrame {
         });
         FicheroLogger.cerrarFileHandler();
     }
+    */
     
 
 }
