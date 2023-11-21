@@ -29,7 +29,7 @@ public class VentanaEdicionActividades extends JFrame {
         frame.setSize(800, 400);
         frame.setResizable(false);
 
-        actividades = obtenerListaActividades(); 
+        //actividades = obtenerListaActividades(); 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -145,7 +145,7 @@ public class VentanaEdicionActividades extends JFrame {
         exitButton.setPreferredSize(new Dimension(100, 40));
     }
 
-    
+   /* 
     private List<String> obtenerListaActividades() {
         
         List<String> listaActividades = new ArrayList<>();
@@ -154,6 +154,7 @@ public class VentanaEdicionActividades extends JFrame {
         listaActividades.add("Spinning");
         return listaActividades;
     }
+    */
     
 
     public void mostrarVentana() {
