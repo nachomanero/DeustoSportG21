@@ -11,10 +11,13 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.text.AbstractDocument.Content;
 import javax.swing.ImageIcon;
 import java.awt.FlowLayout;
 import javax.swing.JMenu;
@@ -24,6 +27,7 @@ import javax.swing.JMenuItem;
 public class VentanaPrincipal {
 
 	private JFrame frame;
+	private JPanel contentPane;
 	
 
 	/**
@@ -132,6 +136,42 @@ public class VentanaPrincipal {
 		lblTextoSubFoto.setFont(new Font("Arial", Font.BOLD, 15));
 		panel_7.add(lblTextoSubFoto);
 		
+		frame.addKeyListener(new KeyListener() {
+		    private boolean ctrlPressed = false;
+
+		    @Override
+		    public void keyTyped(KeyEvent e) {
+		        
+		    }
+
+		    @Override
+		    public void keyPressed(KeyEvent e) {
+		        
+		        if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
+		            ctrlPressed = true;
+		        }
+
+		        
+		        if (ctrlPressed && e.getKeyCode() == KeyEvent.VK_SPACE) {
+		            
+		            VentanaMenuAdmin ventanaMenuAdmin = new VentanaMenuAdmin();
+		            ventanaMenuAdmin.mostrarVentana();
+		        }
+		    }
+
+		    @Override
+		    public void keyReleased(KeyEvent e) {
+		        
+		        if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
+		            ctrlPressed = false;
+		        }
+		    }
+		});
+
+		
+		frame.setFocusable(true);
+		frame.requestFocus();
+		
 		btnCrearUsuario.addActionListener(new ActionListener() {
 			
 			@Override
@@ -144,6 +184,7 @@ public class VentanaPrincipal {
 				
 			}
 		});
+		
 		
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			
@@ -172,5 +213,9 @@ public class VentanaPrincipal {
 	public void mostrarVentana() {
         frame.setVisible(true);
     }
+	
+	
+	
+
 
 }
