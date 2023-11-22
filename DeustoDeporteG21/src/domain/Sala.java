@@ -3,9 +3,9 @@ public class Sala {
 
 
 	// Atributos de la clase Sala
-    protected int IDSala;
-    protected String nombre;
-    protected int capacidad;
+    private int IDSala;
+    private String nombre;
+    private int capacidad;
 
     // Constructor
     public Sala(int IDSala, String nombre, int capacidad) {

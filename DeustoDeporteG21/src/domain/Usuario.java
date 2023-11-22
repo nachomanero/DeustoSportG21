@@ -5,12 +5,12 @@ import java.util.List;
 public class Usuario {
 	
 	private int id = -1;
-    protected String dni;
-    protected String nombre;
-    protected String apellido;
-    protected String direccion;
-    protected String correoElectronico;
-    protected String contrasena;
+    private String dni;
+    private String nombre;
+    private String apellido;
+    private String direccion;
+    private String correoElectronico;
+    private String contrasena;
     
     private Agenda agenda;
 

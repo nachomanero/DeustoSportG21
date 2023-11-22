@@ -8,11 +8,11 @@ public class Agenda {
 	//... que informacion?
 
     // Atributos de la clase Agenda
-    protected Clase IDClase;
-    protected Actividad IDActividad;
-    protected Sala IDSala;
+    private Clase IDClase;
+    private Actividad IDActividad;
+    private Sala IDSala;
     
-    protected Usuario Usuario; //?????
+    private Usuario Usuario; //?????
     
     
 	public Clase getIDClase() {

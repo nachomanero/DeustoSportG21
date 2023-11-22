@@ -2,9 +2,9 @@ package domain;
 
 public class Actividad {
 	// Atributos de la clase Actividad
-    protected int IDActividad;
-    protected TipoActividad TipoActividad;
-    protected int plazas;
+    private int IDActividad;
+    private TipoActividad TipoActividad;
+    private int plazas;
 
     // Constructor
     public Actividad(int IDActividad, domain.TipoActividad TipoActividad, int plazas) {

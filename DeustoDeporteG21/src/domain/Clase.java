@@ -5,18 +5,18 @@ import java.util.Date;
 public class Clase {
 
     // Atributos de la clase Clase
-    protected int IDClase;
-    protected String hora;
-    protected TipoActividad tipoActividad;
-    protected Date fecha;
-    protected int ID;
+    private int IDClase;
+    private String hora;
+    private TipoActividad tipoActividad;
+    private Date fecha;
+    private int IDSala;
     // Constructor
-    public Clase(int IDClase, String hora, Actividad actividad, Date fecha, Sala sala, TipoActividad tipoActividad) {
+    public Clase(int IDClase, String hora, Actividad actividad, Date fecha, int sala, TipoActividad tipoActividad) {
         this.IDClase = IDClase;
         this.hora = hora;
         this.tipoActividad = tipoActividad;
         this.fecha = fecha;
-        this.sala=sala;
+        this.IDSala=IDSala;
     }
     // Métodos getter y setter 
 
@@ -48,11 +48,11 @@ public class Clase {
         return fecha;
     }
     
-    public Sala getSala() {
-    	return sala;
+    public int getSala() {
+    	return IDSala;
     }
-    public void setSala(Sala sala) {
-    	this.sala=sala;
+    public void setSala(int sala) {
+    	this.IDSala=IDSala;
     }
     public void setFecha(Date fecha) {
         this.fecha = fecha;
@@ -61,14 +61,14 @@ public class Clase {
 	@Override
 	public String toString() {
 		return "Clase [IDClase=" + IDClase + ", hora=" + hora + ", tipoActividad=" + tipoActividad + ", fecha=" + fecha
-				+ ", sala=" + sala + "]";
+				+ ", sala=" + IDSala + "]";
 	}
-	public void clase(int iDClase, String hora, Actividad actividad, Date fecha, Sala sala, TipoActividad tipoActividad) {
+	public void clase(int iDClase, String hora, Actividad actividad, Date fecha, int sala, TipoActividad tipoActividad) {
 		IDClase = iDClase;
 		this.hora = hora;
 		this.tipoActividad = tipoActividad;
 		this.fecha = fecha;
-		this.sala = sala;
+		this.IDSala = IDSala;
 	}
 
 	

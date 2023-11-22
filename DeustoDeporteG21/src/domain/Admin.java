@@ -1,7 +1,7 @@
 package domain;
 
 public class Admin extends Usuario {
-    protected String IDEmpleado;
+    private String IDEmpleado;
     public Admin(String dni, String nombre, String apellido, String direccion, String correoElectronico, String contrasena, String IDEmpleado) {
         super(dni, nombre, apellido, direccion, correoElectronico, contrasena);
         this.IDEmpleado = IDEmpleado;
