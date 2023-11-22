@@ -2,9 +2,8 @@ package domain;
 
 import java.util.List;
 
-public class Usuario {
+public abstract class  Usuario {
 	
-	private int id = -1;
     private String dni;
     private String nombre;
     private String apellido;
@@ -25,16 +24,6 @@ public class Usuario {
     }
 
     // Métodos getter y setter para acceder y modificar los atributos del Usuario
-
-    
-    public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-    
     
     public String getDni() {
         return dni;
