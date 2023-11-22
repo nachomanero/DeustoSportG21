@@ -19,8 +19,8 @@ public class Admin extends Usuario {
 
 	@Override
 	public String toString() {
-		return "Admin [IDEmpleado=" + IDEmpleado + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", direccion=" + direccion + ", correoElectronico=" + correoElectronico + ", contrasena=" + contrasena
+		return "Admin [IDEmpleado=" + IDEmpleado + ", dni=" + getDni() + ", nombre=" + getNombre() + ", apellido=" + getApellido()
+				+ ", direccion=" + getDireccion() + ", correoElectronico=" + getCorreoElectronico() + ", contrasena=" + getContrasena()
 				+ ", getIDEmpleado()=" + getIDEmpleado() + ", getDni()=" + getDni() + ", getNombre()=" + getNombre()
 				+ ", getApellido()=" + getApellido() + ", getDireccion()=" + getDireccion()
 				+ ", getCorreoElectronico()=" + getCorreoElectronico() + ", getContrasena()=" + getContrasena()
