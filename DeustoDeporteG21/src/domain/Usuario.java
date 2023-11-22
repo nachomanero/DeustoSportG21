@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 public class Usuario {
 	
 	private int id = -1;
@@ -9,6 +11,8 @@ public class Usuario {
     protected String direccion;
     protected String correoElectronico;
     protected String contrasena;
+    
+    private Agenda agenda;
 
     // Constructor de Usuario
     public Usuario(String dni, String nombre, String apellido, String direccion, String correoElectronico, String contrasena) {

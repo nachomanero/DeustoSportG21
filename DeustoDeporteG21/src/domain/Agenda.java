@@ -1,12 +1,20 @@
 package domain;
 
 public class Agenda {
+	
+	//clase contenedora con una estructura que almacena informacion
+	
+	//... que estructura?
+	//... que informacion?
 
     // Atributos de la clase Agenda
     protected Clase IDClase;
     protected Actividad IDActividad;
     protected Sala IDSala;
-    protected Usuario Usuario;
+    
+    protected Usuario Usuario; //?????
+    
+    
 	public Clase getIDClase() {
 		return IDClase;
 	}

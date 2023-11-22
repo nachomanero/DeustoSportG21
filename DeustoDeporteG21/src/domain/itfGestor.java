@@ -23,5 +23,4 @@ public interface itfGestor {
 	public boolean borrarUsuario( String dni );
 	
 	
-
 }
