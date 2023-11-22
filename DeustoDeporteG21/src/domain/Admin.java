@@ -41,6 +41,7 @@ public class Admin extends Usuario {
 	public Admin(String dni, String nombre, String apellido, String direccion, String correoElectronico,
 			String contrasena) {
 		super(dni, nombre, apellido, direccion, correoElectronico, contrasena);
+		//Super
 	}
 }
 
