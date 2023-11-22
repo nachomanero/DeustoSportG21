@@ -1,7 +1,8 @@
 package domain;
 
 public class Usuario {
-
+	
+	private int id = -1;
     protected String dni;
     protected String nombre;
     protected String apellido;
@@ -21,6 +22,16 @@ public class Usuario {
 
     // Métodos getter y setter para acceder y modificar los atributos del Usuario
 
+    
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+    
+    
     public String getDni() {
         return dni;
     }
