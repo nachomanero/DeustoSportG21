@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Reserva {
 	private String DNI;
-    private Actividad TipoActividad;
+    private TipoActividad TipoActividad;
     private int IDSala;
     private Date fecha;
     private String hora;
@@ -12,7 +12,7 @@ public class Reserva {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Reserva(String dNI, Actividad tipoActividad, int iDSala, Date fecha, String hora) {
+	public Reserva(String dNI, TipoActividad tipoActividad, int iDSala, Date fecha, String hora) {
 		super();
 		DNI = dNI;
 		TipoActividad = tipoActividad;
@@ -31,10 +31,10 @@ public class Reserva {
 	public void setDNI(String dNI) {
 		DNI = dNI;
 	}
-	public Actividad getTipoActividad() {
+	public TipoActividad getTipoActividad() {
 		return TipoActividad;
 	}
-	public void setTipoActividad(Actividad tipoActividad) {
+	public void setTipoActividad(TipoActividad tipoActividad) {
 		TipoActividad = tipoActividad;
 	}
 	public int getIDSala() {

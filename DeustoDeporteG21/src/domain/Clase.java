@@ -10,13 +10,15 @@ public class Clase {
     private TipoActividad tipoActividad;
     private Date fecha;
     private int IDSala;
+    private int plazas;
     // Constructor
-    public Clase(int IDClase, String hora, Actividad actividad, Date fecha, int sala, TipoActividad tipoActividad) {
+    public Clase(int IDClase, String hora, TipoActividad tipoActividad, Date fecha, int IDSala, int plazas) {
         this.IDClase = IDClase;
         this.hora = hora;
         this.tipoActividad = tipoActividad;
         this.fecha = fecha;
         this.IDSala=IDSala;
+        this.plazas = plazas;
     }
     // Métodos getter y setter 
 
@@ -48,27 +50,36 @@ public class Clase {
         return fecha;
     }
     
-    public int getSala() {
+    public int getIDSala() {
     	return IDSala;
     }
-    public void setSala(int sala) {
+    public void setIDSala(int IDSala) {
     	this.IDSala=IDSala;
     }
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
+	public int getPlazas() {
+		return plazas;
+	}
+
+	public void setPlazas(int plazas) {
+		this.plazas = plazas;
+	}
+
 	@Override
 	public String toString() {
 		return "Clase [IDClase=" + IDClase + ", hora=" + hora + ", tipoActividad=" + tipoActividad + ", fecha=" + fecha
-				+ ", sala=" + IDSala + "]";
+				+ ", sala=" + IDSala + ", plazas=" + plazas + "]";
 	}
-	public void clase(int iDClase, String hora, Actividad actividad, Date fecha, int sala, TipoActividad tipoActividad) {
+	public void clase(int iDClase, String hora, TipoActividad tipoActividad, Date fecha, int IDSala, int plazas) {
 		IDClase = iDClase;
 		this.hora = hora;
 		this.tipoActividad = tipoActividad;
 		this.fecha = fecha;
 		this.IDSala = IDSala;
+		this.plazas = plazas;
 	}
 
 	

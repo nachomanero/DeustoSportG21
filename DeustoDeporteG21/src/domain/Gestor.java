@@ -2,9 +2,17 @@ package domain;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Scanner;
+
+import db.GestorBD;
 
 public class Gestor implements itfGestor{
 	
@@ -17,11 +25,15 @@ public class Gestor implements itfGestor{
 	//aqui deben estar los MAPAS, los SET, etc
 	
 	private HashSet<Usuario> usuarios;
+	private HashSet<Clase> clases;
+	private GestorBD gestorBD;
 	//...
 	
 	public Gestor()
 	{
 		usuarios = new HashSet<Usuario>();
+		clases = new HashSet<Clase>();
+		gestorBD = new GestorBD();
 		
 		//...
 
@@ -43,7 +55,8 @@ public class Gestor implements itfGestor{
 				String correo = partes[4];
 				String contraseña = partes[5];
 				
-				Usuario u = new Usuario(dni,nombre,apellido,direccion,correo,contraseña);
+				Usuario u = new Usuario(dni, nombre, apellido, direccion, correo, contraseña);
+				usuarios.add(u);
 				
 			}
 		} catch (FileNotFoundException e) {
@@ -70,11 +83,18 @@ public class Gestor implements itfGestor{
 				String tipoActividad = partes[2];
 				String fecha = partes[3];
 				String sala = partes[4];
+				String plazas = partes[5];
 				
-				
-				
-				
-				Clase c = new Clase(Integer.parseInt(idClase), hora, TipoActividad.valueOf(tipoActividad), formatoFecha.parse(fecha), idSala);
+				try {
+					Clase c = new Clase(Integer.parseInt(idClase), hora, TipoActividad.valueOf(tipoActividad), formatoFecha.parse(fecha), Integer.parseInt(sala), Integer.parseInt(plazas));
+					clases.add(c);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}
 		} catch (FileNotFoundException e) {
@@ -88,15 +108,60 @@ public class Gestor implements itfGestor{
 	@Override
 	public void cargarUsuariosBD() {
 		// TODO Auto-generated method stub
+		HashSet<Usuario> usuarios = gestorBD.obtenerRegistros("usuario", Usuario.class);
+		System.out.println("Usuarios cargados desde la base de datos con éxito.");
 		
 	}
 
 	@Override
 	public void guardarUsuariosBD() {
 		// TODO Auto-generated method stub
+		for (Usuario usuario : usuarios) {
+            gestorBD.añadirUsuario(usuario); // Asumiendo que tienes un método añadirUsuario en GestorBD
+        }
+        System.out.println("Usuarios guardados en la base de datos con éxito.");
 		
 	}
-	
-	
+
+	@Override
+	public void cargarClasesBD() {
+		// TODO Auto-generated method stub
+		HashSet<Clase> clases = gestorBD.obtenerRegistros("clase", Clase.class);
+		System.out.println("Clases cargadas desde la base de datos con éxito.");
+	}
+
+	@Override
+	public void guardarClasesBD() {
+		// TODO Auto-generated method stub
+		try {
+	        for (Clase clase : clases) {
+	            gestorBD.añadirClase(clase); // Asumiendo que tienes un método añadirClase en GestorBD
+	        }
+	        System.out.println("Clases guardadas en la base de datos con éxito.");
+	    } catch (Exception ex) {
+	        System.err.format("Error al guardar clases en la base de datos: %s%n", ex.getMessage());
+	        ex.printStackTrace();
+	    }
+	}
+
+	@Override
+	public boolean cargarUsuariosCSV() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean cargarClasesCSV() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean borrarUsuario(String dni) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 	
 }

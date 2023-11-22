@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.List;
-
 public abstract class  Usuario {
 	
     private String dni;
