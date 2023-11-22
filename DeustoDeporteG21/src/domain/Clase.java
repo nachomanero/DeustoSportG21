@@ -7,14 +7,14 @@ public class Clase {
     // Atributos de la clase Clase
     protected int IDClase;
     protected String hora;
-    protected Actividad actividad;
+    protected TipoActividad tipoActividad;
     protected Date fecha;
-    protected Sala sala;
+    protected int ID;
     // Constructor
-    public Clase(int IDClase, String hora, Actividad actividad, Date fecha, Sala sala) {
+    public Clase(int IDClase, String hora, Actividad actividad, Date fecha, Sala sala, TipoActividad tipoActividad) {
         this.IDClase = IDClase;
         this.hora = hora;
-        this.actividad = actividad;
+        this.tipoActividad = tipoActividad;
         this.fecha = fecha;
         this.sala=sala;
     }
@@ -36,13 +36,13 @@ public class Clase {
         this.hora = hora;
     }
 
-    public Actividad getActividad() {
-        return actividad;
-    }
+    public TipoActividad getTipoActividad() {
+		return tipoActividad;
+	}
 
-    public void setActividad(Actividad actividad) {
-        this.actividad = actividad;
-    }
+	public void setTipoActividad(TipoActividad tipoActividad) {
+		this.tipoActividad = tipoActividad;
+	}
 
     public Date getFecha() {
         return fecha;
@@ -60,16 +60,18 @@ public class Clase {
 
 	@Override
 	public String toString() {
-		return "Clase [IDClase=" + IDClase + ", hora=" + hora + ", actividad=" + actividad + ", fecha=" + fecha
+		return "Clase [IDClase=" + IDClase + ", hora=" + hora + ", tipoActividad=" + tipoActividad + ", fecha=" + fecha
 				+ ", sala=" + sala + "]";
 	}
-	public void clase(int iDClase, String hora, Actividad actividad, Date fecha, Sala sala) {
+	public void clase(int iDClase, String hora, Actividad actividad, Date fecha, Sala sala, TipoActividad tipoActividad) {
 		IDClase = iDClase;
 		this.hora = hora;
-		this.actividad = actividad;
+		this.tipoActividad = tipoActividad;
 		this.fecha = fecha;
 		this.sala = sala;
 	}
+
+	
 
 	public Clase() {
 		super();

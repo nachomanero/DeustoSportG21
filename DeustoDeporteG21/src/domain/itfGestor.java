@@ -19,6 +19,8 @@ public interface itfGestor {
 	
 	public boolean cargarUsuariosBD();
 	public boolean guardarUsuariosBD();
+	public void cargarUsuariosCSV(String nomfich);
+	public void cargarClasesCSV(String nomfichClases);
 	
 	public boolean borrarUsuario( String dni );
 	

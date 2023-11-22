@@ -1,10 +1,2 @@
-nov 22, 2023 3:02:51 A. M. gui.VentanaPrincipal initialize
-INFO: botón salida pressed
-nov 22, 2023 3:02:58 A. M. gui.VentanaPrincipal$3 actionPerformed
-INFO: botón inicio sesión pressed
-nov 22, 2023 3:03:06 A. M. gui.VentanaInicioSesion$1 actionPerformed
-INFO: Se ha accedido al inicio de sesion.
-nov 22, 2023 3:03:23 A. M. gui.VentanaUsuario$1 mouseClicked
-INFO: VIsualizacion de la agenda del Usuario
-nov 22, 2023 3:03:26 A. M. gui.VentanaUsuario$2 mouseClicked
-INFO: Se esta mostrando el calendario de Actividades
+nov 22, 2023 11:14:53 A. M. gui.VentanaPrincipal initialize
+INFORMACIÓN: botón salida pressed
