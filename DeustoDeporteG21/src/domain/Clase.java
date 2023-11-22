@@ -1,15 +1,17 @@
 package domain;
 
+import java.util.Date;
+
 public class Clase {
 
     // Atributos de la clase Clase
     protected int IDClase;
     protected String hora;
     protected Actividad actividad;
-    protected Fecha fecha;
+    protected Date fecha;
     protected Sala sala;
     // Constructor
-    public Clase(int IDClase, String hora, Actividad actividad, Fecha fecha, Sala sala) {
+    public Clase(int IDClase, String hora, Actividad actividad, Date fecha, Sala sala) {
         this.IDClase = IDClase;
         this.hora = hora;
         this.actividad = actividad;
@@ -42,7 +44,7 @@ public class Clase {
         this.actividad = actividad;
     }
 
-    public Fecha getFecha() {
+    public Date getFecha() {
         return fecha;
     }
     
@@ -52,7 +54,7 @@ public class Clase {
     public void setSala(Sala sala) {
     	this.sala=sala;
     }
-    public void setFecha(Fecha fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -61,7 +63,7 @@ public class Clase {
 		return "Clase [IDClase=" + IDClase + ", hora=" + hora + ", actividad=" + actividad + ", fecha=" + fecha
 				+ ", sala=" + sala + "]";
 	}
-	public void clase(int iDClase, String hora, Actividad actividad, Fecha fecha, Sala sala) {
+	public void clase(int iDClase, String hora, Actividad actividad, Date fecha, Sala sala) {
 		IDClase = iDClase;
 		this.hora = hora;
 		this.actividad = actividad;
