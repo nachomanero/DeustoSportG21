@@ -1,7 +1,12 @@
 package domain;
 
 public class Admin extends Usuario {
-    private String IDEmpleado;
+    public Admin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	private String IDEmpleado;
     public Admin(String dni, String nombre, String apellido, String direccion, String correoElectronico, String contrasena, String IDEmpleado) {
         super(dni, nombre, apellido, direccion, correoElectronico, contrasena);
         this.IDEmpleado = IDEmpleado;
