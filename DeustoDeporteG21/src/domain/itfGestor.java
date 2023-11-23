@@ -17,10 +17,10 @@ public interface itfGestor {
 	//se puede hacer con boolean, con int, ... etc, donde int es el codigo 
 	//respuesta de la operacion
 	
-	public boolean cargarUsuariosBD();
-	public boolean cargarClasesBD();
-	public boolean guardarUsuariosBD();
-	public boolean guardarClasesBD();
+	public void cargarUsuariosBD();
+	public void cargarClasesBD();
+	public void guardarUsuariosBD();
+	public void guardarClasesBD();
 	public void cargarUsuariosCSV(String nomfich);
 	public void cargarClasesCSV(String nomfichClases);
 	
