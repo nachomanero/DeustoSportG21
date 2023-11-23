@@ -37,6 +37,20 @@ public class GestorBD {
 			ex.printStackTrace();
 		}
 	}
+	
+	public Connection establecerConexion() {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(CONNECTION_STRING);
+            LOGGER.log(Level.INFO, "Conexión establecida con éxito a la base de datos.");
+        } catch (SQLException ex) {
+            LOGGER.log(Level.WARNING, "Error al establecer la conexión a la base de datos.");
+            ex.printStackTrace();
+        }
+        return connection;
+    }
+	
+	
 	public void crearTablas() {
 	    try (Connection con = DriverManager.getConnection(CONNECTION_STRING);
 	   	     Statement stmt = con.createStatement()) {

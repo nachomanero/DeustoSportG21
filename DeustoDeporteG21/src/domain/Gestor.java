@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
@@ -40,6 +41,15 @@ public class Gestor implements itfGestor{
 		//...
 
 	}
+	
+	public void realizarOperacionEnBD() {
+        try (Connection connection = gestorBD.establecerConexion()) {
+            // Realizar operaciones en la base de datos utilizando la conexión
+            // ...
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
 	@Override
 	public void cargarUsuariosCSV(String nomfichUsuarios) {
