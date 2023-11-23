@@ -3,8 +3,9 @@ package domain;
 public interface itfGestor {
 	
 	//si no hay BD que use los datos que estan aqui
-	public boolean cargarUsuariosCSV();
-	public boolean cargarClasesCSV();
+	
+	//public boolean cargarUsuariosCSV();
+	//public boolean cargarClasesCSV();
 	
 	//no deberias tener ningun metodo VOID !!!!
 	//porque eso significa que tienes feedback de ese metodo
@@ -24,7 +25,7 @@ public interface itfGestor {
 	public void cargarUsuariosCSV(String nomfich);
 	public void cargarClasesCSV(String nomfichClases);
 	
-	public boolean borrarUsuario( String dni );
+	//public boolean borrarUsuario( String dni );
 	
 	
 }

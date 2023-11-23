@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,11 +12,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import db.GestorBD;
-
+import io.FicheroLogger;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 public class Gestor implements itfGestor{
-	
+    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
+
 	
 	//Gestiona las operaciones sobre el modelo logico
 	
@@ -57,11 +62,12 @@ public class Gestor implements itfGestor{
 				
 				Usuario u = new Usuario(dni, nombre, apellido, direccion, correo, contraseña);
 				usuarios.add(u);
+				LOGGER.log(Level.INFO,"Usuarios cargados con exito.%S");
 				
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			System.err.format("\n* Error al abrir el archivo de Usuarios: %s", e.getMessage());
+			LOGGER.log(Level.WARNING,"Error al abrir el archivo de Usuarios.%S");
 			e.printStackTrace();
 		}
 		
@@ -84,22 +90,23 @@ public class Gestor implements itfGestor{
 				String fecha = partes[3];
 				String sala = partes[4];
 				String plazas = partes[5];
-				
+				LOGGER.log(Level.INFO,"Clases cargadas correctamente.%S");
 				try {
 					Clase c = new Clase(Integer.parseInt(idClase), hora, TipoActividad.valueOf(tipoActividad), formatoFecha.parse(fecha), Integer.parseInt(sala), Integer.parseInt(plazas));
 					clases.add(c);
 				} catch (NumberFormatException e) {
-					// TODO Auto-generated catch block
+					LOGGER.log(Level.WARNING,"Error.%S");
 					e.printStackTrace();
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
+					// TODO Auto-generated catch 
+					LOGGER.log(Level.WARNING,"Error.%S");
 					e.printStackTrace();
 				}
 				
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			System.err.format("\n* Error al abrir el archivo de Clases: %s", e.getMessage());
+			LOGGER.log(Level.WARNING,"Error al abrir el archivo de clases.%S");
 			e.printStackTrace();
 		}
 		
@@ -110,15 +117,16 @@ public class Gestor implements itfGestor{
 		// TODO Auto-generated method stub
 		HashSet<Usuario> usuarios = gestorBD.obtenerRegistros("usuario", Usuario.class);
 		System.out.println("Usuarios cargados desde la base de datos con éxito.");
-		
+		LOGGER.log(Level.INFO,"Usuarios cargados con exito desde la BD.%S");
 	}
 
 	@Override
 	public void guardarUsuariosBD() {
 		// TODO Auto-generated method stub
 		for (Usuario usuario : usuarios) {
-            gestorBD.añadirUsuario(usuario); // Asumiendo que tienes un método añadirUsuario en GestorBD
+            gestorBD.añadirUsuario(usuario); 
         }
+		LOGGER.log(Level.INFO,"Usuarios guardados en la base de datos con éxito.%S");
         System.out.println("Usuarios guardados en la base de datos con éxito.");
 		
 	}
@@ -127,6 +135,7 @@ public class Gestor implements itfGestor{
 	public void cargarClasesBD() {
 		// TODO Auto-generated method stub
 		HashSet<Clase> clases = gestorBD.obtenerRegistros("clase", Clase.class);
+		LOGGER.log(Level.INFO,"Clases cargadas desde la base de datos con éxito.");
 		System.out.println("Clases cargadas desde la base de datos con éxito.");
 	}
 
@@ -137,13 +146,15 @@ public class Gestor implements itfGestor{
 	        for (Clase clase : clases) {
 	            gestorBD.añadirClase(clase); // Asumiendo que tienes un método añadirClase en GestorBD
 	        }
+	        LOGGER.log(Level.INFO,"Clases guardadas en la base de datos con éxito.%S");
 	        System.out.println("Clases guardadas en la base de datos con éxito.");
 	    } catch (Exception ex) {
+	    	LOGGER.log(Level.WARNING,"Error al guardar clases en la base de datos.%S");
 	        System.err.format("Error al guardar clases en la base de datos: %s%n", ex.getMessage());
 	        ex.printStackTrace();
 	    }
 	}
-
+/*
 	@Override
 	public boolean cargarUsuariosCSV() {
 		// TODO Auto-generated method stub
@@ -161,7 +172,7 @@ public class Gestor implements itfGestor{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+*/
 
 	
 }

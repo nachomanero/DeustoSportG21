@@ -1,6 +1,7 @@
 package db;
 
 import java.io.BufferedReader;
+
 import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -368,10 +369,10 @@ public class GestorBD {
 	                }
 	            }
 	        } catch (SQLException ex) {
-	            System.err.format("Error al modificar clase en la base de datos: %s%n", ex.getMessage());
+	        	LOGGER.log(Level.WARNING,"Error al modificar clase en la base de datos.%S");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	            System.err.format("Error general: %s%n", e.getMessage());
+	        	LOGGER.log(Level.WARNING,"Error general.%S");
 	            e.printStackTrace();
 	        }
 	    }
@@ -388,10 +389,10 @@ public class GestorBD {
 	                return resultSet.next();
 	            }
 	        } catch (SQLException ex) {
-	            System.err.format("Error al comprobar usuario: %s%n", ex.getMessage());
+	        	LOGGER.log(Level.WARNING,"Error al comprobar el usuario.%S");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	            System.err.format("Error general: %s%n", e.getMessage());
+	        	LOGGER.log(Level.WARNING,"Error general.%S");
 	            e.printStackTrace();
 	        }
 
@@ -419,15 +420,18 @@ public class GestorBD {
 	                    System.out.println("Tipo de Actividad: " + tipoActividad);
 	                    System.out.println("Fecha: " + fecha);
 	                    System.out.println("ID de Sala: " + IDSala);
+	                    LOGGER.log(Level.INFO,"Se ha encontrado una clase.%S");
+	                    
 	                } else {
+	    	        	LOGGER.log(Level.WARNING,"no se ha encontrado ninguna clase con esa id.%S");
 	                    System.out.println("No se encontró ninguna clase con ID " + IDClase);
 	                }
 	            }
 	        } catch (SQLException ex) {
-	            System.err.format("Error al visualizar clase: %s%n", ex.getMessage());
+	        	LOGGER.log(Level.WARNING,"Error al visualizar la clase.%S");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	            System.err.format("Error general: %s%n", e.getMessage());
+	        	LOGGER.log(Level.WARNING,"Error general.%S");
 	            e.printStackTrace();
 	        }
 	    }
