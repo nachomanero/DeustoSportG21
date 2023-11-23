@@ -74,7 +74,7 @@ public class GestorBD {
 	                            + "tipoActividad TEXT NOT NULL, "
 	                            + "fecha DATE NOT NULL, "
 	                            + "IDSala INTEGER NOT NULL, "
-	                            + "plazas INTEGER NOT NULL"
+	                            + "plazas INTEGER NOT NULL, "
 	                            + "FOREIGN KEY (IDSala) REFERENCES Sala(IDSala))";
 	        
 	        if (!stmt.execute(createClases)) {
@@ -88,13 +88,13 @@ public class GestorBD {
 	        //Crear tabla reserva
 	        String createReserva = "CREATE TABLE IF NOT EXISTS Reserva ("
 	        		+ "IDReserva INTEGER PRIMARY KEY AUTOINCREMENT,"
-	        		+ "DNI TEXT NOT NULL"
+	        		+ "DNI TEXT NOT NULL, "
 	        		+ "TipoActividad TEXT NOT NULL, "
 	        		+ "IDSala INTEGER NOT NULL, "
-	        		+ "fecha DATE NOT NULL, "
+	        		+ "fecha Date NOT NULL, "
 	        		+ "hora TEXT NOT NULL, "
 	        		+ "FOREIGN KEY (DNI) REFERENCES Usuario(dni), "
-	        		+ "FOREIGN KEY IDSala REFERENCES Sala(IDSala)";
+	        		+ "FOREIGN KEY (IDSala) REFERENCES Sala(IDSala)";
 	        
 	        if (!stmt.execute(createReserva)) {
 		        System.out.println("\n- Se ha creado la tabla Actividad");

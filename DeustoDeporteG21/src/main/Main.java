@@ -2,6 +2,7 @@ package main;
 
 import java.awt.EventQueue;
 
+import db.GestorBD;
 import gui.VentanaMenuAdmin;
 import gui.VentanaPrincipal;
 import io.FicheroLogger;
@@ -9,6 +10,8 @@ import io.FicheroLogger;
 public class Main {
 	
 	public static void main(String[] args) {
+		GestorBD gestorBD = new GestorBD();
+		gestorBD.crearTablas();
 		 FicheroLogger ficheroLogger = new FicheroLogger();
         EventQueue.invokeLater(new Runnable() {
             public void run() {

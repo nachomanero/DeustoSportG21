@@ -9,7 +9,7 @@ public class Agenda {
 
     // Atributos de la clase Agenda
     private Clase IDClase;
-    private Actividad IDActividad;
+    private TipoActividad tipoActividad;
     private Sala IDSala;
     
     private Usuario Usuario; //?????
@@ -21,11 +21,11 @@ public class Agenda {
 	public void setIDClase(Clase iDClase) {
 		IDClase = iDClase;
 	}
-	public Actividad getIDActividad() {
-		return IDActividad;
+	public TipoActividad getTipoActividad() {
+		return tipoActividad;
 	}
-	public void setIDActividad(Actividad iDActividad) {
-		IDActividad = iDActividad;
+	public void setIDActividad(TipoActividad TipoActividad) {
+		tipoActividad = TipoActividad;
 	}
 	public Sala getIDSala() {
 		return IDSala;
@@ -41,15 +41,15 @@ public class Agenda {
 	}
 	@Override
 	public String toString() {
-		return "Agenda [IDClase=" + IDClase + ", IDActividad=" + IDActividad + ", IDSala=" + IDSala + ", Usuario="
+		return "Agenda [IDClase=" + IDClase + ", IDActividad=" + tipoActividad + ", IDSala=" + IDSala + ", Usuario="
 				+ Usuario + "]";
 	}
 	public Agenda() {
 		super();
 	}
-	public void agenda(Clase iDClase, Actividad iDActividad, Sala iDSala, domain.Usuario usuario) {
+	public void agenda(Clase iDClase, TipoActividad TipoActividad, Sala iDSala, domain.Usuario usuario) {
 		IDClase = iDClase;
-		IDActividad = iDActividad;
+		tipoActividad = TipoActividad;
 		IDSala = iDSala;
 		Usuario = usuario;
 	}
