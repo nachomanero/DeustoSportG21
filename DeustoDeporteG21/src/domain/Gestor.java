@@ -65,14 +65,16 @@ public class Gestor implements itfGestor{
 				
 				Usuario u = new Usuario(dni, nombre, apellido, direccion, correo, contraseña);
 				usuarios.add(u);
-				LOGGER.log(Level.INFO,"Usuarios cargados con exito.%S");
+				gestorBD.añadirUsuario(u);
+				
+				LOGGER.log(Level.INFO, "Usuario agregado a la base de datos: " + u);
+	        
 				
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			LOGGER.log(Level.WARNING,"Error al abrir el archivo de Usuarios.%S");
-			e.printStackTrace();
-		}
+		} catch (IOException e) {
+	        LOGGER.log(Level.WARNING, "Error al abrir el archivo de Usuarios.", e);
+	    }
+	    System.out.println(usuarios);
 		
 	}
 	
@@ -116,23 +118,26 @@ public class Gestor implements itfGestor{
 				String fecha = partes[3];
 				String sala = partes[4];
 				String plazas = partes[5];
-				LOGGER.log(Level.INFO,"Clases cargadas correctamente.%S");
+				LOGGER.log(Level.INFO,"Clases cargadas correctamente.");
 				try {
 					Clase c = new Clase(Integer.parseInt(idClase), hora, TipoActividad.valueOf(tipoActividad), formatoFecha.parse(fecha), Integer.parseInt(sala), Integer.parseInt(plazas));
 					clases.add(c);
+					gestorBD.añadirClase(c);
+					LOGGER.log(Level.INFO, "Usuario agregado a la base de datos: " + c);
+			        
 				} catch (NumberFormatException e) {
-					LOGGER.log(Level.WARNING,"Error.%S");
+					LOGGER.log(Level.WARNING,"Error.");
 					e.printStackTrace();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch 
-					LOGGER.log(Level.WARNING,"Error.%S");
+					LOGGER.log(Level.WARNING,"Error.");
 					e.printStackTrace();
 				}
 				
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			LOGGER.log(Level.WARNING,"Error al abrir el archivo de clases.%S");
+			LOGGER.log(Level.WARNING,"Error al abrir el archivo de clases.");
 			e.printStackTrace();
 		}
 		
@@ -166,8 +171,8 @@ public class Gestor implements itfGestor{
 	public void cargarUsuariosBD() {
 		// TODO Auto-generated method stub
 		usuarios = gestorBD.obtenerRegistros("usuario", Usuario.class);
-		System.out.println("Usuarios cargados desde la base de datos con éxito.");
-		LOGGER.log(Level.INFO,"Usuarios cargados con exito desde la BD.%S");
+		//System.out.println("Usuarios cargados desde la base de datos con éxito.");
+		LOGGER.log(Level.INFO,"Usuarios cargados con exito desde la BD.");
 	}
 
 	@Override
@@ -176,17 +181,18 @@ public class Gestor implements itfGestor{
 		for (Usuario usuario : usuarios) {
             gestorBD.añadirUsuario(usuario); 
         }
-		LOGGER.log(Level.INFO,"Usuarios guardados en la base de datos con éxito.%S");
-        System.out.println("Usuarios guardados en la base de datos con éxito.");
+		LOGGER.log(Level.INFO,"Usuarios guardados en la base de datos con éxito.");
+        //System.out.println("Usuarios guardados en la base de datos con éxito.");
 		
 	}
 
+	
 	@Override
 	public void cargarClasesBD() {
 		// TODO Auto-generated method stub
 		clases = gestorBD.obtenerRegistros("clase", Clase.class);
 		LOGGER.log(Level.INFO,"Clases cargadas desde la base de datos con éxito.");
-		System.out.println("Clases cargadas desde la base de datos con éxito.");
+		//System.out.println("Clases cargadas desde la base de datos con éxito.");
 	}
 
 	@Override
@@ -196,11 +202,11 @@ public class Gestor implements itfGestor{
 	        for (Clase clase : clases) {
 	            gestorBD.añadirClase(clase); 
 	        }
-	        LOGGER.log(Level.INFO,"Clases guardadas en la base de datos con éxito.%S");
+	        LOGGER.log(Level.INFO,"Clases guardadas en la base de datos con éxito.");
 	        System.out.println("Clases guardadas en la base de datos con éxito.");
 	    } catch (Exception ex) {
-	    	LOGGER.log(Level.WARNING,"Error al guardar clases en la base de datos.%S");
-	        System.err.format("Error al guardar clases en la base de datos: %s%n", ex.getMessage());
+	    	LOGGER.log(Level.WARNING,"Error al guardar clases en la base de datos.");
+	        System.err.format("Error al guardar clases en la base de datos: ", ex.getMessage());
 	        ex.printStackTrace();
 	    }
 	}

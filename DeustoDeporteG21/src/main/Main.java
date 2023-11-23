@@ -20,9 +20,13 @@ public class Main {
 		
 		Gestor gestor = new Gestor();
 
-		gestor.realizarOperacionEnBD();
+	
+		gestor.cargarUsuariosCSV("resources/data/Usuarios.csv");
+		gestor.cargarClasesCSV("resources/data/Clases.csv");
+	
+
 		
-        EventQueue.invokeLater(new Runnable() {
+      /*  EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
                     VentanaPrincipal window = new VentanaPrincipal();
@@ -34,7 +38,7 @@ public class Main {
                 }
             }
         });
-        
+        */
         FicheroLogger.cerrarFileHandler();
         
         

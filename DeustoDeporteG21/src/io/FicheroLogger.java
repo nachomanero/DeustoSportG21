@@ -11,7 +11,7 @@ public class FicheroLogger {
 
     static {
         try {
-            Handler fileHandler = new FileHandler("registroPrograma.log", false);
+            Handler fileHandler = new FileHandler("registroPrograma.log", true);
             fileHandler.setFormatter(new SimpleFormatter());
             LOGGER.addHandler(fileHandler);
             LOGGER.setLevel(Level.ALL);

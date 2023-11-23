@@ -13,6 +13,6 @@ public enum TipoActividad {
     TRX,
     GAP,
     CROSSFIT,
-    AQUAGYM_ADULTOS,
+    AQUAGYM_MAYORES,
     JUEGOS_ACUATICOS
 }

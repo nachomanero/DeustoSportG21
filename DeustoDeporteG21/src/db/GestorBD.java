@@ -33,7 +33,7 @@ public class GestorBD {
 	public GestorBD() {		
 		 
 	        try {
-	            connection = DriverManager.getConnection("jdbc:sqlite:DeustoSport.db");
+	            connection = DriverManager.getConnection(CONNECTION_STRING);
 	            LOGGER.log(Level.INFO, "Conexión establecida con éxito a la base de datos.");
 	        } catch (SQLException ex) {
 	            LOGGER.log(Level.WARNING, "Error al establecer la conexión a la base de datos.");
@@ -42,79 +42,79 @@ public class GestorBD {
 	
 	}
 		
-	public void crearTablas() {
-	    try (Connection con = DriverManager.getConnection(CONNECTION_STRING);
-	   	     Statement stmt = con.createStatement()) {
-	         // Crear tabla de usuarios
-	        String createUsuarios = "CREATE TABLE IF NOT EXISTS Usuario ("
-	                              + "dni TEXT PRIMARY KEY, "
-	                              + "nombre TEXT, "
-	                              + "apellido TEXT, "
-	                              + "direccion TEXT, "
-	                              + "correoElectronico TEXT, "
-	                              + "contrasena TEXT)";
-	        if (!stmt.execute(createUsuarios)) {
-		        System.out.println("\n- Se ha creado la tabla Usuario");
-		        LOGGER.log(Level.INFO,"Creacion de las tabla usuario satisfactoria. %s");
-		    }else {
-		    	LOGGER.log(Level.WARNING,"Error en la creacion de la tabla usuario.%s");
-		    }
-	            
-	        //Crear tabla Sala
-	        String createSala = "CREATE TABLE IF NOT EXISTS Sala ("
-	            		      + "IDSala INTEGER PRIMARY KEY, "
-	            	       	  + "nombre TEXT, "
-	            	    	  + "capacidad INTEGER)";
-	        if (!stmt.execute(createSala)) {
-		        System.out.println("\n- Se ha creado la tabla Sala");
-		        LOGGER.log(Level.INFO,"Creacion de la tabla sala satisfactoria.%s");
-		    }else {
-		    	LOGGER.log(Level.WARNING,"Error al crear la tabla sala. %s");
-		    }
-	        
-	     // Crear tabla de clases
-	        String createClases = "CREATE TABLE IF NOT EXISTS Clase ("
-	                            + "idClase INTEGER PRIMARY KEY, "
-	                            + "hora TEXT NOT NULL, "
-	                            + "tipoActividad TEXT NOT NULL, "
-	                            + "fecha DATE NOT NULL, "
-	                            + "IDSala INTEGER NOT NULL, "
-	                            + "plazas INTEGER NOT NULL, "
-	                            + "FOREIGN KEY (IDSala) REFERENCES Sala(IDSala))";
-	        
-	        if (!stmt.execute(createClases)) {
-		       	System.out.println("\n- Se ha creado la tabla Clase");
-		       	LOGGER.log(Level.INFO,"Creacion de la tabla clase satisfactoria. %s");
-		    }else {
-		    	LOGGER.log(Level.WARNING,"Error en la creacion de la tabla clase.%s");
-		    }
+	public static void crearTablas() {
+        try (Connection con = DriverManager.getConnection(CONNECTION_STRING);
+             Statement stmt = con.createStatement()) {
+            // Crear tabla de usuarios
+            String createUsuarios = "CREATE TABLE IF NOT EXISTS Usuario ("
+                    + "dni TEXT PRIMARY KEY, "
+                    + "nombre TEXT, "
+                    + "apellido TEXT, "
+                    + "direccion TEXT, "
+                    + "correoElectronico TEXT, "
+                    + "contrasena TEXT)";
+            if (!stmt.execute(createUsuarios)) {
+                
+                LOGGER.log(Level.INFO, "Creacion de la tabla usuario satisfactoria.");
+            } else {
+                LOGGER.log(Level.WARNING, "Error en la creacion de la tabla usuario.");
+            }
 
-	        
-	        //Crear tabla reserva
-	        String createReserva = "CREATE TABLE IF NOT EXISTS Reserva ("
-	        		+ "IDReserva INTEGER PRIMARY KEY AUTOINCREMENT,"
-	        		+ "DNI TEXT NOT NULL, "
-	        		+ "TipoActividad TEXT NOT NULL, "
-	        		+ "IDSala INTEGER NOT NULL, "
-	        		+ "fecha Date NOT NULL, "
-	        		+ "hora TEXT NOT NULL, "
-	        		+ "FOREIGN KEY (DNI) REFERENCES Usuario(dni), "
-	        		+ "FOREIGN KEY (IDSala) REFERENCES Sala(IDSala))";
-	        
-	        if (!stmt.execute(createReserva)) {
-		        System.out.println("\n- Se ha creado la tabla Actividad");
-		        LOGGER.log(Level.INFO,"Creacion de la tabla actividad satisfactoria.%s");
-		    }else {
-		    	LOGGER.log(Level.WARNING,"Error en la creacion de la tabla reserva.%s");
-		    }
+            // Crear tabla Sala
+            String createSala = "CREATE TABLE IF NOT EXISTS Sala ("
+                    + "IDSala INTEGER PRIMARY KEY, "
+                    + "nombre TEXT, "
+                    + "capacidad INTEGER)";
+            if (!stmt.execute(createSala)) {
+                
+                LOGGER.log(Level.INFO, "Creacion de la tabla sala satisfactoria.");
+            } else {
+                LOGGER.log(Level.WARNING, "Error al crear la tabla sala.");
+            }
 
-	        System.out.println("Base de datos creada con exito.");
-	        LOGGER.log(Level.INFO,"Base de datos creada con exito.%s");
-	    } catch (SQLException ex) {
-	    	LOGGER.log(Level.WARNING,"Error en la creacion de la base de datos.%s");
-			ex.printStackTrace();
-	    }
-	}
+            // Crear tabla de clases
+            String createClases = "CREATE TABLE IF NOT EXISTS Clase ("
+                    + "idClase INTEGER PRIMARY KEY, "
+                    + "hora TEXT NOT NULL, "
+                    + "tipoActividad TEXT NOT NULL, "
+                    + "fecha DATE NOT NULL, "
+                    + "IDSala INTEGER NOT NULL, "
+                    + "plazas INTEGER NOT NULL, "
+                    + "FOREIGN KEY (IDSala) REFERENCES Sala(IDSala))";
+
+            if (!stmt.execute(createClases)) {
+               
+                LOGGER.log(Level.INFO, "Creacion de la tabla clase satisfactoria.");
+            } else {
+                LOGGER.log(Level.WARNING, "Error en la creacion de la tabla clase.");
+            }
+
+            // Crear tabla reserva
+            String createReserva = "CREATE TABLE IF NOT EXISTS Reserva ("
+                    + "IDReserva INTEGER PRIMARY KEY, "
+                    + "DNI TEXT NOT NULL, "
+                    + "TipoActividad TEXT NOT NULL, "
+                    + "IDSala INTEGER NOT NULL, "
+                    + "fecha DATE NOT NULL, "
+                    + "hora TEXT NOT NULL, "
+                    + "FOREIGN KEY (DNI) REFERENCES Usuario(dni), "
+                    + "FOREIGN KEY (IDSala) REFERENCES Sala(IDSala))";
+
+            if (!stmt.execute(createReserva)) {
+                
+                LOGGER.log(Level.INFO, "Creacion de la tabla reserva satisfactoria.");
+            } else {
+                LOGGER.log(Level.WARNING, "Error en la creacion de la tabla reserva.");
+            }
+
+            
+            LOGGER.log(Level.INFO, "Base de datos creada con exito.");
+        } catch (SQLException ex) {
+            LOGGER.log(Level.WARNING, "Error en la creacion de la base de datos.");
+            ex.printStackTrace();
+        }
+    }
+
 
 	
 	
@@ -157,10 +157,10 @@ public class GestorBD {
                 }
             }
         } catch (SQLException | ParseException ex) {
-        	LOGGER.log(Level.WARNING,"Error al obtener registros desde la base de datos.%s");
+        	LOGGER.log(Level.WARNING,"Error al obtener registros desde la base de datos.");
             ex.printStackTrace();
         } catch (Exception e) {
-        	LOGGER.log(Level.WARNING,"Error general.%s");
+        	LOGGER.log(Level.WARNING,"Error general.");
             e.printStackTrace();
         }
 
@@ -176,23 +176,23 @@ public class GestorBD {
             String dropUsuario = "DROP TABLE IF EXISTS USUARIO";
             if (!stmt.execute(dropUsuario)) {
 	        	System.out.println("\n- Se ha borrado la tabla Usuario");
-	        	LOGGER.log(Level.INFO,"Se ha borrado la tabla usuario correctamente.%s");
+	        	LOGGER.log(Level.INFO,"Se ha borrado la tabla usuario correctamente.");
 	        }else {
-	        	LOGGER.log(Level.WARNING,"Error al borrar la tabla usuario.%s");
+	        	LOGGER.log(Level.WARNING,"Error al borrar la tabla usuario.");
 	        }
 
             String dropClase = "DROP TABLE IF EXISTS CLASE";
             if (!stmt.execute(dropClase)) {
 	        	System.out.println("\n- Se ha borrado la tabla Clase");
-	        	LOGGER.log(Level.INFO,"Se ha borrado la tabla clase correctamente.%s");
+	        	LOGGER.log(Level.INFO,"Se ha borrado la tabla clase correctamente.");
 	        }else {
-	        	LOGGER.log(Level.WARNING,"Error al borrar la tabla clase.%s");
+	        	LOGGER.log(Level.WARNING,"Error al borrar la tabla clase.");
 	        }
 
             System.out.println("Base de datos borrada exitosamente.");
-            LOGGER.log(Level.INFO,"Base datos borrada correctamente.%s");
+            LOGGER.log(Level.INFO,"Base datos borrada correctamente.");
         } catch (Exception ex) {
-        	LOGGER.log(Level.WARNING,"Error al borrar la base de datos.%s");
+        	LOGGER.log(Level.WARNING,"Error al borrar la base de datos.");
             ex.printStackTrace();
         }
         
@@ -202,7 +202,7 @@ public class GestorBD {
 			System.out.println("\n- Se ha borrado el fichero de la BBDD");
 			LOGGER.log(Level.INFO,"Se ha borrado el fichero de la BD correctamente.");
 		} catch (Exception ex) {
-			LOGGER.log(Level.WARNING,"Error al borrar el archivo de la BD.%s");
+			LOGGER.log(Level.WARNING,"Error al borrar el archivo de la BD.");
 			ex.printStackTrace();						
 		}
         
@@ -223,10 +223,10 @@ public class GestorBD {
 	                LOGGER.log(Level.INFO,"usuario añadido a la BD correctamente");
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al añadir usuario a la base de datos.%s");
+	        	LOGGER.log(Level.WARNING,"Error al añadir usuario a la base de datos.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.%s");
+	        	LOGGER.log(Level.WARNING,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }
@@ -234,27 +234,40 @@ public class GestorBD {
 		
 	    
 	    public void añadirClase(Clase clase) {
-	    	try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
-	            String sql = "INSERT INTO clase (IDClase, hora, actividad, fecha, sala, plazas) VALUES (?, ?, ?, ?, ?,?)";
-	            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-	            	preparedStatement.setInt(1, clase.getIDClase());
-	                preparedStatement.setString(2, clase.getHora());
-	                preparedStatement.setString(3, clase.getTipoActividad().toString());
-	                preparedStatement.setDate(4, new java.sql.Date(clase.getFecha().getTime()));
-	                preparedStatement.setInt(5, clase.getIDSala());
-	                preparedStatement.setInt(6, clase.getPlazas());
-	                preparedStatement.executeUpdate();
-	                LOGGER.log(Level.INFO,"Clase añadida a la BD correctamente.%s");
+	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
+	           
+	            String verificarExistencia = "SELECT COUNT(*) FROM Clase WHERE IDClase = ?";
+	            try (PreparedStatement verificarStmt = connection.prepareStatement(verificarExistencia)) {
+	                verificarStmt.setInt(1, clase.getIDClase());
+	                ResultSet resultSet = verificarStmt.executeQuery();
+	                resultSet.next();
+
+	                if (resultSet.getInt(1) == 0) {
+	                    
+	                    String sql = "INSERT INTO Clase (idClase, hora, tipoActividad, fecha, IDSala, plazas) VALUES (?, ?, ?, ?, ?, ?)";
+	                    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	                        preparedStatement.setInt(1, clase.getIDClase());
+	                        preparedStatement.setString(2, clase.getHora());
+	                        preparedStatement.setString(3, clase.getTipoActividad().toString());
+	                        preparedStatement.setDate(4, new java.sql.Date(clase.getFecha().getTime()));
+	                        preparedStatement.setInt(5, clase.getIDSala());
+	                        preparedStatement.setInt(6, clase.getPlazas());
+	                        preparedStatement.executeUpdate();
+	                        LOGGER.log(Level.INFO, "Clase añadida a la BD correctamente.");
+	                    }
+	                } else {
+	                    LOGGER.log(Level.WARNING, "La clase con ID " + clase.getIDClase() + " ya existe en la base de datos.");
+	                }
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al añadir la clase a la BD.%S");
+	            LOGGER.log(Level.WARNING, "Error al añadir la clase a la BD");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.%s");
+	            LOGGER.log(Level.WARNING, "Error general");
 	            e.printStackTrace();
 	        }
 	    }
-	    
+
 	    
 	    
 	    public void añadirReserva(String DNI, TipoActividad TipoActividad, int IDSala, Date fecha, String hora) {
@@ -267,13 +280,13 @@ public class GestorBD {
 	                preparedStatement.setDate(4, fecha);
 	                preparedStatement.setString(5, hora);
 	                preparedStatement.executeUpdate();
-	                LOGGER.log(Level.INFO,"Reserva añadida a la base de datos con exito.%s");
+	                LOGGER.log(Level.INFO,"Reserva añadida a la base de datos con exito.");
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al añadir reserva a la base de datos.%s");
+	        	LOGGER.log(Level.WARNING,"Error al añadir reserva a la base de datos.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.%s");
+	        	LOGGER.log(Level.WARNING,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }
@@ -288,17 +301,17 @@ public class GestorBD {
 
 	                if (rowCount > 0) {
 	                    System.out.println("Clase eliminada de la base de datos con éxito.");
-	                    LOGGER.log(Level.INFO,"Clase eliminada con exito.%s");
+	                    LOGGER.log(Level.INFO,"Clase eliminada con exito.");
 	                } else {
 	                    System.out.println("No se encontró ninguna clase con ID " + IDClase);
-	                    LOGGER.log(Level.WARNING,"No se ha eliminado ninguna clase.%s");
+	                    LOGGER.log(Level.WARNING,"No se ha eliminado ninguna clase.");
 	                }
 	            }
 	        } catch (SQLException ex) {
-	            LOGGER.log(Level.WARNING,"Error al eliminar clase de la BS.%s");
+	            LOGGER.log(Level.WARNING,"Error al eliminar clase de la BS.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.%s");
+	        	LOGGER.log(Level.WARNING,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }
@@ -311,10 +324,10 @@ public class GestorBD {
 				//Se ejecuta la sentencia de borrado de datos
 				String sql = "DELETE FROM USUARIO WHERE DNI = ;" + dni ;			
 				int result = stmt.executeUpdate(sql);
-				LOGGER.log(Level.INFO,"Se han borrado usuarios correctamente.%s");
+				LOGGER.log(Level.INFO,"Se han borrado usuarios correctamente.");
 				System.out.format("\n- Se han borrado %d usuarios", result);
 			} catch (Exception ex) {
-				LOGGER.log(Level.WARNING,"Error al borrar de la BD.%s");
+				LOGGER.log(Level.WARNING,"Error al borrar de la BD.");
 				ex.printStackTrace();						
 			}		
 		}
@@ -332,18 +345,18 @@ public class GestorBD {
 	                int rowCount = preparedStatement.executeUpdate();
 
 	                if (rowCount > 0) {
-	                	LOGGER.log(Level.INFO,"se ha cancelado la reserva con exito.%s");
+	                	LOGGER.log(Level.INFO,"se ha cancelado la reserva con exito.");
 	                    System.out.println("Reserva cancelada de la base de datos con éxito.");
 	                } else {
-	                	LOGGER.log(Level.WARNING,"Error al borrar la reseerva.%s");
+	                	LOGGER.log(Level.WARNING,"Error al borrar la reseerva.");
 	                    System.out.println("No se encontró ninguna reserva con los datos proporcionados.");
 	                }
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al cancelar la reserva de la BD.%s");
+	        	LOGGER.log(Level.WARNING,"Error al cancelar la reserva de la BD.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.%s");
+	        	LOGGER.log(Level.WARNING,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }
@@ -363,17 +376,17 @@ public class GestorBD {
 
 	                if (rowCount > 0) {
 	                    System.out.println("Clase modificada en la base de datos con éxito.");
-	                    LOGGER.log(Level.INFO,"Clase modificada con exito.%s");
+	                    LOGGER.log(Level.INFO,"Clase modificada con exito.");
 	                } else {
-	                	LOGGER.log(Level.WARNING,"No se ha encontrado ninguna clase.%s");
+	                	LOGGER.log(Level.WARNING,"No se ha encontrado ninguna clase.");
 	                    System.out.println("No se encontró ninguna clase con ID " + clase.getIDClase());
 	                }
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al modificar clase en la base de datos.%S");
+	        	LOGGER.log(Level.WARNING,"Error al modificar clase en la base de datos.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.%S");
+	        	LOGGER.log(Level.WARNING,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }
@@ -390,10 +403,10 @@ public class GestorBD {
 	                return resultSet.next();
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al comprobar el usuario.%S");
+	        	LOGGER.log(Level.WARNING,"Error al comprobar el usuario.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.%S");
+	        	LOGGER.log(Level.WARNING,"Error general.");
 	            e.printStackTrace();
 	        }
 
@@ -429,10 +442,10 @@ public class GestorBD {
 	                }
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al visualizar la clase.%S");
+	        	LOGGER.log(Level.WARNING,"Error al visualizar la clase.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.%S");
+	        	LOGGER.log(Level.WARNING,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }
