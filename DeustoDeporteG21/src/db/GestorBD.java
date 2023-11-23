@@ -1,8 +1,6 @@
 package db;
 
-import java.io.BufferedReader;
 
-import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
@@ -21,8 +19,6 @@ import domain.Clase;
 import domain.TipoActividad;
 import domain.Usuario;
 import io.FicheroLogger;
-import io.FicheroLogger;
-import java.util.logging.Logger;
 import java.util.logging.Level;
 public class GestorBD {
 

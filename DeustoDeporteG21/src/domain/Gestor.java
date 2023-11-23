@@ -3,11 +3,9 @@ package domain;
 import java.io.FileNotFoundException;
 
 import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
@@ -16,7 +14,6 @@ import java.util.logging.Logger;
 
 import db.GestorBD;
 import io.FicheroLogger;
-import java.util.logging.Logger;
 import java.util.logging.Level;
 public class Gestor implements itfGestor{
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
@@ -72,6 +69,29 @@ public class Gestor implements itfGestor{
 		}
 		
 	}
+	
+	@Override
+	public void guardarUsuariosCSV() {
+		// TODO Auto-generated method stub
+		try (PrintWriter writer = new PrintWriter(new FileWriter("Usuarios.csv"))) {
+	        for (Usuario usuario : usuarios) {
+	            String linea = String.format("%s,%s,%s,%s,%s,%s",
+	                    usuario.getDni(),
+	                    usuario.getNombre(),
+	                    usuario.getApellido(),
+	                    usuario.getDireccion(),
+	                    usuario.getCorreoElectronico(),
+	                    usuario.getContrasena());
+	            writer.println(linea);
+	        }
+	        LOGGER.log(Level.INFO, "Usuarios guardados en el archivo CSV con éxito.");
+	        System.out.println("Usuarios guardados en el archivo CSV con éxito.");
+	    } catch (IOException ex) {
+	        LOGGER.log(Level.WARNING, "Error al guardar usuarios en el archivo CSV.");
+	        ex.printStackTrace();
+	    }
+	}
+	
 
 	@Override
 	public void cargarClasesCSV(String nomfichClases) {
@@ -111,11 +131,35 @@ public class Gestor implements itfGestor{
 		}
 		
 	}
+	
+	
+	@Override
+	public void guardarClasesCSV() {
+		// TODO Auto-generated method stub
+		try (PrintWriter writer = new PrintWriter(new FileWriter("Clases.csv"))) {
+	        for (Clase clase : clases) {
+	            String linea = String.format("%s,%s,%s,%s,%s,%s",
+	                    clase.getIDClase(),
+	                    clase.getHora(),
+	                    clase.getTipoActividad(),
+	                    clase.getFecha(),
+	                    clase.getIDSala(),
+	                    clase.getPlazas());
+	            writer.println(linea);
+	        }
+	        LOGGER.log(Level.INFO, "Clases guardadas en archivo CSV con éxito.");
+	        System.out.println("Clases guardadas en archivo CSV con éxito.");
+	    } catch (IOException ex) {
+	        LOGGER.log(Level.WARNING, "Error al guardar clases en archivo CSV.");
+	        ex.printStackTrace();
+	    }
+	}
+	
 
 	@Override
 	public void cargarUsuariosBD() {
 		// TODO Auto-generated method stub
-		HashSet<Usuario> usuarios = gestorBD.obtenerRegistros("usuario", Usuario.class);
+		usuarios = gestorBD.obtenerRegistros("usuario", Usuario.class);
 		System.out.println("Usuarios cargados desde la base de datos con éxito.");
 		LOGGER.log(Level.INFO,"Usuarios cargados con exito desde la BD.%S");
 	}
@@ -134,7 +178,7 @@ public class Gestor implements itfGestor{
 	@Override
 	public void cargarClasesBD() {
 		// TODO Auto-generated method stub
-		HashSet<Clase> clases = gestorBD.obtenerRegistros("clase", Clase.class);
+		clases = gestorBD.obtenerRegistros("clase", Clase.class);
 		LOGGER.log(Level.INFO,"Clases cargadas desde la base de datos con éxito.");
 		System.out.println("Clases cargadas desde la base de datos con éxito.");
 	}
@@ -144,7 +188,7 @@ public class Gestor implements itfGestor{
 		// TODO Auto-generated method stub
 		try {
 	        for (Clase clase : clases) {
-	            gestorBD.añadirClase(clase); // Asumiendo que tienes un método añadirClase en GestorBD
+	            gestorBD.añadirClase(clase); 
 	        }
 	        LOGGER.log(Level.INFO,"Clases guardadas en la base de datos con éxito.%S");
 	        System.out.println("Clases guardadas en la base de datos con éxito.");
@@ -154,25 +198,12 @@ public class Gestor implements itfGestor{
 	        ex.printStackTrace();
 	    }
 	}
-/*
-	@Override
-	public boolean cargarUsuariosCSV() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean cargarClasesCSV() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean borrarUsuario(String dni) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-*/
 
 	
+
+	
+
+
+
+
 }

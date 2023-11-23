@@ -24,7 +24,9 @@ public interface itfGestor {
 	public void guardarClasesBD();
 	public void cargarUsuariosCSV(String nomfich);
 	public void cargarClasesCSV(String nomfichClases);
-	
+	public void guardarUsuariosCSV();
+	public void guardarClasesCSV();
+
 	//public boolean borrarUsuario( String dni );
 	
 	
