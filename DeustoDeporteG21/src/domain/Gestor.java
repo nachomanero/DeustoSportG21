@@ -43,12 +43,8 @@ public class Gestor implements itfGestor{
 	}
 	
 	public void realizarOperacionEnBD() {
-        try (Connection connection = gestorBD.establecerConexion()) {
-            // Realizar operaciones en la base de datos utilizando la conexión
-            // ...
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        
+		
     }
 
 	@Override

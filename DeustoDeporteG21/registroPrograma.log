@@ -1,2 +1,14 @@
-nov 22, 2023 11:14:53 A. M. gui.VentanaPrincipal initialize
-INFORMACIÓN: botón salida pressed
+Nov 23, 2023 6:57:13 PM db.GestorBD <init>
+INFO: Conexión establecida con éxito a la base de datos.
+Nov 23, 2023 6:57:13 PM db.GestorBD crearTablas
+INFO: Creacion de las tabla usuario satisfactoria. %s
+Nov 23, 2023 6:57:13 PM db.GestorBD crearTablas
+INFO: Creacion de la tabla sala satisfactoria.%s
+Nov 23, 2023 6:57:13 PM db.GestorBD crearTablas
+INFO: Creacion de la tabla clase satisfactoria. %s
+Nov 23, 2023 6:57:16 PM db.GestorBD crearTablas
+WARNING: Error en la creacion de la base de datos.%s
+Nov 23, 2023 6:57:16 PM db.GestorBD <init>
+INFO: Conexión establecida con éxito a la base de datos.
+Nov 23, 2023 6:57:17 PM gui.VentanaPrincipal initialize
+INFO: botón salida pressed

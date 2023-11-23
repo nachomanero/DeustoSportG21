@@ -24,33 +24,24 @@ public class GestorBD {
 
 	//gestiona las operaciones sobre el modelo fisico
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
-	protected static final String DRIVER_NAME = "org.sqlite.JDBC";
-	protected static final String DATABASE_FILE = "db/DeustoMart.db";
-	protected static final String CONNECTION_STRING = "jdbc:sqlite:" + DATABASE_FILE;
+	
+	protected static final String DATABASE_FILE = "resources/db/DeustoSport.db";
+	protected static  String CONNECTION_STRING = "jdbc:sqlite:" + DATABASE_FILE;
+	
+	public static Connection connection = null;
 	
 	public GestorBD() {		
-		try {
-			Class.forName(DRIVER_NAME);
-			LOGGER.log(Level.INFO,"Cargado el driver en la BBDD %s");
-		} catch (ClassNotFoundException ex) {
-			LOGGER.log(Level.WARNING,"Error al cargar el driver de BBDD %s");
-			ex.printStackTrace();
-		}
+		 
+	        try {
+	            connection = DriverManager.getConnection("jdbc:sqlite:DeustoSport.db");
+	            LOGGER.log(Level.INFO, "Conexión establecida con éxito a la base de datos.");
+	        } catch (SQLException ex) {
+	            LOGGER.log(Level.WARNING, "Error al establecer la conexión a la base de datos.");
+	            ex.printStackTrace();
+	        }
+	
 	}
-	
-	public Connection establecerConexion() {
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(CONNECTION_STRING);
-            LOGGER.log(Level.INFO, "Conexión establecida con éxito a la base de datos.");
-        } catch (SQLException ex) {
-            LOGGER.log(Level.WARNING, "Error al establecer la conexión a la base de datos.");
-            ex.printStackTrace();
-        }
-        return connection;
-    }
-	
-	
+		
 	public void crearTablas() {
 	    try (Connection con = DriverManager.getConnection(CONNECTION_STRING);
 	   	     Statement stmt = con.createStatement()) {
@@ -108,18 +99,18 @@ public class GestorBD {
 	        		+ "fecha Date NOT NULL, "
 	        		+ "hora TEXT NOT NULL, "
 	        		+ "FOREIGN KEY (DNI) REFERENCES Usuario(dni), "
-	        		+ "FOREIGN KEY (IDSala) REFERENCES Sala(IDSala)";
+	        		+ "FOREIGN KEY (IDSala) REFERENCES Sala(IDSala))";
 	        
 	        if (!stmt.execute(createReserva)) {
 		        System.out.println("\n- Se ha creado la tabla Actividad");
 		        LOGGER.log(Level.INFO,"Creacion de la tabla actividad satisfactoria.%s");
 		    }else {
-		    	LOGGER.log(Level.WARNING,"Error en la creacion de la tabla actividad.%s");
+		    	LOGGER.log(Level.WARNING,"Error en la creacion de la tabla reserva.%s");
 		    }
 
 	        System.out.println("Base de datos creada con exito.");
 	        LOGGER.log(Level.INFO,"Base de datos creada con exito.%s");
-	    } catch (Exception ex) {
+	    } catch (SQLException ex) {
 	    	LOGGER.log(Level.WARNING,"Error en la creacion de la base de datos.%s");
 			ex.printStackTrace();
 	    }

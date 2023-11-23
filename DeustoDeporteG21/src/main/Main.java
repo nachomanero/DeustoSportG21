@@ -11,11 +11,17 @@ import io.FicheroLogger;
 public class Main {
 	
 	public static void main(String[] args) {
+		
+		FicheroLogger ficheroLogger = new FicheroLogger();
+		
 		GestorBD gestorBD = new GestorBD();
-		Gestor gestor = new Gestor();
-		gestor.realizarOperacionEnBD();
+		
 		gestorBD.crearTablas();
-		 FicheroLogger ficheroLogger = new FicheroLogger();
+		
+		Gestor gestor = new Gestor();
+
+		gestor.realizarOperacionEnBD();
+		
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -28,7 +34,10 @@ public class Main {
                 }
             }
         });
+        
         FicheroLogger.cerrarFileHandler();
+        
+        
     }
 	
 
