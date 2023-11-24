@@ -78,7 +78,7 @@ public class Gestor implements itfGestor{
 		} catch (IOException e) {
 	        LOGGER.log(Level.WARNING, "Error al abrir el archivo de Usuarios.", e);
 	    }
-	    System.out.println(usuarios);
+	    //System.out.println(usuarios);
 		
 	}
 	
