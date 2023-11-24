@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import db.GestorBD;
@@ -63,12 +64,15 @@ public class Gestor implements itfGestor{
 				String correo = partes[4];
 				String contraseña = partes[5];
 				
-				Usuario u = new Usuario(dni, nombre, apellido, direccion, correo, contraseña);
-				usuarios.add(u);
-				gestorBD.añadirUsuario(u);
 				
-				LOGGER.log(Level.INFO, "Usuario agregado a la base de datos: " + u);
-	        
+				Usuario u = new Usuario(dni, nombre, apellido, direccion, correo, contraseña);
+				if (!usuarios.contains(u)) {
+				    usuarios.add(u);
+				    gestorBD.añadirUsuario(u);
+				    LOGGER.log(Level.INFO, "Usuario agregado a la base de datos: " + u);
+				} else {
+				    LOGGER.log(Level.WARNING, "Intento de agregar un usuario duplicado: " + u);
+				}
 				
 			}
 		} catch (IOException e) {
@@ -159,7 +163,7 @@ public class Gestor implements itfGestor{
 	            writer.println(linea);
 	        }
 	        LOGGER.log(Level.INFO, "Clases guardadas en archivo CSV con éxito.");
-	        System.out.println("Clases guardadas en archivo CSV con éxito.");
+	        //System.out.println("Clases guardadas en archivo CSV con éxito.");
 	    } catch (IOException ex) {
 	        LOGGER.log(Level.WARNING, "Error al guardar clases en archivo CSV.");
 	        ex.printStackTrace();
@@ -209,6 +213,16 @@ public class Gestor implements itfGestor{
 	        System.err.format("Error al guardar clases en la base de datos: ", ex.getMessage());
 	        ex.printStackTrace();
 	    }
+	}
+
+	public HashSet<Usuario> getUsuarios() {
+		// TODO Auto-generated method stub
+		return usuarios;
+	}
+	
+	public HashSet<Clase> getClases() {
+		// TODO Auto-generated method stub
+		return clases;
 	}
 
 	

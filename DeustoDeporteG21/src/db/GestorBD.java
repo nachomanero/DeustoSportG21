@@ -208,29 +208,38 @@ public class GestorBD {
         
     }
 	    
-	    public void añadirUsuario(Usuario usuario) {
-	    	try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
-	            String sql = "INSERT INTO usuario (dni, nombre, apellido, direccion, correoElectronico, contrasena) VALUES (?, ?, ?, ?, ?, ?)";
-	            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-	                preparedStatement.setString(1, usuario.getDni());
-	                preparedStatement.setString(2, usuario.getNombre());
-	                preparedStatement.setString(3, usuario.getApellido());
-	                preparedStatement.setString(4, usuario.getDireccion());
-	                preparedStatement.setString(5, usuario.getCorreoElectronico());
-	                preparedStatement.setString(6, usuario.getContrasena());
+	public void añadirUsuario(Usuario usuario) {
+	    try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
+	        String verificarExistencia = "SELECT COUNT(*) FROM Usuario WHERE dni = ?";
+	        try (PreparedStatement verificarStmt = connection.prepareStatement(verificarExistencia)) {
+	            verificarStmt.setString(1, usuario.getDni());
+	            ResultSet resultSet = verificarStmt.executeQuery();
+	            resultSet.next();
 
-	                preparedStatement.executeUpdate();
-	                LOGGER.log(Level.INFO,"usuario añadido a la BD correctamente");
+	            if (resultSet.getInt(1) == 0) {
+	                String sql = "INSERT INTO Usuario (dni, nombre, apellido, direccion, correoElectronico, contrasena) VALUES (?, ?, ?, ?, ?, ?)";
+	                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	                    preparedStatement.setString(1, usuario.getDni());
+	                    preparedStatement.setString(2, usuario.getNombre());
+	                    preparedStatement.setString(3, usuario.getApellido());
+	                    preparedStatement.setString(4, usuario.getDireccion());
+	                    preparedStatement.setString(5, usuario.getCorreoElectronico());
+	                    preparedStatement.setString(6, usuario.getContrasena());
+
+	                    preparedStatement.executeUpdate();
+	                    LOGGER.log(Level.INFO, "Usuario añadido a la base de datos correctamente.");
+	                }
+	            } else {
+	                LOGGER.log(Level.WARNING, "El usuario con DNI " + usuario.getDni() + " ya existe en la base de datos.");
 	            }
-	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al añadir usuario a la base de datos.");
-	            ex.printStackTrace();
-	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.");
-	            e.printStackTrace();
 	        }
+	    } catch (SQLException ex) {
+	        LOGGER.log(Level.WARNING, "Error al añadir el usuario a la base de datos", ex);
+	    } catch (Exception e) {
+	        LOGGER.log(Level.WARNING, "Error general", e);
 	    }
-		
+	}
+
 		
 	    
 	    public void añadirClase(Clase clase) {
