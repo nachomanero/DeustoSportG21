@@ -166,7 +166,7 @@ public class VentanaRegistro {
 		        
 		        if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty() || correo.isEmpty() || contrasenia.isEmpty()) {
 		            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.", "Error de Registro", JOptionPane.ERROR_MESSAGE);
-	                LOGGER.log(Level.WARNING, "Se ha intentado registrar un usuario sin tener todos los campos de datos completados.");
+	                LOGGER.log(Level.SEVERE, "Se ha intentado registrar un usuario sin tener todos los campos de datos completados.");
 		        } else {
 		            
 		            JOptionPane.showMessageDialog(null, "Registro completado correctamente", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);
@@ -192,7 +192,7 @@ public class VentanaRegistro {
                     thisFrame.dispose();
                     LOGGER.log(Level.INFO, "El usuario ha salido.");
                 }else {
-                	LOGGER.log(Level.WARNING,"Intento de salida fallido.");
+                	LOGGER.log(Level.SEVERE,"Intento de salida fallido.");
                 }
 				
 			}

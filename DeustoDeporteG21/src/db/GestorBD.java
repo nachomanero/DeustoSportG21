@@ -36,7 +36,7 @@ public class GestorBD {
 	            connection = DriverManager.getConnection(CONNECTION_STRING);
 	            LOGGER.log(Level.INFO, "Conexión establecida con éxito a la base de datos.");
 	        } catch (SQLException ex) {
-	            LOGGER.log(Level.WARNING, "Error al establecer la conexión a la base de datos.");
+	            LOGGER.log(Level.SEVERE, "Error al establecer la conexión a la base de datos.");
 	            ex.printStackTrace();
 	        }
 	
@@ -57,7 +57,7 @@ public class GestorBD {
                 
                 LOGGER.log(Level.INFO, "Creacion de la tabla usuario satisfactoria.");
             } else {
-                LOGGER.log(Level.WARNING, "Error en la creacion de la tabla usuario.");
+                LOGGER.log(Level.SEVERE, "Error en la creacion de la tabla usuario.");
             }
 
             // Crear tabla Sala
@@ -69,7 +69,7 @@ public class GestorBD {
                 
                 LOGGER.log(Level.INFO, "Creacion de la tabla sala satisfactoria.");
             } else {
-                LOGGER.log(Level.WARNING, "Error al crear la tabla sala.");
+                LOGGER.log(Level.SEVERE, "Error al crear la tabla sala.");
             }
 
             // Crear tabla de clases
@@ -86,7 +86,7 @@ public class GestorBD {
                
                 LOGGER.log(Level.INFO, "Creacion de la tabla clase satisfactoria.");
             } else {
-                LOGGER.log(Level.WARNING, "Error en la creacion de la tabla clase.");
+                LOGGER.log(Level.SEVERE, "Error en la creacion de la tabla clase.");
             }
 
             // Crear tabla reserva
@@ -104,13 +104,13 @@ public class GestorBD {
                 
                 LOGGER.log(Level.INFO, "Creacion de la tabla reserva satisfactoria.");
             } else {
-                LOGGER.log(Level.WARNING, "Error en la creacion de la tabla reserva.");
+                LOGGER.log(Level.SEVERE, "Error en la creacion de la tabla reserva.");
             }
 
             
             LOGGER.log(Level.INFO, "Base de datos creada con exito.");
         } catch (SQLException ex) {
-            LOGGER.log(Level.WARNING, "Error en la creacion de la base de datos.");
+            LOGGER.log(Level.SEVERE, "Error en la creacion de la base de datos.");
             ex.printStackTrace();
         }
     }
@@ -157,10 +157,10 @@ public class GestorBD {
                 }
             }
         } catch (SQLException | ParseException ex) {
-        	LOGGER.log(Level.WARNING,"Error al obtener registros desde la base de datos.");
+        	LOGGER.log(Level.SEVERE,"Error al obtener registros desde la base de datos.");
             ex.printStackTrace();
         } catch (Exception e) {
-        	LOGGER.log(Level.WARNING,"Error general.");
+        	LOGGER.log(Level.SEVERE,"Error general.");
             e.printStackTrace();
         }
 
@@ -178,7 +178,7 @@ public class GestorBD {
 	        	System.out.println("\n- Se ha borrado la tabla Usuario");
 	        	LOGGER.log(Level.INFO,"Se ha borrado la tabla usuario correctamente.");
 	        }else {
-	        	LOGGER.log(Level.WARNING,"Error al borrar la tabla usuario.");
+	        	LOGGER.log(Level.SEVERE,"Error al borrar la tabla usuario.");
 	        }
 
             String dropClase = "DROP TABLE IF EXISTS CLASE";
@@ -186,13 +186,13 @@ public class GestorBD {
 	        	System.out.println("\n- Se ha borrado la tabla Clase");
 	        	LOGGER.log(Level.INFO,"Se ha borrado la tabla clase correctamente.");
 	        }else {
-	        	LOGGER.log(Level.WARNING,"Error al borrar la tabla clase.");
+	        	LOGGER.log(Level.SEVERE,"Error al borrar la tabla clase.");
 	        }
 
             System.out.println("Base de datos borrada exitosamente.");
             LOGGER.log(Level.INFO,"Base datos borrada correctamente.");
         } catch (Exception ex) {
-        	LOGGER.log(Level.WARNING,"Error al borrar la base de datos.");
+        	LOGGER.log(Level.SEVERE,"Error al borrar la base de datos.");
             ex.printStackTrace();
         }
         
@@ -202,7 +202,7 @@ public class GestorBD {
 			System.out.println("\n- Se ha borrado el fichero de la BBDD");
 			LOGGER.log(Level.INFO,"Se ha borrado el fichero de la BD correctamente.");
 		} catch (Exception ex) {
-			LOGGER.log(Level.WARNING,"Error al borrar el archivo de la BD.");
+			LOGGER.log(Level.SEVERE,"Error al borrar el archivo de la BD.");
 			ex.printStackTrace();						
 		}
         
@@ -230,13 +230,13 @@ public class GestorBD {
 	                    LOGGER.log(Level.INFO, "Usuario añadido a la base de datos correctamente.");
 	                }
 	            } else {
-	                LOGGER.log(Level.WARNING, "El usuario con DNI " + usuario.getDni() + " ya existe en la base de datos.");
+	                LOGGER.log(Level.SEVERE, "El usuario con DNI " + usuario.getDni() + " ya existe en la base de datos.");
 	            }
 	        }
 	    } catch (SQLException ex) {
-	        LOGGER.log(Level.WARNING, "Error al añadir el usuario a la base de datos", ex);
+	        LOGGER.log(Level.SEVERE, "Error al añadir el usuario a la base de datos", ex);
 	    } catch (Exception e) {
-	        LOGGER.log(Level.WARNING, "Error general", e);
+	        LOGGER.log(Level.SEVERE, "Error general", e);
 	    }
 	}
 
@@ -265,14 +265,14 @@ public class GestorBD {
 	                        LOGGER.log(Level.INFO, "Clase añadida a la BD correctamente.");
 	                    }
 	                } else {
-	                    LOGGER.log(Level.WARNING, "La clase con ID " + clase.getIDClase() + " ya existe en la base de datos.");
+	                    LOGGER.log(Level.SEVERE, "La clase con ID " + clase.getIDClase() + " ya existe en la base de datos.");
 	                }
 	            }
 	        } catch (SQLException ex) {
-	            LOGGER.log(Level.WARNING, "Error al añadir la clase a la BD");
+	            LOGGER.log(Level.SEVERE, "Error al añadir la clase a la BD");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	            LOGGER.log(Level.WARNING, "Error general");
+	            LOGGER.log(Level.SEVERE, "Error general");
 	            e.printStackTrace();
 	        }
 	    }
@@ -292,10 +292,10 @@ public class GestorBD {
 	                LOGGER.log(Level.INFO,"Reserva añadida a la base de datos con exito.");
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al añadir reserva a la base de datos.");
+	        	LOGGER.log(Level.SEVERE,"Error al añadir reserva a la base de datos.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.");
+	        	LOGGER.log(Level.SEVERE,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }
@@ -313,14 +313,14 @@ public class GestorBD {
 	                    LOGGER.log(Level.INFO,"Clase eliminada con exito.");
 	                } else {
 	                    System.out.println("No se encontró ninguna clase con ID " + IDClase);
-	                    LOGGER.log(Level.WARNING,"No se ha eliminado ninguna clase.");
+	                    LOGGER.log(Level.SEVERE,"No se ha eliminado ninguna clase.");
 	                }
 	            }
 	        } catch (SQLException ex) {
-	            LOGGER.log(Level.WARNING,"Error al eliminar clase de la BS.");
+	            LOGGER.log(Level.SEVERE,"Error al eliminar clase de la BS.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.");
+	        	LOGGER.log(Level.SEVERE,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }
@@ -336,7 +336,7 @@ public class GestorBD {
 				LOGGER.log(Level.INFO,"Se han borrado usuarios correctamente.");
 				System.out.format("\n- Se han borrado %d usuarios", result);
 			} catch (Exception ex) {
-				LOGGER.log(Level.WARNING,"Error al borrar de la BD.");
+				LOGGER.log(Level.SEVERE,"Error al borrar de la BD.");
 				ex.printStackTrace();						
 			}		
 		}
@@ -357,15 +357,15 @@ public class GestorBD {
 	                	LOGGER.log(Level.INFO,"se ha cancelado la reserva con exito.");
 	                    System.out.println("Reserva cancelada de la base de datos con éxito.");
 	                } else {
-	                	LOGGER.log(Level.WARNING,"Error al borrar la reseerva.");
+	                	LOGGER.log(Level.SEVERE,"Error al borrar la reseerva.");
 	                    System.out.println("No se encontró ninguna reserva con los datos proporcionados.");
 	                }
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al cancelar la reserva de la BD.");
+	        	LOGGER.log(Level.SEVERE,"Error al cancelar la reserva de la BD.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.");
+	        	LOGGER.log(Level.SEVERE,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }
@@ -387,15 +387,15 @@ public class GestorBD {
 	                    System.out.println("Clase modificada en la base de datos con éxito.");
 	                    LOGGER.log(Level.INFO,"Clase modificada con exito.");
 	                } else {
-	                	LOGGER.log(Level.WARNING,"No se ha encontrado ninguna clase.");
+	                	LOGGER.log(Level.SEVERE,"No se ha encontrado ninguna clase.");
 	                    System.out.println("No se encontró ninguna clase con ID " + clase.getIDClase());
 	                }
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al modificar clase en la base de datos.");
+	        	LOGGER.log(Level.SEVERE,"Error al modificar clase en la base de datos.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.");
+	        	LOGGER.log(Level.SEVERE,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }
@@ -412,10 +412,10 @@ public class GestorBD {
 	                return resultSet.next();
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al comprobar el usuario.");
+	        	LOGGER.log(Level.SEVERE,"Error al comprobar el usuario.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.");
+	        	LOGGER.log(Level.SEVERE,"Error general.");
 	            e.printStackTrace();
 	        }
 
@@ -446,15 +446,15 @@ public class GestorBD {
 	                    LOGGER.log(Level.INFO,"Se ha encontrado una clase.%S");
 	                    
 	                } else {
-	    	        	LOGGER.log(Level.WARNING,"no se ha encontrado ninguna clase con esa id.%S");
+	    	        	LOGGER.log(Level.SEVERE,"no se ha encontrado ninguna clase con esa id.%S");
 	                    System.out.println("No se encontró ninguna clase con ID " + IDClase);
 	                }
 	            }
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.WARNING,"Error al visualizar la clase.");
+	        	LOGGER.log(Level.SEVERE,"Error al visualizar la clase.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.WARNING,"Error general.");
+	        	LOGGER.log(Level.SEVERE,"Error general.");
 	            e.printStackTrace();
 	        }
 	    }

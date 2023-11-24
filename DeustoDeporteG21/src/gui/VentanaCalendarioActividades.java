@@ -68,7 +68,7 @@ public class VentanaCalendarioActividades extends JFrame {
                     selectActivity();
                 } else {
                     JOptionPane.showMessageDialog(null, "Por favor, selecciona una actividad antes de apuntarte.");
-                    LOGGER.log(Level.WARNING, "Intento de apuntarse sin seleccionar una actividad.");
+                    LOGGER.log(Level.SEVERE, "Intento de apuntarse sin seleccionar una actividad.");
                 }
             }
         });

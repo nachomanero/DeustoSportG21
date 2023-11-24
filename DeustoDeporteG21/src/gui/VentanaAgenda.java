@@ -171,7 +171,7 @@ public class VentanaAgenda extends JFrame {
 						LOGGER.log(Level.INFO,"Se ha seleccionada una actividad correctamente"+ selectedActivity);
 					} else {
 						panelClase.removeAll();
-						LOGGER.log(Level.WARNING,"Se han borrado las clases.");
+						LOGGER.log(Level.SEVERE,"Se han borrado las clases.");
 					}
 				}
 			}

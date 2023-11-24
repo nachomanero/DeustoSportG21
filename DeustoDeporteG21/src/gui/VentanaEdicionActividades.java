@@ -101,7 +101,7 @@ public class VentanaEdicionActividades extends JFrame {
                 actividadesListModel.addElement(actividad);
                 LOGGER.log(Level.INFO,"Se ha añadido una actividad correctamente"+ actividad);
             }else {
-            	LOGGER.log(Level.WARNING,"Ha ocurrido un error al añadir la actividad"+actividad);
+            	LOGGER.log(Level.SEVERE,"Ha ocurrido un error al añadir la actividad"+actividad);
             }
         }
 

@@ -167,7 +167,7 @@ public class VentanaAniadirClase extends JFrame {
                     thisFrame.dispose();
                     LOGGER.log(Level.INFO, "El usuario ha salido."+result);
                 }else {
-                	LOGGER.log(Level.WARNING,"Salida de la aplicacion fallida"+result);
+                	LOGGER.log(Level.SEVERE,"Salida de la aplicacion fallida"+result);
                 }
 			}
 		});
