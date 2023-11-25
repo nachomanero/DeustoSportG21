@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 
 import java.io.FileReader;
@@ -104,6 +105,48 @@ public class Gestor implements itfGestor{
 	    }
 	}
 	
+	//Este metodo lo he hecho para poder poner ID automático al crear las clases
+	public int obtenerUltimoIDClase(String nomFichClases) {
+		int contador = 0;
+		try {
+			Scanner sc = new Scanner(new FileReader(nomFichClases));
+			String linea;
+			
+			while(sc.hasNext()) {
+				linea = sc.nextLine();
+				contador++;
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return contador;
+		
+	}
+	
+	public void agregarClaseACSV(Clase clase, String rutaArchivoCSV) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivoCSV, true))) {
+            // Crear una cadena con los datos de la clase
+            String datosClase = String.format(
+                    "%d,%s,%s,%s,%d,%d%n",
+                    clase.getIDClase(),
+                    clase.getHora(),
+                    clase.getTipoActividad().toString(),
+                    new SimpleDateFormat("dd-MM-yyyy").format(clase.getFecha()),
+                    clase.getIDSala(),
+                    clase.getPlazas()
+            );
+
+            // Escribir la cadena en el archivo CSV
+            writer.write(datosClase);
+
+            System.out.println("Clase añadida al archivo CSV correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 	@Override
 	public void cargarClasesCSV(String nomfichClases) {

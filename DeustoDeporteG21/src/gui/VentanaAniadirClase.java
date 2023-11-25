@@ -8,6 +8,9 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JCalendar;
 
+import db.GestorBD;
+import domain.Clase;
+import domain.Gestor;
 import domain.TipoActividad;
 
 import java.awt.BorderLayout;
@@ -33,21 +36,26 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
 import java.util.logging.Logger;
+import java.util.Iterator;
 import java.util.logging.Level;
 
 
 import io.FicheroLogger;
 public class VentanaAniadirClase extends JFrame {
-
+	
+	
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private String nomfichClases = "resources/data/Clases.csv";
 
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
 
 	public VentanaAniadirClase() {
+		
+		
 		setBackground(new Color(102, 153, 153));
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
@@ -80,7 +88,7 @@ public class VentanaAniadirClase extends JFrame {
 		panel_Labels.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_1 = new JLabel("Tipo de clase:                       ");
+		JLabel lblNewLabel_1 = new JLabel("Tipo de clase:                                      ");
 		lblNewLabel_1.setBackground(new Color(0,0,0));
 		panel_2.add(lblNewLabel_1);
 		
@@ -88,6 +96,17 @@ public class VentanaAniadirClase extends JFrame {
 		//JComboBox<String> comboBox = new JComboBox<>();
 		comboBox.setMaximumRowCount(20);
 		panel_2.add(comboBox, BorderLayout.EAST);
+		
+		
+		
+		var seleccionCombo = comboBox.getSelectedItem();
+		String strTipoClase = seleccionCombo.toString();
+		System.out.println(seleccionCombo);
+		
+		
+		//if(seleccionCombo == TipoActividad.FUNCIONAL) {
+			//textField_1.setText("1");
+		//}
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(102, 153, 153));
@@ -169,6 +188,22 @@ public class VentanaAniadirClase extends JFrame {
 		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
 		
 		
+		comboBox.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				TipoActividad tipoClase = (TipoActividad)comboBox.getSelectedItem();
+				int claseInd = tipoClase.ordinal() + 1;
+				textField_2.setText(String.valueOf(claseInd));
+				
+			}
+		});
+		
+		
+		
+		
+		
 		btnSalir.addActionListener(new ActionListener() {
 			
 			@Override
@@ -202,18 +237,35 @@ public class VentanaAniadirClase extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Gestor g = new Gestor();
+				GestorBD gbd = new GestorBD();
+				
+				
+				
 				// TODO Auto-generated method stub
-				TipoActividad tipoClase = (TipoActividad)comboBox.getSelectedItem();
-					
+				
+				
 				try {
+					TipoActividad tipoClase = (TipoActividad)comboBox.getSelectedItem();
+					int id = g.obtenerUltimoIDClase(nomfichClases) + 1;
 					String txtFecha = textField.getText();
 					Date fecha = (Date) formatoFecha.parse(txtFecha);
+					String hora = textField_1.getText();
+					int lugar =  Integer.parseInt(textField_2.getText());
+					int capacidad = (int) spinner.getValue();
+					
+					Clase cl = new Clase(id,hora,tipoClase,fecha,lugar,capacidad);
+					gbd.añadirClase(cl);
+					g.agregarClaseACSV(cl, nomfichClases);
+					
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					System.out.println("Problema con la fecha");
 				}
 				
-				String hora = textField_1.getText();
+				
+				
 				
 				
 			
@@ -228,6 +280,8 @@ public class VentanaAniadirClase extends JFrame {
 			}
 		});
 	}
+	
+	
 	
 	public void mostrarVentana() {
         getContentPane().setVisible(true);
