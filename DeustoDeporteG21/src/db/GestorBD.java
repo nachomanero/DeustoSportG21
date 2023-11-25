@@ -12,7 +12,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.logging.Logger;
 
 import domain.Clase;
@@ -166,6 +168,22 @@ public class GestorBD {
 
         return registros;
     }
+	
+	/*public List<String> buscarClasesPorFecha(Date fecha){
+		List<String> clasesEncontradas = new ArrayList<>();
+		try {
+			//Statement stmt = con.createStatement();
+			String buscarClases = "SELECT * FROM Clase WHERE fecha = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(buscarClases);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return clasesEncontradas;
+        
+        	
+        
+	}*/
 	
 	
 	

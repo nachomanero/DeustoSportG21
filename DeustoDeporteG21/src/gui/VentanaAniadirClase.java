@@ -5,6 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.toedter.calendar.JCalendar;
+
+import domain.TipoActividad;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
@@ -23,6 +28,9 @@ import javax.swing.JButton;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.awt.Color;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -35,6 +43,7 @@ public class VentanaAniadirClase extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
 
@@ -71,11 +80,12 @@ public class VentanaAniadirClase extends JFrame {
 		panel_Labels.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_1 = new JLabel("Tipo de clase: ");
+		JLabel lblNewLabel_1 = new JLabel("Tipo de clase:                       ");
 		lblNewLabel_1.setBackground(new Color(0,0,0));
 		panel_2.add(lblNewLabel_1);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<TipoActividad> comboBox = new JComboBox<TipoActividad>(TipoActividad.values());
+		//JComboBox<String> comboBox = new JComboBox<>();
 		comboBox.setMaximumRowCount(20);
 		panel_2.add(comboBox, BorderLayout.EAST);
 		
@@ -84,8 +94,9 @@ public class VentanaAniadirClase extends JFrame {
 		panel_Labels.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_2 = new JLabel("Fecha: ");
+		JLabel lblNewLabel_2 = new JLabel("Fecha:              ");
 		panel_3.add(lblNewLabel_2, BorderLayout.WEST);
+		
 		
 		textField = new JTextField();
 		textField.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -155,6 +166,8 @@ public class VentanaAniadirClase extends JFrame {
 		btnSalir.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_7.add(btnSalir);
 		
+		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+		
 		
 		btnSalir.addActionListener(new ActionListener() {
 			
@@ -190,6 +203,21 @@ public class VentanaAniadirClase extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				TipoActividad tipoClase = (TipoActividad)comboBox.getSelectedItem();
+					
+				try {
+					String txtFecha = textField.getText();
+					Date fecha = (Date) formatoFecha.parse(txtFecha);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				String hora = textField_1.getText();
+				
+				
+			
+				
 				JOptionPane.showMessageDialog(null, "Clase creada correctamente","CREACION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnCrearClase);
                 thisFrame.dispose();
