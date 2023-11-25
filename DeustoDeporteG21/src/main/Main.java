@@ -23,6 +23,9 @@ public class Main {
 	
 		gestor.cargarUsuariosCSV("resources/data/Usuarios.csv");
 		gestor.cargarClasesCSV("resources/data/Clases.csv");
+		
+		VentanaPrincipal wind = new VentanaPrincipal();
+		wind.mostrarVentana();
 	
 
 		

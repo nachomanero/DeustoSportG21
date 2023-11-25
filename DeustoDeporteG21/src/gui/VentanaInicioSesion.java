@@ -9,6 +9,9 @@ import javax.swing.JOptionPane;
 
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
+
+import db.GestorBD;
+
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -147,11 +150,28 @@ public class VentanaInicioSesion {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
-				frame.dispose();
-				VentanaUsuario ventanaUsuario = new VentanaUsuario();
-				ventanaUsuario.setVisible(true);
-				LOGGER.log(Level.INFO,"Se ha accedido al inicio de sesion.");
+				
+				String contrasenia = txtContrasenia.getText();
+				String correo = textFieldCorreo.getText();
+				
+				GestorBD gbd = new GestorBD();
+				
+				var comprobacion = gbd.comprobarUsuario(correo, contrasenia);
+				
+				if(comprobacion == true) {
+					JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
+					frame.dispose();
+					VentanaUsuario ventanaUsuario = new VentanaUsuario();
+					ventanaUsuario.setVisible(true);
+					LOGGER.log(Level.INFO,"Se ha accedido al inicio de sesion.");
+				}else {
+					JOptionPane.showMessageDialog(null, "El correo o la contraseña no son correctos","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
+					LOGGER.log(Level.INFO,"El correo o la contraseña en el inicio de sesion no son correctos.");
+					textFieldCorreo.setText("");
+					txtContrasenia.setText("");
+				}
+				
+				
 			}
 		});
 		
