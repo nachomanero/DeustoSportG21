@@ -36,6 +36,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import java.util.Iterator;
 import java.util.logging.Level;
 
@@ -237,45 +238,48 @@ public class VentanaAniadirClase extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
 				Gestor g = new Gestor();
 				GestorBD gbd = new GestorBD();
 				
-				
-				
-				// TODO Auto-generated method stub
-				
-				
 				try {
+					String patronFecha = "^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-\\d{4}$";
+
 					TipoActividad tipoClase = (TipoActividad)comboBox.getSelectedItem();
 					int id = g.obtenerUltimoIDClase(nomfichClases) + 1;
 					String txtFecha = textField.getText();
-					Date fecha = (Date) formatoFecha.parse(txtFecha);
+					java.util.Date fecha = formatoFecha.parse(txtFecha);
+					java.sql.Date sqlFecha = new java.sql.Date(fecha.getTime());
 					String hora = textField_1.getText();
 					int lugar =  Integer.parseInt(textField_2.getText());
 					int capacidad = (int) spinner.getValue();
+					if(!txtFecha.isEmpty() || !hora.isEmpty() || capacidad!=0) {
+						
+					}
+					if(Pattern.matches(patronFecha, txtFecha)) {
+						Clase cl = new Clase(id,hora,tipoClase,sqlFecha,lugar,capacidad);
+						gbd.añadirClase(cl);
+						g.agregarClaseACSV(cl, nomfichClases);
+						JOptionPane.showMessageDialog(null, "Clase creada correctamente","CREACION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
+						JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnCrearClase);
+		                thisFrame.dispose();
+						VentanaMenuAdmin vent = new VentanaMenuAdmin();
+						vent.mostrarVentana();
+		                LOGGER.log(Level.INFO, "Se ha creado una sesion correctamente");
+					}else {
+						textField.setText("");
+						JOptionPane.showMessageDialog(null, "La fecha introducida no es inválida \n El formato es: (dd-MM-yyyy)" ,"FECHA INCORRECTA",JOptionPane.ERROR_MESSAGE);
+						LOGGER.log(Level.WARNING, "Se ha intentado añadir una clase con una fecha en formato incorrecto");
+					}
 					
-					Clase cl = new Clase(id,hora,tipoClase,fecha,lugar,capacidad);
-					gbd.añadirClase(cl);
-					g.agregarClaseACSV(cl, nomfichClases);
 					
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "Rellene bien la fehca" ,"FECHA INCORRECTA",JOptionPane.ERROR_MESSAGE);
 					e1.printStackTrace();
 					System.out.println("Problema con la fecha");
+					LOGGER.log(Level.WARNING, "Error haciendo el Parse de la fecha");
 				}
-				
-				
-				
-				
-				
-			
-				
-				JOptionPane.showMessageDialog(null, "Clase creada correctamente","CREACION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
-				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnCrearClase);
-                thisFrame.dispose();
-				VentanaMenuAdmin vent = new VentanaMenuAdmin();
-				vent.mostrarVentana();
-                LOGGER.log(Level.INFO, "Se ha creado una sesion correctamente");
 
 			}
 		});

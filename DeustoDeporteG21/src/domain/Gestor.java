@@ -137,12 +137,13 @@ public class Gestor implements itfGestor{
                     clase.getIDSala(),
                     clase.getPlazas()
             );
-
-            // Escribir la cadena en el archivo CSV
+            
             writer.write(datosClase);
-
+            LOGGER.log(Level.INFO, "Clase añadida en el archivo CSV con éxito.");
             System.out.println("Clase añadida al archivo CSV correctamente.");
+            
         } catch (IOException e) {
+        	LOGGER.log(Level.WARNING, "Error al guardar la clase en el archivo CSV");
             e.printStackTrace();
         }
     }
