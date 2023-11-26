@@ -1,5 +1,6 @@
 package domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Clase {
@@ -70,8 +71,10 @@ public class Clase {
 
 	@Override
 	public String toString() {
-		return "Clase [IDClase=" + IDClase + ", hora=" + hora + ", tipoActividad=" + tipoActividad + ", fecha=" + fecha
-				+ ", sala=" + IDSala + ", plazas=" + plazas + "]";
+		SimpleDateFormat sdfOutput = new SimpleDateFormat("dd-MM-yyyy");
+        String fechaFormateadaStr = sdfOutput.format(fecha);
+		return hora + "  -  " + tipoActividad + "  -  " + fechaFormateadaStr
+				+ "  -  " + "Sala " + IDSala + "  -  "  + plazas + " plazas" ;
 	}
 	public void clase(int iDClase, String hora, TipoActividad tipoActividad, Date fecha, int IDSala, int plazas) {
 		IDClase = iDClase;

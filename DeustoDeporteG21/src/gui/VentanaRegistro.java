@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import db.GestorBD;
+import domain.Gestor;
 import domain.Usuario;
 
 import java.awt.BorderLayout;
@@ -173,6 +174,7 @@ public class VentanaRegistro {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        
+		    	String nomfichClases = "resources/data/Usuarios.csv";
 		        String nombre = textFieldNombre.getText();
 		        String apellido = textFieldApellido.getText();
 		        String dni = textFieldDNI.getText();
@@ -192,8 +194,10 @@ public class VentanaRegistro {
 		        	if(dniCorrecto(dni) == true) {
 		        		Usuario u = new Usuario(dni, nombre, apellido, direccion, correo, contrasenia);
 			        	GestorBD gbd = new GestorBD();
+			        	Gestor g = new Gestor();
 			        	gbd.añadirUsuario(u);
-			            
+			            g.añadirUsuarioACSV(u, nomfichClases);
+			        	
 			            JOptionPane.showMessageDialog(null, "Registro completado correctamente", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);
 			            frame.dispose();
 		                LOGGER.log(Level.INFO, "Se ha registrado al nuevo usuario correctamente.");

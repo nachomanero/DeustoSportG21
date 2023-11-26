@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 
@@ -10,7 +11,9 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.logging.Logger;
@@ -258,6 +261,104 @@ public class Gestor implements itfGestor{
 	        ex.printStackTrace();
 	    }
 	}
+	
+	  public static void actualizarClaseEnCSV(Clase claseActualizada, String rutaArchivo) {
+	        List<String> lineas = new ArrayList<String>();
+
+	        try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
+	            String linea;
+	            while ((linea = reader.readLine()) != null) {
+	                // Separar los datos de la línea por coma
+	                String[] datos = linea.split(",");
+	                int idClase = Integer.parseInt(datos[0].trim());
+
+	                // Verificar si la línea contiene la clase que estamos buscando
+	                if (idClase == claseActualizada.getIDClase()) {
+	                    // Actualizar la línea con los nuevos datos
+	                    String nuevaLinea = String.format("%d,%s,%s,%s,%d,%d",
+	                            claseActualizada.getIDClase(),
+	                            claseActualizada.getHora(),
+	                            claseActualizada.getTipoActividad().toString(),
+	                            claseActualizada.getFecha().toString(),
+	                            claseActualizada.getIDSala(),
+	                            claseActualizada.getPlazas()
+	                    );
+	                    lineas.add(nuevaLinea);
+	                } else {
+	                    // Conservar la línea original
+	                    lineas.add(linea);
+	                }
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            // Manejar la excepción según tus necesidades
+	        }
+
+	        // Escribir las líneas actualizadas en el archivo CSV
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
+	            for (String nuevaLinea : lineas) {
+	                writer.write(nuevaLinea);
+	                writer.newLine();
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            // Manejar la excepción según tus necesidades
+	        }
+	    }
+	  
+	   public void borrarClasePorId(int idClase, String rutaArchivoCSV) {
+	        try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivoCSV));
+	             BufferedWriter writer = new BufferedWriter(new FileWriter("temp.csv"))) {
+	            String linea;
+	            while ((linea = reader.readLine()) != null) {
+	                String[] partes = linea.split(",");
+	                int id = Integer.parseInt(partes[0].trim());
+
+	                // Verificar si la línea contiene la clase que estamos buscando
+	                if (id == idClase) {
+	                    // No agregar la línea al archivo temporal (borrar la línea)
+	                    continue;
+	                }
+
+	                // Conservar la línea original en el archivo temporal
+	                writer.write(linea);
+	                writer.newLine();
+	            }
+	        } catch (IOException e) {
+	            LOGGER.log(Level.WARNING, "Error al leer o escribir en el archivo CSV.", e);
+	            e.printStackTrace();
+	        }
+
+	        // Renombrar el archivo temporal al original para efectuar el borrado
+	        try {
+	            if (!new java.io.File("temp.csv").renameTo(new java.io.File(rutaArchivoCSV))) {
+	                LOGGER.log(Level.WARNING, "Error al renombrar el archivo temporal.");
+	            }
+	        } catch (Exception e) {
+	            LOGGER.log(Level.WARNING, "Error al renombrar el archivo temporal.", e);
+	            e.printStackTrace();
+	        }
+	    }
+	   
+	   public void añadirUsuarioACSV(Usuario usuario, String rutaArchivoCSV) {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivoCSV, true))) {
+	            
+	            String datosUsuario = String.format("%s,%s,%s,%s,%s,%s%n",
+	                    usuario.getDni(),
+	                    usuario.getNombre(),
+	                    usuario.getApellido(),
+	                    usuario.getDireccion(),
+	                    usuario.getCorreoElectronico(),
+	                    usuario.getContrasena());
+
+	            writer.write(datosUsuario);
+	            LOGGER.log(Level.INFO, "Usuario añadido al archivo CSV con éxito.");
+	            System.out.println("Usuario añadido al archivo CSV con éxito.");
+	        } catch (IOException e) {
+	            LOGGER.log(Level.WARNING, "Error al añadir el usuario al archivo CSV.", e);
+	            e.printStackTrace();
+	        }
+	    }
 
 	public HashSet<Usuario> getUsuarios() {
 		// TODO Auto-generated method stub
@@ -268,12 +369,6 @@ public class Gestor implements itfGestor{
 		// TODO Auto-generated method stub
 		return clases;
 	}
-
-	
-
-	
-
-
 
 
 }

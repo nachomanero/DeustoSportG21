@@ -243,6 +243,7 @@ public class VentanaAniadirClase extends JFrame {
 				GestorBD gbd = new GestorBD();
 				
 				try {
+					String patronHora = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
 					String patronFecha = "^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-\\d{4}$";
 
 					TipoActividad tipoClase = (TipoActividad)comboBox.getSelectedItem();
@@ -253,24 +254,28 @@ public class VentanaAniadirClase extends JFrame {
 					String hora = textField_1.getText();
 					int lugar =  Integer.parseInt(textField_2.getText());
 					int capacidad = (int) spinner.getValue();
-					if(!txtFecha.isEmpty() || !hora.isEmpty() || capacidad!=0) {
-						
-					}
-					if(Pattern.matches(patronFecha, txtFecha)) {
-						Clase cl = new Clase(id,hora,tipoClase,sqlFecha,lugar,capacidad);
-						gbd.añadirClase(cl);
-						g.agregarClaseACSV(cl, nomfichClases);
-						JOptionPane.showMessageDialog(null, "Clase creada correctamente","CREACION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
-						JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnCrearClase);
-		                thisFrame.dispose();
-						VentanaMenuAdmin vent = new VentanaMenuAdmin();
-						vent.mostrarVentana();
-		                LOGGER.log(Level.INFO, "Se ha creado una sesion correctamente");
+					if(Pattern.matches(patronHora, hora)) {
+						if(Pattern.matches(patronFecha, txtFecha)) {
+							Clase cl = new Clase(id,hora,tipoClase,sqlFecha,lugar,capacidad);
+							gbd.añadirClase(cl);
+							g.agregarClaseACSV(cl, nomfichClases);
+							JOptionPane.showMessageDialog(null, "Clase creada correctamente","CREACION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
+							JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnCrearClase);
+			                thisFrame.dispose();
+							VentanaMenuAdmin vent = new VentanaMenuAdmin();
+							vent.mostrarVentana();
+			                LOGGER.log(Level.INFO, "Se ha creado una sesion correctamente");
+						}else {
+							textField.setText("");
+							JOptionPane.showMessageDialog(null, "La fecha introducida no es inválida \n El formato es: (dd-MM-yyyy)" ,"FECHA INCORRECTA",JOptionPane.ERROR_MESSAGE);
+							LOGGER.log(Level.WARNING, "Se ha intentado añadir una clase con una fecha en formato incorrecto");
+						}
 					}else {
-						textField.setText("");
-						JOptionPane.showMessageDialog(null, "La fecha introducida no es inválida \n El formato es: (dd-MM-yyyy)" ,"FECHA INCORRECTA",JOptionPane.ERROR_MESSAGE);
-						LOGGER.log(Level.WARNING, "Se ha intentado añadir una clase con una fecha en formato incorrecto");
+						textField_1.setText("");
+						JOptionPane.showMessageDialog(null, "La hora introducida no es inválida \n El formato es: (hh:mm)" ,"HORA INVÁLIDA",JOptionPane.ERROR_MESSAGE);
+						LOGGER.log(Level.WARNING, "Se ha intentado añadir una clase con una hora en formato incorrecto");
 					}
+					
 					
 					
 				} catch (ParseException e1) {

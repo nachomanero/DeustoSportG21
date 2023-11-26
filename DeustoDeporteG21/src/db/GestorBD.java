@@ -3,6 +3,7 @@ package db;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.Timestamp;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import domain.Clase;
@@ -438,6 +440,127 @@ public class GestorBD {
 	        }
 
 	        return false; // En caso de error o si no se encuentra el usuario
+	    }
+	    
+	    public boolean editarClase(Clase clase) {
+	        // SQL para actualizar una clase en la base de datos
+	        String sql = "UPDATE Clase SET hora = ?, tipoActividad = ?, fecha = ?,  idSala = ?, plazas = ? WHERE idClase = ?";
+
+	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING);
+	             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+	            // Establecer los parámetros en la sentencia SQL
+	        	java.sql.Date fechaSql = new java.sql.Date(clase.getFecha().getTime());
+	        	preparedStatement.setString(1, clase.getHora());
+	            preparedStatement.setString(2, clase.getTipoActividad().toString());
+	            preparedStatement.setDate(3, (Date) fechaSql);	            	        
+	            preparedStatement.setInt(4, clase.getIDSala());
+	            preparedStatement.setInt(5, clase.getPlazas());
+	            preparedStatement.setInt(6, clase.getIDClase());
+
+	            // Ejecutar la actualización
+	            int filasAfectadas = preparedStatement.executeUpdate();
+
+	            // Verificar si la actualización fue exitosa
+	            if(filasAfectadas>0) {
+	            	System.out.println("Se ha actualizado una linea");
+	            }else {
+	            	System.out.println("No se ha actualizado ninguna linea");
+	            }
+	            return filasAfectadas > 0;
+	            
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();  // Manejar la excepción adecuadamente en tu aplicación
+	            return false;
+	        }
+	    }
+	    /*
+	    public List<Clase> obtenerTodasLasClases() {
+	        List<Clase> clases = new ArrayList<>();
+
+	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
+	            String sql = "SELECT * FROM Clase";
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	                    while (resultSet.next()) {
+	                        int idClase = resultSet.getInt("idClase");
+	                        String hora = resultSet.getString("hora");
+	                        String tipoActividad = resultSet.getString("tipoActividad");
+	                        java.sql.Timestamp timestamp = resultSet.getTimestamp("fecha");
+	                        int IDSala = resultSet.getInt("IDSala");
+	                        int plazas = resultSet.getInt("plazas");
+
+	                        // Convertir Timestamp a java.util.Date
+	                        java.util.Date fecha = new java.util.Date(timestamp.getTime());
+
+	                        // Crear objeto Clase y agregarlo al conjunto
+	                        Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fecha, IDSala, plazas);
+	                        clases.add(clase);
+	                    }
+	                }
+	            }
+	        } catch (SQLException ex) {
+	            LOGGER.log(Level.SEVERE, "Error al obtener todas las clases desde la base de datos.");
+	            ex.printStackTrace();
+	        } catch (Exception e) {
+	            LOGGER.log(Level.SEVERE, "Error general.");
+	            e.printStackTrace();
+	        }
+
+	        return clases;
+	    }*/
+	    
+	    public List<Clase> obtenerTodasLasClases() {
+	        List<Clase> clases = new ArrayList<>();
+
+	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
+	            String sql = "SELECT * FROM Clase";
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	                    while (resultSet.next()) {
+	                        int idClase = resultSet.getInt("idClase");
+	                        String hora = resultSet.getString("hora");
+	                        String tipoActividad = resultSet.getString("tipoActividad");
+	                        java.sql.Timestamp timestamp = resultSet.getTimestamp("fecha");
+	                        int IDSala = resultSet.getInt("IDSala");
+	                        int plazas = resultSet.getInt("plazas");
+
+	                        // Convertir Timestamp a java.util.Date
+	                        java.util.Date fecha = new java.util.Date(timestamp.getTime());
+
+	                        // Formatear la fecha al formato "dd-MM-yyyy"
+	                        SimpleDateFormat sdfOutput = new SimpleDateFormat("dd-MM-yyyy");
+	                        String fechaFormateadaStr = sdfOutput.format(fecha);
+
+	                        // Convertir la fecha formateada a Date
+	                        java.util.Date fechaFormateada = sdfOutput.parse(fechaFormateadaStr);
+
+	                        // Crear objeto Clase y agregarlo al conjunto
+	                        Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fechaFormateada, IDSala, plazas);
+	                        clases.add(clase);
+	                    }
+	                }
+	            }
+	        } catch (SQLException | ParseException ex) {
+	            LOGGER.log(Level.SEVERE, "Error al obtener todas las clases desde la base de datos.");
+	            ex.printStackTrace();
+	        } catch (Exception e) {
+	            LOGGER.log(Level.SEVERE, "Error general.");
+	            e.printStackTrace();
+	        }
+
+	        return clases;
+	    }
+	    
+	    private java.util.Date convertirFecha(String fechaStr) {
+	        try {
+	            SimpleDateFormat sdfInput = new SimpleDateFormat("dd-MM-yyyy");
+	            return sdfInput.parse(fechaStr);
+	        } catch (ParseException e) {
+	            LOGGER.log(Level.SEVERE, "Error al convertir fecha: " + fechaStr, e);
+	            return null;  // Puedes ajustar esto según tus necesidades
+	        }
 	    }
 	    
 	    

@@ -56,6 +56,11 @@ public class VentanaMenuAdmin extends JFrame {
 		btnAniadirClase.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_Centro_Dcha.add(btnAniadirClase);
 		
+		JButton btnEliminarClase = new JButton("Eliminar Clase");
+		btnEliminarClase.setBackground(new Color(192, 192, 192));
+		btnEliminarClase.setFont(new Font("Arial", Font.BOLD, 13));
+		panel_Centro_Dcha.add(btnEliminarClase);
+		
 		JPanel panel_Centro_Izq = new JPanel();
 		panel_Centro_Izq.setBackground(new Color(102, 153, 153));
 		panel_Centro.add(panel_Centro_Izq);
@@ -94,6 +99,20 @@ public class VentanaMenuAdmin extends JFrame {
                 vent.mostrarVentana();
                 LOGGER.log(Level.INFO,"El admin ha accedido al apartado de anñadir clase.");
 				
+			}
+		});
+		
+		btnEliminarClase.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
+                thisFrame.dispose();
+                
+                VentanaEliminarActividades vent = new VentanaEliminarActividades();
+                vent.mostrarVentana();
+                LOGGER.log(Level.INFO,"Se va a acceder a eliminar una clase.");
 			}
 		});
 		

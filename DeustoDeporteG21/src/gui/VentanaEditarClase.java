@@ -5,6 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import db.GestorBD;
+import domain.Clase;
+import domain.Gestor;
+import domain.TipoActividad;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
@@ -17,14 +23,20 @@ import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.JSpinner;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import java.util.Date;
 import java.util.logging.Level;
 
 
@@ -33,12 +45,12 @@ import io.FicheroLogger;
 public class VentanaEditarClase extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtFecha;
+	private JTextField txtHora;
+	private JTextField txtLugar;
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 	
-	public VentanaEditarClase() {
+	public VentanaEditarClase(Clase clase) {
 		setBackground(new Color(102, 153, 153));
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setVisible(true);
@@ -58,9 +70,7 @@ public class VentanaEditarClase extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 65));
 		
-		JLabel lblFoto = new JLabel("");
-		lblFoto.setIcon(new ImageIcon("resources/images/FotoClases.jpg"));
-		panel.add(lblFoto);
+		
 		
 		JPanel panel_Labels = new JPanel();
 		panel_Labels.setBounds(new Rectangle(0, 0, 100000, 0));
@@ -75,9 +85,10 @@ public class VentanaEditarClase extends JFrame {
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_2.add(lblNewLabel_1);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<TipoActividad> comboBox = new JComboBox<TipoActividad>(TipoActividad.values());
 		comboBox.setMaximumRowCount(20);
 		panel_2.add(comboBox, BorderLayout.EAST);
+		comboBox.setSelectedItem(clase.getTipoActividad());
 		
 		JPanel panel_3 = new JPanel();
 		panel_Labels.add(panel_3);
@@ -87,10 +98,11 @@ public class VentanaEditarClase extends JFrame {
 		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_3.add(lblNewLabel_2, BorderLayout.WEST);
 		
-		textField = new JTextField();
-		textField.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panel_3.add(textField, BorderLayout.EAST);
-		textField.setColumns(10);
+		txtFecha = new JTextField();
+		txtFecha.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panel_3.add(txtFecha, BorderLayout.EAST);
+		txtFecha.setColumns(10);
+		txtFecha.setText(new SimpleDateFormat("dd-MM-yyyy").format(clase.getFecha()));
 		
 		JPanel panel_4 = new JPanel();
 		panel_Labels.add(panel_4);
@@ -100,10 +112,11 @@ public class VentanaEditarClase extends JFrame {
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_4.add(lblNewLabel_3, BorderLayout.WEST);
 		
-		textField_1 = new JTextField();
-		textField_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panel_4.add(textField_1, BorderLayout.EAST);
-		textField_1.setColumns(10);
+		txtHora = new JTextField();
+		txtHora.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panel_4.add(txtHora, BorderLayout.EAST);
+		txtHora.setColumns(10);
+		txtHora.setText(clase.getHora());
 		
 		JPanel panel_5 = new JPanel();
 		panel_Labels.add(panel_5);
@@ -113,9 +126,10 @@ public class VentanaEditarClase extends JFrame {
 		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_5.add(lblNewLabel_4, BorderLayout.WEST);
 		
-		textField_2 = new JTextField();
-		panel_5.add(textField_2, BorderLayout.EAST);
-		textField_2.setColumns(10);
+		txtLugar = new JTextField();
+		panel_5.add(txtLugar, BorderLayout.EAST);
+		txtLugar.setColumns(10);
+		txtLugar.setText(String.valueOf(clase.getIDClase()));
 		
 		JPanel panel_6 = new JPanel();
 		panel_Labels.add(panel_6);
@@ -125,8 +139,10 @@ public class VentanaEditarClase extends JFrame {
 		lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_6.add(lblNewLabel_5, BorderLayout.WEST);
 		
-		JSpinner spinner = new JSpinner();
-		panel_6.add(spinner, BorderLayout.EAST);
+		SpinnerModel spinnerModel = new SpinnerNumberModel(clase.getPlazas(), 0, 40, 1);
+		JSpinner spinnerCapacidad = new JSpinner(spinnerModel);
+		panel_6.add(spinnerCapacidad, BorderLayout.EAST);
+		
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(102, 153, 153));
@@ -154,6 +170,9 @@ public class VentanaEditarClase extends JFrame {
 		btnSalir.setBackground(new Color(192, 192, 192));
 		btnSalir.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_7.add(btnSalir);
+		
+		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+		String nomfichClases = "resources/data/Clases.csv";
 		
 		
 		btnRetroceder.addActionListener(new ActionListener() {
@@ -189,13 +208,56 @@ public class VentanaEditarClase extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				JOptionPane.showMessageDialog(null, "Clase modificada correctamente","EDICION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
-				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnEditarClase);
-                thisFrame.dispose();
-			
-				VentanaMenuAdmin vent = new VentanaMenuAdmin();
-				vent.mostrarVentana();
-				LOGGER.log(Level.INFO,"Se ha modificadp una clase satisfactoriamente.");
+				GestorBD gbd = new GestorBD();
+				Gestor g = new Gestor();
+				
+				try {
+					String patronHora = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
+					String patronFecha = "^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-\\d{4}$";
+					
+					String hora = txtHora.getText();
+					TipoActividad tipoClase = (TipoActividad)comboBox.getSelectedItem();
+					String fecha = txtFecha.getText();
+					java.util.Date fecha1 = formatoFecha.parse(fecha);
+					java.sql.Date sqlFecha = new java.sql.Date(fecha1.getTime());
+					int lugar =  Integer.parseInt(txtLugar.getText());
+					int capacidad = (int) spinnerCapacidad.getValue();
+					
+					if(Pattern.matches(patronHora, hora)) {
+						if(Pattern.matches(patronFecha, fecha)) {
+							Clase cl = new Clase(clase.getIDClase(),hora,tipoClase,sqlFecha,lugar,capacidad);
+							gbd.editarClase(cl);
+							g.actualizarClaseEnCSV(cl, nomfichClases);
+							
+							JOptionPane.showMessageDialog(null, "Clase modificada correctamente","EDICION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
+							JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnEditarClase);
+			                thisFrame.dispose();
+						
+							VentanaMenuAdmin vent = new VentanaMenuAdmin();
+							vent.mostrarVentana();
+							LOGGER.log(Level.INFO,"Se ha modificadp una clase satisfactoriamente.");
+						}else {
+							txtFecha.setText("");
+							JOptionPane.showMessageDialog(null, "La fecha introducida no es inválida \n El formato es: (dd-MM-yyyy)" ,"FECHA INCORRECTA",JOptionPane.ERROR_MESSAGE);
+							LOGGER.log(Level.WARNING, "Se ha intentado añadir una clase con una fecha en formato incorrecto");
+						}
+						
+					}else {
+						txtHora.setText("");
+						JOptionPane.showMessageDialog(null, "La hora introducida no es inválida \n El formato es: (hh:mm)" ,"HORA INVÁLIDA",JOptionPane.ERROR_MESSAGE);
+						LOGGER.log(Level.WARNING, "Se ha intentado añadir una clase con una hora en formato incorrecto");
+					}
+					
+					
+					
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}    
+				
+				
+				
+				
 			}
 		});
 	}

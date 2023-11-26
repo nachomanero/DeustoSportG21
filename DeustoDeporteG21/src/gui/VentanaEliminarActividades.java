@@ -6,6 +6,7 @@ import javax.swing.event.DocumentListener;
 
 import db.GestorBD;
 import domain.Clase;
+import domain.Gestor;
 import domain.TipoActividad;
 import io.FicheroLogger;
 
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class VentanaEdicionActividades extends JFrame {
+public class VentanaEliminarActividades extends JFrame {
     private JTextField actividadTextField;
     private JList<Clase> actividadesList;
     private DefaultListModel<Clase> actividadesListModel;
@@ -29,8 +30,8 @@ public class VentanaEdicionActividades extends JFrame {
     private JButton exitButton;
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
-    public VentanaEdicionActividades() {
-        JFrame frame = new JFrame("EDICIÓN ACTIVIDADES");
+    public VentanaEliminarActividades() {
+        JFrame frame = new JFrame("ELIMINACIÓN DE ACTIVIDADES");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
         frame.setResizable(false);
@@ -71,7 +72,7 @@ public class VentanaEdicionActividades extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        selectActivityButton = new JButton("Editar");
+        selectActivityButton = new JButton("Eiminar");
         selectActivityButton.addActionListener(e -> selectActivity());
 
         mainPanel.add(scrollPane, BorderLayout.CENTER);
@@ -110,6 +111,8 @@ public class VentanaEdicionActividades extends JFrame {
             boolean elemSelect = !actividadesList.isSelectionEmpty();
             selectActivityButton.setEnabled(elemSelect);
         });
+        
+        
     }
 
     private void updateActividadesList() {
@@ -135,14 +138,26 @@ public class VentanaEdicionActividades extends JFrame {
     }
 
     private void selectActivity() {
+    	
+    	String nomfichClases = "resources/data/Clases.csv";
+    	GestorBD gbd = new GestorBD();
+    	Gestor g = new Gestor();
+    	
         Clase selectedActivity = actividadesList.getSelectedValue();
 
         if (selectedActivity != null) {
-            LOGGER.log(Level.INFO, "Actividad seleccionada para editar: " + selectedActivity);
+            LOGGER.log(Level.INFO, "Actividad seleccionada para eliminar: " + selectedActivity);
 
-            // Crear una instancia de VentanaEditarClase y mostrarla
-            VentanaEditarClase ventanaEditar = new VentanaEditarClase(selectedActivity);
-            ventanaEditar.mostrarVentana();
+            int id = selectedActivity.getIDClase();
+            int result = JOptionPane.showConfirmDialog(null, "¿Seguro que quieres eliminar la clase de " + selectedActivity.getTipoActividad().toString() + " con ID " + selectedActivity.getIDClase(), "Eliminar clase", JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION) {
+            	gbd.eliminarClase(id);
+            	g.borrarClasePorId(id, nomfichClases);
+            	JOptionPane.showMessageDialog(null, "Clase eliminada correctamente","Eliminación de clases",JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            
+            
         }
     }
 
@@ -167,6 +182,3 @@ public class VentanaEdicionActividades extends JFrame {
         getContentPane().setVisible(true);
     }
 }
-
-
-
