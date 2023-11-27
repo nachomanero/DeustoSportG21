@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,29 +14,61 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
+import db.GestorBD;
+import domain.Reserva;
 
 import java.awt.FlowLayout;
 import io.FicheroLogger;
 import java.util.logging.Logger;
+import java.util.List;
 import java.util.logging.Level;
 public class VentanaAgenda extends JFrame {
-    private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
+    /*private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private DefaultListModel<String> activityListModel = new DefaultListModel<>();
 	private JList<String> activityList = new JList<>(activityListModel);
+	*/
+	private JTable tablaReservas;
+	private DefaultTableModel modeloTabla;
+	private String dniGuardado;
 
 	/**
 	 * Launch the application.
+	 * @param dniGuardado2 
 	 */
 
-	public VentanaAgenda() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public VentanaAgenda(String dniGuardado) {
+		this.dniGuardado = dniGuardado;
+		initComponents();
+		cargarReservas();
+	}
+		private void cargarReservas() {
+	        GestorBD gestorBD = new GestorBD();
+	        List<Reserva> reservasUsuario = gestorBD.obtenerReservasPorDni(dniGuardado);
+	        modeloTabla.setRowCount(0);
+	        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+	        for (Reserva reserva : reservasUsuario) {
+	            Object[] fila = {
+	                    reserva.getTipoActividad(),
+	                    reserva.getIDSala(),
+	                    formatoFecha.format(reserva.getFecha()),
+	                    reserva.getHora()
+	            };
+	            modeloTabla.addRow(fila);
+	        }
+
+		
+	}
+		/*setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -181,7 +215,26 @@ public class VentanaAgenda extends JFrame {
 	private void mostrarDatosActividad(String selectedActivity, JPanel panelClase) {
 		
 	}
-	
+	*/
+
+	private void initComponents() {
+		setTitle("MI AGENDA");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+        
+        modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Tipo Actividad");
+        modeloTabla.addColumn("ID Sala");
+        modeloTabla.addColumn("Fecha");
+        modeloTabla.addColumn("Hora");
+        
+        tablaReservas = new JTable(modeloTabla);
+        JScrollPane scrollPane = new JScrollPane(tablaReservas);
+        getContentPane().add(scrollPane, BorderLayout.CENTER);
+
+		
+	}
 	
 
 }

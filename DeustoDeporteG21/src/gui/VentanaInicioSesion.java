@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import db.GestorBD;
 
@@ -146,7 +147,7 @@ public class VentanaInicioSesion {
 		
 		
 
-		btnAcceder.addActionListener(new ActionListener() {
+btnAcceder.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -155,15 +156,22 @@ public class VentanaInicioSesion {
 				String correo = textFieldCorreo.getText();
 				
 				GestorBD gbd = new GestorBD();
+
 				
 				var comprobacion = gbd.comprobarUsuario(correo, contrasenia);
 				
 				if(comprobacion == true) {
-					JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
-					frame.dispose();
-					VentanaUsuario ventanaUsuario = new VentanaUsuario();
-					ventanaUsuario.setVisible(true);
-					LOGGER.log(Level.INFO,"Se ha accedido al inicio de sesion.");
+					String dniUsuario = gbd.obtenerDniPorCredenciales(correo, contrasenia);
+					if (dniUsuario != null) {
+						JOptionPane.showMessageDialog(null, "Bienvenido!!","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
+						//String dniGuardado = dniUsuario;
+						//abrirVentanaAgenda(dniUsuario);
+						frame.dispose();
+						VentanaUsuario ventanaUsuario = new VentanaUsuario(dniUsuario);
+						ventanaUsuario.setVisible(true);
+						LOGGER.log(Level.INFO,"Se ha accedido al inicio de sesion.");
+					}
+					
 				}else {
 					JOptionPane.showMessageDialog(null, "El correo o la contraseña no son correctos","INICIO DE SESIÓN",JOptionPane.INFORMATION_MESSAGE);
 					LOGGER.log(Level.INFO,"El correo o la contraseña en el inicio de sesion no son correctos.");
@@ -173,7 +181,12 @@ public class VentanaInicioSesion {
 				
 				
 			}
+
+			
 		});
+
+
+
 		
 		
 		btnRetroceder.addActionListener(new ActionListener() {

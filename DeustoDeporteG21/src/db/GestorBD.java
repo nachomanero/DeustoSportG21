@@ -345,6 +345,35 @@ public class GestorBD {
 	        }
 	        return false;
 	    }
+	    
+	    public List<Reserva> obtenerReservasPorDni(String dni) {
+	        List<Reserva> reservas = new ArrayList<>();
+
+	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
+	            String sql = "SELECT * FROM Reserva WHERE DNI = ?";
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	                preparedStatement.setString(1, dni);
+	                ResultSet resultSet = preparedStatement.executeQuery();
+
+	                while (resultSet.next()) {
+	                    String tipoActividad = resultSet.getString("TipoActividad");
+	                    int idSala = resultSet.getInt("IDSala");
+	                    java.sql.Date fechaSql = resultSet.getDate("fecha");
+	                    String hora = resultSet.getString("hora");
+
+	                    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+	                    Reserva reserva = new Reserva(dni, TipoActividad.valueOf(tipoActividad), idSala,
+	                            formatoFecha.parse(formatoFecha.format(fechaSql)), hora);
+	                    reservas.add(reserva);
+	                }
+	            }
+	        } catch (SQLException | ParseException ex) {
+	            ex.printStackTrace();
+	        }
+
+	        return reservas;
+	    }
+
 
 
 	    
@@ -420,7 +449,6 @@ public class GestorBD {
 	    
 	    
 	 
-	    
 	    public boolean comprobarUsuario(String correoElectronico, String contrasena) {
 	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
 	            String sql = "SELECT * FROM Usuario WHERE correoElectronico = ? AND contrasena = ?";
@@ -558,5 +586,27 @@ public class GestorBD {
 	        }
 	    }
 	    
-	
+	    public String obtenerDniPorCredenciales(String correoElectronico, String contrasena) {
+	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
+	            String sql = "SELECT dni FROM Usuario WHERE correoElectronico = ? AND contrasena = ?";
+	            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	                preparedStatement.setString(1, correoElectronico);
+	                preparedStatement.setString(2, contrasena);
+	                ResultSet resultSet = preparedStatement.executeQuery();
+
+	                if (resultSet.next()) {
+	                    return resultSet.getString("dni");
+	                }
+	            }
+	        } catch (SQLException ex) {
+	            LOGGER.log(Level.SEVERE, "Error al obtener el DNI por credenciales.");
+	            ex.printStackTrace();
+	        } catch (Exception e) {
+	            LOGGER.log(Level.SEVERE, "Error general.");
+	            e.printStackTrace();
+	        }
+
+	        return null;
+	    }
+
 }

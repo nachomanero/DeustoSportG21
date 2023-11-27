@@ -25,6 +25,7 @@ public class VentanaCalendarioActividades extends JFrame {
     private Map<Date, String> events;
     private boolean dateSelected = false;
     private boolean activitySelected = false;
+	protected String dniUsuario;
     
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
@@ -78,7 +79,7 @@ public class VentanaCalendarioActividades extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                VentanaUsuario ventanaUsuario = new VentanaUsuario();
+                VentanaUsuario ventanaUsuario = new VentanaUsuario(dniUsuario);
                 ventanaUsuario.setVisible(true);
             }
         });

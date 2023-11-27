@@ -261,13 +261,18 @@ public class Gestor implements itfGestor{
 	        gestorBD.añadirReservas(reservas);
 
 	    } catch (FileNotFoundException e) {
-	        LOGGER.log(Level.SEVERE, "Error al abrir el archivo de clases.");
+	        LOGGER.log(Level.SEVERE, "Error al abrir el archivo de reservas.");
 	        e.printStackTrace();
 	    } catch (IOException e) {
 	        LOGGER.log(Level.SEVERE, "Error al guardar la reserva en el archivo CSV");
 	        e.printStackTrace();
 	    }
 	}
+	
+	
+	
+	
+	
 
 	
 
@@ -424,6 +429,6 @@ public class Gestor implements itfGestor{
 		// TODO Auto-generated method stub
 		return clases;
 	}
-
-
+	
+	
 }
