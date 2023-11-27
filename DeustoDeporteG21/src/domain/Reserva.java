@@ -1,5 +1,6 @@
 package domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Reserva {
@@ -22,7 +23,9 @@ public class Reserva {
 	}
 	@Override
 	public String toString() {
-		return "Reserva [TipoActividad=" + TipoActividad + ", IDSala=" + IDSala + ", fecha=" + fecha
+		SimpleDateFormat sdfOutput = new SimpleDateFormat("dd-MM-yyyy");
+        String fechaFormateadaStr = sdfOutput.format(fecha);
+		return "Reserva [TipoActividad=" + TipoActividad + ", IDSala=" + IDSala + ", fecha=" + fechaFormateadaStr
 				+ ", hora=" + hora + "]";
 	}
 	public String getDNI() {

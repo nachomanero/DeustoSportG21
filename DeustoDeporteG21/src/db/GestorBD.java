@@ -16,10 +16,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
 import domain.Clase;
+import domain.Reserva;
 import domain.TipoActividad;
 import domain.Usuario;
 import io.FicheroLogger;
@@ -247,7 +249,7 @@ public class GestorBD {
 	                    LOGGER.log(Level.INFO, "Usuario añadido a la base de datos correctamente.");
 	                }
 	            } else {
-	                LOGGER.log(Level.SEVERE, "El usuario con DNI " + usuario.getDni() + " ya existe en la base de datos.");
+	                LOGGER.log(Level.WARNING, "El usuario con DNI " + usuario.getDni() + " ya existe en la base de datos.");
 	            }
 	        }
 	    } catch (SQLException ex) {
@@ -282,7 +284,7 @@ public class GestorBD {
 	                        LOGGER.log(Level.INFO, "Clase añadida a la BD correctamente.");
 	                    }
 	                } else {
-	                    LOGGER.log(Level.SEVERE, "La clase con ID " + clase.getIDClase() + " ya existe en la base de datos.");
+	                    LOGGER.log(Level.WARNING, "La clase con ID " + clase.getIDClase() + " ya existe en la base de datos.");
 	                }
 	            }
 	        } catch (SQLException ex) {
@@ -295,27 +297,56 @@ public class GestorBD {
 	    }
 
 	    
-	    
-	    public void añadirReserva(String DNI, TipoActividad TipoActividad, int IDSala, Date fecha, String hora) {
+	    public void añadirReservas(Map<String, List<Reserva>> reservas) {
 	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
 	            String sql = "INSERT INTO Reserva (DNI, TipoActividad, IDSala, fecha, hora) VALUES (?, ?, ?, ?, ?)";
-	            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-	                preparedStatement.setString(1, DNI);
-	                preparedStatement.setString(2, TipoActividad.name()); // Suponiendo que TipoActividad es un enum
-	                preparedStatement.setInt(3, IDSala);
-	                preparedStatement.setDate(4, fecha);
-	                preparedStatement.setString(5, hora);
-	                preparedStatement.executeUpdate();
-	                LOGGER.log(Level.INFO,"Reserva añadida a la base de datos con exito.");
+	            
+	            for (List<Reserva> listaReservas : reservas.values()) {
+	                for (Reserva reserva : listaReservas) {
+	                    if (!reservaDuplicada(connection, reserva)) {
+	                        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	                            preparedStatement.setString(1, reserva.getDNI());
+	                            preparedStatement.setString(2, reserva.getTipoActividad().name());
+	                            preparedStatement.setInt(3, reserva.getIDSala());
+	                            preparedStatement.setDate(4, new java.sql.Date(reserva.getFecha().getTime()));
+	                            preparedStatement.setString(5, reserva.getHora());
+	                            preparedStatement.executeUpdate();
+	                        }
+	                    }
+	                }
 	            }
+
+	            LOGGER.log(Level.INFO, "Reservas añadidas a la base de datos con éxito.");
 	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.SEVERE,"Error al añadir reserva a la base de datos.");
+	            LOGGER.log(Level.SEVERE, "Error al añadir reservas a la base de datos.");
 	            ex.printStackTrace();
 	        } catch (Exception e) {
-	        	LOGGER.log(Level.SEVERE,"Error general.");
+	            LOGGER.log(Level.SEVERE, "Error general.");
 	            e.printStackTrace();
 	        }
 	    }
+
+	    private boolean reservaDuplicada(Connection connection, Reserva reserva) throws SQLException {
+	       
+	        String sql = "SELECT COUNT(*) FROM Reserva WHERE DNI = ? AND TipoActividad = ? AND IDSala = ? AND fecha = ? AND hora = ?";
+	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	            preparedStatement.setString(1, reserva.getDNI());
+	            preparedStatement.setString(2, reserva.getTipoActividad().name());
+	            preparedStatement.setInt(3, reserva.getIDSala());
+	            preparedStatement.setDate(4, new java.sql.Date(reserva.getFecha().getTime()));
+	            preparedStatement.setString(5, reserva.getHora());
+
+	            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	                if (resultSet.next()) {
+	                    int count = resultSet.getInt(1);
+	                    return count > 0;
+	                }
+	            }
+	        }
+	        return false;
+	    }
+
+
 	    
 	    
 	    public void eliminarClase(int IDClase) {

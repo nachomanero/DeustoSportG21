@@ -85,7 +85,7 @@ public class Gestor implements itfGestor{
 				
 			}
 		} catch (IOException e) {
-	        LOGGER.log(Level.WARNING, "Error al abrir el archivo de Usuarios.", e);
+	        LOGGER.log(Level.SEVERE, "Error al abrir el archivo de Usuarios.", e);
 	    }
 	    //System.out.println(usuarios);
 		
@@ -106,9 +106,9 @@ public class Gestor implements itfGestor{
 	            writer.println(linea);
 	        }
 	        LOGGER.log(Level.INFO, "Usuarios guardados en el archivo CSV con éxito.");
-	        System.out.println("Usuarios guardados en el archivo CSV con éxito.");
+	        //System.out.println("Usuarios guardados en el archivo CSV con éxito.");
 	    } catch (IOException ex) {
-	        LOGGER.log(Level.WARNING, "Error al guardar usuarios en el archivo CSV.");
+	        LOGGER.log(Level.SEVERE, "Error al guardar usuarios en el archivo CSV.");
 	        ex.printStackTrace();
 	    }
 	}
@@ -148,10 +148,10 @@ public class Gestor implements itfGestor{
             
             writer.write(datosClase);
             LOGGER.log(Level.INFO, "Clase añadida en el archivo CSV con éxito.");
-            System.out.println("Clase añadida al archivo CSV correctamente.");
+            //System.out.println("Clase añadida al archivo CSV correctamente.");
             
         } catch (IOException e) {
-        	LOGGER.log(Level.WARNING, "Error al guardar la clase en el archivo CSV");
+        	LOGGER.log(Level.SEVERE, "Error al guardar la clase en el archivo CSV");
             e.printStackTrace();
         }
     }
@@ -179,7 +179,7 @@ public class Gestor implements itfGestor{
 					Clase c = new Clase(Integer.parseInt(idClase), hora, TipoActividad.valueOf(tipoActividad), formatoFecha.parse(fecha), Integer.parseInt(sala), Integer.parseInt(plazas));
 					clases.add(c);
 					gestorBD.añadirClase(c);
-					LOGGER.log(Level.INFO, "Usuario agregado a la base de datos: " + c);
+					LOGGER.log(Level.INFO, "Clase agregada a la base de datos: " + c);
 			        
 				} catch (NumberFormatException e) {
 					LOGGER.log(Level.WARNING,"Error.");
@@ -193,7 +193,7 @@ public class Gestor implements itfGestor{
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			LOGGER.log(Level.WARNING,"Error al abrir el archivo de clases.");
+			LOGGER.log(Level.SEVERE,"Error al abrir el archivo de clases.");
 			e.printStackTrace();
 		}
 		
@@ -217,42 +217,58 @@ public class Gestor implements itfGestor{
 	        LOGGER.log(Level.INFO, "Clases guardadas en archivo CSV con éxito.");
 	        //System.out.println("Clases guardadas en archivo CSV con éxito.");
 	    } catch (IOException ex) {
-	        LOGGER.log(Level.WARNING, "Error al guardar clases en archivo CSV.");
+	        LOGGER.log(Level.SEVERE, "Error al guardar clases en archivo CSV.");
 	        ex.printStackTrace();
 	    }
 	}
 	
 	public void cargarReservasCSV() {
-		try {
-			BufferedReader br = new BufferedReader(new FileReader("resources/data/Reservas.csv"));
-			String linea = br.readLine();
-			while(linea != null) {
-				String[] datos = linea.split(",");
-				String dni = datos[0];
-				Reserva reserva = new Reserva();
-				reserva.setDNI(datos[0]);
-				if (reservas.containsKey(dni)) {
-					reservas.get(dni).add(reserva);
-				}else {
-					List<Reserva> lReservas = new ArrayList<>();
-					lReservas.add(reserva);
-					reservas.put(dni, lReservas);
-					
-				}
-				linea = br.readLine();
-				
-			}
-			br.close();
-			System.out.println(reservas);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	    try {
+	        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+	  
+	        BufferedReader br = new BufferedReader(new FileReader("resources/data/Reservas.csv"));
+	        String linea = br.readLine();
+	        while (linea != null) {
+	            String[] datos = linea.split(",");
+	            String dni = datos[0];
+
+	            String tipoActividad = datos[1];
+	            String idSala = datos[2];
+	            String fecha = datos[3];
+	            String hora = datos[4];
+	            
+	            try {
+	                Reserva reserva = new Reserva(dni, TipoActividad.valueOf(tipoActividad), Integer.parseInt(idSala), formatoFecha.parse(fecha), hora);
+	                reserva.setDNI(dni);
+
+	                if (reservas.containsKey(dni)) {
+	                    reservas.get(dni).add(reserva);
+	                    LOGGER.log(Level.INFO, "Reserva agregada al mapa existente: " + reserva);
+	                } else {
+	                    List<Reserva> lReservas = new ArrayList<>();
+	                    lReservas.add(reserva);
+	                    reservas.put(dni, lReservas);
+	                    LOGGER.log(Level.INFO, "Reserva agregada al mapa: " + reserva);
+	                }
+	                
+	            } catch (ParseException e) {
+	                e.printStackTrace();
+	            }
+
+	            linea = br.readLine();
+	        }
+	        br.close();
+	        gestorBD.añadirReservas(reservas);
+
+	    } catch (FileNotFoundException e) {
+	        LOGGER.log(Level.SEVERE, "Error al abrir el archivo de clases.");
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        LOGGER.log(Level.SEVERE, "Error al guardar la reserva en el archivo CSV");
+	        e.printStackTrace();
+	    }
 	}
-	
+
 	
 
 
@@ -293,10 +309,10 @@ public class Gestor implements itfGestor{
 	            gestorBD.añadirClase(clase); 
 	        }
 	        LOGGER.log(Level.INFO,"Clases guardadas en la base de datos con éxito.");
-	        System.out.println("Clases guardadas en la base de datos con éxito.");
+	        //System.out.println("Clases guardadas en la base de datos con éxito.");
 	    } catch (Exception ex) {
-	    	LOGGER.log(Level.WARNING,"Error al guardar clases en la base de datos.");
-	        System.err.format("Error al guardar clases en la base de datos: ", ex.getMessage());
+	    	LOGGER.log(Level.SEVERE,"Error al guardar clases en la base de datos.");
+	        //System.err.format("Error al guardar clases en la base de datos: ", ex.getMessage());
 	        ex.printStackTrace();
 	    }
 	}
@@ -364,17 +380,17 @@ public class Gestor implements itfGestor{
 	                writer.newLine();
 	            }
 	        } catch (IOException e) {
-	            LOGGER.log(Level.WARNING, "Error al leer o escribir en el archivo CSV.", e);
+	            LOGGER.log(Level.SEVERE, "Error al leer o escribir en el archivo CSV.", e);
 	            e.printStackTrace();
 	        }
 
 	        // Renombrar el archivo temporal al original para efectuar el borrado
 	        try {
 	            if (!new java.io.File("temp.csv").renameTo(new java.io.File(rutaArchivoCSV))) {
-	                LOGGER.log(Level.WARNING, "Error al renombrar el archivo temporal.");
+	                LOGGER.log(Level.SEVERE, "Error al renombrar el archivo temporal.");
 	            }
 	        } catch (Exception e) {
-	            LOGGER.log(Level.WARNING, "Error al renombrar el archivo temporal.", e);
+	            LOGGER.log(Level.SEVERE, "Error al renombrar el archivo temporal.", e);
 	            e.printStackTrace();
 	        }
 	    }
@@ -394,7 +410,7 @@ public class Gestor implements itfGestor{
 	            LOGGER.log(Level.INFO, "Usuario añadido al archivo CSV con éxito.");
 	            System.out.println("Usuario añadido al archivo CSV con éxito.");
 	        } catch (IOException e) {
-	            LOGGER.log(Level.WARNING, "Error al añadir el usuario al archivo CSV.", e);
+	            LOGGER.log(Level.SEVERE, "Error al añadir el usuario al archivo CSV.", e);
 	            e.printStackTrace();
 	        }
 	    }
