@@ -12,8 +12,11 @@ import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.logging.Logger;
@@ -34,6 +37,7 @@ public class Gestor implements itfGestor{
 	
 	private HashSet<Usuario> usuarios;
 	private HashSet<Clase> clases;
+	private Map<String, List<Reserva>> reservas;
 	private GestorBD gestorBD;
 	//...
 	
@@ -42,7 +46,8 @@ public class Gestor implements itfGestor{
 		usuarios = new HashSet<Usuario>();
 		clases = new HashSet<Clase>();
 		gestorBD = new GestorBD();
-		
+		reservas = new HashMap<>();
+	
 		//...
 
 	}
@@ -217,6 +222,40 @@ public class Gestor implements itfGestor{
 	    }
 	}
 	
+	public void cargarReservasCSV() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("resources/data/Reservas.csv"));
+			String linea = br.readLine();
+			while(linea != null) {
+				String[] datos = linea.split(",");
+				String dni = datos[0];
+				Reserva reserva = new Reserva();
+				reserva.setDNI(datos[0]);
+				if (reservas.containsKey(dni)) {
+					reservas.get(dni).add(reserva);
+				}else {
+					List<Reserva> lReservas = new ArrayList<>();
+					lReservas.add(reserva);
+					reservas.put(dni, lReservas);
+					
+				}
+				linea = br.readLine();
+				
+			}
+			br.close();
+			System.out.println(reservas);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+
+
 
 	@Override
 	public void cargarUsuariosBD() {

@@ -21,13 +21,14 @@ public class Main {
 		Gestor gestor = new Gestor();
 
 	
-		gestor.cargarUsuariosCSV("resources/data/Usuarios.csv");
-		gestor.cargarClasesCSV("resources/data/Clases.csv");
+		//gestor.cargarUsuariosCSV("resources/data/Usuarios.csv");
+		//gestor.cargarClasesCSV("resources/data/Clases.csv");
+		gestor.cargarReservasCSV();
 		
-		System.out.println(gestorBD.obtenerTodasLasClases());
+		//System.out.println(gestorBD.obtenerTodasLasClases());
 		
-		VentanaPrincipal wind = new VentanaPrincipal();
-		wind.mostrarVentana();
+		//VentanaPrincipal wind = new VentanaPrincipal();
+		//wind.mostrarVentana();
 	
 
 		

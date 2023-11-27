@@ -22,7 +22,7 @@ public class Reserva {
 	}
 	@Override
 	public String toString() {
-		return "Reserva [DNI=" + DNI + ", TipoActividad=" + TipoActividad + ", IDSala=" + IDSala + ", fecha=" + fecha
+		return "Reserva [TipoActividad=" + TipoActividad + ", IDSala=" + IDSala + ", fecha=" + fecha
 				+ ", hora=" + hora + "]";
 	}
 	public String getDNI() {
