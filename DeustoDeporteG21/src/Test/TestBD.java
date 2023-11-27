@@ -2,9 +2,9 @@ package Test;
 
 import static org.junit.Assert.*;
 import db.GestorBD;
-import es.deusto.prog3.examen.ord202201.BeforeClass;
-import es.deusto.prog3.examen.ord202201.DBManager;
-import es.deusto.prog3.examen.ord202201.Statistics;
+//import es.deusto.prog3.examen.ord202201.BeforeClass;
+//import es.deusto.prog3.examen.ord202201.DBManager;
+//import es.deusto.prog3.examen.ord202201.Statistics;
 
 import org.junit.Test;
 
