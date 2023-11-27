@@ -26,7 +26,7 @@ import io.FicheroLogger;
 import java.util.logging.Level;
 public class GestorBD {
 
-	//gestiona las operaciones sobre el modelo fisico
+
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 	
 	protected static final String DATABASE_FILE = "resources/db/DeustoSport.db";
@@ -49,7 +49,7 @@ public class GestorBD {
 	public static void crearTablas() {
         try (Connection con = DriverManager.getConnection(CONNECTION_STRING);
              Statement stmt = con.createStatement()) {
-            // Crear tabla de usuarios
+            
             String createUsuarios = "CREATE TABLE IF NOT EXISTS Usuario ("
                     + "dni TEXT PRIMARY KEY, "
                     + "nombre TEXT, "
@@ -64,7 +64,7 @@ public class GestorBD {
                 LOGGER.log(Level.SEVERE, "Error en la creacion de la tabla usuario.");
             }
 
-            // Crear tabla Sala
+      
             String createSala = "CREATE TABLE IF NOT EXISTS Sala ("
                     + "IDSala INTEGER PRIMARY KEY, "
                     + "nombre TEXT, "
@@ -76,7 +76,7 @@ public class GestorBD {
                 LOGGER.log(Level.SEVERE, "Error al crear la tabla sala.");
             }
 
-            // Crear tabla de clases
+        
             String createClases = "CREATE TABLE IF NOT EXISTS Clase ("
                     + "idClase INTEGER PRIMARY KEY, "
                     + "hora TEXT NOT NULL, "
@@ -93,7 +93,7 @@ public class GestorBD {
                 LOGGER.log(Level.SEVERE, "Error en la creacion de la tabla clase.");
             }
 
-            // Crear tabla reserva
+           
             String createReserva = "CREATE TABLE IF NOT EXISTS Reserva ("
                     + "IDReserva INTEGER PRIMARY KEY, "
                     + "DNI TEXT NOT NULL, "
@@ -138,7 +138,6 @@ public class GestorBD {
                             String correoElectronico = resultSet.getString("correoElectronico");
                             String contrasena = resultSet.getString("contrasena");
 
-                            // Crear objeto Usuario y agregarlo al conjunto
                             Usuario usuario = new Usuario(dni, nombre, apellido, direccion, correoElectronico, contrasena);
                             registros.add(tipoClase.cast(usuario));
                         } else if (tipoClase.equals(Clase.class)) {
@@ -149,11 +148,9 @@ public class GestorBD {
                             int sala = resultSet.getInt("sala");
                             int plazas = resultSet.getInt("plazas");
 
-                            // Convertir la cadena de fecha a objeto Date
                             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
                             java.util.Date fecha = formatoFecha.parse(fechaString);
 
-                            // Crear objeto Clase y agregarlo al conjunto
                             Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fecha, sala, plazas);
                             registros.add(tipoClase.cast(clase));
                         }
@@ -171,7 +168,7 @@ public class GestorBD {
         return registros;
     }
 	
-	/*public List<String> buscarClasesPorFecha(Date fecha){
+	public List<String> buscarClasesPorFecha(Date fecha){
 		List<String> clasesEncontradas = new ArrayList<>();
 		try {
 			//Statement stmt = con.createStatement();
@@ -185,7 +182,7 @@ public class GestorBD {
         
         	
         
-	}*/
+	}
 	
 	
 	
@@ -217,7 +214,7 @@ public class GestorBD {
         }
         
         try {
-			//Se borra el fichero de la BBDD
+			
 			Files.delete(Paths.get(DATABASE_FILE));
 			System.out.println("\n- Se ha borrado el fichero de la BBDD");
 			LOGGER.log(Level.INFO,"Se ha borrado el fichero de la BD correctamente.");
@@ -347,10 +344,10 @@ public class GestorBD {
 	    
 	    
 	    public void eliminarUsuario(String dni ) {
-			//Se abre la conexión y se obtiene el Statement
+			
 			try (Connection con = DriverManager.getConnection(CONNECTION_STRING);
 			     Statement stmt = con.createStatement()) {
-				//Se ejecuta la sentencia de borrado de datos
+				
 				String sql = "DELETE FROM USUARIO WHERE DNI = ;" + dni ;			
 				int result = stmt.executeUpdate(sql);
 				LOGGER.log(Level.INFO,"Se han borrado usuarios correctamente.");
@@ -391,34 +388,7 @@ public class GestorBD {
 	    }
 	    
 	    
-	    public void modificarClase(Clase clase) {
-	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
-	            String sql = "UPDATE clase SET IDClase = ?, hora = ?, tipoActividad = ?, fecha = ?, IDSala = ?, plazas = ? WHERE IDClase = ?";
-	            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-	                preparedStatement.setInt(1, clase.getIDClase());
-	                preparedStatement.setString(2, clase.getHora());
-	                preparedStatement.setString(3, clase.getTipoActividad().name());
-	                preparedStatement.setDate(4, (Date) clase.getFecha());
-	                preparedStatement.setInt(5, clase.getIDSala());
-	                preparedStatement.setInt(6, clase.getPlazas());
-	                int rowCount = preparedStatement.executeUpdate();
-
-	                if (rowCount > 0) {
-	                    System.out.println("Clase modificada en la base de datos con éxito.");
-	                    LOGGER.log(Level.INFO,"Clase modificada con exito.");
-	                } else {
-	                	LOGGER.log(Level.SEVERE,"No se ha encontrado ninguna clase.");
-	                    System.out.println("No se encontró ninguna clase con ID " + clase.getIDClase());
-	                }
-	            }
-	        } catch (SQLException ex) {
-	        	LOGGER.log(Level.SEVERE,"Error al modificar clase en la base de datos.");
-	            ex.printStackTrace();
-	        } catch (Exception e) {
-	        	LOGGER.log(Level.SEVERE,"Error general.");
-	            e.printStackTrace();
-	        }
-	    }
+	 
 	    
 	    public boolean comprobarUsuario(String correoElectronico, String contrasena) {
 	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
@@ -428,7 +398,6 @@ public class GestorBD {
 	                preparedStatement.setString(2, contrasena);
 	                ResultSet resultSet = preparedStatement.executeQuery();
 
-	                // Si hay al menos una fila en el resultado, el usuario existe
 	                return resultSet.next();
 	            }
 	        } catch (SQLException ex) {
@@ -439,17 +408,15 @@ public class GestorBD {
 	            e.printStackTrace();
 	        }
 
-	        return false; // En caso de error o si no se encuentra el usuario
+	        return false; 
 	    }
 	    
 	    public boolean editarClase(Clase clase) {
-	        // SQL para actualizar una clase en la base de datos
 	        String sql = "UPDATE Clase SET hora = ?, tipoActividad = ?, fecha = ?,  idSala = ?, plazas = ? WHERE idClase = ?";
 
 	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING);
 	             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-	            // Establecer los parámetros en la sentencia SQL
 	        	java.sql.Date fechaSql = new java.sql.Date(clase.getFecha().getTime());
 	        	preparedStatement.setString(1, clase.getHora());
 	            preparedStatement.setString(2, clase.getTipoActividad().toString());
@@ -458,10 +425,8 @@ public class GestorBD {
 	            preparedStatement.setInt(5, clase.getPlazas());
 	            preparedStatement.setInt(6, clase.getIDClase());
 
-	            // Ejecutar la actualización
 	            int filasAfectadas = preparedStatement.executeUpdate();
 
-	            // Verificar si la actualización fue exitosa
 	            if(filasAfectadas>0) {
 	            	System.out.println("Se ha actualizado una linea");
 	            }else {
@@ -471,45 +436,11 @@ public class GestorBD {
 	            
 
 	        } catch (SQLException e) {
-	            e.printStackTrace();  // Manejar la excepción adecuadamente en tu aplicación
+	            e.printStackTrace();  
 	            return false;
 	        }
 	    }
-	    /*
-	    public List<Clase> obtenerTodasLasClases() {
-	        List<Clase> clases = new ArrayList<>();
-
-	        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
-	            String sql = "SELECT * FROM Clase";
-	            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-	                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-	                    while (resultSet.next()) {
-	                        int idClase = resultSet.getInt("idClase");
-	                        String hora = resultSet.getString("hora");
-	                        String tipoActividad = resultSet.getString("tipoActividad");
-	                        java.sql.Timestamp timestamp = resultSet.getTimestamp("fecha");
-	                        int IDSala = resultSet.getInt("IDSala");
-	                        int plazas = resultSet.getInt("plazas");
-
-	                        // Convertir Timestamp a java.util.Date
-	                        java.util.Date fecha = new java.util.Date(timestamp.getTime());
-
-	                        // Crear objeto Clase y agregarlo al conjunto
-	                        Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fecha, IDSala, plazas);
-	                        clases.add(clase);
-	                    }
-	                }
-	            }
-	        } catch (SQLException ex) {
-	            LOGGER.log(Level.SEVERE, "Error al obtener todas las clases desde la base de datos.");
-	            ex.printStackTrace();
-	        } catch (Exception e) {
-	            LOGGER.log(Level.SEVERE, "Error general.");
-	            e.printStackTrace();
-	        }
-
-	        return clases;
-	    }*/
+	    
 	    
 	    public List<Clase> obtenerTodasLasClases() {
 	        List<Clase> clases = new ArrayList<>();
@@ -526,17 +457,13 @@ public class GestorBD {
 	                        int IDSala = resultSet.getInt("IDSala");
 	                        int plazas = resultSet.getInt("plazas");
 
-	                        // Convertir Timestamp a java.util.Date
 	                        java.util.Date fecha = new java.util.Date(timestamp.getTime());
 
-	                        // Formatear la fecha al formato "dd-MM-yyyy"
 	                        SimpleDateFormat sdfOutput = new SimpleDateFormat("dd-MM-yyyy");
 	                        String fechaFormateadaStr = sdfOutput.format(fecha);
 
-	                        // Convertir la fecha formateada a Date
 	                        java.util.Date fechaFormateada = sdfOutput.parse(fechaFormateadaStr);
 
-	                        // Crear objeto Clase y agregarlo al conjunto
 	                        Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fechaFormateada, IDSala, plazas);
 	                        clases.add(clase);
 	                    }
