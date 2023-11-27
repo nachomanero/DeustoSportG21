@@ -28,7 +28,7 @@ public class TestPersona {
 	@Test
 	public void testPerson() {
 		assertNotNull(Usuario);
-		assertEquals(apellido,Usuario.getDni());
+		assertEquals(dni,Usuario.getDni());
 		assertEquals(nombre, Usuario.getNombre());
 		assertEquals(apellido, Usuario.getApellido());
 		assertEquals(direccion,Usuario.getDireccion());
@@ -42,7 +42,7 @@ public class TestPersona {
 	@Test
 	public void testSetDNI() {
 		String newDNI = "79134735S";
-		Usuario.setNombre(newDNI);
+		Usuario.setDni(newDNI);
 		assertEquals(newDNI, Usuario.getDni());
 	}
 	@Test
@@ -63,7 +63,7 @@ public class TestPersona {
 	@Test
 	public void testSetApellido() {
 		String newApellido = "Diaz";
-		Usuario.setNombre(newApellido);
+		Usuario.setApellido(newApellido);
 		assertEquals(newApellido, Usuario.getApellido());
 	}
 	@Test
@@ -73,7 +73,7 @@ public class TestPersona {
 	@Test
 	public void testSetDireccion() {
 		String newDireccion = "Gran via 34 4Izq";
-		Usuario.setNombre(newDireccion);
+		Usuario.setDireccion(newDireccion);
 		assertEquals(newDireccion, Usuario.getDireccion());
 	}
 	@Test
@@ -83,7 +83,7 @@ public class TestPersona {
 	@Test
 	public void testSetCorreoElectronico() {
 		String newCorreoElectronico = "inigodm12@gmail.com";
-		Usuario.setNombre(newCorreoElectronico);
+		Usuario.setCorreoElectronico(newCorreoElectronico);
 		assertEquals(newCorreoElectronico, Usuario.getCorreoElectronico());
 	}
 	@Test
@@ -93,7 +93,7 @@ public class TestPersona {
 	@Test
 	public void testSetContraseña() {
 		String newContraseña = "Ascdv234";
-		Usuario.setNombre(newContraseña);
+		Usuario.setContrasena(newContraseña);
 		assertEquals(newContraseña, Usuario.getContrasena());
 	}
 

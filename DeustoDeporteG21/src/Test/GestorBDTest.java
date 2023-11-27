@@ -69,7 +69,7 @@ public class GestorBDTest {
         assertTrue(gestorBD.obtenerRegistros("Usuario", Usuario.class).contains(usuario));
         gestorBD.eliminarUsuario("79134735S");
         assertFalse(gestorBD.obtenerRegistros("Usuario", Usuario.class).contains(usuario));
-        LOGGER.log(java.util.logging.Level.INFO,"USuario eliminado correctamente");
+        LOGGER.log(java.util.logging.Level.INFO,"Usuario eliminado correctamente");
     }catch(Exception e){
     	LOGGER.log(java.util.logging.Level.SEVERE,"Error al añadir o eliminar usuario"+e.getCause());
     }
