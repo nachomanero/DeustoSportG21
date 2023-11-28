@@ -401,9 +401,11 @@ public class GestorBD {
 	        try (Connection conexion = DriverManager.getConnection(CONNECTION_STRING)) {
 	            String consulta = "SELECT idClase, hora, tipoActividad, fecha, IDSala, plazas FROM Clase WHERE fecha = ?";
 	            try (PreparedStatement statement = conexion.prepareStatement(consulta)) {
-	                SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd-MM-yyyy");
-	                SimpleDateFormat formatoSalida = new SimpleDateFormat("yyyy-MM-dd");
-	                java.sql.Date fechaSql = new java.sql.Date(formatoEntrada.parse(fecha).getTime());
+	                SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
+	                SimpleDateFormat formatoSalida = new SimpleDateFormat("dd-MM-yyyy");
+
+	                // Convertir la fecha al formato esperado por la base de datos
+	                java.sql.Date fechaSql = new java.sql.Date(formatoSalida.parse(fecha).getTime());
 
 	                statement.setDate(1, fechaSql);
 
@@ -416,10 +418,9 @@ public class GestorBD {
 	                        int idSala = resultSet.getInt("IDSala");
 	                        int plazas = resultSet.getInt("plazas");
 
+	                        // Convertir la fecha devuelta por la base de datos al formato de visualización
 	                        String fechaResultado = formatoSalida.format(fechaSqlResultado);
-
-	                        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
-	                        Date fechaFormateada = (Date) formatoFecha.parse(fechaResultado);
+	                        java.util.Date fechaFormateada = formatoEntrada.parse(fechaResultado);
 
 	                        Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fechaFormateada, idSala, plazas);
 	                        clases.add(clase);
@@ -432,6 +433,7 @@ public class GestorBD {
 
 	        return clases;
 	    }
+
 
 
 
