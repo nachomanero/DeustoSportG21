@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.System.Logger.Level;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+
 import javax.xml.catalog.CatalogException;
 
 import org.junit.AfterClass;
@@ -24,9 +26,11 @@ import domain.TipoActividad;
 import domain.Usuario;
 import io.FicheroLogger;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 public class GestorBDTest {
 
@@ -61,41 +65,52 @@ public class GestorBDTest {
     	}
     }
     @Test
-    public void testAniadiryEliminarUsuario() {
+    public void testAniadirUsuario() {
     	try {
-        Usuario usuario = new Usuario("74518782L", "Rafael", "Gallud", "Gran Via 55_1Z", "rafael12@gmail.com", "unanoche");
+        Usuario usuario = new Usuario("12345678P", "John", "Brown", "Gra Via 34 5A", "johnBrown@gmail.com", "IndioTxikiBatZen1234");
         gestorBD.añadirUsuario(usuario);
-        LOGGER.log(java.util.logging.Level.INFO,"Usuario aniadido correctamente");
-        assertTrue(gestorBD.obtenerRegistros("Usuario", Usuario.class).contains(usuario));
-        gestorBD.eliminarUsuario("74518782L");
-        assertFalse(gestorBD.obtenerRegistros("Usuario", Usuario.class).contains(usuario));
-        LOGGER.log(java.util.logging.Level.INFO,"Usuario eliminado correctamente");
-    }catch(Exception e){
-    	LOGGER.log(java.util.logging.Level.SEVERE,"Error al añadir o eliminar usuario"+e.getCause());
+        assertTrue(((Collection<Usuario>) gestorBD).contains(usuario));
+        LOGGER.log(java.util.logging.Level.INFO,"Usuario añadido con exito.");
+    	}catch(Exception e) {
+    		LOGGER.log(java.util.logging.Level.SEVERE,"Error al aniadir usuario"+e.getCause());
+    	}
     }
-   }
+    
+	@Test
+    public void testEliminarUsuario() {
+		try {
+        Usuario usuario = new Usuario("12345678P", "John", "Brown", "Gra Via 34 5A", "johnBrown@gmail.com", "IndioTxikiBatZen1234");
+        gestorBD.eliminarUsuario(usuario.getDni());
+        assertFalse(((Collection<Usuario>) gestorBD).contains(usuario));
+		}catch(Exception e) {
+			LOGGER.log(java.util.logging.Level.SEVERE,"Error en la prueba de eliminar usuario."+e.getCause());
+		}
+	}
+    
     @Test
     public void testAniadirClaseYeliminarla() {
     	try {
-            Clase clase = new Clase(523, "08:00", TipoActividad.YOGA, new Date(), 1, 20);
+    		SimpleDateFormat formatoFecha = new SimpleDateFormat("yyMMddHHmmssSSS");
+    		java.util.Date fecha = formatoFecha.parse("2023-12-12");
+            Clase clase = new Clase(523, "08:00", TipoActividad.YOGA, fecha, 1, 20);
             gestorBD.añadirClase(clase);
             assertTrue(gestorBD.obtenerRegistros("Clase", Clase.class).contains(clase));
             gestorBD.eliminarClase(523);
             assertFalse(gestorBD.obtenerRegistros("Clase", Clase.class).contains(clase));
-            
             LOGGER.log(java.util.logging.Level.INFO,"Clase aniadida y eliminada correctamente.");
     	}catch(Exception e) {
     		LOGGER.log(java.util.logging.Level.SEVERE,"Error en la prueba."+e.getCause());
     	}
     }
-    //Comprobar si funciona,no se si esta bien, ha sido un poco idea feliz je je
     @Test
     public void testCrearReservayCancelarReserva() {
     	try {
-            Reserva reserva = new Reserva("12348445Z", TipoActividad.YOGA, 1, new Date(), "08:00");
+    		SimpleDateFormat formatoFecha = new SimpleDateFormat("yyMMddHHmmssSSS");
+    		java.util.Date fecha = formatoFecha.parse("2023-12-12");
+            Reserva reserva = new Reserva("12348445Z", TipoActividad.YOGA, 1, fecha, "08:00");
             gestorBD.añadirReservas(Collections.singletonMap("123456789", Collections.singletonList(reserva)));
             assertTrue(gestorBD.obtenerRegistros("Reserva", Reserva.class).contains(reserva));
-            gestorBD.cancelarReserva("123456789", TipoActividad.YOGA, 1, (java.sql.Date) new Date(), "08:00");
+            gestorBD.cancelarReserva("123456789", TipoActividad.YOGA, 1,(java.sql.Date) fecha, "08:00");
             assertFalse(gestorBD.obtenerRegistros("Reserva", Reserva.class).contains(reserva));
             LOGGER.log(java.util.logging.Level.INFO,"Prueba de reservas hecha correctamente.");
     	}catch(Exception e) {
@@ -149,9 +164,11 @@ public class GestorBDTest {
     @Test
     public void testObtenerTodasLasClases() {
     	try {
-        Clase clase1 = new Clase(788, "08:00", TipoActividad.YOGA, new Date(), 1, 20);
-        Clase clase2 = new Clase(639, "10:00", TipoActividad.PILATES, new Date(), 2, 15);
-        Clase clase3 = new Clase(542, "08:10", TipoActividad.CROSSFIT, new Date(), 3, 5);
+    		SimpleDateFormat formatoFecha = new SimpleDateFormat("yyMMddHHmmssSSS");
+    		java.util.Date fecha = formatoFecha.parse("2023-12-12");
+        Clase clase1 = new Clase(788, "08:00", TipoActividad.YOGA,fecha, 1, 20);
+        Clase clase2 = new Clase(639, "10:00", TipoActividad.PILATES, fecha, 2, 15);
+        Clase clase3 = new Clase(542, "08:10", TipoActividad.CROSSFIT, fecha, 3, 5);
         gestorBD.añadirClase(clase1);
         gestorBD.añadirClase(clase2);
         gestorBD.añadirClase(clase3);
@@ -164,7 +181,17 @@ public class GestorBDTest {
     		LOGGER.log(java.util.logging.Level.SEVERE,"Error en la prueba de obtener las clases."+e.getCause());
     	}
     }
-    //Este tambien hay que mirar . :)
+    /*
+    private Date SimpleDateFormat(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private java.sql.Date SimpleDateFormat(java.sql.Date i) {
+		return i;
+	}
+*/
+	//Este tambien hay que mirar . :)
     @Test
     public void testVisualizarClaseExistente() {
     	try {
