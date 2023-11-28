@@ -32,18 +32,7 @@ public class Main {
 	
 
 		
-       EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    VentanaPrincipal window = new VentanaPrincipal();
-                	
-                    //VentanaMenuAdmin window = new VentanaMenuAdmin();
-                    window.mostrarVentana();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+     
         
         FicheroLogger.cerrarFileHandler();
         
