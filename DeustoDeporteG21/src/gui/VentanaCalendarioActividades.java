@@ -2,6 +2,9 @@ package gui;
 
 import com.toedter.calendar.JDateChooser;
 
+import db.GestorBD;
+import domain.Clase;
+import domain.Reserva;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,9 +12,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -82,6 +87,8 @@ public class VentanaCalendarioActividades extends JFrame {
                 VentanaUsuario ventanaUsuario = new VentanaUsuario(dniUsuario);
                 ventanaUsuario.setVisible(true);
             }
+
+
         });
 
         selectActivityButton.setPreferredSize(new Dimension(150, 40));
@@ -104,7 +111,12 @@ public class VentanaCalendarioActividades extends JFrame {
             public void propertyChange(PropertyChangeEvent evt) {
                 if (dateChooser.getDate() != null) {
                     dateSelected = true;
-                    showEventsForSelectedDate();
+                    try {
+						showEventsForSelectedDate();
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                 } else {
                     dateSelected = false;
                 }
@@ -115,21 +127,26 @@ public class VentanaCalendarioActividades extends JFrame {
         frame.setVisible(true);
     }
 
-    private void showEventsForSelectedDate() {
+    private void showEventsForSelectedDate() throws ParseException {
         if (!dateSelected) {
             JOptionPane.showMessageDialog(null, "Por favor, seleccione una fecha para poder mostrar las actividades disponibles.");
             return;
         }
 
         Date selectedDate = dateChooser.getDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String selectedDateString = sdf.format(selectedDate);
 
-        String eventsForDate = events.get(selectedDate);
+        GestorBD gestorBD = new GestorBD();
+        List<Clase> clasesDisponibles = gestorBD.obtenerClasesPorFecha(selectedDateString);
+
         eventPanel.removeAll();
 
-        if (eventsForDate != null) {
-            JTextArea textArea = new JTextArea(eventsForDate);
+        if (!clasesDisponibles.isEmpty()) {
+            JTextArea textArea = new JTextArea("Clases disponibles para " + selectedDateString + ":\n");
+            for (Clase clase : clasesDisponibles) {
+                textArea.append(clase.getTipoActividad() + " - " + clase.getHora() + "\n");
+            }
             textArea.setWrapStyleWord(true);
             textArea.setLineWrap(true);
             textArea.setOpaque(false);
@@ -137,7 +154,7 @@ public class VentanaCalendarioActividades extends JFrame {
             eventPanel.add(new JScrollPane(textArea));
             activitySelected = true;
         } else {
-            JTextArea textArea = new JTextArea("No hay actividades para esta fecha.");
+            JTextArea textArea = new JTextArea("No hay clases disponibles para esta fecha.");
             textArea.setWrapStyleWord(true);
             textArea.setLineWrap(true);
             textArea.setOpaque(false);
@@ -149,6 +166,9 @@ public class VentanaCalendarioActividades extends JFrame {
         eventPanel.revalidate();
         eventPanel.repaint();
     }
+
+
+	
 
     private void selectActivity() {
         Date selectedDate = dateChooser.getDate();
@@ -173,6 +193,7 @@ public class VentanaCalendarioActividades extends JFrame {
             }
         }
     }
+    
 
     public void mostrarVentana() {
         getContentPane().setVisible(true);

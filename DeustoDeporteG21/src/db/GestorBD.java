@@ -394,6 +394,45 @@ public class GestorBD {
 
 	        return reservas;
 	    }
+	    
+	    public List<Clase> obtenerClasesPorFecha(String fecha) throws ParseException {
+	        List<Clase> clases = new ArrayList<>();
+
+	        try (Connection conexion = DriverManager.getConnection(CONNECTION_STRING)) {
+	            String consulta = "SELECT idClase, hora, tipoActividad, fecha, IDSala, plazas FROM Clase WHERE fecha = ?";
+	            try (PreparedStatement statement = conexion.prepareStatement(consulta)) {
+	                SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd-MM-yyyy");
+	                SimpleDateFormat formatoSalida = new SimpleDateFormat("yyyy-MM-dd");
+	                java.sql.Date fechaSql = new java.sql.Date(formatoEntrada.parse(fecha).getTime());
+
+	                statement.setDate(1, fechaSql);
+
+	                try (ResultSet resultSet = statement.executeQuery()) {
+	                    while (resultSet.next()) {
+	                        int idClase = resultSet.getInt("idClase");
+	                        String hora = resultSet.getString("hora");
+	                        String tipoActividad = resultSet.getString("tipoActividad");
+	                        java.sql.Date fechaSqlResultado = resultSet.getDate("fecha");
+	                        int idSala = resultSet.getInt("IDSala");
+	                        int plazas = resultSet.getInt("plazas");
+
+	                        String fechaResultado = formatoSalida.format(fechaSqlResultado);
+
+	                        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+	                        Date fechaFormateada = (Date) formatoFecha.parse(fechaResultado);
+
+	                        Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fechaFormateada, idSala, plazas);
+	                        clases.add(clase);
+	                    }
+	                }
+	            }
+	        } catch (SQLException | ParseException e) {
+	            e.printStackTrace();
+	        }
+
+	        return clases;
+	    }
+
 
 
 

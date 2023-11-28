@@ -2,7 +2,10 @@ package gui;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
+import db.GestorBD;
+import domain.Reserva;
 import io.FicheroLogger;
 
 import java.awt.*;
@@ -10,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,10 +22,12 @@ public class VentanaUsuario extends JFrame {
 
     private JPanel contentPane;
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
-    private String dniUsuario; // Agregamos una variable para almacenar el DNI del usuario
-
+    private String dniUsuario; 
+   
     public VentanaUsuario(String dniUsuario) {
-        this.dniUsuario = dniUsuario; // Inicializamos la variable DNI del usuario
+        this.dniUsuario = dniUsuario; 
+
+        
         setResizable(false);
         setBounds(new Rectangle(200, 200, 550, 350));
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -130,6 +137,8 @@ public class VentanaUsuario extends JFrame {
             }
         });
     }
+	
+
 
     /*public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
