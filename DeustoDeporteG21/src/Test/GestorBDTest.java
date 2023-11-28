@@ -92,7 +92,7 @@ public class GestorBDTest {
     @Test
     public void testCrearReservayCancelarReserva() {
     	try {
-            Reserva reserva = new Reserva("8445", TipoActividad.YOGA, 1, new Date(), "08:00");
+            Reserva reserva = new Reserva("12348445Z", TipoActividad.YOGA, 1, new Date(), "08:00");
             gestorBD.añadirReservas(Collections.singletonMap("123456789", Collections.singletonList(reserva)));
             assertTrue(gestorBD.obtenerRegistros("Reserva", Reserva.class).contains(reserva));
             gestorBD.cancelarReserva("123456789", TipoActividad.YOGA, 1, (java.sql.Date) new Date(), "08:00");
