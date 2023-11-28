@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 
 import domain.Clase;
 import domain.Reserva;
+import domain.Sala;
 import domain.TipoActividad;
 import domain.Usuario;
 import io.FicheroLogger;
@@ -145,9 +146,9 @@ public class GestorBD {
                         } else if (tipoClase.equals(Clase.class)) {
                             int idClase = resultSet.getInt("idClase");
                             String hora = resultSet.getString("hora");
-                            String tipoActividad = resultSet.getString("actividad");
+                            String tipoActividad = resultSet.getString("tipoActividad");
                             String fechaString = resultSet.getString("fecha");
-                            int sala = resultSet.getInt("sala");
+                            int sala = resultSet.getInt("IDSala");
                             int plazas = resultSet.getInt("plazas");
 
                             SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
@@ -155,6 +156,25 @@ public class GestorBD {
 
                             Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fecha, sala, plazas);
                             registros.add(tipoClase.cast(clase));
+                        }else if (tipoClase.equals(Sala.class)) {
+                            int idSala = resultSet.getInt("IDSala");
+                            String nombre = resultSet.getString("nombre");
+                            int capacidad = resultSet.getInt("capacidad");
+
+                            Sala sala = new Sala(idSala, nombre, capacidad);
+                            registros.add(tipoClase.cast(sala));
+                        } else if (tipoClase.equals(Reserva.class)) {
+                            String dni = resultSet.getString("DNI");
+                            String tipoActividad = resultSet.getString("TipoActividad");
+                            int idSala = resultSet.getInt("IDSala");
+                            String fechaString = resultSet.getString("fecha");
+                            String hora = resultSet.getString("hora");
+                            
+                            SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+                            java.util.Date fecha = formatoFecha.parse(fechaString);
+
+                            Reserva reserva = new Reserva(dni, TipoActividad.valueOf(tipoActividad), idSala, fecha, hora);
+                            registros.add(tipoClase.cast(reserva));
                         }
                     }
                 }
@@ -169,6 +189,7 @@ public class GestorBD {
 
         return registros;
     }
+	
 	
 	public List<String> buscarClasesPorFecha(Date fecha){
 		List<String> clasesEncontradas = new ArrayList<>();

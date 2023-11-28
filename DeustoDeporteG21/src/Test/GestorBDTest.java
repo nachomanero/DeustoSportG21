@@ -63,11 +63,11 @@ public class GestorBDTest {
     @Test
     public void testAniadiryEliminarUsuario() {
     	try {
-        Usuario usuario = new Usuario("79134735S", "Iñigo", "Diaz", "Gran Via 55_1A", "inigodm12@gmail.com", "100ComplejosSinSentido");
+        Usuario usuario = new Usuario("74518782L", "Rafael", "Gallud", "Gran Via 55_1Z", "rafael12@gmail.com", "unanoche");
         gestorBD.añadirUsuario(usuario);
         LOGGER.log(java.util.logging.Level.INFO,"Usuario aniadido correctamente");
         assertTrue(gestorBD.obtenerRegistros("Usuario", Usuario.class).contains(usuario));
-        gestorBD.eliminarUsuario("79134735S");
+        gestorBD.eliminarUsuario("74518782L");
         assertFalse(gestorBD.obtenerRegistros("Usuario", Usuario.class).contains(usuario));
         LOGGER.log(java.util.logging.Level.INFO,"Usuario eliminado correctamente");
     }catch(Exception e){
@@ -77,10 +77,10 @@ public class GestorBDTest {
     @Test
     public void testAniadirClaseYeliminarla() {
     	try {
-            Clase clase = new Clase(1, "08:00", TipoActividad.YOGA, new Date(), 1, 20);
+            Clase clase = new Clase(523, "08:00", TipoActividad.YOGA, new Date(), 1, 20);
             gestorBD.añadirClase(clase);
             assertTrue(gestorBD.obtenerRegistros("Clase", Clase.class).contains(clase));
-            gestorBD.eliminarClase(1);
+            gestorBD.eliminarClase(523);
             assertFalse(gestorBD.obtenerRegistros("Clase", Clase.class).contains(clase));
             
             LOGGER.log(java.util.logging.Level.INFO,"Clase aniadida y eliminada correctamente.");
@@ -149,9 +149,9 @@ public class GestorBDTest {
     @Test
     public void testObtenerTodasLasClases() {
     	try {
-        Clase clase1 = new Clase(1, "08:00", TipoActividad.YOGA, new Date(), 1, 20);
-        Clase clase2 = new Clase(2, "10:00", TipoActividad.PILATES, new Date(), 2, 15);
-        Clase clase3 = new Clase(1, "08:10", TipoActividad.CROSSFIT, new Date(), 3, 5);
+        Clase clase1 = new Clase(788, "08:00", TipoActividad.YOGA, new Date(), 1, 20);
+        Clase clase2 = new Clase(639, "10:00", TipoActividad.PILATES, new Date(), 2, 15);
+        Clase clase3 = new Clase(542, "08:10", TipoActividad.CROSSFIT, new Date(), 3, 5);
         gestorBD.añadirClase(clase1);
         gestorBD.añadirClase(clase2);
         gestorBD.añadirClase(clase3);
@@ -168,13 +168,13 @@ public class GestorBDTest {
     @Test
     public void testVisualizarClaseExistente() {
     	try {
-    	      Clase clase = new Clase(1, "08:00", TipoActividad.YOGA, new Date(), 1, 20);
+    	      Clase clase = new Clase(836, "08:00", TipoActividad.YOGA, new Date(), 1, 20);
     	      gestorBD.añadirClase(clase);
     	      ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     	      System.setOut(new PrintStream(outputStream));
-    	      gestorBD.visualizarClase(1);
+    	      gestorBD.visualizarClase(836);
     	      assertTrue(outputStream.toString().contains("Detalles de la clase:"));
-    	      assertTrue(outputStream.toString().contains("ID de Clase: 1"));
+    	      assertTrue(outputStream.toString().contains("ID de Clase: 836"));
     	      assertTrue(outputStream.toString().contains("Hora: 08:00"));
     	      assertTrue(outputStream.toString().contains("Tipo de Actividad: YOGA"));
     	      LOGGER.log(java.util.logging.Level.INFO,"Prueba de visualizacion de clases correcta.");
@@ -187,7 +187,7 @@ public class GestorBDTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
         gestorBD.visualizarClase(343);
-        assertTrue(outputStream.toString().contains("No se encontró ninguna clase con ID 9343"));
+        assertTrue(outputStream.toString().contains("No se encontró ninguna clase con ID 343"));
         LOGGER.log(java.util.logging.Level.INFO,"Prueba de clases que no existen exitosa.");
     }
 
