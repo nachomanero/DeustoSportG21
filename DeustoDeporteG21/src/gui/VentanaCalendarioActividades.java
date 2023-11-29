@@ -8,6 +8,8 @@ import domain.Gestor;
 import domain.Reserva;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,8 +30,8 @@ import io.FicheroLogger;
 public class VentanaCalendarioActividades extends JFrame {
     private JDateChooser dateChooser;
     private JPanel eventPanel;
-    private JList<String> listaActividades;
-    private DefaultListModel<String> modeloLista;
+    private JList<Clase> listaActividades;
+    private DefaultListModel<Clase> modeloLista;
 
  
     private boolean dateSelected = false;
@@ -66,6 +68,10 @@ public class VentanaCalendarioActividades extends JFrame {
         dateChooser.setDateFormatString("yyyy-MM-dd");
         dateChooser.setPreferredSize(new Dimension(150, dateChooser.getPreferredSize().height));
         topPanel.add(dateChooser);
+        
+        listaActividades = new JList<>();
+        modeloLista = new DefaultListModel<>();
+        listaActividades.setModel(modeloLista);
 
        
 
@@ -105,7 +111,7 @@ public class VentanaCalendarioActividades extends JFrame {
         selectActivityButton.setPreferredSize(new Dimension(150, 40));
         salirButton.setPreferredSize(new Dimension(150, 40));
 
-        bottomPanel.add(selectActivityButton);
+       
         bottomPanel.add(salirButton);
 
        
@@ -115,7 +121,6 @@ public class VentanaCalendarioActividades extends JFrame {
         selectActivityButton.setPreferredSize(new Dimension(150, 40));
         selectActivityButton.setEnabled(false);
         bottomPanel.add(selectActivityButton);
-        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 
         dateChooser.getDateEditor().addPropertyChangeListener("date", new PropertyChangeListener() {
             @Override
@@ -128,6 +133,15 @@ public class VentanaCalendarioActividades extends JFrame {
                 }
             }
         });
+        /*listaActividades.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    // User has finished selecting
+                    activitySelected = true;
+                }
+            }
+        });
+        */
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

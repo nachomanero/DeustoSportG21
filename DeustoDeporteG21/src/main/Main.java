@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.EventQueue;
+import java.text.ParseException;
 
 import db.GestorBD;
 import domain.Gestor;
@@ -20,6 +21,8 @@ public class Main {
 		gestor.cargarUsuariosCSV("resources/data/Usuarios.csv");
 		gestor.cargarClasesCSV("resources/data/Clases.csv");
 		gestor.cargarReservasCSV();
+		
+		
 		
 		
 		//System.out.println(gestorBD.obtenerTodasLasClases());
