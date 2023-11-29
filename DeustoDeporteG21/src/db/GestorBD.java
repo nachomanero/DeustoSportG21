@@ -405,7 +405,7 @@ public class GestorBD {
 	                SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
 	                SimpleDateFormat formatoSalida = new SimpleDateFormat("dd-MM-yyyy");
 
-	                // Convertir la fecha al formato esperado por la base de datos
+	               
 	                java.sql.Date fechaSql = new java.sql.Date(formatoSalida.parse(fecha).getTime());
 
 	                statement.setDate(1, fechaSql);
@@ -419,7 +419,7 @@ public class GestorBD {
 	                        int idSala = resultSet.getInt("IDSala");
 	                        int plazas = resultSet.getInt("plazas");
 
-	                        // Convertir la fecha devuelta por la base de datos al formato de visualización
+	                        
 	                        String fechaResultado = formatoSalida.format(fechaSqlResultado);
 	                        java.util.Date fechaFormateada = formatoEntrada.parse(fechaResultado);
 
@@ -431,8 +431,10 @@ public class GestorBD {
 	        } catch (SQLException | ParseException e) {
 	            e.printStackTrace();
 	        }
+	        
 
 	        return clases;
+	        
 	    }
 
 

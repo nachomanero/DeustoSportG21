@@ -21,11 +21,13 @@ public class Main {
 		gestor.cargarClasesCSV("resources/data/Clases.csv");
 		gestor.cargarReservasCSV();
 		
+		
 		//System.out.println(gestorBD.obtenerTodasLasClases());
 		
 		VentanaPrincipal wind = new VentanaPrincipal( gestor , gestorBD );
 	
 		wind.mostrarVentana();
+		
 	        
         FicheroLogger.cerrarFileHandler();
         
