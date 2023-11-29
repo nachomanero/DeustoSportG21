@@ -4,6 +4,7 @@ import com.toedter.calendar.JDateChooser;
 
 import db.GestorBD;
 import domain.Clase;
+import domain.Gestor;
 import domain.Reserva;
 
 import javax.swing.*;
@@ -34,10 +35,17 @@ public class VentanaCalendarioActividades extends JFrame {
     private boolean dateSelected = false;
     private boolean activitySelected = false;
 	protected String dniUsuario;
+	private Gestor g;
+	private GestorBD gbd;
     
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
-    public VentanaCalendarioActividades() {
+    public VentanaCalendarioActividades(Gestor gestor , GestorBD gestorBD , String dniUsuario ) {
+    	
+    	g = gestor;
+    	gbd = gestorBD;
+    	
+    	
         JFrame frame = new JFrame("HORARIO DE ACTIVIDADES");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
@@ -87,7 +95,7 @@ public class VentanaCalendarioActividades extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                VentanaUsuario ventanaUsuario = new VentanaUsuario(dniUsuario);
+                VentanaUsuario ventanaUsuario = new VentanaUsuario(g , gbd , dniUsuario);
                 ventanaUsuario.setVisible(true);
             }
 
@@ -135,10 +143,10 @@ public class VentanaCalendarioActividades extends JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String selectedDateString = sdf.format(selectedDate);
 
-        GestorBD gestorBD = new GestorBD();
+        
         List<Clase> clasesDisponibles = null;
         try {
-            clasesDisponibles = gestorBD.obtenerClasesPorFecha(selectedDateString);
+            clasesDisponibles = gbd.obtenerClasesPorFecha(selectedDateString);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -172,30 +180,6 @@ public class VentanaCalendarioActividades extends JFrame {
 
 	
 
-   /* private void selectActivity() {
-        Date selectedDate = dateChooser.getDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String selectedDateString = sdf.format(selectedDate);
-
-        String eventsForDate = events.get(selectedDate);
-
-        if (eventsForDate != null) {
-            String[] activityOptions = eventsForDate.split("\n");
-            String selectedActivity = (String) JOptionPane.showInputDialog(null,
-                    "Selecciona una actividad:",
-                    "Actividades disponibles para " + selectedDateString,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    activityOptions,
-                    activityOptions[0]);
-
-            if (selectedActivity != null) {
-                JOptionPane.showMessageDialog(null, "Has seleccionado la actividad: " + selectedActivity);
-                LOGGER.log(Level.INFO, "Actividad seleccionada" + selectedActivity);
-            }
-        }
-    }
-    */
 
     public void mostrarVentana() {
         getContentPane().setVisible(true);

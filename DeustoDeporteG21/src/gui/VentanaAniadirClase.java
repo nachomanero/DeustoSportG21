@@ -51,11 +51,16 @@ public class VentanaAniadirClase extends JFrame {
 	private JTextField textField_2;
 	private String nomfichClases = "resources/data/Clases.csv";
 
+	private Gestor g;
+	private GestorBD gbd;
+	
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
 
-	public VentanaAniadirClase() {
+	public VentanaAniadirClase(Gestor gestor , GestorBD gestorBD) {
 		
+		g = gestor;
+		gbd = gestorBD;
 		
 		setBackground(new Color(102, 153, 153));
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -229,7 +234,7 @@ public class VentanaAniadirClase extends JFrame {
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnRetroceder);
                 thisFrame.dispose();
 			
-				VentanaMenuAdmin vent = new VentanaMenuAdmin();
+				VentanaMenuAdmin vent = new VentanaMenuAdmin(g , gbd);
 				vent.mostrarVentana();
 			}
 		});
@@ -239,8 +244,7 @@ public class VentanaAniadirClase extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Gestor g = new Gestor();
-				GestorBD gbd = new GestorBD();
+				
 				
 				try {
 					String patronHora = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
@@ -262,7 +266,7 @@ public class VentanaAniadirClase extends JFrame {
 							JOptionPane.showMessageDialog(null, "Clase creada correctamente","CREACION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
 							JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnCrearClase);
 			                thisFrame.dispose();
-							VentanaMenuAdmin vent = new VentanaMenuAdmin();
+							VentanaMenuAdmin vent = new VentanaMenuAdmin(g , gbd );
 							vent.mostrarVentana();
 			                LOGGER.log(Level.INFO, "Se ha creado una sesion correctamente");
 						}else {

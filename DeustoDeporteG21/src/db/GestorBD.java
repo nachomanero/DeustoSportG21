@@ -47,9 +47,10 @@ public class GestorBD {
 	            ex.printStackTrace();
 	        }
 	
+	        crearTablas();
 	}
 		
-	public static void crearTablas() {
+	public void crearTablas() {
         try (Connection con = DriverManager.getConnection(CONNECTION_STRING);
              Statement stmt = con.createStatement()) {
             

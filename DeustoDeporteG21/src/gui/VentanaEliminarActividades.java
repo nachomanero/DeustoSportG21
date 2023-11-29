@@ -30,7 +30,14 @@ public class VentanaEliminarActividades extends JFrame {
     private JButton exitButton;
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
-    public VentanaEliminarActividades() {
+    private Gestor g;
+    private GestorBD gbd;
+    
+    public VentanaEliminarActividades(Gestor gestor , GestorBD gestorBD ) {
+    	
+    	g = gestor;
+    	gbd = gestorBD;
+    	
         JFrame frame = new JFrame("ELIMINACIÓN DE ACTIVIDADES");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
@@ -170,7 +177,7 @@ public class VentanaEliminarActividades extends JFrame {
                 if (result == JOptionPane.YES_OPTION) {
                     JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(exitButton);
                     thisFrame.dispose();
-                    VentanaMenuAdmin vent = new VentanaMenuAdmin();
+                    VentanaMenuAdmin vent = new VentanaMenuAdmin(g, gbd );
                     vent.setVisible(true);
                 }
             }

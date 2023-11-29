@@ -6,6 +6,7 @@ import javax.swing.event.DocumentListener;
 
 import db.GestorBD;
 import domain.Clase;
+import domain.Gestor;
 import domain.TipoActividad;
 import io.FicheroLogger;
 
@@ -29,7 +30,14 @@ public class VentanaEdicionActividades extends JFrame {
     private JButton exitButton;
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
-    public VentanaEdicionActividades() {
+    private Gestor g;
+    private GestorBD gbd;
+    
+    public VentanaEdicionActividades( Gestor gestor , GestorBD gestorBD ) {
+    	
+    	g = gestor;
+    	gbd = gestorBD;
+    	
         JFrame frame = new JFrame("EDICIÓN ACTIVIDADES");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
@@ -141,7 +149,7 @@ public class VentanaEdicionActividades extends JFrame {
             LOGGER.log(Level.INFO, "Actividad seleccionada para editar: " + selectedActivity);
 
             // Crear una instancia de VentanaEditarClase y mostrarla
-            VentanaEditarClase ventanaEditar = new VentanaEditarClase(selectedActivity);
+            VentanaEditarClase ventanaEditar = new VentanaEditarClase(g , gbd , selectedActivity);
             ventanaEditar.mostrarVentana();
         }
     }
@@ -155,7 +163,7 @@ public class VentanaEdicionActividades extends JFrame {
                 if (result == JOptionPane.YES_OPTION) {
                     JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(exitButton);
                     thisFrame.dispose();
-                    VentanaMenuAdmin vent = new VentanaMenuAdmin();
+                    VentanaMenuAdmin vent = new VentanaMenuAdmin(g , gbd );
                     vent.setVisible(true);
                 }
             }

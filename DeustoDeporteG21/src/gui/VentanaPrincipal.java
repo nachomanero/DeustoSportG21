@@ -23,6 +23,8 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.text.AbstractDocument.Content;
 
+import db.GestorBD;
+import domain.Gestor;
 import io.FicheroLogger;
 
 import javax.swing.ImageIcon;
@@ -36,12 +38,14 @@ public class VentanaPrincipal {
 
 	private JFrame frame;
 	private JPanel contentPane;
+	private Gestor g;
+	private GestorBD gbd;
 	private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
-
-	
 
 	/**
 	 * Launch the application.
+	 * @param gestorBD 
+	 * @param gestor 
 	 */
 	/*
 	public static void main(String[] args) {
@@ -60,7 +64,11 @@ public class VentanaPrincipal {
 	/**
 	 * Create the application.
 	 */
-	public VentanaPrincipal() {
+	public VentanaPrincipal(Gestor gestor, GestorBD gestorBD) {
+		
+		g = gestor;
+		gbd = gestorBD;
+		
 		initialize();
 		
 	}
@@ -164,7 +172,7 @@ public class VentanaPrincipal {
 		        
 		        if (ctrlPressed && e.getKeyCode() == KeyEvent.VK_SPACE) {
 		        	LOGGER.log(Level.INFO, "CTRL + SPACE pressed");
-		            VentanaMenuAdmin ventanaMenuAdmin = new VentanaMenuAdmin();
+		            VentanaMenuAdmin ventanaMenuAdmin = new VentanaMenuAdmin(g, gbd );
 		            ventanaMenuAdmin.mostrarVentana();
 		        }
 		    }
@@ -189,7 +197,7 @@ public class VentanaPrincipal {
 				
                 frame.dispose();
 
-                VentanaRegistro ventanaRegistro = new VentanaRegistro();
+                VentanaRegistro ventanaRegistro = new VentanaRegistro( g , gbd );
                 ventanaRegistro.mostrarVentana();
 				
 			}
@@ -203,7 +211,7 @@ public class VentanaPrincipal {
 				
 				frame.dispose();
 
-                VentanaInicioSesion ventanaInicioSesion = new VentanaInicioSesion();
+                VentanaInicioSesion ventanaInicioSesion = new VentanaInicioSesion( g , gbd );
                 ventanaInicioSesion.mostrarVentana();
                 LOGGER.log(Level.INFO, "botón inicio sesión pressed");
 			}

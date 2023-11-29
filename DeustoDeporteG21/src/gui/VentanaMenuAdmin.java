@@ -6,6 +6,10 @@ import io.FicheroLogger;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+
+import db.GestorBD;
+import domain.Gestor;
+
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -24,8 +28,14 @@ public class VentanaMenuAdmin extends JFrame {
 	private JPanel contentPane;
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
-
-	public VentanaMenuAdmin() {
+private Gestor g;
+private GestorBD gbd;
+    
+	public VentanaMenuAdmin( Gestor gestor , GestorBD gestorBD ) {
+		
+		g = gestor;
+		gbd = gestorBD;
+		
 		setBackground(new Color(102, 153, 153));
 		
 		setVisible(true);
@@ -95,7 +105,7 @@ public class VentanaMenuAdmin extends JFrame {
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
                 thisFrame.dispose();
                 
-                VentanaAniadirClase vent = new VentanaAniadirClase();
+                VentanaAniadirClase vent = new VentanaAniadirClase( g , gbd );
                 vent.mostrarVentana();
                 LOGGER.log(Level.INFO,"El admin ha accedido al apartado de anñadir clase.");
 				
@@ -110,7 +120,7 @@ public class VentanaMenuAdmin extends JFrame {
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
                 thisFrame.dispose();
                 
-                VentanaEliminarActividades vent = new VentanaEliminarActividades();
+                VentanaEliminarActividades vent = new VentanaEliminarActividades( g , gbd );
                 vent.mostrarVentana();
                 LOGGER.log(Level.INFO,"Se va a acceder a eliminar una clase.");
 			}
@@ -124,7 +134,7 @@ public class VentanaMenuAdmin extends JFrame {
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
                 thisFrame.dispose();
 			
-				VentanaEdicionActividades vent = new VentanaEdicionActividades();
+				VentanaEdicionActividades vent = new VentanaEdicionActividades(g , gbd );
 				vent.mostrarVentana();
 				LOGGER.log(Level.INFO,"Se va a acceder a editar una clase.");
 			}

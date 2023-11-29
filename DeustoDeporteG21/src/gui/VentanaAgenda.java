@@ -23,6 +23,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import db.GestorBD;
+import domain.Gestor;
 import domain.Reserva;
 
 import java.awt.FlowLayout;
@@ -37,19 +38,26 @@ public class VentanaAgenda extends JFrame {
 	private String dniGuardado;
 	private JButton btnRetroceder;
 
+	private Gestor g;
+	private GestorBD gbd;
+	
 	/**
 	 * Launch the application.
 	 * @param dniGuardado2 
 	 */
 
-	public VentanaAgenda(String dniGuardado) {
+	public VentanaAgenda(Gestor gestor , GestorBD gestorBD , String dniGuardado) {
+		
+		g = gestor;
+		gbd = gestorBD;
+		
 		this.dniGuardado = dniGuardado;
 		initComponents();
 		cargarReservas();
 	}
 		private void cargarReservas() {
-	        GestorBD gestorBD = new GestorBD();
-	        List<Reserva> reservasUsuario = gestorBD.obtenerReservasPorDni(dniGuardado);
+	        
+	        List<Reserva> reservasUsuario = gbd.obtenerReservasPorDni(dniGuardado);
 	        modeloTabla.setRowCount(0);
 	        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
 	        for (Reserva reserva : reservasUsuario) {
@@ -90,7 +98,7 @@ public class VentanaAgenda extends JFrame {
 
 			private void retrocederAVentanaUsuario() {
 				// TODO Auto-generated method stub
-				VentanaUsuario ventanaUsuario = new VentanaUsuario(dniGuardado);
+				VentanaUsuario ventanaUsuario = new VentanaUsuario(g , gbd , dniGuardado);
 			    ventanaUsuario.setVisible(true);
 			    dispose();
 			}

@@ -50,7 +50,14 @@ public class VentanaEditarClase extends JFrame {
 	private JTextField txtLugar;
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 	
-	public VentanaEditarClase(Clase clase) {
+    private Gestor g;
+    private GestorBD gbd;
+    
+	public VentanaEditarClase(Gestor gestor , GestorBD gestorBD , Clase clase) {
+		
+		g = gestor;
+		gbd = gestorBD;
+		
 		setBackground(new Color(102, 153, 153));
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setVisible(true);
@@ -183,7 +190,7 @@ public class VentanaEditarClase extends JFrame {
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnRetroceder);
                 thisFrame.dispose();
 			
-				VentanaMenuAdmin vent = new VentanaMenuAdmin();
+				VentanaMenuAdmin vent = new VentanaMenuAdmin(g , gbd );
 				vent.mostrarVentana();
 				
 			}
@@ -233,7 +240,7 @@ public class VentanaEditarClase extends JFrame {
 							JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnEditarClase);
 			                thisFrame.dispose();
 						
-							VentanaMenuAdmin vent = new VentanaMenuAdmin();
+							VentanaMenuAdmin vent = new VentanaMenuAdmin(g , gbd );
 							vent.mostrarVentana();
 							LOGGER.log(Level.INFO,"Se ha modificadp una clase satisfactoriamente.");
 						}else {

@@ -15,25 +15,18 @@ public class Main {
 		FicheroLogger ficheroLogger = new FicheroLogger();
 		
 		GestorBD gestorBD = new GestorBD();
-		
-		gestorBD.crearTablas();
-		
 		Gestor gestor = new Gestor();
-
-	
+		
 		gestor.cargarUsuariosCSV("resources/data/Usuarios.csv");
 		gestor.cargarClasesCSV("resources/data/Clases.csv");
 		gestor.cargarReservasCSV();
 		
 		//System.out.println(gestorBD.obtenerTodasLasClases());
 		
-		VentanaPrincipal wind = new VentanaPrincipal();
-		wind.mostrarVentana();
+		VentanaPrincipal wind = new VentanaPrincipal( gestor , gestorBD );
 	
-
-		
-     
-        
+		wind.mostrarVentana();
+	        
         FicheroLogger.cerrarFileHandler();
         
         

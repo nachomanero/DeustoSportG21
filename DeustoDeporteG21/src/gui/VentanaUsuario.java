@@ -5,6 +5,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import db.GestorBD;
+import domain.Gestor;
 import domain.Reserva;
 import io.FicheroLogger;
 
@@ -22,10 +23,16 @@ public class VentanaUsuario extends JFrame {
 
     private JPanel contentPane;
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
-    private String dniUsuario; 
+    private String dniUsuario;
+	private Gestor g;
+	private GestorBD gbd; 
    
-    public VentanaUsuario(String dniUsuario) {
-        this.dniUsuario = dniUsuario; 
+    public VentanaUsuario(Gestor gestor , GestorBD gestorBD , String dniUsuario) {
+        
+    	g = gestor;
+    	gbd = gestorBD;
+    	
+    	this.dniUsuario = dniUsuario; 
 
         
         setResizable(false);
@@ -73,7 +80,7 @@ public class VentanaUsuario extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(agenda);
                 thisFrame.dispose();
-                VentanaAgenda ventanaAgenda = new VentanaAgenda(dniUsuario); 
+                VentanaAgenda ventanaAgenda = new VentanaAgenda(g, gbd , dniUsuario); 
                 ventanaAgenda.setVisible(true);
                 LOGGER.log(Level.INFO, "Visualización de la agenda del Usuario");
             }
@@ -94,9 +101,13 @@ public class VentanaUsuario extends JFrame {
         });
 
         clases.addMouseListener(new MouseListener() {
-            @Override
+           
+
+			@Override
             public void mouseClicked(MouseEvent e) {
-                VentanaCalendarioActividades calendarioActividades = new VentanaCalendarioActividades();
+				
+                VentanaCalendarioActividades calendarioActividades = new VentanaCalendarioActividades( g , gbd , dniUsuario );
+                
                 calendarioActividades.mostrarVentana();
                 JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(clases);
                 thisFrame.dispose();
