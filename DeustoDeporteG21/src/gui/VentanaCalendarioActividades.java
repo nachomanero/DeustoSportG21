@@ -29,37 +29,30 @@ import io.FicheroLogger;
 
 public class VentanaCalendarioActividades extends JFrame {
     private JDateChooser dateChooser;
-    private JPanel eventPanel;
-    private JList<Clase> listaActividades;
-    private DefaultListModel<Clase> modeloLista;
-
- 
-    private boolean dateSelected = false;
-    private boolean activitySelected = false;
-	protected String dniUsuario;
-	private Gestor g;
-	private GestorBD gbd;
-    
+    private JList<Clase> actividadesList;
+    private DefaultListModel<Clase> actividadesListModel;
+    private JButton selectActivityButton;
+    private JButton exitButton;
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
+
+    private Gestor g;
+    private GestorBD gbd;
+	protected String dniUsuario;
+	
 
     public VentanaCalendarioActividades(Gestor gestor , GestorBD gestorBD , String dniUsuario ) {
     	
     	g = gestor;
-    	gbd = gestorBD;
-    	
-    	
+        gbd = gestorBD;
+
         JFrame frame = new JFrame("HORARIO DE ACTIVIDADES");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
         frame.setResizable(false);
 
-       
-
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout());
+        JPanel mainPanel = new JPanel(new BorderLayout());
 
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
         JLabel selectDateLabel = new JLabel("Seleccionar fecha:");
         topPanel.add(selectDateLabel);
@@ -68,134 +61,146 @@ public class VentanaCalendarioActividades extends JFrame {
         dateChooser.setDateFormatString("yyyy-MM-dd");
         dateChooser.setPreferredSize(new Dimension(150, dateChooser.getPreferredSize().height));
         topPanel.add(dateChooser);
-        
-        listaActividades = new JList<>();
-        modeloLista = new DefaultListModel<>();
-        listaActividades.setModel(modeloLista);
 
-       
-
-        eventPanel = new JPanel();
-        eventPanel.setLayout(new BoxLayout(eventPanel, BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(eventPanel);
         mainPanel.add(topPanel, BorderLayout.NORTH);
+
+        actividadesListModel = new DefaultListModel<>();
+        actividadesList = new JList<>(actividadesListModel);
+        JScrollPane scrollPane = new JScrollPane(actividadesList);
+
+        JPanel rightPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        selectActivityButton = new JButton("Apuntarme");
+        selectActivityButton.addActionListener(e -> actividadSeleccionada());
+        selectActivityButton.setPreferredSize(new Dimension(100, 40));
+        selectActivityButton.setEnabled(false);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+        rightPanel.add(selectActivityButton, gbc);
+
+        setupExitButton();
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        rightPanel.add(exitButton, gbc);
+
         mainPanel.add(scrollPane, BorderLayout.CENTER);
+        mainPanel.add(rightPanel, BorderLayout.EAST);
 
         frame.getContentPane().add(mainPanel);
-
-        JButton selectActivityButton = new JButton("Apuntarme");
-        selectActivityButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (activitySelected) {
-                    showEventsForSelectedDate();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Por favor, selecciona una actividad antes de apuntarte.");
-                    LOGGER.log(Level.SEVERE, "Intento de apuntarse sin seleccionar una actividad.");
-                }
-            }
-        });
-
-        JButton salirButton = new JButton("Salir");
-        salirButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                VentanaUsuario ventanaUsuario = new VentanaUsuario(g , gbd , dniUsuario);
-                ventanaUsuario.setVisible(true);
-            }
-
-
-        });
-
-        selectActivityButton.setPreferredSize(new Dimension(150, 40));
-        salirButton.setPreferredSize(new Dimension(150, 40));
-
-       
-        bottomPanel.add(salirButton);
-
-       
-        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
-        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
-
-        selectActivityButton.setPreferredSize(new Dimension(150, 40));
-        selectActivityButton.setEnabled(false);
-        bottomPanel.add(selectActivityButton);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
 
         dateChooser.getDateEditor().addPropertyChangeListener("date", new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                if (dateChooser.getDate() != null) {
-                    dateSelected = true;
-                    showEventsForSelectedDate();
-                } else {
-                    dateSelected = false;
-                }
+                showActivitiesForSelectedDate();
             }
-        });
-        /*listaActividades.addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    // User has finished selecting
-                    activitySelected = true;
-                }
-            }
-        });
-        */
 
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+			private void showActivitiesForSelectedDate() {
+				
+				
+			}
+        });
+
+       
     }
+    private void mostrarActividades(){
+        Date selectedDate = dateChooser.getDate();
 
-    private void showEventsForSelectedDate() {
-        if (!dateSelected) {
-            JOptionPane.showMessageDialog(null, "Por favor, seleccione una fecha para poder mostrar las actividades disponibles.");
+        if (selectedDate == null) {
+            JOptionPane.showMessageDialog(null, "La fecha seleccionada no es válida.");
             return;
         }
 
-        Date selectedDate = dateChooser.getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String selectedDateString = sdf.format(selectedDate);
 
-        
         List<Clase> clasesDisponibles = null;
         try {
             clasesDisponibles = gbd.obtenerClasesPorFecha(selectedDateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+            actividadesListModel.clear();
 
-        eventPanel.removeAll();
-
-        if (!clasesDisponibles.isEmpty()) {
-            JTextArea textArea = new JTextArea();
-            for (Clase clase : clasesDisponibles) {
-                textArea.append(clase.getTipoActividad() + " - " + clase.getHora() + "\n");
+            if (!clasesDisponibles.isEmpty()) {
+                for (Clase clase : clasesDisponibles) {
+                    actividadesListModel.addElement(clase);
+                }
+                LOGGER.log(Level.INFO, "Se han cargado las actividades correctamente.");
+            } else {
+                LOGGER.log(Level.INFO, "No hay actividades disponibles para la fecha seleccionada.");
             }
-            textArea.setWrapStyleWord(true);
-            textArea.setLineWrap(true);
-            textArea.setOpaque(false);
-            textArea.setEditable(false);
-            eventPanel.add(new JScrollPane(textArea));
-            activitySelected = true;
-        } else {
-            JTextArea textArea = new JTextArea("No hay clases disponibles para esta fecha.");
-            textArea.setWrapStyleWord(true);
-            textArea.setLineWrap(true);
-            textArea.setOpaque(false);
-            textArea.setEditable(false);
-            eventPanel.add(new JScrollPane(textArea));
-            activitySelected = false;
-        }
 
-        eventPanel.revalidate();
-        eventPanel.repaint();
+            selectActivityButton.setEnabled(false);
+        } catch (ParseException e) {
+            LOGGER.log(Level.SEVERE, "Error parsing date: " + selectedDateString, e);
+            JOptionPane.showMessageDialog(null, "Error al obtener las clases para la fecha seleccionada.");
+        }
+    }
+    
+   
+    private void actividadSeleccionada() {
+        Clase selectedActivity = actividadesList.getSelectedValue();
+
+        if (selectedActivity != null) {
+            LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
+
+            int id = selectedActivity.getIDClase();
+            int plazasDisponibles = selectedActivity.getPlazas();
+
+            if (plazasDisponibles > 0) {
+                int result = JOptionPane.showConfirmDialog(
+                    null,
+                    "¿Seguro que quieres apuntarte a la clase de " + selectedActivity.getTipoActividad().toString() + " con ID " + selectedActivity.getIDClase(),
+                    "Apuntarse a clase",
+                    JOptionPane.YES_NO_OPTION
+                );
+
+                if (result == JOptionPane.YES_OPTION) {
+                   
+                    gbd.actualizarPlazas(id, plazasDisponibles - 1);
+
+                    JOptionPane.showMessageDialog(null, "Te has apuntado a la clase correctamente", "Apuntarse a clase", JOptionPane.INFORMATION_MESSAGE);
+                    mostrarActividades();  
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay plazas disponibles para esta clase", "Apuntarse a clase", JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }
 
-	
+
+	private void setupExitButton() {
+		exitButton = new JButton("Salir");
+        exitButton.addActionListener(new ActionListener() {
+        
+
+			@Override
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+                    JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(exitButton);
+                    thisFrame.dispose();
+					VentanaUsuario vent = new VentanaUsuario(g, gbd, dniUsuario);
+                    vent.setVisible(true);
+                }
+            }
+        });
+        exitButton.setPreferredSize(new Dimension(100, 40));
+		
+	}
 
 
-    public void mostrarVentana() {
+
+
+
+
+
+
+	public void mostrarVentana() {
         getContentPane().setVisible(true);
     }
     

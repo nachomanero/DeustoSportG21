@@ -674,4 +674,22 @@ public class GestorBD {
 	        return null;
 	    }
 
+	   
+	        
+
+		public void actualizarPlazas(int id, int nuevasPlazas) {
+			try (Connection conexion = DriverManager.getConnection(CONNECTION_STRING)) {
+	            String consulta = "UPDATE Clase SET plazas = ? WHERE idClase = ?";
+	            try (PreparedStatement statement = conexion.prepareStatement(consulta)) {
+	                statement.setInt(1, nuevasPlazas);
+	                statement.setInt(2, id);
+	                statement.executeUpdate();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            LOGGER.log(Level.SEVERE, "Error updating available seats for class with ID " + id, e);	        }
+	    }
+			
+		
+
 }

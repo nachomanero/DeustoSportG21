@@ -79,7 +79,7 @@ public class VentanaEliminarActividades extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        selectActivityButton = new JButton("Eiminar");
+        selectActivityButton = new JButton("Eliminar");
         selectActivityButton.addActionListener(e -> selectActivity());
 
         mainPanel.add(scrollPane, BorderLayout.CENTER);
@@ -147,8 +147,8 @@ public class VentanaEliminarActividades extends JFrame {
     private void selectActivity() {
     	
     	String nomfichClases = "resources/data/Clases.csv";
-    	GestorBD gbd = new GestorBD();
-    	Gestor g = new Gestor();
+    	//GestorBD gbd = new GestorBD();
+    	//Gestor g = new Gestor();
     	
         Clase selectedActivity = actividadesList.getSelectedValue();
 
