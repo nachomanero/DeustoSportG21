@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -162,7 +163,7 @@ public class Gestor implements itfGestor{
 		// TODO Auto-generated method stub
 		try {
 			
-			SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+			SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
 			Scanner sc = new Scanner(new FileReader(nomfichClases));
 			String linea;
 			while(sc.hasNext()) {
@@ -176,7 +177,24 @@ public class Gestor implements itfGestor{
 				String plazas = partes[5];
 				LOGGER.log(Level.INFO,"Clases cargadas correctamente.");
 				try {
-					Clase c = new Clase(Integer.parseInt(idClase), hora, TipoActividad.valueOf(tipoActividad), formatoFecha.parse(fecha), Integer.parseInt(sala), Integer.parseInt(plazas));
+					
+					
+					String nuevaFecha = "";
+					
+					//0123456789
+					//dd-mm-aaaa
+					
+					String dia = fecha.substring(0, 2);
+					String mes = fecha.substring(3,5);
+					String año = fecha.substring(6, 10);
+					
+					nuevaFecha = año+"-"+mes+"-"+dia;
+					
+					Date f = formatoFecha.parse(nuevaFecha);
+
+					
+					
+					Clase c = new Clase(Integer.parseInt(idClase), hora, TipoActividad.valueOf(tipoActividad), f, Integer.parseInt(sala), Integer.parseInt(plazas));
 					clases.add(c);
 					gestorBD.añadirClase(c);
 					LOGGER.log(Level.INFO, "Clase agregada a la base de datos: " + c);

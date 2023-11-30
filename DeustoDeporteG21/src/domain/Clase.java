@@ -71,7 +71,7 @@ public class Clase {
 
 	@Override
 	public String toString() {
-		SimpleDateFormat sdfOutput = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdfOutput = new SimpleDateFormat("yyyy-MM-dd");
         String fechaFormateadaStr = sdfOutput.format(fecha);
 		return hora + "  -  " + tipoActividad + "  -  " + fechaFormateadaStr
 				+ "  -  " + "Sala " + IDSala + "  -  "  + plazas + " plazas" ;

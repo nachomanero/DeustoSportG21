@@ -400,7 +400,7 @@ public class GestorBD {
 	        List<Clase> clases = new ArrayList<>();
 
 	        try (Connection conexion = DriverManager.getConnection(CONNECTION_STRING)) {
-	            String consulta = "SELECT idClase, hora, tipoActividad, fecha, IDSala, plazas FROM Clase WHERE fecha = ?";
+	            String consulta = "SELECT idClase, hora, tipoActividad, fecha, IDSala, plazas FROM Clase WHERE fecha like ?";
 	            try (PreparedStatement statement = conexion.prepareStatement(consulta)) {
 	                SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
 	                SimpleDateFormat formatoSalida = new SimpleDateFormat("dd-MM-yyyy");
@@ -408,6 +408,8 @@ public class GestorBD {
 	               
 	                java.sql.Date fechaSql = new java.sql.Date(formatoSalida.parse(fecha).getTime());
 
+	                System.out.println( fechaSql );
+	                
 	                statement.setDate(1, fechaSql);
 
 	                try (ResultSet resultSet = statement.executeQuery()) {

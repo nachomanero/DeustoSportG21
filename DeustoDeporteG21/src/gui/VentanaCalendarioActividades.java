@@ -121,6 +121,7 @@ public class VentanaCalendarioActividades extends JFrame {
         List<Clase> clasesDisponibles = null;
         try {
             clasesDisponibles = gbd.obtenerClasesPorFecha(selectedDateString);
+          
             actividadesListModel.clear();
           
 
