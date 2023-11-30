@@ -37,13 +37,14 @@ public class VentanaCalendarioActividades extends JFrame {
 
     private Gestor g;
     private GestorBD gbd;
-	protected String dniUsuario;
+	private String dniUsuario;
 	
 
     public VentanaCalendarioActividades(Gestor gestor , GestorBD gestorBD , String dniUsuario ) {
     	
     	g = gestor;
         gbd = gestorBD;
+        this.dniUsuario = dniUsuario;
 
         JFrame frame = new JFrame("HORARIO DE ACTIVIDADES");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
