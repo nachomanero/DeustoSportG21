@@ -98,13 +98,10 @@ public class VentanaCalendarioActividades extends JFrame {
         dateChooser.getDateEditor().addPropertyChangeListener("date", new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                showActivitiesForSelectedDate();
+                mostrarActividades();
             }
 
-			private void showActivitiesForSelectedDate() {
-				
-				
-			}
+			
         });
 
        
@@ -124,6 +121,7 @@ public class VentanaCalendarioActividades extends JFrame {
         try {
             clasesDisponibles = gbd.obtenerClasesPorFecha(selectedDateString);
             actividadesListModel.clear();
+          
 
             if (!clasesDisponibles.isEmpty()) {
                 for (Clase clase : clasesDisponibles) {
@@ -133,6 +131,7 @@ public class VentanaCalendarioActividades extends JFrame {
             } else {
                 LOGGER.log(Level.INFO, "No hay actividades disponibles para la fecha seleccionada.");
             }
+            System.out.println(clasesDisponibles);
 
             selectActivityButton.setEnabled(false);
         } catch (ParseException e) {
