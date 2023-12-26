@@ -17,6 +17,9 @@ import domain.Gestor;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -152,39 +155,34 @@ public class VentanaInicioSesion {
 		JPanel panel_7 = new JPanel();
 		panel_7.setBackground(new Color(102, 153, 153));
 		panel_2.add(panel_7, BorderLayout.CENTER);
+		
+		
 
 		btnAcceder.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				String contrasenia = txtContrasenia.getText();
-				String correo = textFieldCorreo.getText();
-
-				var comprobacion = gbd.comprobarUsuario(correo, contrasenia);
-
-				if (comprobacion == true) {
-					String dniUsuario = gbd.obtenerDniPorCredenciales(correo, contrasenia);
-					if (dniUsuario != null) {
-						JOptionPane.showMessageDialog(null, "Bienvenido!!", "INICIO DE SESIÓN",
-								JOptionPane.INFORMATION_MESSAGE);
-
-						frame.dispose();
-						VentanaUsuario ventanaUsuario = new VentanaUsuario(g , gbd , dniUsuario);
-						ventanaUsuario.setVisible(true);
-						LOGGER.log(Level.INFO, "Se ha accedido al inicio de sesion.");
-					}
-
-				} else {
-					JOptionPane.showMessageDialog(null, "El correo o la contraseña no son correctos",
-							"INICIO DE SESIÓN", JOptionPane.INFORMATION_MESSAGE);
-					LOGGER.log(Level.INFO, "El correo o la contraseña en el inicio de sesion no son correctos.");
-					textFieldCorreo.setText("");
-					txtContrasenia.setText("");
-				}
+				realizarAccionAcceder();
 
 			}
 
+		});
+		
+		textFieldCorreo.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+		        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+		            realizarAccionAcceder();
+		        }
+		    }
+		});
+		
+		txtContrasenia.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+		        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+		            realizarAccionAcceder();
+		        }
+		    }
 		});
 
 		btnRetroceder.addActionListener(new ActionListener() {
@@ -202,6 +200,29 @@ public class VentanaInicioSesion {
 
 	public void mostrarVentana() {
 		frame.setVisible(true);
+	}
+	
+	private void realizarAccionAcceder() {
+	    String contrasenia = txtContrasenia.getText();
+	    String correo = textFieldCorreo.getText();
+	    var comprobacion = gbd.comprobarUsuario(correo, contrasenia);
+
+	    if (comprobacion) {
+	        String dniUsuario = gbd.obtenerDniPorCredenciales(correo, contrasenia);
+	        if (dniUsuario != null) {
+	            JOptionPane.showMessageDialog(null, "Bienvenido!!", "INICIO DE SESIÓN", JOptionPane.INFORMATION_MESSAGE);
+	            frame.dispose();
+	            VentanaUsuario ventanaUsuario = new VentanaUsuario(g, gbd, dniUsuario);
+	            ventanaUsuario.setVisible(true);
+	            LOGGER.log(Level.INFO, "Se ha accedido al inicio de sesión.");
+	        }
+	    } else {
+	        JOptionPane.showMessageDialog(null, "El correo o la contraseña no son correctos", "INICIO DE SESIÓN",
+	                JOptionPane.INFORMATION_MESSAGE);
+	        LOGGER.log(Level.INFO, "El correo o la contraseña en el inicio de sesion no son correctos.");
+	        textFieldCorreo.setText("");
+	        txtContrasenia.setText("");
+	    }
 	}
 
 }

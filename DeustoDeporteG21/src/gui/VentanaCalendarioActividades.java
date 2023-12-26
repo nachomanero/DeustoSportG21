@@ -96,6 +96,26 @@ public class VentanaCalendarioActividades extends JFrame {
 		frame.getContentPane().add(mainPanel);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		
+		actividadesList.setCellRenderer(new DefaultListCellRenderer() {
+		    @Override
+		    public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
+		            boolean cellHasFocus) {
+		        Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+		        // Obtén la clase actual
+		        Clase clase = (Clase) value;
+
+		        // Verifica el número de plazas disponibles y establece el color de fondo en rojo si es menor a 3
+		        if (clase.getPlazas() < 3) {
+		            renderer.setBackground(Color.RED);
+		        } else {
+		            renderer.setBackground(list.getBackground());
+		        }
+
+		        return renderer;
+		    }
+		});
 
 		dateChooser.getDateEditor().addPropertyChangeListener("date", new PropertyChangeListener() {
 			@Override
