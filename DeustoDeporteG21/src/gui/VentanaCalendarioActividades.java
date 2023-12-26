@@ -37,6 +37,8 @@ public class VentanaCalendarioActividades extends JFrame {
 	private Gestor g;
 	private GestorBD gbd;
 	private String dniUsuario;
+	
+	
 
 	public VentanaCalendarioActividades(Gestor gestor, GestorBD gestorBD, String dniUsuario) {
 
@@ -57,7 +59,7 @@ public class VentanaCalendarioActividades extends JFrame {
 		topPanel.add(selectDateLabel);
 
 		dateChooser = new JDateChooser();
-		dateChooser.setDateFormatString("yyyy-MM-dd");
+		dateChooser.setDateFormatString("dd-MM-yyyy");
 		dateChooser.setPreferredSize(new Dimension(150, dateChooser.getPreferredSize().height));
 		topPanel.add(dateChooser);
 
@@ -165,6 +167,8 @@ public class VentanaCalendarioActividades extends JFrame {
 			LOGGER.log(Level.SEVERE, "Error parsing date: " + selectedDateString, e);
 			JOptionPane.showMessageDialog(null, "Error al obtener las clases para la fecha seleccionada.");
 		}
+		
+		
 	}
 
 	private void actividadSeleccionada() {
@@ -235,5 +239,7 @@ public class VentanaCalendarioActividades extends JFrame {
 	public void mostrarVentana() {
 		getContentPane().setVisible(true);
 	}
-
+	
+	
+	
 }

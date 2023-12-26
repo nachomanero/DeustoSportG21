@@ -127,6 +127,8 @@ public class VentanaEliminarActividades extends JFrame {
 
         String typeToFilter = actividadTextField.getText().trim().toLowerCase();
 
+        actividades.sort((a1, a2) -> a1.getFecha().compareTo(a2.getFecha()));
+
         for (Clase actividad : actividades) {
             if (tipoActividadCoincide(actividad, typeToFilter) || typeToFilter.isEmpty()) {
                 actividadesListModel.addElement(actividad);
