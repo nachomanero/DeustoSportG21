@@ -2,6 +2,7 @@ package domain;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class Reserva {
 	private String DNI;
@@ -58,5 +59,23 @@ public class Reserva {
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(IDSala, fecha, hora);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Reserva other = (Reserva) obj;
+		return IDSala == other.IDSala && Objects.equals(fecha, other.fecha) && Objects.equals(hora, other.hora);
+	}
+	
+	
+	
 	
 }

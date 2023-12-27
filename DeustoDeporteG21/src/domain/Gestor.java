@@ -174,7 +174,7 @@ public class Gestor implements itfGestor {
 
 					nuevaFecha = año + "-" + mes + "-" + dia;
 
-					java.util.Date f = formatoFecha.parse(nuevaFecha);
+					Date f = formatoFecha.parse(nuevaFecha);
 
 					Clase c = new Clase(Integer.parseInt(idClase), hora, TipoActividad.valueOf(tipoActividad), f,
 							Integer.parseInt(sala), Integer.parseInt(plazas));
