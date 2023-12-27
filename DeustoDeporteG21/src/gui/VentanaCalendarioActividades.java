@@ -173,50 +173,46 @@ public class VentanaCalendarioActividades extends JFrame {
 	}
 
 	private void actividadSeleccionada() {
-		Clase selectedActivity = actividadesList.getSelectedValue();
+	    Clase selectedActivity = actividadesList.getSelectedValue();
 
-		if (selectedActivity != null) {
-			LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
+	    if (selectedActivity != null) {
+	        LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
 
-			int id = selectedActivity.getIDClase();
-			int plazasDisponibles = selectedActivity.getPlazas();
+	        int id = selectedActivity.getIDClase();
+	        int plazasDisponibles = selectedActivity.getPlazas();
 
-			if (plazasDisponibles > 0) {
-				int result = JOptionPane.showConfirmDialog(null,
-						"¿Seguro que quieres apuntarte a la clase de " + selectedActivity.getTipoActividad().toString()
-								+ " con ID " + selectedActivity.getIDClase(),
-						"Apuntarse a clase", JOptionPane.YES_NO_OPTION);
+	        if (plazasDisponibles > 0) {
+	            if (!g.apuntadoAEsaClase(dniUsuario, id)) {
+	                int result = JOptionPane.showConfirmDialog(null,
+	                        "¿Seguro que quieres apuntarte a la clase de " + selectedActivity.getTipoActividad().toString()
+	                                + " con ID " + selectedActivity.getIDClase(),
+	                        "Apuntarse a clase", JOptionPane.YES_NO_OPTION);
 
-				if (result == JOptionPane.YES_OPTION) {
+	                if (result == JOptionPane.YES_OPTION) {
+	                    gbd.actualizarPlazas(id, plazasDisponibles - 1);
+	                    g.agregarReservaUsuario(dniUsuario, id);
 
-					if (apuntadoAEsaClase(dniUsuario , id) == false) {
+	                   
 
-						gbd.actualizarPlazas(id, plazasDisponibles - 1);
+	                    Reserva reserva = new Reserva(dniUsuario, selectedActivity.getTipoActividad(),
+	                            selectedActivity.getIDSala(), selectedActivity.getFecha(), selectedActivity.getHora());
+	                    gbd.actualizarReserva(reserva);
 
-						g.agregarReservaUsuario(dniUsuario, id);
-
-						JOptionPane.showMessageDialog(null, "Te has apuntado a la clase correctamente",
-								"Apuntarse a clase", JOptionPane.INFORMATION_MESSAGE);
-						mostrarActividades();
-					} else {
-						JOptionPane.showMessageDialog(null, "Ya estas apuntado a esta clase", "Apuntarse a clase",
-								JOptionPane.WARNING_MESSAGE);
-					}
-				}
-			} else {
-				JOptionPane.showMessageDialog(null, "No hay plazas disponibles para esta clase", "Apuntarse a clase",
-						JOptionPane.WARNING_MESSAGE);
-			}
-		}
+	                    JOptionPane.showMessageDialog(null, "Te has apuntado a la clase correctamente",
+	                            "Apuntarse a clase", JOptionPane.INFORMATION_MESSAGE);
+	                    mostrarActividades();
+	                }
+	            } else {
+	                JOptionPane.showMessageDialog(null, "Ya estás apuntado a esta clase", "Apuntarse a clase",
+	                        JOptionPane.WARNING_MESSAGE);
+	            }
+	        } else {
+	            JOptionPane.showMessageDialog(null, "No hay plazas disponibles para esta clase", "Apuntarse a clase",
+	                    JOptionPane.WARNING_MESSAGE);
+	        }
+	    }
 	}
-
-	private boolean apuntadoAEsaClase(String dniUsuario, int  id ) {
-		
-		return g.apuntadoAEsaClase( dniUsuario , id );
-		
-		
-	}
-
+	
 	private void setupExitButton() {
 		exitButton = new JButton("Salir");
 		exitButton.addActionListener(new ActionListener() {

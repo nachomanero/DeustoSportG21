@@ -60,21 +60,25 @@ public class Reserva {
 		this.hora = hora;
 	}
 	@Override
-	public int hashCode() {
-		return Objects.hash(IDSala, fecha, hora);
-	}
-	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Reserva other = (Reserva) obj;
-		return IDSala == other.IDSala && Objects.equals(fecha, other.fecha) && Objects.equals(hora, other.hora);
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null || getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    Reserva reserva = (Reserva) obj;
+	    return Objects.equals(DNI, reserva.DNI) &&
+	           TipoActividad == reserva.TipoActividad &&
+	           IDSala == reserva.IDSala &&
+	           Objects.equals(fecha, reserva.fecha) &&
+	           Objects.equals(hora, reserva.hora);
 	}
-	
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(DNI, TipoActividad, IDSala, fecha, hora);
+	}
 	
 	
 	

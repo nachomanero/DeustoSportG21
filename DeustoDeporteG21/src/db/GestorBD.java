@@ -673,5 +673,36 @@ public class GestorBD {
 			LOGGER.log(Level.SEVERE, "Error updating available seats for class with ID " + id, e);
 		}
 	}
+	
+	public void actualizarReserva(Reserva reserva) {
+	    try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
+	        String sql = "UPDATE Reserva SET TipoActividad = ?, IDSala = ?, fecha = ?, hora = ? WHERE DNI = ? AND fecha = ? AND hora = ?";
+	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	            preparedStatement.setString(1, reserva.getTipoActividad().name());
+	            preparedStatement.setInt(2, reserva.getIDSala());
+	            preparedStatement.setDate(3, new java.sql.Date(reserva.getFecha().getTime()));
+	            preparedStatement.setString(4, reserva.getHora());
+	            preparedStatement.setString(5, reserva.getDNI());
+	            preparedStatement.setDate(6, new java.sql.Date(reserva.getFecha().getTime())); // fecha original
+	            preparedStatement.setString(7, reserva.getHora()); // hora original
+
+	            int rowCount = preparedStatement.executeUpdate();
+
+	            if (rowCount > 0) {
+	                LOGGER.log(Level.INFO, "Reserva actualizada con éxito.");
+	                System.out.println("Reserva actualizada en la base de datos con éxito.");
+	            } else {
+	                LOGGER.log(Level.WARNING, "No se encontró ninguna reserva para actualizar.");
+	                System.out.println("No se encontró ninguna reserva para actualizar.");
+	            }
+	        }
+	    } catch (SQLException ex) {
+	        LOGGER.log(Level.SEVERE, "Error al actualizar la reserva en la base de datos.");
+	        ex.printStackTrace();
+	    } catch (Exception e) {
+	        LOGGER.log(Level.SEVERE, "Error general.");
+	        e.printStackTrace();
+	    }
+	}
 
 }
