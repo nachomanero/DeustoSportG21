@@ -105,13 +105,14 @@ public class VentanaCalendarioActividades extends JFrame {
 		            boolean cellHasFocus) {
 		        Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
-		        // Obtén la clase actual
+		        
 		        Clase clase = (Clase) value;
 
-		        // Verifica el número de plazas disponibles y establece el color de fondo en rojo si es menor a 3
+		       
 		        if (clase.getPlazas() < 3) {
 		            renderer.setBackground(Color.RED);
 		        } else {
+		        	renderer.setForeground( Color.BLACK );
 		            renderer.setBackground(list.getBackground());
 		        }
 

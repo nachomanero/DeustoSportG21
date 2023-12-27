@@ -133,6 +133,7 @@ public class GestorBD {
 
 							Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fecha, sala,
 									plazas);
+							
 							registros.add(tipoClase.cast(clase));
 						} else if (tipoClase.equals(Sala.class)) {
 							int idSala = resultSet.getInt("IDSala");
@@ -418,10 +419,10 @@ public class GestorBD {
 						int idSala = resultSet.getInt("IDSala");
 						int plazas = resultSet.getInt("plazas");
 
-						String fechaResultado = formatoSalida.format(fechaSqlResultado);
-						java.util.Date fechaFormateada = formatoEntrada.parse(fechaResultado);
+						//String fechaResultado = formatoSalida.format(fechaSqlResultado);
+						//java.sql.Date fechaFormateada = formatoEntrada.parse(fechaResultado);
 
-						Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fechaFormateada,
+						Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fechaSqlResultado,
 								idSala, plazas);
 						clases.add(clase);
 					}
@@ -562,24 +563,24 @@ public class GestorBD {
 						int idClase = resultSet.getInt("idClase");
 						String hora = resultSet.getString("hora");
 						String tipoActividad = resultSet.getString("tipoActividad");
-						java.sql.Timestamp timestamp = resultSet.getTimestamp("fecha");
+						java.sql.Date timestamp = resultSet.getDate("fecha");
 						int IDSala = resultSet.getInt("IDSala");
 						int plazas = resultSet.getInt("plazas");
 
 						java.util.Date fecha = new java.util.Date(timestamp.getTime());
 
-						SimpleDateFormat sdfOutput = new SimpleDateFormat("dd-MM-yyyy");
-						String fechaFormateadaStr = sdfOutput.format(fecha);
+						//SimpleDateFormat sdfOutput = new SimpleDateFormat("dd-MM-yyyy");
+						//String fechaFormateadaStr = sdfOutput.format(fecha);
 
-						java.util.Date fechaFormateada = sdfOutput.parse(fechaFormateadaStr);
+						//java.util.Date fechaFormateada = sdfOutput.parse(fechaFormateadaStr);
 
-						Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), fechaFormateada,
+						Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), timestamp,
 								IDSala, plazas);
 						clases.add(clase);
 					}
 				}
 			}
-		} catch (SQLException | ParseException ex) {
+		} catch (SQLException  ex) {
 			LOGGER.log(Level.SEVERE, "Error al obtener todas las clases desde la base de datos.");
 			ex.printStackTrace();
 		} catch (Exception e) {
