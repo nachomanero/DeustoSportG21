@@ -251,7 +251,7 @@ public class VentanaAniadirClase extends JFrame {
 					String patronFecha = "^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-\\d{4}$";
 
 					TipoActividad tipoClase = (TipoActividad)comboBox.getSelectedItem();
-					int id = g.obtenerUltimoIDClase(nomfichClases) + 1;
+					int id = gbd.obtenerSiguienteID( "Clase", "idClase");
 					String txtFecha = textField.getText();
 					java.util.Date fecha = formatoFecha.parse(txtFecha);
 					java.sql.Date sqlFecha = new java.sql.Date(fecha.getTime());

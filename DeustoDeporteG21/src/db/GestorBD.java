@@ -704,5 +704,30 @@ public class GestorBD {
 	        e.printStackTrace();
 	    }
 	}
+	
+	public int obtenerSiguienteID(String nombreTabla, String nombreColumnaID) {
+	    int siguienteID = 1;  // Valor predeterminado si no hay registros en la tabla
+
+	    try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
+	        String sql = "SELECT MAX(" + nombreColumnaID + ") FROM " + nombreTabla;
+	        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	                if (resultSet.next()) {
+	                    int maxID = resultSet.getInt(1);
+	                    siguienteID = maxID + 1;
+	                }
+	            }
+	        }
+	    } catch (SQLException ex) {
+	        LOGGER.log(Level.SEVERE, "Error al obtener el siguiente ID desde la base de datos.", ex);
+	        ex.printStackTrace();
+	    } catch (Exception e) {
+	        LOGGER.log(Level.SEVERE, "Error general.", e);
+	        e.printStackTrace();
+	    }
+
+	    return siguienteID;
+	}
+
 
 }
