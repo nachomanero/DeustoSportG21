@@ -59,26 +59,7 @@ public class Reserva {
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
-	@Override
-	public boolean equals(Object obj) {
-	    if (this == obj) {
-	        return true;
-	    }
-	    if (obj == null || getClass() != obj.getClass()) {
-	        return false;
-	    }
-	    Reserva reserva = (Reserva) obj;
-	    return Objects.equals(DNI, reserva.DNI) &&
-	           TipoActividad == reserva.TipoActividad &&
-	           IDSala == reserva.IDSala &&
-	           Objects.equals(fecha, reserva.fecha) &&
-	           Objects.equals(hora, reserva.hora);
-	}
-
-	@Override
-	public int hashCode() {
-	    return Objects.hash(DNI, TipoActividad, IDSala, fecha, hora);
-	}
+	
 	
 	
 	
