@@ -729,54 +729,9 @@ public class GestorBD {
 	    return siguienteID;
 	}
 
-	
-	
 
-	public boolean apuntadoAEsaClase(String dniUsuario, int id) {
-	    boolean apuntado = false;
 
-	    try (Connection conexion = DriverManager.getConnection(CONNECTION_STRING)) {
-	        String consulta = "SELECT COUNT(*) FROM Reserva WHERE dniUsuario = ? AND idClase = ?";
-	        try (PreparedStatement statement = conexion.prepareStatement(consulta)) {
-	            statement.setString(1, dniUsuario);
-	            statement.setInt(2, id);
 
-	            try (ResultSet resultSet = statement.executeQuery()) {
-	                if (resultSet.next()) {
-	                    int count = resultSet.getInt(1);
-	                    apuntado = (count > 0);
-	                }
-	            }
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	        LOGGER.log(Level.SEVERE, "Error checking reservation for user " + dniUsuario + " in class with ID " + id, e);
-	    }
-
-	    return apuntado;
-	}
-
-	public void agregarReservaUsuario(String dniUsuario, int idClase) {
-	   
-	    if (!apuntadoAEsaClase(dniUsuario, idClase)) {
-	        try (Connection conexion = DriverManager.getConnection(CONNECTION_STRING)) {
-	            String consulta = "INSERT INTO Reserva (dniUsuario, idClase) VALUES (?, ?)";
-	            try (PreparedStatement statement = conexion.prepareStatement(consulta)) {
-	                statement.setString(1, dniUsuario);
-	                statement.setInt(2, idClase);
-	                statement.executeUpdate();
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	            LOGGER.log(Level.SEVERE, "Error añadiendo la reserva al usuario " + dniUsuario + " en la clase con ID " + idClase, e);
-	        }
-	    } else {
-	        
-	        LOGGER.log(Level.WARNING,  dniUsuario + " ya estás apuntado a la clase con ID: " + idClase);
-	        
-	    }
-	}
-	
 	
 
 

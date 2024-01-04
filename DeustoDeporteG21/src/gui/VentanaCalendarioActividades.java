@@ -172,7 +172,7 @@ public class VentanaCalendarioActividades extends JFrame {
 		
 	}
 
-	private void actividadSeleccionada() {
+	/*private void actividadSeleccionada() {
 	    Clase selectedActivity = actividadesList.getSelectedValue();
 
 	    if (selectedActivity != null) {
@@ -212,6 +212,7 @@ public class VentanaCalendarioActividades extends JFrame {
 	        }
 	    }
 	}
+	*/
 	
 	private void setupExitButton() {
 		exitButton = new JButton("Salir");

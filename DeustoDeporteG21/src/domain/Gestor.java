@@ -429,28 +429,18 @@ public class Gestor implements itfGestor {
 		gestorBD.añadirReserva(r);
 	}
 
-	public boolean apuntadoAEsaClase(String dniUsuario, int id) {
-	    Clase claseBuscada = null;
-	    for (Clase c : clases) {
-	        if (c.getIDClase() == id) {
-	            claseBuscada = c;
-	            break;
+	public boolean usuarioYaRegistradoEnClase(String dniUsuario, TipoActividad tipoActividad, int idSala, Date fecha, String hora) {
+	    for (Reserva reserva : reservas.get(dniUsuario)) {
+	        if (reserva.getTipoActividad().equals(tipoActividad) &&
+	            reserva.getIDSala() == idSala &&
+	            reserva.getFecha().equals(fecha) &&
+	            reserva.getHora().equals(hora)) {
+	            return true;
 	        }
 	    }
-
-	    if (claseBuscada != null) {
-	        for (Reserva reserva : reservas.get(dniUsuario)) {
-	            if (reserva.getTipoActividad() == claseBuscada.getTipoActividad() &&
-	                reserva.getIDSala() == claseBuscada.getIDSala() &&
-	                reserva.getFecha().equals(claseBuscada.getFecha()) &&
-	                reserva.getHora().equals(claseBuscada.getHora())) {
-	                return true;  
-	            }
-	        }
-	    }
-
-	    return false; 
+	    return false;
 	}
+
 
 
 }
