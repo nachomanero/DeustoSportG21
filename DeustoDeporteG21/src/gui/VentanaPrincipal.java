@@ -36,6 +36,12 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 public class VentanaPrincipal {
 
+	
+	
+	
+	private Thread relojThread;
+
+	
 	private JFrame frame;
 	private JPanel contentPane;
 	private Gestor g;
@@ -60,6 +66,8 @@ public class VentanaPrincipal {
 			}
 		});
 	}
+	
+	
 
 	/**
 	 * Create the application.
@@ -70,8 +78,37 @@ public class VentanaPrincipal {
 		gbd = gestorBD;
 		
 		initialize();
+		iniciarReloj();
 		
 	}
+	
+	
+	private void iniciarReloj() {
+	    relojThread = new Thread(new Runnable() {
+	        @Override
+	        public void run() {
+	            try {
+	                while (true) {
+	                    // Obtén la hora actual
+	                    java.util.Date fecha = new java.util.Date();
+	                    String horaActual = new java.text.SimpleDateFormat("HH:mm:ss").format(fecha);
+
+	                    // Actualiza la barra de título con la hora actual
+	                    frame.setTitle("Deusto Sport - " + horaActual);
+
+	                    // Pausa el hilo durante 1000 milisegundos (1 segundo)
+	                    Thread.sleep(1000);
+	                }
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    });
+
+	    // Inicia el hilo del reloj
+	    relojThread.start();
+	}
+
 
 	/**
 	 * Initialize the contents of the frame.
