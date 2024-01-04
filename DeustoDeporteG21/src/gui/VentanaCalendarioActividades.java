@@ -172,7 +172,7 @@ public class VentanaCalendarioActividades extends JFrame {
 		
 	}
 
-	/*private void actividadSeleccionada() {
+	private void actividadSeleccionada() {
 	    Clase selectedActivity = actividadesList.getSelectedValue();
 
 	    if (selectedActivity != null) {
@@ -182,7 +182,7 @@ public class VentanaCalendarioActividades extends JFrame {
 	        int plazasDisponibles = selectedActivity.getPlazas();
 
 	        if (plazasDisponibles > 0) {
-	            if (!g.apuntadoAEsaClase(dniUsuario, id)) {
+	            if (!g.apuntadoAEsaClase(dniUsuario,selectedActivity.getTipoActividad(), selectedActivity.getFecha(), selectedActivity.getHora())) {
 	                int result = JOptionPane.showConfirmDialog(null,
 	                        "¿Seguro que quieres apuntarte a la clase de " + selectedActivity.getTipoActividad().toString()
 	                                + " con ID " + selectedActivity.getIDClase(),
@@ -191,12 +191,14 @@ public class VentanaCalendarioActividades extends JFrame {
 	                if (result == JOptionPane.YES_OPTION) {
 	                    gbd.actualizarPlazas(id, plazasDisponibles - 1);
 	                    g.agregarReservaUsuario(dniUsuario, id);
+	                    
 
 	                   
 
 	                    Reserva reserva = new Reserva(dniUsuario, selectedActivity.getTipoActividad(),
 	                            selectedActivity.getIDSala(), selectedActivity.getFecha(), selectedActivity.getHora());
 	                    gbd.actualizarReserva(reserva);
+	                    gbd.añadirReserva(reserva);
 
 	                    JOptionPane.showMessageDialog(null, "Te has apuntado a la clase correctamente",
 	                            "Apuntarse a clase", JOptionPane.INFORMATION_MESSAGE);
@@ -212,7 +214,7 @@ public class VentanaCalendarioActividades extends JFrame {
 	        }
 	    }
 	}
-	*/
+	
 	
 	private void setupExitButton() {
 		exitButton = new JButton("Salir");
