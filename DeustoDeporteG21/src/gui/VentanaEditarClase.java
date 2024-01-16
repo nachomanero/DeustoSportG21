@@ -23,6 +23,9 @@ import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -57,7 +60,6 @@ public class VentanaEditarClase extends JFrame {
 		
 		g = gestor;
 		gbd = gestorBD;
-		
 		setBackground(new Color(102, 153, 153));
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setVisible(true);
@@ -71,7 +73,7 @@ public class VentanaEditarClase extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(102, 153, 153));
 		contentPane.add(panel, BorderLayout.CENTER);
@@ -182,6 +184,7 @@ public class VentanaEditarClase extends JFrame {
 		String nomfichClases = "resources/data/Clases.csv";
 		
 		
+		
 		btnRetroceder.addActionListener(new ActionListener() {
 			
 			@Override
@@ -209,6 +212,8 @@ public class VentanaEditarClase extends JFrame {
                 }
 			}
 		});
+    
+
 		
 		btnEditarClase.addActionListener(new ActionListener() {
 			
@@ -268,8 +273,15 @@ public class VentanaEditarClase extends JFrame {
 			}
 		});
 	}
+
 	public void mostrarVentana() {
-        getContentPane().setVisible(true);
-    }
+		// TODO Auto-generated method stub
+		getContentPane().setVisible(true);
+	}
+	
+
+
+
+
 
 }

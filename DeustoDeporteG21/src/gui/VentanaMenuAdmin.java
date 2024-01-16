@@ -20,6 +20,9 @@ import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.Color;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -96,6 +99,48 @@ private GestorBD gbd;
 		btnSalir.setBackground(new Color(192, 192, 192));
 		btnSalir.setFont(new Font("Arial", Font.BOLD, 13));
 		panelSur.add(btnSalir);
+		
+		addKeyListener(new KeyListener() {
+		    private boolean ctrlPressed = false;
+
+		    @Override
+		    public void keyTyped(KeyEvent e) {
+		        
+		    }
+
+		    @Override
+		    public void keyPressed(KeyEvent e) {
+		    	
+                
+		        if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
+		            ctrlPressed = true;
+		        }
+
+		        
+		        if (ctrlPressed && e.getKeyCode() == KeyEvent.VK_SPACE) {
+		        	LOGGER.log(Level.INFO, "CTRL + SPACE pressed");
+		            VentanaEstadisticas ventanaEstadisticas = new VentanaEstadisticas(g );
+		            mostrarVentana();
+		            JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
+	                thisFrame.dispose();
+		        }
+		    }
+
+		    @Override
+		    public void keyReleased(KeyEvent e) {
+		        
+		        if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
+		            ctrlPressed = false;
+		        }
+		    }
+		});
+		
+		setFocusable(true);
+		requestFocus();
+		
+		
+	
+
 		
 		btnAniadirClase.addActionListener(new ActionListener() {
 			

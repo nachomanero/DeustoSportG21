@@ -21,7 +21,7 @@ public class VentanaEstadisticas extends JFrame {
 
     public VentanaEstadisticas(Gestor gestor) {
         this.gestor = gestor; 
-        setTitle("Ventana con ProgressBar");
+        setTitle("TOP CLASES");
         setSize(400, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -36,8 +36,10 @@ public class VentanaEstadisticas extends JFrame {
         panelProgressBar = new JPanel();
         panelProgressBar.setLayout(new GridLayout(3, 1));
 
-        JPanel panelBoton = new JPanel();
-        panelBoton.setLayout(new FlowLayout());
+        panelProgressBar = new JPanel();
+        panelProgressBar.setLayout(new GridLayout(3, 1));
+
+        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER)); 
         panelBoton.add(btnMostrarTopClases);
 
         getContentPane().add(panelBoton, BorderLayout.NORTH);
@@ -45,6 +47,7 @@ public class VentanaEstadisticas extends JFrame {
 
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
     }
 
     private void mostrarTopClases() {
@@ -72,15 +75,10 @@ public class VentanaEstadisticas extends JFrame {
         int reservasActividad = actividadesMap.getOrDefault(actividad, 0);
         return totalReservas == 0 ? 0 : (int) Math.round((double) reservasActividad / totalReservas * 100);
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-           
-                Gestor gestor = new Gestor();
-                new VentanaEstadisticas(gestor);
-            }
-        });
+    
+    public void mostrarVentana() {
+    	getContentPane().setVisible(true);
     }
+
+   
 }

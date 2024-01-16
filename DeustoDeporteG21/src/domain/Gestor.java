@@ -115,45 +115,32 @@ public class Gestor implements itfGestor {
 	}
 
 	public void guardarActividadesMasElegidas() {
+	    Map<TipoActividad, Integer> c = new HashMap<>();
 
-		Map<TipoActividad, Integer> c = new HashMap<TipoActividad, Integer>();
+	    // recorrer las reservas, agrupando por actividades
+	    for (String dni : reservas.keySet()) {
+	        List<Reserva> misReservas = reservas.get(dni);
 
-		// recorrer las reservas, agrupando por actividades
+	        for (Reserva r : misReservas) {
+	            TipoActividad a = r.getTipoActividad();
 
-		for (String dni : reservas.keySet()) {
-			List<Reserva> misReservas = reservas.get(dni);
+	            if (c.containsKey(a)) {
+	                c.put(a, c.get(a) + 1);
+	            } else {
+	                c.put(a, 1);
+	            }
+	        }
+	    }
 
-			for (Reserva r : misReservas) {
-				TipoActividad a = r.getTipoActividad();
+	    String filePath = "masSolicitadas.dat";
 
-				if (c.containsKey(a)) {
-					c.put(a, c.get(a) + 1);
-				} else {
-					c.put(a, 1);
-				}
-			}
-		}
-
-		try {
-			File f = new File("masSolicitadas.dat");
-			FileOutputStream fos = new FileOutputStream(f);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-			oos.writeObject(c);
-
-			oos.close();
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+	    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
+	        oos.writeObject(c);
+	        System.out.println("File successfully created at: " + filePath);
+	    } catch (IOException e) {
+	        System.err.println("Error writing to file: " + e.getMessage());
+	        e.printStackTrace();
+	    }
 	}
 
 	public void realizarOperacionEnBD() {

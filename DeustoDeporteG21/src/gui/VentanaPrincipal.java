@@ -209,6 +209,7 @@ public class VentanaPrincipal {
 		        
 		        if (ctrlPressed && e.getKeyCode() == KeyEvent.VK_SPACE) {
 		        	LOGGER.log(Level.INFO, "CTRL + SPACE pressed");
+		        	
 		            VentanaMenuAdmin ventanaMenuAdmin = new VentanaMenuAdmin(g, gbd );
 		            ventanaMenuAdmin.mostrarVentana();
 		        }
@@ -222,6 +223,7 @@ public class VentanaPrincipal {
 		        }
 		    }
 		});
+		
 
 		
 		frame.setFocusable(true);
