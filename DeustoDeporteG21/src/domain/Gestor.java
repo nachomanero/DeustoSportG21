@@ -2,16 +2,21 @@ package domain;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
-
+import java.io.*;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -48,6 +53,111 @@ public class Gestor implements itfGestor {
 		reservas = new HashMap<>();
 
 		// ...
+
+	}
+	
+	
+	
+	
+	public List<TipoActividad> las3MasSolicitadas(Map<TipoActividad, Integer> tabla )
+	{
+		List<Estadistica> l = new ArrayList<>();
+		
+		for( TipoActividad clave : tabla.keySet() )
+		{	
+			l.add( new Estadistica( clave , tabla.get(clave) ) );
+		}
+		
+		Collections.sort( l , new Comparator<Estadistica>() {
+
+			@Override
+			public int compare(Estadistica o1, Estadistica o2) {
+		
+				return o2.getVeces() - o1.getVeces();
+			}
+			
+		});
+		
+		
+		List<TipoActividad> r = new ArrayList<>();
+		
+		int i = 0;
+		int cont = 0;
+		while( i < l.size() && cont < 3 )
+		{
+			r.add( l.get( i ).getActividad() ) ;
+			cont++;
+		}
+		
+		return r;
+	}
+	
+
+	public Map<TipoActividad, Integer> cargarActividadesMasElegidas() {
+		Map<TipoActividad, Integer> c = new HashMap<TipoActividad, Integer>();
+
+		try {
+			File f = new File("masSolicitadas.dat");
+			FileInputStream fos = new FileInputStream(f);
+			ObjectInputStream oos = new ObjectInputStream(fos);
+
+			c = (Map<TipoActividad, Integer>) oos.readObject();
+
+			oos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return c;
+
+	}
+
+	public void guardarActividadesMasElegidas() {
+
+		Map<TipoActividad, Integer> c = new HashMap<TipoActividad, Integer>();
+
+		// recorrer las reservas, agrupando por actividades
+
+		for (String dni : reservas.keySet()) {
+			List<Reserva> misReservas = reservas.get(dni);
+
+			for (Reserva r : misReservas) {
+				TipoActividad a = r.getTipoActividad();
+
+				if (c.containsKey(a)) {
+					c.put(a, c.get(a) + 1);
+				} else {
+					c.put(a, 1);
+				}
+			}
+		}
+
+		try {
+			File f = new File("masSolicitadas.dat");
+			FileOutputStream fos = new FileOutputStream(f);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			oos.writeObject(c);
+
+			oos.close();
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -430,19 +540,16 @@ public class Gestor implements itfGestor {
 	}
 
 	public boolean apuntadoAEsaClase(String dniUsuario, TipoActividad tipoActividad, Date fecha, String hora) {
-	    for (Reserva reserva : reservas.get(dniUsuario)) {
-	    	
-	    	System.out.println( reserva );
-	    	
-	        if (reserva.getTipoActividad() == tipoActividad &&
-	            reserva.getFecha().equals(fecha) &&
-	            reserva.getHora().equals(hora)) {
-	            return true;
-	        }
-	    }
-	    return false;
+		for (Reserva reserva : reservas.get(dniUsuario)) {
+
+			System.out.println(reserva);
+
+			if (reserva.getTipoActividad() == tipoActividad && reserva.getFecha().equals(fecha)
+					&& reserva.getHora().equals(hora)) {
+				return true;
+			}
+		}
+		return false;
 	}
-
-
 
 }
