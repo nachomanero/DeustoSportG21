@@ -59,37 +59,32 @@ public class Gestor implements itfGestor {
 	
 	
 	
-	public List<TipoActividad> las3MasSolicitadas(Map<TipoActividad, Integer> tabla )
-	{
-		List<Estadistica> l = new ArrayList<>();
-		
-		for( TipoActividad clave : tabla.keySet() )
-		{	
-			l.add( new Estadistica( clave , tabla.get(clave) ) );
-		}
-		
-		Collections.sort( l , new Comparator<Estadistica>() {
+	public List<TipoActividad> las3MasSolicitadas(Map<TipoActividad, Integer> tabla) {
+	    List<Estadistica> l = new ArrayList<>();
 
-			@Override
-			public int compare(Estadistica o1, Estadistica o2) {
-		
-				return o2.getVeces() - o1.getVeces();
-			}
-			
-		});
-		
-		
-		List<TipoActividad> r = new ArrayList<>();
-		
-		int i = 0;
-		int cont = 0;
-		while( i < l.size() && cont < 3 )
-		{
-			r.add( l.get( i ).getActividad() ) ;
-			cont++;
-		}
-		
-		return r;
+	    for (TipoActividad clave : tabla.keySet()) {
+	        l.add(new Estadistica(clave, tabla.get(clave)));
+	    }
+
+	    Collections.sort(l, new Comparator<Estadistica>() {
+	        @Override
+	        public int compare(Estadistica o1, Estadistica o2) {
+	            return o2.getVeces() - o1.getVeces();
+	        }
+	    });
+
+	    List<TipoActividad> r = new ArrayList<>();
+
+	    int i = 0;
+	    int cont = 0;
+	    while (i < l.size() && cont < 3) {
+	        r.add(l.get(i).getActividad());
+	        i++;  
+	        cont++;
+	    }
+
+	    return r;
+	    
 	}
 	
 
