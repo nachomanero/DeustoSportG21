@@ -121,8 +121,7 @@ private GestorBD gbd;
 		        	LOGGER.log(Level.INFO, "CTRL + SPACE pressed");
 		            VentanaEstadisticas ventanaEstadisticas = new VentanaEstadisticas(g );
 		            mostrarVentana();
-		            JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
-	                thisFrame.dispose();
+		          
 		        }
 		    }
 
