@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 
 import db.GestorBD;
 import domain.Gestor;
@@ -48,6 +49,7 @@ public class VentanaRegistro {
 	private JTextField textFieldDireccion;
 	private Gestor g;
 	private GestorBD gbd;
+	
 
 	public VentanaRegistro(Gestor gestor, GestorBD gestorBD) {
 
@@ -172,6 +174,8 @@ public class VentanaRegistro {
 		lblNewLabel_4.setIcon(new ImageIcon("resources/images/FotoRegistro.jpg"));
 		lblNewLabel_4.setBounds(231, 0, 305, 251);
 		panel.add(lblNewLabel_4);
+		
+		
 
 		btnAceptar.addActionListener(new ActionListener() {
 
@@ -235,7 +239,8 @@ public class VentanaRegistro {
 
 			}
 		});
-
+		
+		
 		btnRetroceder.addActionListener(new ActionListener() {
 
 			@Override

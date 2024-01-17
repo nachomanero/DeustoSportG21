@@ -136,9 +136,9 @@ public class Gestor implements itfGestor {
 
 	    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
 	        oos.writeObject(c);
-	        System.out.println("File successfully created at: " + filePath);
+	        System.out.println("Fichero creado correctamente: " + filePath);
 	    } catch (IOException e) {
-	        System.err.println("Error writing to file: " + e.getMessage());
+	        System.err.println("Error escribiendo el fichero: " + e.getMessage());
 	        e.printStackTrace();
 	    }
 	}

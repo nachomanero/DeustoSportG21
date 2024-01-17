@@ -2,6 +2,9 @@ package main;
 
 import java.awt.EventQueue;
 import java.text.ParseException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import db.GestorBD;
 import domain.Gestor;
@@ -21,7 +24,21 @@ public class Main {
 		gestor.cargarUsuariosCSV("resources/data/Usuarios.csv");
 		gestor.cargarClasesCSV("resources/data/Clases.csv");
 		gestor.cargarReservasCSV();
-		
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(() -> {
+            System.out.println("Guardando reservas en la base de datos...");
+        }, 0, 4, TimeUnit.MINUTES);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            scheduler.shutdown();
+            try {
+                if (!scheduler.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+                    scheduler.shutdownNow();
+                }
+            } catch (InterruptedException e) {
+                scheduler.shutdownNow();
+            }
+        }));
 		
 		
 		
