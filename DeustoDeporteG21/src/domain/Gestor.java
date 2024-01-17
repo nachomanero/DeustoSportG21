@@ -534,4 +534,35 @@ public class Gestor implements itfGestor {
 		return false;
 	}
 
+
+
+
+	public int getNumeroReservas(String dni) {
+	    if (reservas.containsKey(dni)) {
+	        return reservas.get(dni).size();
+	    } else {
+	        return 0;
+	    }
+	}
+
+
+
+
+	public Map<String, List<Reserva>> obtenerReservas() {
+		// TODO Auto-generated method stub
+		return reservas;
+	}
+
+
+
+
+	public String obtenerDni() {
+	    
+	    if (!usuarios.isEmpty()) {
+	        return usuarios.iterator().next().getDni();
+	    } else {
+	        return null; 
+	    }
+	}
+
 }

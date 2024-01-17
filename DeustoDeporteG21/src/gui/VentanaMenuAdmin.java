@@ -121,7 +121,7 @@ private GestorBD gbd;
 		        	LOGGER.log(Level.INFO, "CTRL + SPACE pressed");
 		        	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
 	                thisFrame.dispose();
-		            VentanaEstadisticas ventanaEstadisticas = new VentanaEstadisticas(g );
+		            VentanaEstadisticas ventanaEstadisticas = new VentanaEstadisticas(g, gestorBD );
 		            mostrarVentana();		       
 		            ventanaEstadisticas.requestFocus();
 		            LOGGER.log(Level.INFO,"El admin ha accedido a las estadisticas.");

@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.*;
 
+import db.GestorBD;
 import domain.Gestor;
 import domain.TipoActividad;
 
@@ -11,16 +12,17 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
 
-
 public class VentanaEstadisticas extends JFrame {
 
     private JButton btnMostrarTopClases;
     private JPanel panelProgressBar;
 
-    private Gestor gestor; 
+    private Gestor gestor;
+    private JButton btnHistorialReservas;
 
-    public VentanaEstadisticas(Gestor gestor) {
-        this.gestor = gestor; 
+    public VentanaEstadisticas(Gestor g, GestorBD gb) {
+        this.gestor = g;  // Corregir la asignación del parámetro
+        getContentPane().setBackground(new Color(102, 153, 153));
         setTitle("TOP CLASES");
         setSize(400, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,14 +35,21 @@ public class VentanaEstadisticas extends JFrame {
             }
         });
 
-        panelProgressBar = new JPanel();
-        panelProgressBar.setLayout(new GridLayout(3, 1));
+        btnHistorialReservas = new JButton("Historial de Reservas");
+
+        btnHistorialReservas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarHistorialReservas(g, gb);  // Pasar ambos objetos
+            }
+        });
 
         panelProgressBar = new JPanel();
         panelProgressBar.setLayout(new GridLayout(3, 1));
 
-        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER)); 
+        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
         panelBoton.add(btnMostrarTopClases);
+        panelBoton.add(btnHistorialReservas);
 
         getContentPane().add(panelBoton, BorderLayout.NORTH);
         getContentPane().add(panelProgressBar, BorderLayout.CENTER);
@@ -51,9 +60,8 @@ public class VentanaEstadisticas extends JFrame {
     }
 
     private void mostrarTopClases() {
-  
-    	gestor.guardarActividadesMasElegidas();
-    	
+        gestor.guardarActividadesMasElegidas();
+
         Map<TipoActividad, Integer> actividadesMap = gestor.cargarActividadesMasElegidas();
         List<TipoActividad> topClases = gestor.las3MasSolicitadas(actividadesMap);
 
@@ -73,14 +81,21 @@ public class VentanaEstadisticas extends JFrame {
     }
 
     private int calcularPorcentajeActividad(TipoActividad actividad, Map<TipoActividad, Integer> actividadesMap) {
-        int totalReservas = actividadesMap.values().stream().mapToInt(Integer::intValue).sum();
+        int totalReservas = actividadesMap.values().stream().mapToInt(value -> value).sum();
         int reservasActividad = actividadesMap.getOrDefault(actividad, 0);
         return totalReservas == 0 ? 0 : (int) Math.round((double) reservasActividad / totalReservas * 100);
     }
-    
-    public void mostrarVentana() {
-    	getContentPane().setVisible(true);
+
+    private void mostrarHistorialReservas(Gestor g, GestorBD gb) {
+        try {
+            VentanaHistorialReservas ventanaHistorial = new VentanaHistorialReservas(gb);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
-   
+    public void mostrarVentana() {
+        getContentPane().setVisible(true);
+    }
 }
+

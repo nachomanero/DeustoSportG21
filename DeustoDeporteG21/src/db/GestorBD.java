@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -728,6 +729,39 @@ public class GestorBD {
 
 	    return siguienteID;
 	}
+
+	public Map<String, List<Reserva>> obtenerTodasLasReservas() {
+        Map<String, List<Reserva>> reservasPorUsuario = new HashMap<>();
+
+        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
+            String sql = "SELECT * FROM Reserva";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    String dni = resultSet.getString("DNI");
+
+                    String tipoActividad = resultSet.getString("TipoActividad");
+                    int idSala = resultSet.getInt("IDSala");
+                    java.sql.Date fechaSql = resultSet.getDate("fecha");
+                    String hora = resultSet.getString("hora");
+
+                    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+                    Reserva reserva = new Reserva(dni, TipoActividad.valueOf(tipoActividad), idSala,
+                            formatoFecha.parse(formatoFecha.format(fechaSql)), hora);
+
+                    reservasPorUsuario.computeIfAbsent(dni, k -> new ArrayList<>()).add(reserva);
+                }
+            }
+        } catch (SQLException | ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        return reservasPorUsuario;
+    }
+
+
+
 
 
 
