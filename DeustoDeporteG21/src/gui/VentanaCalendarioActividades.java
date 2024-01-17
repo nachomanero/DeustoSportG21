@@ -176,31 +176,10 @@ public class VentanaCalendarioActividades extends JFrame {
 	}
 
 
-
 	private void actividadSeleccionada() {
 	    Clase selectedActivity = actividadesList.getSelectedValue();
 
 	    if (selectedActivity != null) {
-	        Date currentDate = new Date();
-
-	        
-	        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-	        try {
-	            Date classDateTime = sdf.parse(selectedActivity.getFecha() + " " + selectedActivity.getHora());
-
-	            
-	            if (classDateTime.before(currentDate)) {
-	                JOptionPane.showMessageDialog(null, "La fecha de esta clase ya ha pasado. No puedes apuntarte.",
-	                        "Apuntarse a clase", JOptionPane.WARNING_MESSAGE);
-	                return;
-	            }
-	        } catch (ParseException e) {
-	            e.printStackTrace();
-	            JOptionPane.showMessageDialog(null, "Error al procesar la fecha y hora de la clase.",
-	                    "Error", JOptionPane.ERROR_MESSAGE);
-	            return;
-	        }
-
 	        LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
 
 	        int id = selectedActivity.getIDClase();
@@ -238,7 +217,6 @@ public class VentanaCalendarioActividades extends JFrame {
 	        }
 	    }
 	}
-
 
 
 	private void setupExitButton() {
