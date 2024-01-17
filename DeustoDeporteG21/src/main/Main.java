@@ -27,7 +27,7 @@ public class Main {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         scheduler.scheduleAtFixedRate(() -> {
             System.out.println("Guardando reservas en la base de datos...");
-        }, 0, 4, TimeUnit.MINUTES);
+        }, 0, 5, TimeUnit.MINUTES);
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             scheduler.shutdown();
