@@ -135,88 +135,111 @@ public class VentanaCalendarioActividades extends JFrame {
 	}
 
 	private void mostrarActividades() {
-		Date selectedDate = dateChooser.getDate();
+	    Date selectedDate = dateChooser.getDate();
 
-		if (selectedDate == null) {
-			JOptionPane.showMessageDialog(null, "La fecha seleccionada no es válida.");
-			return;
-		}
+	    if (selectedDate == null) {
+	        JOptionPane.showMessageDialog(null, "La fecha seleccionada no es válida.");
+	        return;
+	    }
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		String selectedDateString = sdf.format(selectedDate);
+	    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+	    String selectedDateString = sdf.format(selectedDate);
 
-		List<Clase> clasesDisponibles = null;
-		try {
-			clasesDisponibles = gbd.obtenerClasesPorFecha(selectedDateString);
+	    List<Clase> clasesDisponibles = null;
+	    try {
+	        clasesDisponibles = gbd.obtenerClasesPorFecha(selectedDateString);
 
-			Collections.sort(clasesDisponibles);
-			
-			actividadesListModel.clear();
+	        Comparator<Clase> comparator = Comparator
+	                .<Clase, Integer>comparing(clase -> clase.getPlazas()) 
+	                .reversed() 
+	                .thenComparing(clase -> clase.getTipoActividad().toString().length()); 
 
-			if (!clasesDisponibles.isEmpty()) {
+	        Collections.sort(clasesDisponibles, comparator);
 
-				for (Clase clase : clasesDisponibles) {
+	        actividadesListModel.clear();
 
-					actividadesListModel.addElement(clase);
+	        if (!clasesDisponibles.isEmpty()) {
+	            for (Clase clase : clasesDisponibles) {
+	                actividadesListModel.addElement(clase);
+	            }
+	            LOGGER.log(Level.INFO, "Se han cargado las actividades correctamente.");
+	        } else {
+	            LOGGER.log(Level.INFO, "No hay actividades disponibles para la fecha seleccionada.");
+	        }
 
-				}
+	        selectActivityButton.setEnabled(false);
 
-				LOGGER.log(Level.INFO, "Se han cargado las actividades correctamente.");
-			} else {
-				LOGGER.log(Level.INFO, "No hay actividades disponibles para la fecha seleccionada.");
-			}
-			System.out.println(clasesDisponibles);
-
-			selectActivityButton.setEnabled(false);
-
-		} catch (ParseException e) {
-			LOGGER.log(Level.SEVERE, "Error parsing date: " + selectedDateString, e);
-			JOptionPane.showMessageDialog(null, "Error al obtener las clases para la fecha seleccionada.");
-		}
-
+	    } catch (ParseException e) {
+	        LOGGER.log(Level.SEVERE, "Error parsing date: " + selectedDateString, e);
+	        JOptionPane.showMessageDialog(null, "Error al obtener las clases para la fecha seleccionada.");
+	    }
 	}
+
+
 
 	private void actividadSeleccionada() {
-		Clase selectedActivity = actividadesList.getSelectedValue();
+	    Clase selectedActivity = actividadesList.getSelectedValue();
 
-		if (selectedActivity != null) {
-			LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
+	    if (selectedActivity != null) {
+	        Date currentDate = new Date();
 
-			int id = selectedActivity.getIDClase();
-			int plazasDisponibles = selectedActivity.getPlazas();
+	        
+	        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+	        try {
+	            Date classDateTime = sdf.parse(selectedActivity.getFecha() + " " + selectedActivity.getHora());
 
-			if (plazasDisponibles > 0) {
-				if (!g.apuntadoAEsaClase(dniUsuario, selectedActivity.getTipoActividad(), selectedActivity.getFecha(),
-						selectedActivity.getHora())) {
-					int result = JOptionPane.showConfirmDialog(null,
-							"¿Seguro que quieres apuntarte a la clase de "
-									+ selectedActivity.getTipoActividad().toString() + " con ID "
-									+ selectedActivity.getIDClase(),
-							"Apuntarse a clase", JOptionPane.YES_NO_OPTION);
+	            
+	            if (classDateTime.before(currentDate)) {
+	                JOptionPane.showMessageDialog(null, "La fecha de esta clase ya ha pasado. No puedes apuntarte.",
+	                        "Apuntarse a clase", JOptionPane.WARNING_MESSAGE);
+	                return;
+	            }
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	            JOptionPane.showMessageDialog(null, "Error al procesar la fecha y hora de la clase.",
+	                    "Error", JOptionPane.ERROR_MESSAGE);
+	            return;
+	        }
 
-					if (result == JOptionPane.YES_OPTION) {
-						gbd.actualizarPlazas(id, plazasDisponibles - 1);
-						g.agregarReservaUsuario(dniUsuario, id);
+	        LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
 
-						Reserva reserva = new Reserva(dniUsuario, selectedActivity.getTipoActividad(),
-								selectedActivity.getIDSala(), selectedActivity.getFecha(), selectedActivity.getHora());
-						gbd.actualizarReserva(reserva);
-						gbd.añadirReserva(reserva);
+	        int id = selectedActivity.getIDClase();
+	        int plazasDisponibles = selectedActivity.getPlazas();
 
-						JOptionPane.showMessageDialog(null, "Te has apuntado a la clase correctamente",
-								"Apuntarse a clase", JOptionPane.INFORMATION_MESSAGE);
-						mostrarActividades();
-					}
-				} else {
-					JOptionPane.showMessageDialog(null, "Ya estás apuntado a esta clase", "Apuntarse a clase",
-							JOptionPane.WARNING_MESSAGE);
-				}
-			} else {
-				JOptionPane.showMessageDialog(null, "No hay plazas disponibles para esta clase", "Apuntarse a clase",
-						JOptionPane.WARNING_MESSAGE);
-			}
-		}
+	        if (plazasDisponibles > 0) {
+	            if (!g.apuntadoAEsaClase(dniUsuario, selectedActivity.getTipoActividad(), selectedActivity.getFecha(),
+	                    selectedActivity.getHora())) {
+	                int result = JOptionPane.showConfirmDialog(null,
+	                        "¿Seguro que quieres apuntarte a la clase de "
+	                                + selectedActivity.getTipoActividad().toString() + " con ID "
+	                                + selectedActivity.getIDClase(),
+	                        "Apuntarse a clase", JOptionPane.YES_NO_OPTION);
+
+	                if (result == JOptionPane.YES_OPTION) {
+	                    gbd.actualizarPlazas(id, plazasDisponibles - 1);
+	                    g.agregarReservaUsuario(dniUsuario, id);
+
+	                    Reserva reserva = new Reserva(dniUsuario, selectedActivity.getTipoActividad(),
+	                            selectedActivity.getIDSala(), selectedActivity.getFecha(), selectedActivity.getHora());
+	                    gbd.actualizarReserva(reserva);
+	                    gbd.añadirReserva(reserva);
+
+	                    JOptionPane.showMessageDialog(null, "Te has apuntado a la clase correctamente",
+	                            "Apuntarse a clase", JOptionPane.INFORMATION_MESSAGE);
+	                    mostrarActividades();
+	                }
+	            } else {
+	                JOptionPane.showMessageDialog(null, "Ya estás apuntado a esta clase", "Apuntarse a clase",
+	                        JOptionPane.WARNING_MESSAGE);
+	            }
+	        } else {
+	            JOptionPane.showMessageDialog(null, "No hay plazas disponibles para esta clase", "Apuntarse a clase",
+	                    JOptionPane.WARNING_MESSAGE);
+	        }
+	    }
 	}
+
+
 
 	private void setupExitButton() {
 		exitButton = new JButton("Salir");

@@ -119,8 +119,12 @@ private GestorBD gbd;
 		        
 		        if (ctrlPressed && e.getKeyCode() == KeyEvent.VK_SPACE) {
 		        	LOGGER.log(Level.INFO, "CTRL + SPACE pressed");
+		        	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnModClase);
+	                thisFrame.dispose();
 		            VentanaEstadisticas ventanaEstadisticas = new VentanaEstadisticas(g );
-		            mostrarVentana();
+		            mostrarVentana();		       
+		            ventanaEstadisticas.requestFocus();
+		            LOGGER.log(Level.INFO,"El admin ha accedido a las estadisticas.");
 		          
 		        }
 		    }

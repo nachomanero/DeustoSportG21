@@ -91,10 +91,22 @@ public class Clase implements Comparable<Clase>{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+    
 	@Override
 	public int compareTo(Clase o) {
-		// TODO Auto-generated method stub
-		return plazas-o.plazas;
+	    
+	    int comparacionPlazas = o.plazas - this.plazas;
+
+	    if (comparacionPlazas == 0) {
+	        
+	        int comparacionLongitud = Integer.compare(this.tipoActividad.toString().length(),
+	                o.tipoActividad.toString().length());
+
+	        return comparacionLongitud;
+	    }
+
+	    return comparacionPlazas;
 	}
-    
+
 }
