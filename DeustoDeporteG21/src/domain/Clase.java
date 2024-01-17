@@ -3,7 +3,7 @@ package domain;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Clase {
+public class Clase implements Comparable<Clase>{
 
     // Atributos de la clase Clase
     private int IDClase;
@@ -90,6 +90,11 @@ public class Clase {
 	public Clase() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public int compareTo(Clase o) {
+		// TODO Auto-generated method stub
+		return plazas-o.plazas;
 	}
     
 }

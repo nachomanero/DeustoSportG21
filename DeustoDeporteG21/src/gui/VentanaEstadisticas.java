@@ -52,6 +52,8 @@ public class VentanaEstadisticas extends JFrame {
 
     private void mostrarTopClases() {
   
+    	gestor.guardarActividadesMasElegidas();
+    	
         Map<TipoActividad, Integer> actividadesMap = gestor.cargarActividadesMasElegidas();
         List<TipoActividad> topClases = gestor.las3MasSolicitadas(actividadesMap);
 
