@@ -17,6 +17,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -181,7 +182,8 @@ public class VentanaCalendarioActividades extends JFrame {
 
 	    if (selectedActivity != null) {
 	        LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
-
+	        LocalDateTime now = LocalDateTime.now();
+	        
 	        int id = selectedActivity.getIDClase();
 	        int plazasDisponibles = selectedActivity.getPlazas();
 
