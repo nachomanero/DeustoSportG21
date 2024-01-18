@@ -9,44 +9,41 @@ import domain.Clase;
 
 public class CombinacionClases {
 	
-	public static List<Clase> obtenerCombinacionClasesBD(String fechaInicio, GestorBD gestorBD) throws ParseException {
+	public static List<Clase> obtenerCombinacionClases(String fechaInicio, GestorBD gestorBD) throws ParseException {
         List<Clase> combinacionClasesSemana = new ArrayList<>();
-        obtenerCombinacionClasesRecursivo(fechaInicio, gestorBD, combinacionClasesSemana, 0);
+        CombinacionClasesRecursivo(fechaInicio, gestorBD, combinacionClasesSemana, 0);
         return combinacionClasesSemana;
     }
 
-    private static void obtenerCombinacionClasesRecursivo(String fechaActual, GestorBD gestorBD, List<Clase> combinacionClasesSemana, int contador) throws ParseException {
-        if (contador>=7) {
+    private static void CombinacionClasesRecursivo(String contadorFecha, GestorBD gestorBD, List<Clase> combinacionClasesSemana, int contadorSemana) throws ParseException {
+        if (contadorSemana>=7) {
         	return;
         }
     	
-    	// Utilizar el método del gestor de base de datos para obtener las clases por fecha
-        List<Clase> clasesDia = gestorBD.obtenerClasesPorFecha(fechaActual);
+        List<Clase> clasesDia = gestorBD.obtenerClasesPorFecha(contadorFecha);
 
         if (clasesDia != null && !clasesDia.isEmpty()) {
-            // Elegir una clase aleatoria para el día
             Random random = new Random();
             int indiceClaseAleatoria = random.nextInt(clasesDia.size());
             combinacionClasesSemana.add(clasesDia.get(indiceClaseAleatoria));
         }
 
-        // Llamar recursivamente para el siguiente día
-        String siguienteDia = avanzarUnDia(fechaActual);
+        String siguienteDia = avanzarUnDia(contadorFecha);
         if (siguienteDia != null) {
-            obtenerCombinacionClasesRecursivo(siguienteDia, gestorBD, combinacionClasesSemana, contador+1);
+            CombinacionClasesRecursivo(siguienteDia, gestorBD, combinacionClasesSemana, contadorSemana+1);
         }
     }
 
     private static String avanzarUnDia(String fecha) {
-        SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
         Calendar calendar = Calendar.getInstance();
 
         try {
-            Date fechaDate = formatoEntrada.parse(fecha);
+            Date fechaDate = formatoFecha.parse(fecha);
             calendar.setTime(fechaDate);
             calendar.add(Calendar.DAY_OF_MONTH, 1);
 
-            return formatoEntrada.format(calendar.getTime());
+            return formatoFecha.format(calendar.getTime());
         } catch (Exception e) {
             e.printStackTrace();
             return null;

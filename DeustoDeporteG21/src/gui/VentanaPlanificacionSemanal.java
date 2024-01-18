@@ -14,7 +14,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -133,8 +135,6 @@ public class VentanaPlanificacionSemanal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				apuntarse();
 				actividadesListModel.clear();
-				btnApuntarse.setEnabled(false);
-				btnCambiar.setEnabled(false);
 			}
 		});
 		
@@ -163,7 +163,7 @@ public class VentanaPlanificacionSemanal extends JFrame {
 
 	    try {
 	    	if(selectedDate != date || date == null) {
-	    		combinacionActividades = CombinacionClases.obtenerCombinacionClasesBD(selectedDateString, gbd);
+	    		combinacionActividades = CombinacionClases.obtenerCombinacionClases(selectedDateString, gbd);
 	    		date = selectedDate;
 	    	}
 	    	
@@ -191,6 +191,8 @@ public class VentanaPlanificacionSemanal extends JFrame {
 	private void apuntarse() {
 	    
 	    if (combinacionActividades != null) {
+	    	Map<String, List<Reserva>> listaReservas = new HashMap<>();
+	    	listaReservas.put(dniUsuario, new ArrayList<Reserva>());
 	        combinacionActividades.forEach(c -> {
 	        	int id = c.getIDClase();
 	        	int plazasDisponibles = c.getPlazas();
@@ -198,14 +200,13 @@ public class VentanaPlanificacionSemanal extends JFrame {
 	        	g.agregarReservaUsuario(dniUsuario, id);
 	        	Reserva reserva = new Reserva(dniUsuario, c.getTipoActividad(),
                         c.getIDSala(), c.getFecha(), c.getHora());
-                gbd.actualizarReserva(reserva);
-                gbd.añadirReserva(reserva);
-                btnApuntarse.setEnabled(false);
-                btnCambiar.setEnabled(false);
-
-                JOptionPane.showMessageDialog(null, "Te has apuntado a las clases correctamente",
-                        "Apuntarse a clases", JOptionPane.INFORMATION_MESSAGE);
+                listaReservas.get(dniUsuario).add(reserva);
 	        });
+	        gbd.añadirReservas(listaReservas);
+	        btnApuntarse.setEnabled(false);
+			btnCambiar.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "Te has apuntado a las clases correctamente",
+                    "Apuntarse a clases", JOptionPane.INFORMATION_MESSAGE);
 	        } else {
 	                JOptionPane.showMessageDialog(null, "Ya estás apuntado a esta clase", "Apuntarse a clase",
 	                        JOptionPane.WARNING_MESSAGE);
