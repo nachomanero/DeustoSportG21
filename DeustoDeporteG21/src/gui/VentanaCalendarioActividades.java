@@ -185,11 +185,7 @@ public class VentanaCalendarioActividades extends JFrame {
 	    if (selectedActivity != null) {
 	        LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
 	        
-	        LocalDateTime now = LocalDateTime.now();
-	        LocalDateTime claseDateTime = convertirFechaHora(selectedActivity.getFecha(), selectedActivity.getHora());
-
-	        if (now.isBefore(claseDateTime)) {
-	        
+	     
 	        int id = selectedActivity.getIDClase();
 	        int plazasDisponibles = selectedActivity.getPlazas();
 
@@ -224,12 +220,9 @@ public class VentanaCalendarioActividades extends JFrame {
 	                    JOptionPane.WARNING_MESSAGE);
 	        }
 	    }
-	    }else {
-	    	JOptionPane.showMessageDialog(null, "La clase seleccionada ya ha pasado, no puedes apuntarte",
-                    "Apuntarse a clase", JOptionPane.WARNING_MESSAGE);
 	    }
 	        
-	    }
+	    
 	private LocalDateTime convertirFechaHora(Date fecha, String hora) {
 	    Instant instant = fecha.toInstant();
 	    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
