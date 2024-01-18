@@ -222,22 +222,6 @@ public class VentanaCalendarioActividades extends JFrame {
 	    }
 	    }
 	        
-	    
-	private LocalDateTime convertirFechaHora(Date fecha, String hora) {
-	    Instant instant = fecha.toInstant();
-	    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-
-	    // Ajusta la hora según tus necesidades
-	    // Aquí asumimos que `hora` tiene un formato como "HH:mm"
-	    String[] partesHora = hora.split(":");
-	    int horas = Integer.parseInt(partesHora[0]);
-	    int minutos = Integer.parseInt(partesHora[1]);
-	    localDateTime = localDateTime.withHour(horas).withMinute(minutos).withSecond(0);
-
-	    return localDateTime;
-	}
-	
-	
 
 	private void setupExitButton() {
 		exitButton = new JButton("Salir");
