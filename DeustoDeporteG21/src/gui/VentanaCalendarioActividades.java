@@ -17,6 +17,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -62,8 +65,12 @@ public class VentanaCalendarioActividades extends JFrame {
 		dateChooser.setDateFormatString("dd-MM-yyyy");
 		dateChooser.setPreferredSize(new Dimension(150, dateChooser.getPreferredSize().height));
 		topPanel.add(dateChooser);
+		
+		JButton btnPlan = new JButton("Planificacion semanal");
+		topPanel.add(btnPlan);
 
 		mainPanel.add(topPanel, BorderLayout.NORTH);
+		
 
 		actividadesListModel = new DefaultListModel<>();
 		actividadesList = new JList<>(actividadesListModel);
@@ -125,6 +132,19 @@ public class VentanaCalendarioActividades extends JFrame {
 			}
 
 		});
+		
+		btnPlan.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnPlan);
+                thisFrame.dispose();
+	            VentanaPlanificacionSemanal ventanaPlanificacionSemanal = new VentanaPlanificacionSemanal(g, gestorBD, dniUsuario);
+	            ventanaPlanificacionSemanal.mostrarVentana();		       
+	            ventanaPlanificacionSemanal.requestFocus();
+	            LOGGER.log(Level.INFO,"El usuario ha accedido a la planificacion semanal aleatoria.");
+			}
+		});
 
 	}
 
@@ -181,9 +201,19 @@ public class VentanaCalendarioActividades extends JFrame {
 
 	    if (selectedActivity != null) {
 	        LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
-
+	        final long MILISEGUNDOS_POR_DIA = 24 * 60 * 60 * 1000L;
 	        int id = selectedActivity.getIDClase();
 	        int plazasDisponibles = selectedActivity.getPlazas();
+
+	        Date fechaActual = new Date();
+		    long fechaDiaAntesMilis = fechaActual.getTime() - MILISEGUNDOS_POR_DIA;
+		    Date fechaDiaAntes = new Date(fechaDiaAntesMilis);
+
+	        // Verificar si la fecha de la actividad es anterior a la fecha actual
+	        if (selectedActivity.getFecha().compareTo(fechaDiaAntes)<0) {
+	            JOptionPane.showMessageDialog(null, "No puedes apuntarte a una clase pasada.", "Error", JOptionPane.ERROR_MESSAGE);
+	            return; // Salir del método si la fecha es anterior
+	        }
 
 	        if (plazasDisponibles > 0) {
 	            if (!g.apuntadoAEsaClase(dniUsuario, selectedActivity.getTipoActividad(), selectedActivity.getFecha(),
@@ -217,7 +247,7 @@ public class VentanaCalendarioActividades extends JFrame {
 	        }
 	    }
 	}
-
+	        
 
 	private void setupExitButton() {
 		exitButton = new JButton("Salir");

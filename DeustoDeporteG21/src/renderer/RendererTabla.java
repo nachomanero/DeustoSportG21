@@ -3,56 +3,63 @@ package renderer;
 import java.awt.Color;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 
-public class RendererTabla implements TableCellRenderer {
+
+public class RendererTabla extends DefaultTableCellRenderer {
+
+    private static final long serialVersionUID = 1L;
+    private SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
 
     @Override
-    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-            int row, int column) {
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-        Component c = null;
+        // Verificar si la columna es la columna de fechas (índice 2)
+        if (column == 2) {
+            // Obtener la fecha actual
+            Date fechaActual = new Date();
 
-        switch (column) {
-            case 3:
-                c = new JLabel(value.toString());
-                ((JLabel) c).setHorizontalAlignment(JLabel.CENTER);
-
-                // Obtener la fecha actual
-                Date fechaActual = new Date();
-
-                // Obtener la fecha de la celda (asumiendo que el valor es una fecha)
-                Date fechaCelda = (Date) value;
-
-                // Verificar si la fecha de la celda es igual a la fecha actual
-                if (isSameDay(fechaActual, fechaCelda)) {
-                    // Configurar el color de fondo a naranja
-                    c.setBackground(Color.ORANGE);
-                } else {
-                    // Configurar el color de fondo a blanco (o el color predeterminado)
-                    c.setBackground(table.getBackground());
+            // Convertir el valor de la celda a una fecha
+            Date fechaCelda = null;
+            if (value instanceof Date) {
+                fechaCelda = (Date) value;
+            } else {
+                try {
+                    fechaCelda = formatoFecha.parse(value.toString());
+                } catch (Exception e) {
+                    // Manejo de errores si la conversión falla
+                    e.printStackTrace();
                 }
+            }
 
-                break;
+         // Comparar solo la parte de la fecha (día, mes y año)
+            Calendar calActual = Calendar.getInstance();
+            Calendar calCelda = Calendar.getInstance();
+            calActual.setTime(fechaActual);
+            calCelda.setTime(fechaCelda);
 
-            default:
-                // Para otras columnas, utiliza el renderizador predeterminado
-                c = new DefaultTableCellRenderer().getTableCellRendererComponent(table, value, isSelected, hasFocus, row,
-                        column);
-                break;
+            if (calActual.get(Calendar.YEAR) == calCelda.get(Calendar.YEAR) &&
+                calActual.get(Calendar.MONTH) == calCelda.get(Calendar.MONTH) &&
+                calActual.get(Calendar.DAY_OF_MONTH) == calCelda.get(Calendar.DAY_OF_MONTH)) {
+                // Cambiar el color del texto a rojo solo si la fecha coincide con la fecha actual
+                cellComponent.setForeground(Color.RED);
+            } else {
+                // Restablecer el color a predeterminado si no coincide
+                cellComponent.setForeground(table.getForeground());
+            }
         }
 
-        return c;
-    }
-
-    // Método para verificar si dos fechas son del mismo día
-    private boolean isSameDay(Date date1, Date date2) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        return sdf.format(date1).equals(sdf.format(date2));
+        return cellComponent;
     }
 }
