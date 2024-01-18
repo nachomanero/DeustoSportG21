@@ -1,7 +1,7 @@
 package domain;
 
 public  class  Usuario implements Serializable {
-	
+	private static final long serialVersionUID = 1L;
     private String dni;
     private String nombre;
     private String apellido;
