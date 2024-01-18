@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.lang.System.Logger;
 import java.text.ParseException;
@@ -58,27 +59,29 @@ public class Main {
         
         //USO DE PROPERTIES 
         try {
-			Properties properties = loadProperties(); 
-			if (properties.containsKey(INPUT_KEY)) {
-				List<Usuario> usuarios = loadData(properties.getProperty(INPUT_KEY));
-				System.out.println(String.format("- Se han leido los usuarios del fichero '%s'", 
-				usuarios.size(), properties.getProperty(INPUT_KEY)));
-				if (usuarios != null && properties.containsKey(OUTPUT_KEY)) {
-					storeCSV(properties.getProperty(OUTPUT_KEY), usuarios);
-				} else {
-					System.out.println("- No se ha podido crear el fichero.");
-				}
-			} else {
-				System.out.println("- No se puede localizar el fichero de entrada.");
-			}
+            Properties properties = loadProperties();
+            if (properties.containsKey(INPUT_KEY)) {
+                List<Usuario> usuarios = leerUsuariosDesdeCSV(properties.getProperty(INPUT_KEY));
+                if (usuarios != null) {
+                    System.out.println(String.format("- Se han leído %d usuarios del fichero '%s'",
+                            usuarios.size(), properties.getProperty(INPUT_KEY)));
+                    if (properties.containsKey(OUTPUT_KEY)) {
+                        storeCSV(properties.getProperty(OUTPUT_KEY), usuarios);
+                        storeData(properties.getProperty(OUTPUT_KEY), usuarios);
+                    } else {
+                        System.out.println("- No se ha proporcionado el nombre del fichero de salida.");
+                    }
+                } else {
+                    System.out.println("- No se han leído usuarios o el fichero de entrada es incorrecto.");
+                }
+            } else {
+                System.out.println("- No se puede localizar el fichero de entrada en las propiedades.");
+            }
 
-
-        	
-        }catch (Exception ex) {
-			System.err.println(String.format("Error en el main: %s", ex.getMessage()));
-			ex.printStackTrace();
-		}
-        
+        } catch (Exception ex) {
+            System.err.println(String.format("Error en el main: %s", ex.getMessage()));
+            ex.printStackTrace();
+        }
 		
 		
 		//System.out.println(gestorBD.obtenerTodasLasClases());
@@ -94,38 +97,46 @@ public class Main {
     }
 	
 
-	private static List<Usuario> leerUsuariosDesdeCSV(String string) {
-        List<Usuario> usuarios = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("Usuarios.csv"))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(",");
-                String nombre = datos[0].trim();
-                String dni = datos[1].trim();
-                String apellido = datos[2].trim();
-                String direccion= datos[3].trim();
-                String correoElectronico = datos[4].trim();
-                String contrasena = datos[5].trim();
-                Usuario usuario = new Usuario(dni,nombre,apellido,direccion,correoElectronico,contrasena);
-                usuarios.add(usuario);
-            }
-        } catch (Exception ex) {
-        	System.err.println();
-        }
-        return usuarios;
+	private static List<Usuario> leerUsuariosDesdeCSV(String ficheroUsuarios) {
+	    List<Usuario> usuarios = new ArrayList<>();
+	    try (BufferedReader br = new BufferedReader(new FileReader(ficheroUsuarios))) {
+	        String linea;
+	        while ((linea = br.readLine()) != null) {
+	            String[] datos = linea.split(",");
+	            
+	            // Verificar que haya al menos 6 elementos en la línea
+	            if (datos.length >= 6) {
+	                String nombre = datos[0].trim();
+	                String dni = datos[1].trim();
+	                String apellido = datos[2].trim();
+	                String direccion = datos[3].trim();
+	                String correoElectronico = datos[4].trim();
+	                String contrasena = datos[5].trim();
+	                
+	                Usuario usuario = new Usuario(dni, nombre, apellido, direccion, correoElectronico, contrasena);
+	                usuarios.add(usuario);
+	            } else {
+	                System.err.println("Error: La línea no tiene la cantidad esperada de elementos: " + linea);
+	            }
+	        }
+	    } catch (Exception ex) {
+	        System.err.println(String.format("Error leyendo CSV '%s': %s", ficheroUsuarios, ex.getMessage()));
+	        ex.printStackTrace();
+	    }
+	    return usuarios;
 	}
 
 	private static Properties loadProperties() {
-		Properties properties = new Properties();
-		try {
-			properties.load(new FileReader(PROPERTIES_FILE));
-		} catch (Exception ex) {
-			System.err.println(String.format("Error leyendo propiedades: %s", ex.getMessage()));
-			ex.printStackTrace();
-		}
-		
-		return properties;
-	}
+        Properties properties = new Properties();
+        try (FileReader fileReader = new FileReader(PROPERTIES_FILE)) {
+            properties.load(fileReader);
+        } catch (Exception ex) {
+            System.err.println(String.format("Error leyendo propiedades: %s", ex.getMessage()));
+            ex.printStackTrace();
+        }
+
+        return properties;
+    }
 	@SuppressWarnings("unchecked")
 	private static List<Usuario> loadData(String FicheroUsuarios) {
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(FicheroUsuarios))) {
@@ -136,21 +147,38 @@ public class Main {
 		}
 		return null;
 	}
-	private static void storeCSV(String FicheroUsuarios, List<Usuario> usuarios) {
-		if (FicheroUsuarios!= null && !usuarios.isEmpty()) {
-			try (PrintWriter out = new PrintWriter(new FileOutputStream(FicheroUsuarios))){
-				for(Usuario usuario: usuarios) {
-	                out.println(usuario.getDni()+","+usuario.getNombre() + "," + usuario.getApellido() + "," + usuario.getDireccion()+","+usuario.getCorreoElectronico()+","+usuario.getContrasena());
-				}
-	            System.out.println("Lista de usuarios guardada correctamente en " + FicheroUsuarios);
-	
-			}catch(Exception ex) {
-				System.err.println("error en guardar en el csv"+ex.getStackTrace());
-			}
-			
-		}
-	}
+	  private static void storeCSV(String ficheroUsuarios, List<Usuario> usuarios) {
+	        if (ficheroUsuarios != null && !usuarios.isEmpty()) {
+	            try (PrintWriter out = new PrintWriter(new FileOutputStream(ficheroUsuarios))) {
+	                for (Usuario usuario : usuarios) {
+	                    out.println(usuario.getDni() + "," + usuario.getNombre() + "," + usuario.getApellido() + ","
+	                            + usuario.getDireccion() + "," + usuario.getCorreoElectronico() + ","
+	                            + usuario.getContrasena());
+	                }
+	                System.out.println("Lista de usuarios guardada correctamente en " + ficheroUsuarios);
 
+	            } catch (Exception ex) {
+	                System.err.println(String.format("Error al guardar en el CSV '%s': %s", ficheroUsuarios,
+	                        ex.getMessage()));
+	                ex.printStackTrace();
+	            }
+
+	        }
+	  }
+	  private static void storeData(String FicheroUsuarios, List<Usuario> usuarios) {
+	        if (FicheroUsuarios != null && !usuarios.isEmpty()) {
+	            try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FicheroUsuarios))) {
+	                out.writeObject(usuarios);
+	                System.out.println("Lista de usuarios guardada correctamente en " + FicheroUsuarios);
+
+	            } catch (Exception ex) {
+	                System.err.println(String.format("Error al guardar en el objeto serializado '%s': %s", FicheroUsuarios,
+	                        ex.getMessage()));
+	                ex.printStackTrace();
+	            }
+
+	        }
+	    }
 
 
 	
