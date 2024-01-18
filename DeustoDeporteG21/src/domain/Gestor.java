@@ -492,7 +492,7 @@ public class Gestor implements itfGestor {
 
 	public void agregarReservaUsuario(String dniUsuario, int id) {
 
-		List<Reserva> susReservas = reservas.get(dniUsuario);
+		List<Reserva> susReservas = gestorBD.obtenerReservasPorDni(dniUsuario);
 
 		Clase claseBuscada = null;
 		for (Clase c : clases) {
@@ -511,7 +511,7 @@ public class Gestor implements itfGestor {
 	}
 
 	public boolean apuntadoAEsaClase(String dniUsuario, TipoActividad tipoActividad, Date fecha, String hora) {
-		for (Reserva reserva : reservas.get(dniUsuario)) {
+		for (Reserva reserva : gestorBD.obtenerReservasPorDni(dniUsuario)) {
 
 			System.out.println(reserva);
 
