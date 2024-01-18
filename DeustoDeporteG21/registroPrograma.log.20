@@ -1,1006 +1,1006 @@
-ene 18, 2024 7:17:50 P. M. db.GestorBD <init>
+ene 18, 2024 8:27:38 P. M. db.GestorBD <init>
 INFO: Conexión establecida con éxito a la base de datos.
-ene 18, 2024 7:17:50 P. M. db.GestorBD crearTablas
+ene 18, 2024 8:27:38 P. M. db.GestorBD crearTablas
 INFO: Creacion de la tabla usuario satisfactoria.
-ene 18, 2024 7:17:50 P. M. db.GestorBD crearTablas
+ene 18, 2024 8:27:38 P. M. db.GestorBD crearTablas
 INFO: Creacion de la tabla sala satisfactoria.
-ene 18, 2024 7:17:50 P. M. db.GestorBD crearTablas
+ene 18, 2024 8:27:38 P. M. db.GestorBD crearTablas
 INFO: Creacion de la tabla clase satisfactoria.
-ene 18, 2024 7:17:50 P. M. db.GestorBD crearTablas
+ene 18, 2024 8:27:38 P. M. db.GestorBD crearTablas
 INFO: Creacion de la tabla reserva satisfactoria.
-ene 18, 2024 7:17:50 P. M. db.GestorBD crearTablas
+ene 18, 2024 8:27:38 P. M. db.GestorBD crearTablas
 INFO: Base de datos creada con exito.
-ene 18, 2024 7:17:50 P. M. db.GestorBD <init>
+ene 18, 2024 8:27:38 P. M. db.GestorBD <init>
 INFO: Conexión establecida con éxito a la base de datos.
-ene 18, 2024 7:17:50 P. M. db.GestorBD crearTablas
+ene 18, 2024 8:27:38 P. M. db.GestorBD crearTablas
 INFO: Creacion de la tabla usuario satisfactoria.
-ene 18, 2024 7:17:50 P. M. db.GestorBD crearTablas
+ene 18, 2024 8:27:38 P. M. db.GestorBD crearTablas
 INFO: Creacion de la tabla sala satisfactoria.
-ene 18, 2024 7:17:50 P. M. db.GestorBD crearTablas
+ene 18, 2024 8:27:38 P. M. db.GestorBD crearTablas
 INFO: Creacion de la tabla clase satisfactoria.
-ene 18, 2024 7:17:50 P. M. db.GestorBD crearTablas
+ene 18, 2024 8:27:38 P. M. db.GestorBD crearTablas
 INFO: Creacion de la tabla reserva satisfactoria.
-ene 18, 2024 7:17:50 P. M. db.GestorBD crearTablas
+ene 18, 2024 8:27:38 P. M. db.GestorBD crearTablas
 INFO: Base de datos creada con exito.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirUsuario
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirUsuario
 WARNING: El usuario con DNI 79134735S ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarUsuariosCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarUsuariosCSV
 INFO: Usuario agregado a la base de datos: Usuario [dni=79134735S, nombre=I�igo, apellido=DiazMunio, direccion=GranVia35 5A, correoElectronico=inigodm12@gmail.com, contrasena=inigou]
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirUsuario
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirUsuario
 WARNING: El usuario con DNI 63956924O ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarUsuariosCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarUsuariosCSV
 INFO: Usuario agregado a la base de datos: Usuario [dni=63956924O, nombre=Irati, apellido=Arbizu, direccion=olite 3, correoElectronico=irati@gmail.com, contrasena=iratia]
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 1 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  SPINNING  -  2023-12-12  -  Sala 5  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 2 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  SPINNING  -  2024-01-23  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 3 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  BOXEO  -  2024-03-12  -  Sala 3  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 4 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  BOXEO  -  2023-12-14  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 5 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 20:00  -  BOXEO  -  2023-12-11  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 6 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 11:00  -  CROSSFIT  -  2023-12-13  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 7 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  CROSSFIT  -  2023-12-15  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 8 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 11:00  -  GAP  -  0003-01-03  -  Sala 8  -  12 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 9 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 17:00  -  GAP  -  2023-12-15  -  Sala 11  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 10 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 9:30  -  TRX  -  2023-12-18  -  Sala 10  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 11 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:30  -  TRX  -  2023-12-18  -  Sala 10  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 12 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 11:30  -  DEFINICION  -  2024-01-12  -  Sala 9  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 13 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:30  -  DEFINICION  -  2024-01-15  -  Sala 9  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 14 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  AQUAGYM_MAYORES  -  2023-12-20  -  Sala 13  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 15 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  AQUAGYM_MAYORES  -  2023-12-21  -  Sala 13  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 16 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 9:00  -  JUEGOS_ACUATICOS  -  2024-01-12  -  Sala 14  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 17 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  JUEGOS_ACUATICOS  -  2024-01-15  -  Sala 14  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 18 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  HALTEROFILIA  -  2024-01-16  -  Sala 4  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 19 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:30  -  PILATES  -  2023-12-13  -  Sala 7  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 20 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 19:00  -  PILATES  -  2023-12-15  -  Sala 7  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 21 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 17:30  -  CARDIO  -  2024-02-05  -  Sala 6  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 22 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  ZUMBA  -  2024-02-06  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 23 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 19:00  -  ZUMBA  -  2024-02-08  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 24 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  YOGA  -  2024-02-08  -  Sala 8  -  22 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 25 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 20:00  -  YOGA  -  2024-02-09  -  Sala 8  -  22 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 26 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:30  -  FUNCIONAL  -  2024-02-05  -  Sala 1  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 27 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  PILATES  -  2023-12-02  -  Sala 7  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 28 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  BOXEO  -  2023-12-23  -  Sala 3  -  10 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 29 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  AQUAGYM_MAYORES  -  2023-12-12  -  Sala 13  -  10 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 30 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  CARDIO  -  2023-12-30  -  Sala 6  -  10 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 31 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 15:00  -  GAP  -  2023-12-23  -  Sala 11  -  10 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 32 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  SPINNING  -  2023-12-24  -  Sala 5  -  10 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 33 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 17:00  -  BOXEO  -  2023-12-23  -  Sala 3  -  10 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 34 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  HALTEROFILIA  -  2023-12-29  -  Sala 4  -  12 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 35 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 19:00  -  ZUMBA  -  2024-01-03  -  Sala 2  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 36 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:30  -  HALTEROFILIA  -  2024-01-12  -  Sala 4  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 37 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 13:00  -  YOGA  -  2024-01-23  -  Sala 8  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 38 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  PILATES  -  2024-01-13  -  Sala 7  -  10 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 39 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 22:00  -  HALTEROFILIA  -  2024-01-22  -  Sala 4  -  4 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 40 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 08:00  -  SPINNING  -  2023-12-01  -  Sala 5  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 41 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  BOXEO  -  2023-12-01  -  Sala 3  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 42 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  CROSSFIT  -  2023-12-01  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 43 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 19:00  -  GAP  -  2023-12-01  -  Sala 11  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 44 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 09:30  -  TRX  -  0002-01-03  -  Sala 44  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 45 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 11:30  -  DEFINICION  -  2023-12-01  -  Sala 9  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 46 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 15:00  -  AQUAGYM_MAYORES  -  2023-12-01  -  Sala 13  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 47 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 17:30  -  JUEGOS_ACUATICOS  -  2023-12-01  -  Sala 14  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 48 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:30  -  HALTEROFILIA  -  2023-12-01  -  Sala 4  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 49 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  PILATES  -  2023-12-01  -  Sala 7  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 50 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:30  -  CARDIO  -  2023-12-01  -  Sala 6  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 51 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 08:00  -  ZUMBA  -  2023-12-01  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 52 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  YOGA  -  2023-12-01  -  Sala 8  -  22 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 53 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:30  -  FUNCIONAL  -  2023-12-01  -  Sala 1  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 54 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 08:00  -  SPINNING  -  2024-01-01  -  Sala 5  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 55 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  BOXEO  -  2024-01-01  -  Sala 3  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 56 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  CROSSFIT  -  2024-01-01  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 57 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 19:00  -  GAP  -  2024-01-01  -  Sala 11  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 58 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 09:30  -  TRX  -  2024-01-01  -  Sala 10  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 59 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 11:30  -  DEFINICION  -  2024-01-01  -  Sala 9  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 60 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 15:00  -  AQUAGYM_MAYORES  -  2024-01-01  -  Sala 13  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 61 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 17:30  -  JUEGOS_ACUATICOS  -  2024-01-01  -  Sala 14  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 62 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:30  -  HALTEROFILIA  -  2024-01-01  -  Sala 4  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 63 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  PILATES  -  2024-01-01  -  Sala 7  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 64 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:30  -  CARDIO  -  2024-01-01  -  Sala 6  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 65 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 08:00  -  ZUMBA  -  2024-01-01  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 66 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  YOGA  -  2024-01-01  -  Sala 8  -  22 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 67 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:30  -  FUNCIONAL  -  2024-01-01  -  Sala 1  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 68 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 08:00  -  SPINNING  -  2024-02-01  -  Sala 5  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 69 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  BOXEO  -  2024-02-01  -  Sala 3  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 70 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  CROSSFIT  -  2024-02-01  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 71 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 19:00  -  GAP  -  2024-02-01  -  Sala 11  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 72 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 09:30  -  TRX  -  2024-02-01  -  Sala 10  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 73 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 11:30  -  DEFINICION  -  2024-02-01  -  Sala 9  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 74 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 15:00  -  AQUAGYM_MAYORES  -  2024-02-01  -  Sala 13  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 75 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 17:30  -  JUEGOS_ACUATICOS  -  2024-02-01  -  Sala 14  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 76 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:30  -  HALTEROFILIA  -  2024-02-01  -  Sala 4  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 77 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  PILATES  -  2024-02-01  -  Sala 7  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 78 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:30  -  CARDIO  -  2024-02-01  -  Sala 6  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 79 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 08:00  -  ZUMBA  -  2024-02-01  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 80 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  YOGA  -  2024-02-01  -  Sala 8  -  22 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 81 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:30  -  FUNCIONAL  -  2024-02-01  -  Sala 1  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 84 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 13:00  -  BOXEO  -  2023-12-31  -  Sala 3  -  2 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 85 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  FUNCIONAL  -  2024-01-17  -  Sala 5  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 86 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  ZUMBA  -  2024-01-17  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 87 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  BOXEO  -  2024-01-17  -  Sala 3  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 88 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  HALTEROFILIA  -  2024-01-17  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 89 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  SPINNING  -  2024-01-17  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 90 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  CARDIO  -  2024-01-17  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 91 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  PILATES  -  2024-01-17  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 92 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  YOGA  -  2024-01-17  -  Sala 8  -  12 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 93 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  DEFINICION  -  2024-01-17  -  Sala 11  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 94 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  TRX  -  2024-01-17  -  Sala 10  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 95 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  TRX  -  2024-01-18  -  Sala 5  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 96 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  DEFINICION  -  2024-01-18  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 97 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  YOGA  -  2024-01-18  -  Sala 3  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 98 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  CARDIO  -  2024-01-18  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 99 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  HALTEROFILIA  -  2024-01-18  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 100 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  ZUMBA  -  2024-01-18  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 101 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  SPINNING  -  2024-01-18  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 102 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  FUNCIONAL  -  2024-01-18  -  Sala 8  -  12 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 103 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  GAP  -  2024-01-18  -  Sala 11  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 104 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  CROSSFIT  -  2024-01-18  -  Sala 10  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 105 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  CARDIO  -  2024-01-19  -  Sala 5  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 106 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  PILATES  -  2024-01-19  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 107 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  YOGA  -  2024-01-19  -  Sala 3  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 108 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  DEFINICION  -  2024-01-19  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 109 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  TRX  -  2024-01-19  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 110 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  GAP  -  2024-01-19  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 111 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  CROSSFIT  -  2024-01-19  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 112 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  FUNCIONAL  -  2024-01-19  -  Sala 8  -  12 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 113 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  SPINNING  -  2024-01-19  -  Sala 11  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 114 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  BOXEO  -  2024-01-19  -  Sala 10  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 115 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  YOGA  -  2024-01-20  -  Sala 5  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 116 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  CARDIO  -  2024-01-20  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 117 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  SPINNING  -  2024-01-20  -  Sala 3  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:38 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:38 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 118 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  FUNCIONAL  -  2024-01-20  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 119 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  DEFINICION  -  2024-01-20  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 120 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  HALTEROFILIA  -  2024-01-20  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 121 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  BOXEO  -  2024-01-20  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 122 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  CROSSFIT  -  2024-01-20  -  Sala 8  -  12 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 123 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  GAP  -  2024-01-20  -  Sala 11  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 124 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  AQUAGYM_MAYORES  -  2024-01-20  -  Sala 10  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 125 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  DEFINICION  -  2024-01-21  -  Sala 5  -  20 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 126 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  TRX  -  2024-01-21  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 127 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  CARDIO  -  2024-01-21  -  Sala 3  -  8 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 128 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  FUNCIONAL  -  2024-01-21  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 129 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  SPINNING  -  2024-01-21  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 130 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  YOGA  -  2024-01-21  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 131 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  HALTEROFILIA  -  2024-01-21  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 132 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  GAP  -  2024-01-21  -  Sala 8  -  12 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:50 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 133 ya existe en la base de datos.
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  CROSSFIT  -  2024-01-21  -  Sala 11  -  14 plazas
-ene 18, 2024 7:17:50 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 134 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  AQUAGYM_MAYORES  -  2024-01-21  -  Sala 10  -  14 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 135 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  CARDIO  -  2024-01-22  -  Sala 5  -  20 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 136 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  FUNCIONAL  -  2024-01-22  -  Sala 2  -  18 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 137 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  PILATES  -  2024-01-22  -  Sala 3  -  8 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 138 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  TRX  -  2024-01-22  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 139 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  BOXEO  -  2024-01-22  -  Sala 3  -  7 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 140 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 10:00  -  SPINNING  -  2024-01-22  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 141 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 12:00  -  GAP  -  2024-01-22  -  Sala 12  -  7 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 142 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 14:00  -  CROSSFIT  -  2024-01-22  -  Sala 8  -  12 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 143 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 16:00  -  YOGA  -  2024-01-22  -  Sala 11  -  14 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clases cargadas correctamente.
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirClase
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirClase
 WARNING: La clase con ID 144 ya existe en la base de datos.
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarClasesCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarClasesCSV
 INFO: Clase agregada a la base de datos: 18:00  -  AQUAGYM_MAYORES  -  2024-01-22  -  Sala 10  -  14 plazas
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=SPINNING, IDSala=5, fecha=12-12-2023, hora=10:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=SPINNING, IDSala=2, fecha=23-01-2024, hora=18:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=BOXEO, IDSala=3, fecha=12-03-2024, hora=18:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=BOXEO, IDSala=3, fecha=14-12-2023, hora=16:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=BOXEO, IDSala=3, fecha=11-12-2023, hora=20:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=CROSSFIT, IDSala=12, fecha=13-12-2023, hora=11:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=CROSSFIT, IDSala=12, fecha=15-12-2023, hora=18:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=GAP, IDSala=11, fecha=13-12-2023, hora=11:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=GAP, IDSala=11, fecha=15-12-2023, hora=17:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=TRX, IDSala=10, fecha=18-12-2023, hora=9:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=TRX, IDSala=10, fecha=18-12-2023, hora=16:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa: Reserva [TipoActividad=DEFINICION, IDSala=9, fecha=12-01-2024, hora=11:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=AQUAGYM_MAYORES, IDSala=13, fecha=20-12-2023, hora=10:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=AQUAGYM_MAYORES, IDSala=13, fecha=21-12-2023, hora=18:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=JUEGOS_ACUATICOS, IDSala=14, fecha=12-01-2024, hora=9:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=JUEGOS_ACUATICOS, IDSala=14, fecha=15-01-2024, hora=18:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=HALTEROFILIA, IDSala=4, fecha=16-01-2024, hora=12:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=PILATES, IDSala=7, fecha=13-12-2023, hora=10:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=PILATES, IDSala=7, fecha=15-12-2023, hora=19:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=CARDIO, IDSala=6, fecha=05-02-2024, hora=17:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=ZUMBA, IDSala=2, fecha=06-02-2024, hora=16:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=ZUMBA, IDSala=2, fecha=08-02-2024, hora=19:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=YOGA, IDSala=8, fecha=08-02-2024, hora=10:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=YOGA, IDSala=8, fecha=09-02-2024, hora=20:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=FUNCIONAL, IDSala=1, fecha=05-02-2024, hora=18:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=PILATES, IDSala=7, fecha=02-12-2023, hora=12:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=BOXEO, IDSala=3, fecha=23-12-2023, hora=18:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=AQUAGYM_MAYORES, IDSala=13, fecha=12-12-2023, hora=12:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=CARDIO, IDSala=6, fecha=30-12-2023, hora=12:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=GAP, IDSala=11, fecha=23-12-2023, hora=15:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=SPINNING, IDSala=5, fecha=24-12-2023, hora=16:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=BOXEO, IDSala=3, fecha=23-12-2023, hora=17:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=HALTEROFILIA, IDSala=4, fecha=29-12-2023, hora=12:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=ZUMBA, IDSala=2, fecha=03-01-2024, hora=19:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=HALTEROFILIA, IDSala=4, fecha=12-01-2024, hora=12:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=YOGA, IDSala=8, fecha=23-01-2024, hora=13:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=PILATES, IDSala=7, fecha=13-01-2024, hora=12:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=HALTEROFILIA, IDSala=4, fecha=22-01-2024, hora=22:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=SPINNING, IDSala=1, fecha=01-02-2024, hora=17:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=DEFINICION, IDSala=9, fecha=02-02-2024, hora=16:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=FUNCIONAL, IDSala=1, fecha=05-02-2024, hora=18:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=PILATES, IDSala=7, fecha=05-02-2024, hora=18:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=AQUAGYM_MAYORES, IDSala=13, fecha=07-02-2024, hora=19:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=YOGA, IDSala=8, fecha=08-02-2024, hora=10:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=FUNCIONAL, IDSala=14, fecha=08-02-2024, hora=20:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=PILATES, IDSala=7, fecha=09-02-2024, hora=19:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=CARDIO, IDSala=6, fecha=11-02-2024, hora=17:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=ZUMBA, IDSala=18, fecha=12-02-2024, hora=16:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=GAP, IDSala=11, fecha=15-02-2024, hora=18:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=TRX, IDSala=10, fecha=17-02-2024, hora=19:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=SPINNING, IDSala=5, fecha=18-02-2024, hora=20:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=BOXEO, IDSala=3, fecha=20-02-2024, hora=12:00]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=CARDIO, IDSala=6, fecha=22-02-2024, hora=17:30]
-ene 18, 2024 7:17:51 P. M. domain.Gestor cargarReservasCSV
+ene 18, 2024 8:27:39 P. M. domain.Gestor cargarReservasCSV
 INFO: Reserva agregada al mapa existente: Reserva [TipoActividad=GAP, IDSala=11, fecha=23-02-2024, hora=18:00]
-ene 18, 2024 7:17:51 P. M. db.GestorBD añadirReservas
+ene 18, 2024 8:27:39 P. M. db.GestorBD añadirReservas
 INFO: Reservas añadidas a la base de datos con éxito.
-ene 18, 2024 7:17:51 P. M. gui.VentanaPrincipal initialize
+ene 18, 2024 8:27:39 P. M. gui.VentanaPrincipal initialize
 INFO: botón salida pressed
-ene 18, 2024 7:17:53 P. M. gui.VentanaPrincipal$4 actionPerformed
+ene 18, 2024 8:27:41 P. M. gui.VentanaPrincipal$4 actionPerformed
 INFO: botón inicio sesión pressed
-ene 18, 2024 7:18:05 P. M. gui.VentanaInicioSesion realizarAccionAcceder
+ene 18, 2024 8:27:49 P. M. gui.VentanaInicioSesion realizarAccionAcceder
 INFO: Se ha accedido al inicio de sesión.
-ene 18, 2024 7:18:07 P. M. gui.VentanaUsuario$2 mouseClicked
+ene 18, 2024 8:27:51 P. M. gui.VentanaUsuario$2 mouseClicked
 INFO: Se está mostrando el calendario de Actividades
-ene 18, 2024 7:18:09 P. M. gui.VentanaCalendarioActividades$3 actionPerformed
-INFO: El admin ha accedido a las estadisticas.
-ene 18, 2024 7:18:47 P. M. gui.VentanaUsuario$3 actionPerformed
+ene 18, 2024 8:27:52 P. M. gui.VentanaCalendarioActividades$3 actionPerformed
+INFO: El usuario ha accedido a la planificacion semanal aleatoria.
+ene 18, 2024 8:28:03 P. M. gui.VentanaUsuario$3 actionPerformed
 INFO: El usuario ha salido.0

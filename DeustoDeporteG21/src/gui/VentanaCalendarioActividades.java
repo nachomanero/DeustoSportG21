@@ -65,8 +65,12 @@ public class VentanaCalendarioActividades extends JFrame {
 		dateChooser.setDateFormatString("dd-MM-yyyy");
 		dateChooser.setPreferredSize(new Dimension(150, dateChooser.getPreferredSize().height));
 		topPanel.add(dateChooser);
+		
+		JButton btnPlan = new JButton("Planificacion semanal");
+		topPanel.add(btnPlan);
 
 		mainPanel.add(topPanel, BorderLayout.NORTH);
+		
 
 		actividadesListModel = new DefaultListModel<>();
 		actividadesList = new JList<>(actividadesListModel);
@@ -127,6 +131,19 @@ public class VentanaCalendarioActividades extends JFrame {
 				mostrarActividades();
 			}
 
+		});
+		
+		btnPlan.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnPlan);
+                thisFrame.dispose();
+	            VentanaPlanificacionSemanal ventanaPlanificacionSemanal = new VentanaPlanificacionSemanal(g, gestorBD, dniUsuario);
+	            ventanaPlanificacionSemanal.mostrarVentana();		       
+	            ventanaPlanificacionSemanal.requestFocus();
+	            LOGGER.log(Level.INFO,"El usuario ha accedido a la planificacion semanal aleatoria.");
+			}
 		});
 
 	}

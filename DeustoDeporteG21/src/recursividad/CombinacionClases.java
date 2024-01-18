@@ -11,12 +11,16 @@ public class CombinacionClases {
 	
 	public static List<Clase> obtenerCombinacionClasesBD(String fechaInicio, GestorBD gestorBD) throws ParseException {
         List<Clase> combinacionClasesSemana = new ArrayList<>();
-        obtenerCombinacionClasesRecursivo(fechaInicio, gestorBD, combinacionClasesSemana);
+        obtenerCombinacionClasesRecursivo(fechaInicio, gestorBD, combinacionClasesSemana, 0);
         return combinacionClasesSemana;
     }
 
-    private static void obtenerCombinacionClasesRecursivo(String fechaActual, GestorBD gestorBD, List<Clase> combinacionClasesSemana) throws ParseException {
-        // Utilizar el método del gestor de base de datos para obtener las clases por fecha
+    private static void obtenerCombinacionClasesRecursivo(String fechaActual, GestorBD gestorBD, List<Clase> combinacionClasesSemana, int contador) throws ParseException {
+        if (contador>=7) {
+        	return;
+        }
+    	
+    	// Utilizar el método del gestor de base de datos para obtener las clases por fecha
         List<Clase> clasesDia = gestorBD.obtenerClasesPorFecha(fechaActual);
 
         if (clasesDia != null && !clasesDia.isEmpty()) {
@@ -29,7 +33,7 @@ public class CombinacionClases {
         // Llamar recursivamente para el siguiente día
         String siguienteDia = avanzarUnDia(fechaActual);
         if (siguienteDia != null) {
-            obtenerCombinacionClasesRecursivo(siguienteDia, gestorBD, combinacionClasesSemana);
+            obtenerCombinacionClasesRecursivo(siguienteDia, gestorBD, combinacionClasesSemana, contador+1);
         }
     }
 
