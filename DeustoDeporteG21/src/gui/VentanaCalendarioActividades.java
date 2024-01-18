@@ -201,10 +201,19 @@ public class VentanaCalendarioActividades extends JFrame {
 
 	    if (selectedActivity != null) {
 	        LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
-	        
-	     
+	        final long MILISEGUNDOS_POR_DIA = 24 * 60 * 60 * 1000L;
 	        int id = selectedActivity.getIDClase();
 	        int plazasDisponibles = selectedActivity.getPlazas();
+
+	        Date fechaActual = new Date();
+		    long fechaDiaAntesMilis = fechaActual.getTime() - MILISEGUNDOS_POR_DIA;
+		    Date fechaDiaAntes = new Date(fechaDiaAntesMilis);
+
+	        // Verificar si la fecha de la actividad es anterior a la fecha actual
+	        if (selectedActivity.getFecha().compareTo(fechaDiaAntes)<0) {
+	            JOptionPane.showMessageDialog(null, "No puedes apuntarte a una clase pasada.", "Error", JOptionPane.ERROR_MESSAGE);
+	            return; // Salir del método si la fecha es anterior
+	        }
 
 	        if (plazasDisponibles > 0) {
 	            if (!g.apuntadoAEsaClase(dniUsuario, selectedActivity.getTipoActividad(), selectedActivity.getFecha(),
@@ -237,7 +246,7 @@ public class VentanaCalendarioActividades extends JFrame {
 	                    JOptionPane.WARNING_MESSAGE);
 	        }
 	    }
-	    }
+	}
 	        
 
 	private void setupExitButton() {
