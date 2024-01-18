@@ -3,12 +3,17 @@ package renderer;
 import java.awt.Color;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
+
 
 public class RendererTabla implements TableCellRenderer {
 
@@ -16,43 +21,42 @@ public class RendererTabla implements TableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
             int row, int column) {
 
-        Component c = null;
+    	JLabel result = new JLabel(value.toString());
+		
+		//Se definen para el label los colores de texto y fondo por defecto de la tabla
+		result.setBackground(table.getBackground());
+		result.setForeground(table.getForeground());
+					
+		//Si el valor es de tipo Editorial: se renderiza con la imagen centrada
+		if (column==3) {
+			Date d = (Date) value;
+			
+			result.setText("");		
+			result.setToolTipText(d.toString());
+			result.setHorizontalAlignment(JLabel.CENTER);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+			
+	        LocalDateTime fechaHoraActual = LocalDateTime.now();
 
-        switch (column) {
-            case 3:
-                c = new JLabel(value.toString());
-                ((JLabel) c).setHorizontalAlignment(JLabel.CENTER);
+	        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-                // Obtener la fecha actual
-                Date fechaActual = new Date();
-
-                // Obtener la fecha de la celda (asumiendo que el valor es una fecha)
-                Date fechaCelda = (Date) value;
-
-                // Verificar si la fecha de la celda es igual a la fecha actual
-                if (isSameDay(fechaActual, fechaCelda)) {
-                    // Configurar el color de fondo a naranja
-                    c.setBackground(Color.ORANGE);
-                } else {
-                    // Configurar el color de fondo a blanco (o el color predeterminado)
-                    c.setBackground(table.getBackground());
-                }
-
-                break;
-
-            default:
-                // Para otras columnas, utiliza el renderizador predeterminado
-                c = new DefaultTableCellRenderer().getTableCellRendererComponent(table, value, isSelected, hasFocus, row,
-                        column);
-                break;
-        }
-
-        return c;
+	        String fechaFormateada = fechaHoraActual.format(formato);
+	        var fechaTabla = sdf.format(d);
+	        
+	        if (fechaTabla == fechaFormateada){
+	        	
+	        	result.setBackground(new Color(250, 249, 249));
+			
+			}
+		
+				
+		
+		result.setOpaque(true);
+		
+		
     }
+		return result;}
 
-    // Método para verificar si dos fechas son del mismo día
-    private boolean isSameDay(Date date1, Date date2) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        return sdf.format(date1).equals(sdf.format(date2));
-    }
+    
 }
