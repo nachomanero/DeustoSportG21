@@ -190,7 +190,7 @@ public class GestorBD {
 
 	public void borrarBD() {
 		try (Connection con = DriverManager.getConnection(CONNECTION_STRING); Statement stmt = con.createStatement()) {
-			// Borrar tablas
+			
 			String dropUsuario = "DROP TABLE IF EXISTS USUARIO";
 			if (!stmt.execute(dropUsuario)) {
 				System.out.println("\n- Se ha borrado la tabla Usuario");
@@ -575,7 +575,6 @@ public class GestorBD {
 
 						//SimpleDateFormat sdfOutput = new SimpleDateFormat("dd-MM-yyyy");
 						//String fechaFormateadaStr = sdfOutput.format(fecha);
-
 						//java.util.Date fechaFormateada = sdfOutput.parse(fechaFormateadaStr);
 
 						Clase clase = new Clase(idClase, hora, TipoActividad.valueOf(tipoActividad), timestamp,
@@ -601,7 +600,7 @@ public class GestorBD {
 			return sdfInput.parse(fechaStr);
 		} catch (ParseException e) {
 			LOGGER.log(Level.SEVERE, "Error al convertir fecha: " + fechaStr, e);
-			return null; // Puedes ajustar esto según tus necesidades
+			return null; 
 		}
 	}
 
@@ -710,7 +709,7 @@ public class GestorBD {
 	}
 	
 	public int obtenerSiguienteID(String nombreTabla, String nombreColumnaID) {
-	    int siguienteID = 1;  // Valor predeterminado si no hay registros en la tabla
+	    int siguienteID = 1;  
 
 	    try (Connection connection = DriverManager.getConnection(CONNECTION_STRING)) {
 	        String sql = "SELECT MAX(" + nombreColumnaID + ") FROM " + nombreTabla;

@@ -2,11 +2,9 @@ package gui;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 import db.GestorBD;
 import domain.Gestor;
-import domain.Reserva;
 import io.FicheroLogger;
 
 import java.awt.*;
@@ -14,14 +12,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class VentanaUsuario extends JFrame {
 
-    private JPanel contentPane;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
     private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
     private String dniUsuario;
 	private Gestor g;

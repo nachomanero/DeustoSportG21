@@ -6,13 +6,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.PrintStream;
-import java.lang.System.Logger.Level;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
-import javax.xml.catalog.CatalogException;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -30,7 +27,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Logger;
 public class GestorBDTest {
 
@@ -131,7 +127,6 @@ public class GestorBDTest {
     	}
     }
     
-    //Ver si lo de date funciona correctamente
     
     @Test
     public void testBuscarClasesPorFecha() {
@@ -191,7 +186,6 @@ public class GestorBDTest {
 		return i;
 	}
 */
-	//Este tambien hay que mirar . :)
     @Test
     public void testVisualizarClaseExistente() {
     	try {

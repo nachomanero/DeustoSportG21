@@ -1,12 +1,8 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import com.toedter.calendar.JCalendar;
 
 import db.GestorBD;
 import domain.Clase;
@@ -16,7 +12,6 @@ import domain.TipoActividad;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
@@ -26,18 +21,14 @@ import java.awt.Rectangle;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.JSpinner;
-import javax.swing.JSeparator;
 import javax.swing.JButton;
-import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import java.util.Iterator;
 import java.util.logging.Level;
 
 
@@ -45,6 +36,10 @@ import io.FicheroLogger;
 public class VentanaAniadirClase extends JFrame {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;

@@ -89,14 +89,10 @@ public class VentanaPrincipal {
 	        public void run() {
 	            try {
 	                while (true) {
-	                    // Obtén la hora actual
+	                
 	                    java.util.Date fecha = new java.util.Date();
 	                    String horaActual = new java.text.SimpleDateFormat("HH:mm:ss").format(fecha);
-
-	                    // Actualiza la barra de título con la hora actual
 	                    frame.setTitle("Deusto Sport - " + horaActual);
-
-	                    // Pausa el hilo durante 1000 milisegundos (1 segundo)
 	                    Thread.sleep(1000);
 	                }
 	            } catch (InterruptedException e) {
@@ -105,14 +101,11 @@ public class VentanaPrincipal {
 	        }
 	    });
 
-	    // Inicia el hilo del reloj
 	    relojThread.start();
 	}
 
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(200, 200, 550, 350);

@@ -104,7 +104,6 @@ public class Main {
 	        while ((linea = br.readLine()) != null) {
 	            String[] datos = linea.split(",");
 	            
-	            // Verificar que haya al menos 6 elementos en la línea
 	            if (datos.length >= 6) {
 	                String nombre = datos[0].trim();
 	                String dni = datos[1].trim();

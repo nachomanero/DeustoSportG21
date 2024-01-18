@@ -1,7 +1,11 @@
 package domain;
 
 public class Admin extends Usuario {
-    public Admin() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public Admin() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -12,7 +16,6 @@ public class Admin extends Usuario {
         this.IDEmpleado = IDEmpleado;
     }
 
-    // Método getter y setter para el atributo propio de Admin
 
     public String getIDEmpleado() {
         return IDEmpleado;
@@ -41,7 +44,7 @@ public class Admin extends Usuario {
 	public Admin(String dni, String nombre, String apellido, String direccion, String correoElectronico,
 			String contrasena) {
 		super(dni, nombre, apellido, direccion, correoElectronico, contrasena);
-		//Super
+		
 	}
 }
 

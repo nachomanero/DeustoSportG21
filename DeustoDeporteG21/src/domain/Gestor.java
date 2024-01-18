@@ -2,7 +2,6 @@ package domain;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.*;
 import java.io.FileReader;
@@ -11,20 +10,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.logging.Logger;
 
 import db.GestorBD;
@@ -34,11 +28,7 @@ import java.util.logging.Level;
 public class Gestor implements itfGestor {
 	private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());
 
-	// Gestiona las operaciones sobre el modelo logico
-
-	// esta clase se comunica el GestorBD para solicitar los datos
-
-	// aqui deben estar los MAPAS, los SET, etc
+	
 
 	private HashSet<Usuario> usuarios;
 	private HashSet<Clase> clases;

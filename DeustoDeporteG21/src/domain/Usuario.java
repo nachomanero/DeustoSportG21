@@ -11,9 +11,6 @@ public  class  Usuario implements Serializable {
     private String correoElectronico;
     private String contrasena;
     
-    private Agenda agenda;
-
-    // Constructor de Usuario
     public Usuario(String dni, String nombre, String apellido, String direccion, String correoElectronico, String contrasena) {
         this.dni = dni;
         this.nombre = nombre;
@@ -23,7 +20,7 @@ public  class  Usuario implements Serializable {
         this.contrasena = contrasena;
     }
 
-    // Métodos getter y setter para acceder y modificar los atributos del Usuario
+   
     
     public String getDni() {
         return dni;

@@ -1,13 +1,10 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import javax.swing.SwingWorker;
 
 import db.GestorBD;
 import domain.Gestor;
@@ -17,7 +14,6 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,9 +55,7 @@ public class VentanaRegistro {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(200, 200, 550, 350);
@@ -181,8 +175,7 @@ public class VentanaRegistro {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				String nomfichClases = "resources/data/Usuarios.csv";
+				
 				String nombre = textFieldNombre.getText();
 				String apellido = textFieldApellido.getText();
 				String dni = textFieldDNI.getText();
@@ -243,7 +236,6 @@ public class VentanaRegistro {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				frame.dispose();
 
 				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(g, gbd);

@@ -5,14 +5,14 @@ import java.util.Date;
 
 public class Clase implements Comparable<Clase>{
 
-    // Atributos de la clase Clase
+    
     private int IDClase;
     private String hora;
     private TipoActividad tipoActividad;
     private Date fecha;
     private int IDSala;
     private int plazas;
-    // Constructor
+    
     public Clase(int IDClase, String hora, TipoActividad tipoActividad, Date fecha, int IDSala, int plazas) {
         this.IDClase = IDClase;
         this.hora = hora;
@@ -21,7 +21,7 @@ public class Clase implements Comparable<Clase>{
         this.IDSala=IDSala;
         this.plazas = plazas;
     }
-    // Métodos getter y setter 
+   
 
     public int getIDClase() {
         return IDClase;

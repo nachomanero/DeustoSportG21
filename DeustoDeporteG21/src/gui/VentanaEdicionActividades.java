@@ -7,22 +7,21 @@ import javax.swing.event.DocumentListener;
 import db.GestorBD;
 import domain.Clase;
 import domain.Gestor;
-import domain.TipoActividad;
 import io.FicheroLogger;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class VentanaEdicionActividades extends JFrame {
-    private JTextField actividadTextField;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JTextField actividadTextField;
     private JList<Clase> actividadesList;
     private DefaultListModel<Clase> actividadesListModel;
     private List<Clase> actividades;
@@ -139,9 +138,7 @@ public class VentanaEdicionActividades extends JFrame {
     }
 
     private boolean tipoActividadCoincide(Clase actividad, String tipoToFilter) {
-        // Implementa la lógica para verificar si el tipo de actividad coincide
-        // Puedes acceder al tipo de actividad con actividad.getTipoActividad()
-        // y compararlo con tipoToFilter
+        
         return actividad.getTipoActividad().toString().toLowerCase().contains(tipoToFilter);
     }
 
@@ -151,7 +148,7 @@ public class VentanaEdicionActividades extends JFrame {
         if (selectedActivity != null) {
             LOGGER.log(Level.INFO, "Actividad seleccionada para editar: " + selectedActivity);
 
-            // Crear una instancia de VentanaEditarClase y mostrarla
+            
             VentanaEditarClase ventanaEditar = new VentanaEditarClase(g , gbd , selectedActivity);
             ventanaEditar.mostrarVentana();
         }

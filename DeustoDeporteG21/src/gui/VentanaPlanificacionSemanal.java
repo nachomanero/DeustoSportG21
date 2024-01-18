@@ -41,6 +41,10 @@ import recursividad.CombinacionClases;
 
 public class VentanaPlanificacionSemanal extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JDateChooser dateChooser;
 	private Date date;
 	private JList<Clase> actividadesList;
@@ -142,7 +146,6 @@ public class VentanaPlanificacionSemanal extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				mostrarActividades();
 			}
 		});

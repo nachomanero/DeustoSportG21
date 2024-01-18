@@ -13,12 +13,16 @@ import domain.Reserva;
 
 public class VentanaHistorialReservas extends JFrame {
 
-    private JTree tree;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JTree tree;
     private DefaultMutableTreeNode rootNode;
     private static GestorBD gestorBD; 
 
     public VentanaHistorialReservas(GestorBD gestorBD) {
-        this.gestorBD = gestorBD; 
+        VentanaHistorialReservas.gestorBD = gestorBD; 
         setTitle("Historial de Reservas");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -59,7 +63,12 @@ public class VentanaHistorialReservas extends JFrame {
     }
 
     private class CustomTreeCellRenderer extends DefaultTreeCellRenderer {
-        @Override
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		@Override
         public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded,
                                                       boolean leaf, int row, boolean hasFocus) {
             super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);

@@ -8,8 +8,6 @@ import domain.Gestor;
 import domain.Reserva;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,21 +15,20 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
 import io.FicheroLogger;
 
 public class VentanaCalendarioActividades extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JDateChooser dateChooser;
 	private JList<Clase> actividadesList;
 	private DefaultListModel<Clase> actividadesListModel;
@@ -107,6 +104,11 @@ public class VentanaCalendarioActividades extends JFrame {
 		frame.setVisible(true);
 
 		actividadesList.setCellRenderer(new DefaultListCellRenderer() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 					boolean cellHasFocus) {
@@ -209,10 +211,10 @@ public class VentanaCalendarioActividades extends JFrame {
 		    long fechaDiaAntesMilis = fechaActual.getTime() - MILISEGUNDOS_POR_DIA;
 		    Date fechaDiaAntes = new Date(fechaDiaAntesMilis);
 
-	        // Verificar si la fecha de la actividad es anterior a la fecha actual
+	        
 	        if (selectedActivity.getFecha().compareTo(fechaDiaAntes)<0) {
 	            JOptionPane.showMessageDialog(null, "No puedes apuntarte a una clase pasada.", "Error", JOptionPane.ERROR_MESSAGE);
-	            return; // Salir del método si la fecha es anterior
+	            return; 
 	        }
 
 	        if (plazasDisponibles > 0) {

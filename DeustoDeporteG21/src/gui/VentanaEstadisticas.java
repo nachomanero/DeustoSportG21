@@ -14,14 +14,18 @@ import java.util.Map;
 
 public class VentanaEstadisticas extends JFrame {
 
-    private JButton btnMostrarTopClases;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JButton btnMostrarTopClases;
     private JPanel panelProgressBar;
 
     private Gestor gestor;
     private JButton btnHistorialReservas;
 
     public VentanaEstadisticas(Gestor g, GestorBD gb) {
-        this.gestor = g;  // Corregir la asignación del parámetro
+        this.gestor = g;  
         getContentPane().setBackground(new Color(102, 153, 153));
         setTitle("TOP CLASES");
         setSize(400, 200);
@@ -40,7 +44,7 @@ public class VentanaEstadisticas extends JFrame {
         btnHistorialReservas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarHistorialReservas(g, gb);  // Pasar ambos objetos
+                mostrarHistorialReservas(g, gb);  
             }
         });
 

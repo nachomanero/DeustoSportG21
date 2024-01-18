@@ -2,19 +2,16 @@ package domain;
 public class Sala {
 
 
-	// Atributos de la clase Sala
     private int IDSala;
     private String nombre;
     private int capacidad;
 
-    // Constructor
     public Sala(int IDSala, String nombre, int capacidad) {
         this.IDSala = IDSala;
         this.nombre = nombre;
         this.capacidad = capacidad;
     }
 
-    // Métodos getter y setter para acceder y modificar los atributos
 
     public int getIDSala() {
         return IDSala;

@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -14,7 +12,6 @@ import domain.TipoActividad;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
@@ -23,9 +20,6 @@ import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -34,12 +28,10 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.JSpinner;
-import javax.swing.JSeparator;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import java.util.Date;
 import java.util.logging.Level;
 
 
@@ -47,6 +39,10 @@ import io.FicheroLogger;
 
 public class VentanaEditarClase extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtFecha;
 	private JTextField txtHora;
@@ -189,7 +185,6 @@ public class VentanaEditarClase extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnRetroceder);
                 thisFrame.dispose();
 			
@@ -203,7 +198,6 @@ public class VentanaEditarClase extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				int result = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
                 if (result == JOptionPane.YES_OPTION) {
                 	JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSalir);
@@ -219,7 +213,6 @@ public class VentanaEditarClase extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GestorBD gbd = new GestorBD();
 				Gestor g = new Gestor();
 				
@@ -239,7 +232,7 @@ public class VentanaEditarClase extends JFrame {
 						if(Pattern.matches(patronFecha, fecha)) {
 							Clase cl = new Clase(clase.getIDClase(),hora,tipoClase,sqlFecha,lugar,capacidad);
 							gbd.editarClase(cl);
-							g.actualizarClaseEnCSV(cl, nomfichClases);
+							Gestor.actualizarClaseEnCSV(cl, nomfichClases);
 							
 							JOptionPane.showMessageDialog(null, "Clase modificada correctamente","EDICION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
 							JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnEditarClase);
@@ -263,7 +256,6 @@ public class VentanaEditarClase extends JFrame {
 					
 					
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}    
 				
@@ -275,7 +267,6 @@ public class VentanaEditarClase extends JFrame {
 	}
 
 	public void mostrarVentana() {
-		// TODO Auto-generated method stub
 		getContentPane().setVisible(true);
 	}
 	
