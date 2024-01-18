@@ -29,7 +29,7 @@ public class Main {
 	private static final String PROPERTIES_FILE = "conf/config.properties";
 	private static final String INPUT_KEY = "input";
 	private static final String OUTPUT_KEY = "output";
-	private static final String FicheroUsuarios = "resources/data/Usuarios.csv";
+	private static final String FicheroUsuarios = "resources\\data\\propertiesUsuarios.csv";
 
 	public static void main(String[] args) {
 		FicheroLogger ficheroLogger = new FicheroLogger();
