@@ -59,75 +59,63 @@ public class Gestor implements itfGestor {
 	
 	
 	
+	
 	public List<TipoActividad> las3MasSolicitadas(Map<TipoActividad, Integer> tabla) {
-	    List<Estadistica> l = new ArrayList<>();
+	    List<Estadistica> listaEstadisticas = new ArrayList<>();
 
-	    for (TipoActividad clave : tabla.keySet()) {
-	        l.add(new Estadistica(clave, tabla.get(clave)));
+	    for (TipoActividad actividad : tabla.keySet()) {
+	        listaEstadisticas.add(new Estadistica(actividad, tabla.get(actividad)));
 	    }
 
-	    Collections.sort(l, new Comparator<Estadistica>() {
-	        @Override
-	        public int compare(Estadistica o1, Estadistica o2) {
-	            return o2.getVeces() - o1.getVeces();
-	        }
-	    });
+	    listaEstadisticas.sort((o1, o2) -> o2.getVeces() - o1.getVeces());
 
-	    List<TipoActividad> r = new ArrayList<>();
+	    List<TipoActividad> actividadesMasSolicitadas = new ArrayList<>();
 
 	    int i = 0;
 	    int cont = 0;
-	    while (i < l.size() && cont < 3) {
-	        r.add(l.get(i).getActividad());
-	        i++;  
+	    while (i < listaEstadisticas.size() && cont < 3) {
+	        actividadesMasSolicitadas.add(listaEstadisticas.get(i).getActividad());
+	        i++;
 	        cont++;
 	    }
 
-	    return r;
-	    
+	    return actividadesMasSolicitadas;
 	}
+
 	
 
+
+	
 	public Map<TipoActividad, Integer> cargarActividadesMasElegidas() {
-		Map<TipoActividad, Integer> c = new HashMap<TipoActividad, Integer>();
+	    Map<TipoActividad, Integer> actividadesMasElegidas = new HashMap<>();
 
-		try {
-			File f = new File("masSolicitadas.dat");
-			FileInputStream fos = new FileInputStream(f);
-			ObjectInputStream oos = new ObjectInputStream(fos);
+	    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("masSolicitadas.dat"))) {
+	        actividadesMasElegidas = (Map<TipoActividad, Integer>) ois.readObject();
+	    } catch (FileNotFoundException e) {
+	        e.printStackTrace();
+	    } catch (IOException | ClassNotFoundException e) {
+	        e.printStackTrace();
+	    }
 
-			c = (Map<TipoActividad, Integer>) oos.readObject();
-
-			oos.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return c;
-
+	    return actividadesMasElegidas;
 	}
 
+
+
+	
 	public void guardarActividadesMasElegidas() {
-	    Map<TipoActividad, Integer> c = new HashMap<>();
+	    Map<String, List<Reserva>> reservas = gestorBD.obtenerTodasLasReservas();
 
-	    // recorrer las reservas, agrupando por actividades
-	    for (String dni : reservas.keySet()) {
-	        List<Reserva> misReservas = reservas.get(dni);
+	    Map<TipoActividad, Integer> cuentaActividades = new HashMap<>();
 
+	    for (List<Reserva> misReservas : reservas.values()) {
 	        for (Reserva r : misReservas) {
-	            TipoActividad a = r.getTipoActividad();
+	            TipoActividad actividad = r.getTipoActividad();
 
-	            if (c.containsKey(a)) {
-	                c.put(a, c.get(a) + 1);
+	            if (cuentaActividades.containsKey(actividad)) {
+	                cuentaActividades.put(actividad, cuentaActividades.get(actividad) + 1);
 	            } else {
-	                c.put(a, 1);
+	                cuentaActividades.put(actividad, 1);
 	            }
 	        }
 	    }
@@ -135,13 +123,14 @@ public class Gestor implements itfGestor {
 	    String filePath = "masSolicitadas.dat";
 
 	    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
-	        oos.writeObject(c);
+	        oos.writeObject(cuentaActividades);
 	        System.out.println("Fichero creado correctamente: " + filePath);
 	    } catch (IOException e) {
 	        System.err.println("Error escribiendo el fichero: " + e.getMessage());
 	        e.printStackTrace();
 	    }
 	}
+
 
 	public void realizarOperacionEnBD() {
 

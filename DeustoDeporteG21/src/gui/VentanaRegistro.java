@@ -200,10 +200,8 @@ public class VentanaRegistro {
 
 					if (dniCorrecto(dni) == true) {
 						Usuario u = new Usuario(dni, nombre, apellido, direccion, correo, contrasenia);
-						GestorBD gbd = new GestorBD();
-						Gestor g = new Gestor();
 						gbd.añadirUsuario(u);
-						g.añadirUsuarioACSV(u, nomfichClases);
+						//g.añadirUsuarioACSV(u, nomfichClases);
 
 						JOptionPane.showMessageDialog(null, "Registro completado correctamente", "REGISTRO",
 								JOptionPane.INFORMATION_MESSAGE);

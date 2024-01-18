@@ -148,6 +148,11 @@ public class VentanaUsuario extends JFrame {
             }
         });
     }
+
+	public void mostrarVentana() {
+		setVisible(true);
+	}
+
 	
 
 
