@@ -185,9 +185,9 @@ public class VentanaCalendarioActividades extends JFrame {
 	    if (selectedActivity != null) {
 	        LOGGER.log(Level.INFO, "Actividad seleccionada para apuntarse: " + selectedActivity);
 	        
-	        //Quitar si no funca
 	        LocalDateTime now = LocalDateTime.now();
-	        LocalDateTime claseDateTime = convertirFechaHora(selectedActivity.getFecha(),selectedActivity.getHora());
+	        LocalDateTime claseDateTime = convertirFechaHora(selectedActivity.getFecha(), selectedActivity.getHora());
+
 	        if (now.isBefore(claseDateTime)) {
 	        
 	        int id = selectedActivity.getIDClase();
@@ -223,23 +223,24 @@ public class VentanaCalendarioActividades extends JFrame {
 	            JOptionPane.showMessageDialog(null, "No hay plazas disponibles para esta clase", "Apuntarse a clase",
 	                    JOptionPane.WARNING_MESSAGE);
 	        }
+	    }
 	    }else {
-	    	 JOptionPane.showMessageDialog(null, "La clase seleccionada ya ha pasado, no puedes apuntarte",
-	                    "Apuntarse a clase", JOptionPane.WARNING_MESSAGE);
+	    	JOptionPane.showMessageDialog(null, "La clase seleccionada ya ha pasado, no puedes apuntarte",
+                    "Apuntarse a clase", JOptionPane.WARNING_MESSAGE);
 	    }
 	        
 	    }
-	}
-	
-	
-	//Quitar este metodo si no funca
 	private LocalDateTime convertirFechaHora(Date fecha, String hora) {
-		Instant instant = fecha.toInstant();
+	    Instant instant = fecha.toInstant();
 	    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+
+	    // Ajusta la hora según tus necesidades
+	    // Aquí asumimos que `hora` tiene un formato como "HH:mm"
 	    String[] partesHora = hora.split(":");
 	    int horas = Integer.parseInt(partesHora[0]);
 	    int minutos = Integer.parseInt(partesHora[1]);
-	    localDateTime = localDateTime.withHour(horas).withMinute(minutos);
+	    localDateTime = localDateTime.withHour(horas).withMinute(minutos).withSecond(0);
+
 	    return localDateTime;
 	}
 	
