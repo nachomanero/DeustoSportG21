@@ -29,7 +29,6 @@ public class VentanaEstadisticas extends JFrame {
         getContentPane().setBackground(new Color(102, 153, 153));
         setTitle("TOP CLASES");
         setSize(400, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         btnMostrarTopClases = new JButton("Mostrar Top Clases");
         btnMostrarTopClases.addActionListener(new ActionListener() {
