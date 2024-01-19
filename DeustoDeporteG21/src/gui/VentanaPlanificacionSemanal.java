@@ -201,8 +201,12 @@ public class VentanaPlanificacionSemanal extends JFrame {
             gbd.añadirReservas(listaReservas);
             btnApuntarse.setEnabled(false);
             btnCambiar.setEnabled(false);
-            JOptionPane.showMessageDialog(null, "Te has apuntado a las clases correctamente", "Apuntarse a clases",
-                    JOptionPane.INFORMATION_MESSAGE);
+            
+            JOptionPane.showMessageDialog(
+                    VentanaPlanificacionSemanal.this, 
+                    "Te has apuntado a las clases correctamente",
+                    "Apuntarse a clases",
+                    JOptionPane.INFORMATION_MESSAGE); 
         } else {
             JOptionPane.showMessageDialog(null, "Ya estás apuntado a esta clase", "Apuntarse a clase",
                     JOptionPane.WARNING_MESSAGE);
