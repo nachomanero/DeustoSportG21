@@ -72,7 +72,7 @@ public class VentanaPlanificacionSemanal extends JFrame {
         this.dniUsuario = dniUsuario;
 
         JFrame frame = new JFrame("PLANIFICACION SEMANAL");
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
         frame.setResizable(false);
 
