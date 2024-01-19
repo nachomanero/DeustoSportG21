@@ -221,7 +221,7 @@ public class VentanaPlanificacionSemanal extends JFrame {
                 JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(exitButton);
                 thisFrame.dispose();
                 VentanaCalendarioActividades vent = new VentanaCalendarioActividades(g, gbd, dniUsuario);
-                vent.setVisible(true);
+                vent.setVisible(false);
             }
         });
         exitButton.setPreferredSize(new Dimension(100, 40));

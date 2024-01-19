@@ -4,9 +4,14 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -77,6 +82,46 @@ public class Main {
             System.err.println(String.format("Error en el main: %s", ex.getMessage()));
             ex.printStackTrace();
         }
+        
+        try {
+            Properties properties = loadProperties();
+            if (properties.containsKey("input_file")) {
+                List<String> rutas = leerRutasDesdeArchivo(properties.getProperty("input_file"));
+                if (rutas != null) {
+                    System.out.println(String.format("- Se han leído %d rutas del archivo '%s'",
+                            rutas.size(), properties.getProperty("input_file")));
+
+                    if (properties.containsKey("output_database_connection") &&
+                            properties.containsKey("output_database_user") &&
+                            properties.containsKey("output_database_password") &&
+                            properties.containsKey("output_table") &&
+                            properties.containsKey("output_column")) {
+
+                        guardarRutasEnBaseDeDatos(
+                                properties.getProperty("output_database_connection"),
+                                properties.getProperty("output_database_user"),
+                                properties.getProperty("output_database_password"),
+                                properties.getProperty("output_table"),
+                                properties.getProperty("output_column"),
+                                rutas
+                        );
+
+                        System.out.println("- Rutas guardadas en la base de datos correctamente.");
+                    } else {
+                        System.out.println("- Faltan propiedades para la conexión de la base de datos o la definición de la tabla/columna.");
+                    }
+                } else {
+                    System.out.println("- No se han leído rutas o el archivo de entrada es incorrecto.");
+                }
+            } else {
+                System.out.println("- No se puede localizar el archivo de entrada en las propiedades.");
+            }
+        } catch (Exception ex) {
+            System.err.println(String.format("Error en el main: %s", ex.getMessage()));
+            ex.printStackTrace();
+        }
+        
+       
 		
 		
 		//System.out.println(gestorBD.obtenerTodasLasClases());
@@ -91,6 +136,47 @@ public class Main {
         
     }
 	
+	
+	
+	private static List<String> leerRutasDesdeArchivo(String filePath) {
+        List<String> rutas = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String ruta;
+            while ((ruta = reader.readLine()) != null) {
+                rutas.add(ruta);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return rutas;
+    }
+	
+	 private static void guardarRutasEnBaseDeDatos(
+             String databaseConnection,
+             String databaseUser,
+             String databasePassword,
+             String tableName,
+             String columnName,
+             List<String> rutas) {
+
+         String sql = "INSERT INTO " + tableName + " (" + columnName + ") VALUES (?)";
+
+         try (Connection connection = DriverManager.getConnection(databaseConnection, databaseUser, databasePassword);
+              PreparedStatement statement = connection.prepareStatement(sql)) {
+
+             for (String ruta : rutas) {
+                 statement.setString(1, ruta);
+                 statement.executeUpdate();
+             }
+
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+     }
+	 
+	 
 
 	private static List<Usuario> leerUsuariosDesdeCSV(String ficheroUsuarios) {
 	    List<Usuario> usuarios = new ArrayList<>();
