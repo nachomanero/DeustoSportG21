@@ -5,30 +5,23 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import db.GestorBD;
 import domain.Gestor;
 import domain.Usuario;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
-import java.util.Set;
 
 public class GestorTest {
 
     private Gestor gestor;
     
-    
-
-
     @Before
     public void setUp() {
     	gestor = new Gestor();
        
     }
-
 
     @Test
     public void testCargarUsuariosCSV() {
@@ -65,7 +58,7 @@ public class GestorTest {
     @Test
     public void testEliminarUsuario() throws IOException {
     	Usuario usuarioAEliminar = new Usuario("123456789", "John", "Doe", "123 Main St", "john.doe@example.com", "password123");
-		//gestor.(usuarioAEliminar);
+    	//gestor.(usuarioAEliminar);
 		//gestor.(usuarioAEliminar);
 		assertFalse(gestor.getUsuarios().contains(usuarioAEliminar));
    

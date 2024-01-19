@@ -255,15 +255,21 @@ public class VentanaAniadirClase extends JFrame {
 					int capacidad = (int) spinner.getValue();
 					if(Pattern.matches(patronHora, hora)) {
 						if(Pattern.matches(patronFecha, txtFecha)) {
-							Clase cl = new Clase(id,hora,tipoClase,sqlFecha,lugar,capacidad);
-							gbd.añadirClase(cl);
-							g.agregarClaseACSV(cl, nomfichClases);
-							JOptionPane.showMessageDialog(null, "Clase creada correctamente","CREACION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
-							JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnCrearClase);
-			                thisFrame.dispose();
-							VentanaMenuAdmin vent = new VentanaMenuAdmin(g , gbd );
-							vent.mostrarVentana();
-			                LOGGER.log(Level.INFO, "Se ha creado una sesion correctamente");
+							if(capacidad >= 5) {
+								Clase cl = new Clase(id,hora,tipoClase,sqlFecha,lugar,capacidad);
+								gbd.añadirClase(cl);
+								g.agregarClaseACSV(cl, nomfichClases);
+								JOptionPane.showMessageDialog(null, "Clase creada correctamente","CREACION DE CLASE",JOptionPane.INFORMATION_MESSAGE);
+								JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnCrearClase);
+				                thisFrame.dispose();
+								VentanaMenuAdmin vent = new VentanaMenuAdmin(g , gbd );
+								vent.mostrarVentana();
+				                LOGGER.log(Level.INFO, "Se ha creado una sesion correctamente");
+							}else {
+								textField.setText("");
+								JOptionPane.showMessageDialog(null, "El numero minimo de plazas es de 5" ,"CAPACIDAD INCORRECTA",JOptionPane.ERROR_MESSAGE);
+								LOGGER.log(Level.WARNING, "Se ha intentado añadir una clase con un numero de plazas incorrecto");
+							}
 						}else {
 							textField.setText("");
 							JOptionPane.showMessageDialog(null, "La fecha introducida no es inválida \n El formato es: (dd-MM-yyyy)" ,"FECHA INCORRECTA",JOptionPane.ERROR_MESSAGE);
@@ -279,7 +285,7 @@ public class VentanaAniadirClase extends JFrame {
 					
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
-					JOptionPane.showMessageDialog(null, "Rellene bien la fehca" ,"FECHA INCORRECTA",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Rellene bien la fecha" ,"FECHA INCORRECTA",JOptionPane.ERROR_MESSAGE);
 					e1.printStackTrace();
 					System.out.println("Problema con la fecha");
 					LOGGER.log(Level.WARNING, "Error haciendo el Parse de la fecha");

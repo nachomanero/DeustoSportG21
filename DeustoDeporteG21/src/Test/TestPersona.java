@@ -5,10 +5,8 @@ import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
 
-import domain.Gestor;
 import domain.Usuario;
 public class TestPersona {
-    private Gestor gestor;
 	private Usuario Usuario;
 	private String nombre = "Name";
 	private String apellido = "Surname";

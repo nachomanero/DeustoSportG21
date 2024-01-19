@@ -1,11 +1,8 @@
 package db;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.Timestamp;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -20,7 +17,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.logging.Logger;
 
 import domain.Clase;
@@ -405,7 +401,6 @@ public class GestorBD {
 		try (Connection conexion = DriverManager.getConnection(CONNECTION_STRING)) {
 			String consulta = "SELECT idClase, hora, tipoActividad, fecha, IDSala, plazas FROM Clase WHERE fecha like ?";
 			try (PreparedStatement statement = conexion.prepareStatement(consulta)) {
-				SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
 				SimpleDateFormat formatoSalida = new SimpleDateFormat("dd-MM-yyyy");
 
 				java.sql.Date fechaSql = new java.sql.Date(formatoSalida.parse(fecha).getTime());

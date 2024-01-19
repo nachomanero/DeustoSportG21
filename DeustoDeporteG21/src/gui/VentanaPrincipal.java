@@ -1,11 +1,7 @@
 package gui;
-import java.awt.EventQueue;
-
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import io.FicheroLogger;
@@ -19,21 +15,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
-import javax.swing.text.AbstractDocument.Content;
 
 import db.GestorBD;
 import domain.Gestor;
-import io.FicheroLogger;
 
 import javax.swing.ImageIcon;
 import java.awt.FlowLayout;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import java.util.logging.Logger;
-import java.util.logging.Level;
 public class VentanaPrincipal {
 
 	
@@ -43,7 +31,6 @@ public class VentanaPrincipal {
 
 	
 	private JFrame frame;
-	private JPanel contentPane;
 	private Gestor g;
 	private GestorBD gbd;
 	private static final Logger LOGGER = Logger.getLogger(FicheroLogger.class.getName());

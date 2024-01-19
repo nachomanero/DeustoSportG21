@@ -1,25 +1,15 @@
 package gui;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import db.GestorBD;
@@ -27,10 +17,6 @@ import domain.Gestor;
 import domain.Reserva;
 
 import java.awt.FlowLayout;
-import io.FicheroLogger;
-import java.util.logging.Logger;
-import java.util.List;
-import java.util.logging.Level;
 public class VentanaAgenda extends JFrame {
   
 	private JTable tablaReservas;

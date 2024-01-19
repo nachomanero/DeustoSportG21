@@ -1,16 +1,12 @@
 package main;
 
-import java.awt.EventQueue;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
-import java.lang.System.Logger;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -21,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 import db.GestorBD;
 import domain.Gestor;
 import domain.Usuario;
-import gui.VentanaMenuAdmin;
 import gui.VentanaPrincipal;
 import io.FicheroLogger;
 

@@ -166,10 +166,10 @@ public class VentanaEditarClase extends JFrame {
 		btnEditarClase.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_7.add(btnEditarClase);
 		
-		JButton btnRetroceder = new JButton("Retroceder");
+		/*JButton btnRetroceder = new JButton("Retroceder");
 		btnRetroceder.setBackground(new Color(192, 192, 192));
 		btnRetroceder.setFont(new Font("Arial", Font.BOLD, 13));
-		panel_7.add(btnRetroceder);
+		panel_7.add(btnRetroceder);*/
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.setBackground(new Color(192, 192, 192));
@@ -181,18 +181,16 @@ public class VentanaEditarClase extends JFrame {
 		
 		
 		
-		btnRetroceder.addActionListener(new ActionListener() {
+		/*btnRetroceder.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame thisFrame = (JFrame) SwingUtilities.getWindowAncestor(btnRetroceder);
                 thisFrame.dispose();
-			
-				VentanaMenuAdmin vent = new VentanaMenuAdmin(g , gbd );
-				vent.mostrarVentana();
+		
 				
 			}
-		});
+		}); */
 		
 		btnSalir.addActionListener(new ActionListener() {
 			
