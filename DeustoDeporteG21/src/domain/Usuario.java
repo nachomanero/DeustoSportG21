@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public  class  Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -91,17 +92,25 @@ public  class  Usuario implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
-	}
+	
 
 	@Override
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
-	}
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Usuario usuario = (Usuario) obj;
+        return Objects.equals(dni, usuario.dni) &&
+                Objects.equals(nombre, usuario.nombre) &&
+                Objects.equals(apellido, usuario.apellido) &&
+                Objects.equals(direccion, usuario.direccion) &&
+                Objects.equals(correoElectronico, usuario.correoElectronico) &&
+                Objects.equals(contrasena, usuario.contrasena);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dni, nombre, apellido, direccion, correoElectronico, contrasena);
+    }
 
 	
 }
