@@ -83,6 +83,8 @@ public class Main {
             ex.printStackTrace();
         }
         
+        /*
+        
         try {
             Properties properties = loadProperties();
             if (properties.containsKey("input_file")) {
@@ -120,6 +122,7 @@ public class Main {
             System.err.println(String.format("Error en el main: %s", ex.getMessage()));
             ex.printStackTrace();
         }
+        */
         
        
 		
